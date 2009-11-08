@@ -11,14 +11,12 @@ import java.util.*;
  * @author Wutichai Chongchitmate
  * @author Robert C. Duvall
  */
-public class ResourceManager 
-{
+public class ResourceManager {
     private static final String RESOURCES = "resources.";
     private static final String DEFAULT_LANGUAGE = "English";
     private static ResourceBundle ourResources;
-    
-    static 
-    {
+
+    static {
         setResource(DEFAULT_LANGUAGE);
     }
 

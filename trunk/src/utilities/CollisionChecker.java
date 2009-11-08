@@ -1,6 +1,5 @@
 package utilities;
 
-public class CollisionChecker
-{
-    
+public class CollisionChecker {
+
 }
