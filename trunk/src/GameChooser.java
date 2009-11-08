@@ -21,7 +21,7 @@ public class GameChooser extends JFrame
     public GameChooser()
     {
         setPreferredSize(mySize);
-        setTitle("Title");
+        setTitle("MMCL: 2150 Arcade");
         setJMenuBar(makeMenu());
         getContentPane().add(setBackgroundImage());
 
