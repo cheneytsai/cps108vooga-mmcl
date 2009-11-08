@@ -7,6 +7,6 @@ public interface Action {
      * Execute associated action on given actor
      * @param a
      */
-    public void execute(Actor a);
+    public void execute(AbstractActor a);
     
 }
