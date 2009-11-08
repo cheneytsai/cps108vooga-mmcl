@@ -5,22 +5,25 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.AbstractAction;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class GameChooser extends JFrame
 {
     private Dimension mySize = new Dimension(960,720);
-    protected static Image image;
+//    protected static Image image;
+    ImageIcon icon;
     
     public GameChooser()
     {
         setPreferredSize(mySize);
         setTitle("Title");
         setJMenuBar(makeMenu());
-//        setBackgroundImage();
+        getContentPane().add(setBackgroundImage());
 
         
         pack();
@@ -46,24 +49,20 @@ public class GameChooser extends JFrame
         return menu;
     }
 
-    
-//    private void setBackgroundImage()
-//    {
-//        try
-//        {
-//            image = javax.imageio.ImageIO.read(new File("2150_lightning.jpg"));
-//        }
-//        catch (IOException e)
-//        {
-//            e.printStackTrace();
-//        }
-//        
-//        repaint();
-//    }
-//    
-//    public void paintComponent(Graphics pen)
-//    {
-//        pen.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-//    }
-    
+    private JPanel setBackgroundImage()
+    {
+        icon = new ImageIcon("2150_lightning.jpg");
+        
+        JPanel panel = new JPanel()
+        {
+            protected void paintComponent(Graphics g)
+            {
+                g.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
+ 
+                super.paintComponent(g);
+            }
+        };
+        panel.setOpaque( false );
+        return panel;
+    }
 }
