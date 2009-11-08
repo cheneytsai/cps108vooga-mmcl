@@ -1,68 +1,55 @@
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
-import javax.swing.AbstractAction;
+import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
+import util.resources.ResourceManager;
 
+/*
+ * stuff that actually chooses the game.
+ */
 @SuppressWarnings("serial")
-public class GameChooser extends JFrame
+public class GameChooser extends Canvas
 {
     private Dimension mySize = new Dimension(960,720);
-//    protected static Image image;
-    ImageIcon icon;
+    private static final Font DEFAULT_TITLE_FONT =
+        new Font("TAHOMA", Font.BOLD, 75);
+    private static final Font DEFAULT_OPTION_FONT = 
+        new Font("TAHOMA", Font.BOLD, 50);
     
     public GameChooser()
     {
-        setPreferredSize(mySize);
-        setTitle("MMCL: 2150 Arcade");
-        setJMenuBar(makeMenu());
-        getContentPane().add(setBackgroundImage());
-
-        
-        pack();
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        icon = new ImageIcon(ResourceManager.getString("StartingBackground"));
     }
     
-    private JMenuBar makeMenu()
+    public void paintComponent(Graphics pen)
     {
-        JMenuBar menu = new JMenuBar();
-        JMenu fileMenu = new JMenu("File");
+        //Set Background
+        pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         
-        //New Game, Instructions, High Score, Quit.  Only quit works at this stage?
-        fileMenu.add(new AbstractAction("Quit")
+        //Set Pen
+        Graphics2D myPen = (Graphics2D) pen;
+        myPen.setColor(Color.BLUE);
+        
+        //Draw Title
+        myPen.setFont(DEFAULT_TITLE_FONT);
+        myPen.drawString(ResourceManager.getString("Title"), 100, 100);
+        
+        //Draw Options
+        myPen.setFont(DEFAULT_OPTION_FONT);
+        String[] menuOptions = ResourceManager.getString("GameChooser").split(" ");
+        int counter = 0;
+        for(String option : menuOptions)
         {
-            public void actionPerformed (ActionEvent ev)
-            {
-                System.exit(0);
-            }
-        });
-        menu.add(fileMenu);
+            myPen.drawString(option, 375, 250 + 100*counter);
+            counter++;
+        }
+        myPen.drawString(ResourceManager.getString("Quit"), 375, 250 + 100*counter);
         
-        return menu;
-    }
-
-    private JPanel setBackgroundImage()
-    {
-        icon = new ImageIcon("2150_lightning.jpg");
+//        MouseListener?  To tell when a button is clicked within the right area
         
-        JPanel panel = new JPanel()
-        {
-            protected void paintComponent(Graphics g)
-            {
-                g.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
- 
-                super.paintComponent(g);
-            }
-        };
-        panel.setOpaque( false );
-        return panel;
+        
+        setOpaque(false);
     }
 }
