@@ -101,7 +101,7 @@ public abstract class Actor {
     
     public void setImage(String newImage)
     {
-        myImage = new ImageIcon(getClass().getResource("/" + newImage)).getImage();
+        myImage = new ImageIcon("src/images/ball.gif").getImage();//getClass().getResource("/" + newImage)).getImage();
     }
     
     public void remove()

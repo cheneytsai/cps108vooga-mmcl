@@ -75,11 +75,11 @@ public class GameMenu extends Canvas
                     {
                         new LevelViewer(myGameName, myGameName + "level1",0, myCanvas);
                     }
-                    else if (e.getY() > 500 && e.getY() < 550)
+                    else if (e.getY() > 300 && e.getY() < 350)
                     {
                         //will display the instructions for the current game
                     }
-                    else if (e.getY() > 500 && e.getY() < 550)
+                    else if (e.getY() > 300 && e.getY() < 450)
                     {
                         //will display the high scores for the current game
                     }
