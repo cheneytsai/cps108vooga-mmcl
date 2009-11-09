@@ -50,17 +50,16 @@ public class Frame extends JFrame
         {
             public void actionPerformed(ActionEvent ev)
             {
-                // Opens current game
+                //Will display instructions for the current game
             }
         });
-        fileMenu
-                .add(new AbstractAction(ResourceManager.getString("HighScores"))
-                {
-                    public void actionPerformed(ActionEvent ev)
-                    {
-                        // Opens current game
-                    }
-                });
+        fileMenu.add(new AbstractAction(ResourceManager.getString("HighScores"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
+               // Will display high score for the current game
+            }
+        });
         fileMenu.add(new AbstractAction(ResourceManager.getString("Quit"))
         {
             public void actionPerformed(ActionEvent ev)
@@ -72,5 +71,4 @@ public class Frame extends JFrame
 
         return menu;
     }
-
 }
