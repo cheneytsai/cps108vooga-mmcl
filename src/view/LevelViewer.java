@@ -63,22 +63,6 @@ public class LevelViewer extends Canvas //implements ActionListener
         pen.drawString(myGameName,0,40);
         pen.drawString(ResourceManager.getString("Score") + myScore, 800, 20);
 
-        ImageIcon iconUse = new ImageIcon("src/images/ball.gif"); 
-        pen.drawImage(iconUse.getImage(), 500, 600,16, 16, null);
-        iconUse = new ImageIcon("src/images/paddle.gif");
-        pen.drawImage(iconUse.getImage(), 500, 620,40, 16, null);
-        iconUse = new ImageIcon("src/images/brick1.gif");
-        pen.drawImage(iconUse.getImage(), 500, 100,40, 16, null);
-        iconUse = new ImageIcon("src/images/brick2.gif");
-        pen.drawImage(iconUse.getImage(), 400, 100,40, 16, null);
-        iconUse = new ImageIcon("src/images/brick3.gif");
-        pen.drawImage(iconUse.getImage(), 300, 100,40, 16, null);
-        iconUse = new ImageIcon("src/images/brick4.gif");
-        pen.drawImage(iconUse.getImage(), 200, 100,40, 16, null);
-        iconUse = new ImageIcon("src/images/brick5.gif");
-        pen.drawImage(iconUse.getImage(), 600, 100,40, 16, null);
-        iconUse = new ImageIcon("src/images/brick6.gif");
-        pen.drawImage(iconUse.getImage(), 700, 100,40, 16, null);
     }
     
     public String getGameName()
@@ -104,7 +88,7 @@ public class LevelViewer extends Canvas //implements ActionListener
 //    
 //    /**
 //     * Called by each step of timer.
-//     */
+//     *
 //    public void animate ()
 //    {
 //        myGame.update(this);
