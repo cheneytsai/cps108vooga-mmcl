@@ -5,14 +5,20 @@ import util.resources.ResourceManager;
 @SuppressWarnings("serial")
 public class LevelViewer extends Canvas
 {
-    public LevelViewer(String levelname, Canvas canvas)
+    private String myGameName;
+    
+    public LevelViewer(String gameName, String levelName, Canvas canvas)
     {
         myCanvas = canvas;
+        myGameName = gameName;
         myCanvas.removeAll();
         myCanvas.setActive(this);
 
-        myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
-        icon = new ImageIcon(ResourceManager.getString(levelname+ ".background"));
+        if (myCanvas.getMouseListeners().length > 0)
+        {
+            myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
+        }
+        icon = new ImageIcon(ResourceManager.getString(levelName+ ".background"));
 
         myCanvas.repaint();
     }
@@ -21,5 +27,10 @@ public class LevelViewer extends Canvas
     public void paintComponent(Graphics pen)
     {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
+    }
+    
+    public String getGameName()
+    {
+        return myGameName;
     }
 }

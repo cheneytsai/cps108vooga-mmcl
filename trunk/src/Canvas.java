@@ -42,7 +42,16 @@ public class Canvas extends JPanel
         active = toUse;
     }
 
+    public Canvas getActive()
+    {
+        return active;
+    }
 
+    public String getGameName()
+    {
+        return active.getGameName();
+    }
+    
     public MouseListener mouseListener()
     {
         return active.mouseListener();

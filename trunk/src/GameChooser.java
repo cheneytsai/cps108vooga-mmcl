@@ -22,7 +22,7 @@ public class GameChooser extends Canvas
         myCanvas.removeAll();
         myCanvas.setActive(this);
 
-        if (getMouseListeners().length > 0)
+        if (myCanvas.getMouseListeners().length > 0)
         {
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
 
@@ -84,5 +84,10 @@ public class GameChooser extends Canvas
             }
         };
         return myMouseAdapter;
+    }
+    
+    public String getGameName()
+    {
+        return null;
     }
 }
