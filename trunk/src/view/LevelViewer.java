@@ -1,5 +1,7 @@
 package view;
 import java.awt.Graphics;
+import java.util.Collection;
+
 import javax.swing.ImageIcon;
 
 import actors.Actor;
@@ -32,10 +34,10 @@ public class LevelViewer extends Canvas
     }
 
 
-    public void paintComponent(Graphics pen)
+    public void paintComponent(Graphics pen, Collection<Actor> actors)
     {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
-        for (Actor a: myGameModel.getActors())
+        for (Actor a: actors)
         {
             a.paint(pen);
         }
