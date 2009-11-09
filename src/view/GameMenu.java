@@ -79,7 +79,7 @@ public class GameMenu extends Canvas
                 {
                     if (e.getY() > 200 && e.getY() < 250)
                     {
-                        new LevelViewer(myGameName, myGameName + "level1", myCanvas);
+                        new LevelViewer(myGameName, myGameName + "level1",0, myCanvas);
                     }
                     else if (e.getY() > 500 && e.getY() < 550)
                     {

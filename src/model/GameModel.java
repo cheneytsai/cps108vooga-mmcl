@@ -4,6 +4,7 @@ import view.Canvas;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Timer;
 
@@ -50,6 +51,11 @@ public class GameModel {
     public void remove(Actor actor) {
         myActorList.remove(actor);
 
+    }
+
+    public Collection<Actor> getActors()
+    {
+        return myActorList;
     }
 
 }
