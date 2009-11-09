@@ -2,8 +2,11 @@ package view;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
 
+import actors.Actor;
+
 import model.GameModel;
 import util.resources.ResourceManager;
+import yourwork.Mover;
 
 @SuppressWarnings("serial")
 public class LevelViewer extends Canvas
@@ -32,6 +35,10 @@ public class LevelViewer extends Canvas
     public void paintComponent(Graphics pen)
     {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
+        for (Actor a: myGameModel.getActors())
+        {
+            a.paint(pen);
+        }
     }
     
     public String getGameName()
