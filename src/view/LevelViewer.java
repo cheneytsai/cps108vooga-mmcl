@@ -8,7 +8,7 @@ import actors.Actor;
 
 import model.GameModel;
 import util.resources.ResourceManager;
-import yourwork.Mover;
+
 
 @SuppressWarnings("serial")
 public class LevelViewer extends Canvas
