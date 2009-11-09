@@ -25,8 +25,9 @@ public class GameChooser extends Canvas
         if (getMouseListeners().length > 0)
         {
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
-            myCanvas.addMouseListener(mouseListener());
+
         }
+        myCanvas.addMouseListener(mouseListener());
         icon = new ImageIcon(ResourceManager.getString("StartingBackground"));
 
         myCanvas.repaint();
