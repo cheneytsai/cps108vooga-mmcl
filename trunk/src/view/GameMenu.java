@@ -22,7 +22,6 @@ public class GameMenu extends Canvas
         if (myCanvas.getMouseListeners().length > 0)
         {
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
-
         }
         myCanvas.addMouseListener(mouseListener());
 
@@ -75,6 +74,14 @@ public class GameMenu extends Canvas
                     if (e.getY() > 200 && e.getY() < 250)
                     {
                         new LevelViewer(myGameName, myGameName + "level1",0, myCanvas);
+                    }
+                    else if (e.getY() > 500 && e.getY() < 550)
+                    {
+                        //will display the instructions for the current game
+                    }
+                    else if (e.getY() > 500 && e.getY() < 550)
+                    {
+                        //will display the high scores for the current game
                     }
                     else if (e.getY() > 500 && e.getY() < 550)
                     {

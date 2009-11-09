@@ -34,12 +34,14 @@ public class LevelViewer extends Canvas implements ActionListener
         {
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
         }
+        
         icon = new ImageIcon(ResourceManager.getString(levelName+ ".background"));
         myCanvas.repaint();
+        
+        
         myGameModel = new GameModel(this);
         myActors = myGameModel.getActors();
         Timer timer = new Timer(DEFAULT_DELAY, this);
-        // start the animation
         timer.start();
 
     }
