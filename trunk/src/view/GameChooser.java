@@ -81,7 +81,7 @@ public class GameChooser extends Canvas
                     {
                         //new GameMenu("Dukeopalypse", myCanvas);
                     }
-                    else if(e.getY() > 300 && e.getY() < 350)
+                    else if(e.getY() > 400 && e.getY() < 450)
                     {
                         //new GameMenu("Game3", myCanvas);
                     }
