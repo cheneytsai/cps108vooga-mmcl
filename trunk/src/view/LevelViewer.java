@@ -1,11 +1,16 @@
+package view;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
+
+import model.GameModel;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
 public class LevelViewer extends Canvas
 {
     private String myGameName;
+    private GameModel myGameModel;
+
     
     public LevelViewer(String gameName, String levelName, Canvas canvas)
     {
@@ -19,7 +24,7 @@ public class LevelViewer extends Canvas
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
         }
         icon = new ImageIcon(ResourceManager.getString(levelName+ ".background"));
-
+        myGameModel = new GameModel(this);
         myCanvas.repaint();
     }
 
