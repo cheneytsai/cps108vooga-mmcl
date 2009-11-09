@@ -1,26 +1,27 @@
+package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+
+import model.GameModel;
 import util.resources.ResourceManager;
 
-/*
- * stuff that actually chooses the game.
- */
 @SuppressWarnings("serial")
-public class GameChooser extends Canvas
+public class GameMenu extends Canvas
 {
+    private String myGameName;
+//    private GameModel myGameModel;
 
-    private Canvas myCanvas;
 
-
-    public GameChooser(Canvas canvas)
+    public GameMenu(String gameName, Canvas canvas)
     {
         myCanvas = canvas;
         myCanvas.removeAll();
         myCanvas.setActive(this);
+//        myGameModel = new GameModel(this);
 
         if (myCanvas.getMouseListeners().length > 0)
         {
@@ -28,7 +29,9 @@ public class GameChooser extends Canvas
 
         }
         myCanvas.addMouseListener(mouseListener());
-        icon = new ImageIcon(ResourceManager.getString("StartingBackground"));
+
+        myGameName = gameName;
+        icon = new ImageIcon(ResourceManager.getString(gameName));
 
         myCanvas.repaint();
     }
@@ -45,16 +48,17 @@ public class GameChooser extends Canvas
 
         // Draw Title
         myPen.setFont(DEFAULT_TITLE_FONT);
-        myPen.drawString(ResourceManager.getString("Title"), 100, 100);
+        myPen.drawString(myGameName, (mySize.width - AVG_PIXELS_PER_LETTER
+                * myGameName.length()) / 2, 100);
 
         // Draw Options
         myPen.setFont(DEFAULT_OPTION_FONT);
         final String[] menuOptions =
-                ResourceManager.getString("GameChooser").split(",");
+                ResourceManager.getString("GameMenuOptions").split(",");
         int counter;
         for (counter = 0; counter < menuOptions.length; counter++)
         {
-            myPen.drawString(menuOptions[counter], 375, 250 + 100 * counter);
+            myPen.drawString(menuOptions[counter], 375, 250 + 75 * counter);
         }
         myPen.drawString(ResourceManager.getString("Quit"), 375,
                 250 + 100 * counter);
@@ -74,9 +78,13 @@ public class GameChooser extends Canvas
                 {
                     if (e.getY() > 200 && e.getY() < 250)
                     {
-                        new GameMenu("Arkanoid", myCanvas);
+                        new LevelViewer(myGameName, myGameName + "level1", myCanvas);
                     }
                     else if (e.getY() > 500 && e.getY() < 550)
+                    {
+                        new GameChooser(myCanvas);
+                    }
+                    else if (e.getY() > 600 && e.getY() < 650)
                     {
                         System.exit(0);
                     }
@@ -88,6 +96,7 @@ public class GameChooser extends Canvas
     
     public String getGameName()
     {
-        return null;
+        return myGameName;
     }
+
 }
