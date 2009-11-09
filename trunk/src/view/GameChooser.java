@@ -45,11 +45,11 @@ public class GameChooser extends Canvas
         myPen.setColor(Color.BLUE);
 
         // Draw Title
-        myPen.setFont(DEFAULT_TITLE_FONT);
+        myPen.setFont(TITLE_FONT);
         myPen.drawString(ResourceManager.getString("Title"), 100, 100);
 
         // Draw Options
-        myPen.setFont(DEFAULT_OPTION_FONT);
+        myPen.setFont(OPTION_FONT);
         final String[] menuOptions =
                 ResourceManager.getString("GameChooser").split(",");
         int counter;

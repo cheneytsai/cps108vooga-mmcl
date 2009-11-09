@@ -1,4 +1,5 @@
 package view;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Collection;
 
@@ -14,6 +15,7 @@ import util.resources.ResourceManager;
 public class LevelViewer extends Canvas
 {
     private String myGameName;
+    private int myScore;
     private GameModel myGameModel;
 
     
@@ -37,6 +39,12 @@ public class LevelViewer extends Canvas
     public void paintComponent(Graphics pen, Collection<Actor> actors)
     {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
+        pen.setFont(SCOREBOARD_FONT);
+        pen.setColor(Color.WHITE);
+        pen.drawString(ResourceManager.getString("Title").substring(0,10),0,20);
+        pen.drawString(myGameName,0,40);
+        pen.drawString(ResourceManager.getString("Score") + myScore, 800, 20);
+        
         for (Actor a: actors)
         {
             a.paint(pen);
