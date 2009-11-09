@@ -7,11 +7,13 @@ import javax.swing.JMenuBar;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
-public class Frame extends JFrame {
+public class Frame extends JFrame
+{
     private Dimension mySize = new Dimension(960, 720);
     private Canvas myCanvas;
 
-    public Frame() {
+    public Frame()
+    {
         myCanvas = new Canvas();
         myCanvas.setActive(new GameChooser(myCanvas));
         setPreferredSize(mySize);
@@ -26,31 +28,41 @@ public class Frame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private JMenuBar makeMenu() {
+
+    private JMenuBar makeMenu()
+    {
         JMenuBar menu = new JMenuBar();
         JMenu fileMenu = new JMenu(ResourceManager.getString("File"));
 
-        fileMenu.add(new AbstractAction(ResourceManager.getString("NewGame")) {
-            public void actionPerformed(ActionEvent ev) {
+        fileMenu.add(new AbstractAction(ResourceManager.getString("NewGame"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
                 // Opens current game
             }
         });
         fileMenu.add(new AbstractAction(ResourceManager
-                .getString("Instructions")) {
-            public void actionPerformed(ActionEvent ev) {
+                .getString("Instructions"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
                 // Opens current game
             }
         });
         fileMenu
-                .add(new AbstractAction(ResourceManager.getString("HighScores")) {
-                    public void actionPerformed(ActionEvent ev) {
+                .add(new AbstractAction(ResourceManager.getString("HighScores"))
+                {
+                    public void actionPerformed(ActionEvent ev)
+                    {
                         // Opens current game
                     }
                 });
         // New Game, Instructions, High Score, Quit. Only quit works at this
         // stage?
-        fileMenu.add(new AbstractAction(ResourceManager.getString("Quit")) {
-            public void actionPerformed(ActionEvent ev) {
+        fileMenu.add(new AbstractAction(ResourceManager.getString("Quit"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
                 System.exit(0);
             }
         });
@@ -58,6 +70,5 @@ public class Frame extends JFrame {
 
         return menu;
     }
-    
-    
+
 }

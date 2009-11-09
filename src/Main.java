@@ -1,5 +1,7 @@
-public class Main {
-    public static void main(String[] args) {
+public class Main
+{
+    public static void main(String[] args)
+    {
         Frame frame = new Frame();
         // GameChooser start = new GameChooser();
     }
