@@ -19,7 +19,7 @@ public class Frame extends JFrame
         setPreferredSize(mySize);
         setTitle(ResourceManager.getString("Title"));
         setJMenuBar(makeMenu());
-//        myCanvas.addMouseListener(myCanvas.mouseListener());
+        myCanvas.addMouseListener(myCanvas.mouseListener());
 
         getContentPane().add(myCanvas);
 
