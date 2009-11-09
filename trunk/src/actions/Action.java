@@ -10,6 +10,6 @@ public interface Action
      * 
      * @param a
      */
-    public void execute(AbstractActor a);
+    public void execute(Actor a);
 
 }
