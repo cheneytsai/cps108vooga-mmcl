@@ -6,15 +6,11 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Timer;
-
 import utilities.CollisionChecker;
-
-import actions.Direction;
 import actors.Actor;
 import actors.Ball;
 import actors.Paddle;
-import actors.PhysicsVector;
+
 
 public class GameModel {
 

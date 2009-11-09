@@ -2,12 +2,9 @@ package view;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import actors.Actor;
 
 @SuppressWarnings("serial")
 public class Canvas extends JPanel

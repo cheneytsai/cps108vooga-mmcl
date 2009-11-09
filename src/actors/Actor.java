@@ -21,7 +21,7 @@ public abstract class Actor {
     private Point myPosition;
     private Dimension mySize;
     private PhysicsVector myVelocity;
-    private PhysicsVector myAcceleration;
+//    private PhysicsVector myAcceleration;
     protected Map<String, Action> myKeyEvents;
     protected Map<String, Action> myInteractions;
     protected Action myDefaultBehavior;
@@ -35,7 +35,7 @@ public abstract class Actor {
         myPosition = position;
         myModel = model;
         myVelocity = new PhysicsVector(new Direction(0, 0), 0);
-        myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
+//        myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
         myKeyEvents = new HashMap<String, Action>();
         myInteractions = new HashMap<String, Action>();
         loadBehavior();

@@ -5,16 +5,12 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
-
-import model.GameModel;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
 public class GameMenu extends Canvas
 {
     private String myGameName;
-    private static final int STARTING_SCORE = 0;
-//    private GameModel myGameModel;
 
 
     public GameMenu(String gameName, Canvas canvas)
@@ -22,7 +18,6 @@ public class GameMenu extends Canvas
         myCanvas = canvas;
         myCanvas.removeAll();
         myCanvas.setActive(this);
-//        myGameModel = new GameModel(this);
 
         if (myCanvas.getMouseListeners().length > 0)
         {
