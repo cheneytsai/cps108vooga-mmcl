@@ -29,6 +29,7 @@ public class Canvas extends JPanel
     public Canvas()
     {
         myCanvas = this;
+        setPreferredSize(mySize);
     }
 
 
