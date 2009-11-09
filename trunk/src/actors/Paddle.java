@@ -1,5 +1,6 @@
 package actors;
 
+import java.awt.Dimension;
 import java.awt.Point;
 
 import actions.*;
@@ -8,8 +9,8 @@ import model.GameModel;
 
 public class Paddle extends Actor {
 
-    public Paddle(String image, Point position, GameModel model) {
-        super(image, position, model);
+    public Paddle(String image, Dimension size, Point position, GameModel model) {
+        super(image, size, position, model);
     }
 
     @Override
@@ -17,7 +18,6 @@ public class Paddle extends Actor {
         myDefaultBehavior = null;
         myKeyEvents.put("a", new Move(new Direction(-1, 0), 3));
         myKeyEvents.put("d", new Move(new Direction(1, 0), 3));
-        
     }
 
 }

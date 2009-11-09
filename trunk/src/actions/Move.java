@@ -7,12 +7,12 @@ import actors.Actor;
 public class Move implements Action {
     
     Direction myDirection;
-    int myMagnitude;
+    double myMagnitude;
     
-    public Move(Direction d, int magnitude)
+    public Move(Direction d, double e)
     {
         myDirection = d;
-        myMagnitude = magnitude;
+        myMagnitude = e;
     }
     
     @Override
