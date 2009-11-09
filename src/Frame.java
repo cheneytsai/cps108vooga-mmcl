@@ -1,6 +1,13 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.util.List;
+
 import javax.swing.AbstractAction;
+
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -19,9 +26,12 @@ public class Frame extends JFrame
         setPreferredSize(mySize);
         setTitle(ResourceManager.getString("Title"));
         setJMenuBar(makeMenu());
+
         myCanvas.addMouseListener(myCanvas.mouseListener());
 
         getContentPane().add(myCanvas);
+        getContentPane().add(new JButton("Arkanoid"));
+
 
         pack();
         setVisible(true);
