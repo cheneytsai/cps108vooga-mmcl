@@ -13,6 +13,7 @@ import util.resources.ResourceManager;
 public class GameMenu extends Canvas
 {
     private String myGameName;
+    private static final int STARTING_SCORE = 0;
 //    private GameModel myGameModel;
 
 
@@ -47,12 +48,12 @@ public class GameMenu extends Canvas
         myPen.setColor(Color.BLUE);
 
         // Draw Title
-        myPen.setFont(DEFAULT_TITLE_FONT);
+        myPen.setFont(TITLE_FONT);
         myPen.drawString(myGameName, (mySize.width - AVG_PIXELS_PER_LETTER
                 * myGameName.length()) / 2, 100);
 
         // Draw Options
-        myPen.setFont(DEFAULT_OPTION_FONT);
+        myPen.setFont(OPTION_FONT);
         final String[] menuOptions =
                 ResourceManager.getString("GameMenuOptions").split(",");
         int counter;
