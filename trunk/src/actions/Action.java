@@ -2,7 +2,8 @@ package actions;
 
 import actors.*;
 
-public interface Action {
+public interface Action
+{
 
     /**
      * Execute associated action on given actor
