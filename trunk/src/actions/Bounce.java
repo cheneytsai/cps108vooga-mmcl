@@ -1,9 +1,8 @@
 package actions;
 
-import java.awt.Dimension;
+
 import java.awt.Point;
 import java.awt.geom.Rectangle2D;
-
 import actors.Actor;
 import actors.PhysicsVector;
 

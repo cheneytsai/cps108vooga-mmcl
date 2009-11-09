@@ -4,12 +4,9 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
-
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
-
 import actors.Actor;
-
 import model.GameModel;
 import util.resources.ResourceManager;
 
