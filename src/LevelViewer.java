@@ -11,9 +11,8 @@ public class LevelViewer extends Canvas
         myCanvas.removeAll();
         myCanvas.setActive(this);
 
-        icon =
-                new ImageIcon(ResourceManager.getString(levelname
-                        + ".background"));
+        myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
+        icon = new ImageIcon(ResourceManager.getString(levelname+ ".background"));
 
         myCanvas.repaint();
     }
