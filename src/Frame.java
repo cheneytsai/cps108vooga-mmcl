@@ -1,14 +1,9 @@
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
-import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
@@ -18,10 +13,11 @@ public class Frame extends JFrame {
 
     public Frame() {
         myCanvas = new Canvas();
-        myCanvas.setActive(new GameChooser());
+        myCanvas.setActive(new GameChooser(myCanvas));
         setPreferredSize(mySize);
         setTitle(ResourceManager.getString("Title"));
         setJMenuBar(makeMenu());
+        myCanvas.addMouseListener(myCanvas.mouseListener());
 
         getContentPane().add(myCanvas);
 
@@ -62,4 +58,6 @@ public class Frame extends JFrame {
 
         return menu;
     }
+    
+    
 }
