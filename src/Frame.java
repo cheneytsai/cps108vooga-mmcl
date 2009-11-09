@@ -38,7 +38,10 @@ public class Frame extends JFrame
         {
             public void actionPerformed(ActionEvent ev)
             {
-                // Opens current game
+                if(myCanvas.getActive() != null && myCanvas.getGameName() != null)
+                {
+                    new GameMenu(myCanvas.getGameName(), myCanvas);
+                }
             }
         });
         fileMenu.add(new AbstractAction(ResourceManager
@@ -57,8 +60,6 @@ public class Frame extends JFrame
                         // Opens current game
                     }
                 });
-        // New Game, Instructions, High Score, Quit. Only quit works at this
-        // stage?
         fileMenu.add(new AbstractAction(ResourceManager.getString("Quit"))
         {
             public void actionPerformed(ActionEvent ev)

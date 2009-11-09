@@ -18,7 +18,11 @@ public class GameMenu extends Canvas
         myCanvas.removeAll();
         myCanvas.setActive(this);
 
-        myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
+        if (myCanvas.getMouseListeners().length > 0)
+        {
+            myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
+
+        }
         myCanvas.addMouseListener(mouseListener());
 
         myGameName = gameName;
@@ -69,7 +73,7 @@ public class GameMenu extends Canvas
                 {
                     if (e.getY() > 200 && e.getY() < 250)
                     {
-                        new LevelViewer(myGameName + "level1", myCanvas);
+                        new LevelViewer(myGameName, myGameName + "level1", myCanvas);
                     }
                     else if (e.getY() > 500 && e.getY() < 550)
                     {
@@ -83,6 +87,11 @@ public class GameMenu extends Canvas
             }
         };
         return myMouseAdapter;
+    }
+    
+    public String getGameName()
+    {
+        return myGameName;
     }
 
 }
