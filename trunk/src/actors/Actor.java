@@ -12,9 +12,9 @@ public abstract class Actor {
     private Point myPosition;    
     private PhysicsVector myVelocity;
     private PhysicsVector myAcceleration;
-    private Map<String, Action> myKeyEvents;
-    private Map<Actor, Action> myInteractions;
-    private Action myDefaultBehavior;
+    protected Map<String, Action> myKeyEvents;
+    protected Map<Actor, Action> myInteractions;
+    protected Action myDefaultBehavior;
     
     public Actor(String image, Point position, GameModel model)
     {
@@ -39,6 +39,36 @@ public abstract class Actor {
         if (myDefaultBehavior != null)
             myDefaultBehavior.execute(this);      
         
+    }
+    
+    public void setPosition(Point p)
+    {
+        myPosition = p;
+    }
+    
+    public void setVelocity(PhysicsVector v)
+    {
+        myVelocity = v;
+    }
+    
+    public Point getPosition()
+    {
+        return myPosition;
+    }
+    
+    public PhysicsVector getVelocity()
+    {
+        return myVelocity;
+    }
+    
+    public String getImage()
+    {
+        return myImage;
+    }
+    
+    public void setImage(String newImage)
+    {
+        myImage = newImage;
     }
     
     public void remove()
