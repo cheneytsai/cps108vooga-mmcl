@@ -48,8 +48,8 @@ public class LevelViewer extends Canvas implements ActionListener
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
         }
         
-        myLastKeyPressed = "a";
-        addKeyListener(new KeyAdapter()
+//        myLastKeyPressed = "a";
+        myCanvas.addKeyListener(new KeyAdapter()
             {
                 public void keyPressed (KeyEvent e)
                 {
