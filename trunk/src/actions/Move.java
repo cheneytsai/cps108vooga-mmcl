@@ -14,7 +14,6 @@ public class Move implements Action {
         myVelocity = v;
     }
     
-    @Override
     public void execute(Actor...a) {
         Point original = a[0].getPosition();
         Direction myDirection = myVelocity.getDirection();
