@@ -31,6 +31,7 @@ public class GameModel {
         for (int k = 0; k < myActorList.size(); k++)
         {
             myActorList.get(k).act(myLastKeyPressed);
+            System.out.println(myLastKeyPressed);
         }
         
         CollisionChecker.checkCollisions(myActorList);

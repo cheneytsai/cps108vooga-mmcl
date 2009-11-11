@@ -53,9 +53,9 @@ public abstract class Actor {
         hasChanged = false;
         for (String s : myKeyEvents.keySet())
         {
-            if (myLastKeyPressed.equals(s))
+            if (myLastKeyPressed.equalsIgnoreCase(s))
             {
-                myKeyEvents.get(s).execute(this);
+                myKeyEvents.get(s.toLowerCase()).execute(this);
                 hasChanged = true;
             }
         }
