@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.awt.image.PixelGrabber;
 import java.util.*;
@@ -21,7 +22,7 @@ public abstract class Actor {
     private Point myPosition;
     private Dimension mySize;
     private PhysicsVector myVelocity;
-//    private PhysicsVector myAcceleration;
+    private PhysicsVector myAcceleration;
     protected Map<String, Action> myKeyEvents;
     protected Map<String, Action> myInteractions;
     protected Action myDefaultBehavior;
@@ -32,13 +33,25 @@ public abstract class Actor {
         setImage(image);
         setSize(size.width, size.height);
         myShape = makeShape(myImage);
+        setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
         myVelocity = new PhysicsVector(new Direction(0, 0), 0);
-//        myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
+        myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
         myKeyEvents = new HashMap<String, Action>();
         myInteractions = new HashMap<String, Action>();
         loadBehavior();
+    }
+    
+    /**
+     * Changes shape's geometry.
+     */
+    protected void setShape (Shape shape)
+    {
+        if (shape != null)
+        {
+            myShape = new Area(shape);
+        }
     }
     
     protected abstract void loadBehavior();
@@ -101,7 +114,7 @@ public abstract class Actor {
     
     public void setImage(String newImage)
     {
-        myImage = new ImageIcon("src/images/ball.gif").getImage();//getClass().getResource("/" + newImage)).getImage();
+        myImage = new ImageIcon(newImage).getImage();
     }
     
     public void remove()

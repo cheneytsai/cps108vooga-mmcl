@@ -32,12 +32,12 @@ public class GameModel {
     }
 
     private void initializeActors() {
-        Ball b = new Ball("images/ball.gif", new Dimension(16, 16), new Point(
+        Ball b = new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
                 myCanvas.getSize().width / 2, myCanvas.getSize().height / 2),
                 this);
         myActorList.add(b);
 
-        Paddle p = new Paddle("images/paddle.gif", new Dimension(80, 16),
+        Paddle p = new Paddle("src/images/paddle.gif", new Dimension(80, 16),
                 new Point(myCanvas.getSize().width / 2,
                         myCanvas.getSize().height - 50), this);
         myActorList.add(p);
@@ -49,7 +49,7 @@ public class GameModel {
 
     }
 
-    public Collection<Actor> getActors()
+    public List<Actor> getActors()
     {
         return myActorList;
     }
