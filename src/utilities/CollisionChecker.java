@@ -38,9 +38,8 @@ public abstract class CollisionChecker
     {
         Dimension size = a.getSize();
         Dimension otherSize = b.getSize();
-        double max = Math.max(size.getWidth(), size.getHeight()) +
-                     Math.max(otherSize.getWidth(), otherSize.getHeight());
-        if (a.getPosition().distance(b.getPosition()) < max / 2)
+        double max = 125;
+        if (a.getPosition().distance(b.getPosition()) < max/2)
         {
             Area me = (Area)a.getShape();
             Area you = (Area)b.getShape();

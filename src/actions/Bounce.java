@@ -13,7 +13,10 @@ public class Bounce implements Action {
         Rectangle2D b = actors[1].getShape().getBounds2D();
         PhysicsVector v = actors[0].getVelocity();
         Direction d = v.getDirection();
-        
+//        System.out.println("HEY A BOUNCER!");
+//        System.out.println(actors[0].getClass());
+//        actors[0].setVelocity(new PhysicsVector(new Direction(0,0), 0));
+//        System.out.println(actors[0].getVelocity().getMagnitude());
         if (a.contains(new Point((int)b.getMinX(), (int)b.getCenterY())) 
                 || a.contains(new Point((int)b.getMaxX(), (int)b.getCenterY())))
         {
