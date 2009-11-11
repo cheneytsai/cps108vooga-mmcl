@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
@@ -29,6 +31,7 @@ public class LevelViewer extends Canvas implements ActionListener
     private List<Actor> myActors;
     private ListIterator<Actor> myIterator;
     private Collection<Actor> myActorsToRemove;
+    private String myLastKeyPressed;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25;  // in milliseconds
 
@@ -40,11 +43,25 @@ public class LevelViewer extends Canvas implements ActionListener
         myScore = score;
         myCanvas.removeAll();
         myCanvas.setActive(this);
-
+        myCanvas.requestFocus();
+        
         if (myCanvas.getMouseListeners().length > 0)
         {
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
         }
+        
+        myLastKeyPressed = "";
+        addKeyListener(new KeyAdapter()
+            {
+                public void keyPressed (KeyEvent e)
+                {
+                    myLastKeyPressed = KeyEvent.getKeyText(e.getKeyCode());
+                }
+                public void keyReleased (KeyEvent e)
+                {
+                    myLastKeyPressed = "";
+                }
+            });
         
         icon = new ImageIcon(ResourceManager.getString(levelName+ ".background"));
         myCanvas.repaint(); 
@@ -53,6 +70,7 @@ public class LevelViewer extends Canvas implements ActionListener
         myActors = myGameModel.getActors();
         Timer timer = new Timer(DEFAULT_DELAY, this);
         timer.start();
+        myGameModel.update(myLastKeyPressed);
 
     }
 
@@ -94,31 +112,7 @@ public class LevelViewer extends Canvas implements ActionListener
      */
     public void animate ()
     {
-        myGameModel.update(this);
-
-        Actor current;
-        myIterator = myActors.listIterator();
-        while (myIterator.hasNext())
-        {
-            current = myIterator.next();
-            if (myActorsToRemove.contains(current))
-            {
-                myActorsToRemove.remove(current);
-                myIterator.remove();
-            }
-            else
-            {
-                current.update(this);
-            }
-        }
-        myIterator = null;
- 
-        // clear out updates made during animation
-        for (Actor now : myActorsToRemove)
-        {
-            myActors.remove(now);
-        }
-        myActorsToRemove.clear();
+        myGameModel.update(myLastKeyPressed);
     }
     
     @Override
