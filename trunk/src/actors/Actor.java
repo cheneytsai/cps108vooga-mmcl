@@ -1,5 +1,9 @@
 package actors;
+
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Shape;
@@ -10,6 +14,7 @@ import java.awt.image.PixelGrabber;
 import java.util.*;
 
 import javax.swing.ImageIcon;
+import view.LevelViewer;
 
 import actions.*;
 import model.*;
@@ -56,12 +61,12 @@ public abstract class Actor {
     
     protected abstract void loadBehavior();
     
-    public void act(List<String> keysPressed)
+    public void act(String myLastKeyPressed)
     {
         hasChanged = false;
         for (String s : myKeyEvents.keySet())
         {
-            if (keysPressed.contains(s))
+            if (myLastKeyPressed.contains(s))
             {
                 myKeyEvents.get(s).execute(this);
                 hasChanged = true;
@@ -227,6 +232,15 @@ public abstract class Actor {
 
         return total;
     }
+
+    public void paint(Graphics pen)
+    {
+        Graphics2D pen2D = (Graphics2D)pen;
+        pen2D.setColor(Color.GREEN);
+        pen2D.fill(getShape());
+        
+    }
     
-    
+
+
 }

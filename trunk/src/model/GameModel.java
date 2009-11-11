@@ -17,15 +17,17 @@ public class GameModel {
     private List<Actor> myActorList;
     private Canvas myCanvas;
 
-    public GameModel(Canvas canvas) {
+    public GameModel(Canvas canvas) 
+    {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
         initializeActors();
     }
 
-    public void update(List<String> keysPressed) {
+    public void update(String myLastKeyPressed) 
+    {
         for (int k = 0; k < myActorList.size(); k++)
-            myActorList.get(k).act(keysPressed);
+            myActorList.get(k).act(myLastKeyPressed);
         
         CollisionChecker.checkCollisions(myActorList);
 
@@ -44,7 +46,8 @@ public class GameModel {
 
     }
 
-    public void remove(Actor actor) {
+    public void remove(Actor actor) 
+    {
         myActorList.remove(actor);
 
     }
