@@ -18,7 +18,7 @@ public class Move implements Action {
         Point original = a[0].getPosition();
         Direction myDirection = myVelocity.getDirection();
         double myMagnitude = myVelocity.getMagnitude();
-       a[0].setPosition(new Point((int)(original.x + myDirection.xShift()*myMagnitude), (int)(original.y + myDirection.yShift()*myMagnitude)));
+        a[0].setPosition(new Point((int)(original.x + myDirection.xShift()*myMagnitude), (int)(original.y + myDirection.yShift()*myMagnitude)));
     }
 
 }

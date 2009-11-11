@@ -85,6 +85,10 @@ public abstract class Actor {
             if (other.getClass().getCanonicalName().equals(s))
             {
                 myInteractions.get(s).execute(this, other);
+                if(this.getClass().getCanonicalName().toString().equals("actors.Brick"))
+                {
+                    myModel.updateScore(10);
+                }
             }
         }
     }
