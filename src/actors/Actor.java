@@ -1,3 +1,4 @@
+//TODO: Make everything work with the outline/shape making stuff
 //TODO: Refactor all of this
 package actors;
 
@@ -44,7 +45,7 @@ public abstract class Actor {
         setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
-        myVelocity = new PhysicsVector(new Direction(-1,1), 5);
+        myVelocity = new PhysicsVector(new Direction(-1, -1), 5);
         myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
         myKeyEvents = new HashMap<String, Action>();
         myInteractions = new HashMap<String, Action>();
@@ -79,12 +80,10 @@ public abstract class Actor {
     
     public void interact(Actor other)
     {
-        System.out.println("??");
         for (String s : myInteractions.keySet())
         {
             if (other.getClass().getCanonicalName().equals(s))
             {
-                System.out.println(myInteractions.get(s).getClass().getCanonicalName());
                 myInteractions.get(s).execute(this, other);
             }
         }
@@ -149,6 +148,8 @@ public abstract class Actor {
     {
         return myShape.createTransformedArea(getTransform());
     }
+    
+    
     
     /**
      * Create an outline around the given image.
@@ -260,12 +261,62 @@ public abstract class Actor {
         return myXform;
     }
 
-    public void paint(Graphics pen)
+//    public void paint(Graphics pen)
+//    {
+//        pen.drawImage(myImage,
+//                myPosition.y, myPosition.x, 
+//                getSize().width, getSize().height,
+//                null);      
+//    }
+    
+    /**
+     * Describes how to draw the shape on the screen.
+     *
+     * Currently, draws the shape as an image.
+     */
+    public void paint (Graphics pen)
     {
         pen.drawImage(myImage,
-                myPosition.y, myPosition.x, 
-                getSize().width, getSize().height,
-                null);      
+                      getLeft(), getTop(), 
+                      getSize().width, getSize().height,
+                      null);
+    }
+    
+    /**
+     * Returns shape's left-most coordinate.
+     */
+    public int getLeft ()
+    {
+        return getPosition().x - getSize().width / 2;
+    }
+
+    
+    /**
+     * Returns shape's top-most coordinate.
+     */
+    public int getTop ()
+    {
+        return getPosition().y - getSize().height / 2;
+    }
+
+
+    /**
+     * Returns shape's right-most coordinate.
+     */
+    public int getRight ()
+    {
+        return getPosition().x + getSize().width / 2;
+    }
+
+
+    /**
+     * Reports shape's bottom-most coordinate.
+     *
+     * @return bottom-most coordinate
+     */
+    public int getBottom ()
+    {
+        return getPosition().y + getSize().height / 2;
     }
    
 }

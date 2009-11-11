@@ -6,7 +6,7 @@ import java.awt.Point;
 import actions.Bounce;
 import actions.Direction;
 import actions.Move;
-import actions.Remove;
+import actions.NaturalMove;
 
 import model.GameModel;
 
@@ -18,10 +18,9 @@ public class Ball extends Actor {
 
     @Override
     protected void loadBehavior() {
-        myDefaultBehavior = new Move(getVelocity());
+        myDefaultBehavior = new NaturalMove();
         myInteractions.put(Paddle.class.getCanonicalName(), new Bounce());
         myInteractions.put(Brick.class.getCanonicalName(), new Bounce());
-
 
     }
 
