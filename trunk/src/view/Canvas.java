@@ -21,6 +21,7 @@ public class Canvas extends JPanel
     protected ImageIcon icon;
     protected Canvas myCanvas;
     private Canvas active;
+    protected int myScore;
 
 
     public Canvas()
@@ -61,5 +62,9 @@ public class Canvas extends JPanel
         return active.mouseListener();
     }
 
-    
+
+    public void updateScore(int increment)
+    {
+        myScore += increment;
+    }
 }

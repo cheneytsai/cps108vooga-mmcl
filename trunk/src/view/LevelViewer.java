@@ -26,7 +26,7 @@ import util.resources.ResourceManager;
 public class LevelViewer extends Canvas implements ActionListener
 {
     private String myGameName;
-    private int myScore;
+
     private GameModel myGameModel;
     private List<Actor> myActors;
     private String myLastKeyPressed;
@@ -73,7 +73,7 @@ public class LevelViewer extends Canvas implements ActionListener
 
     }
 
-
+    
     public void paintComponent(Graphics pen)
     {        
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
@@ -101,6 +101,7 @@ public class LevelViewer extends Canvas implements ActionListener
      */
     public void paint (Graphics pen)
     {
+        myActors = myGameModel.getActors();
         for (Actor current : myActors)
         {
             current.paint(pen);
