@@ -30,7 +30,7 @@ public class Canvas extends JPanel
         setSize(mySize);
     }
 
-
+    
     public void paintComponent(Graphics g)
     {
         if (active != null)

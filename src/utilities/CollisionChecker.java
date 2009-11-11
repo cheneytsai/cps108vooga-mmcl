@@ -1,9 +1,7 @@
 //TODO: Make this work with fancy pantsy outline/shape making thing
 package utilities;
 
-import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.geom.Area;
 import java.util.List;
 
 import actors.Actor;
