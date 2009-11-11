@@ -12,15 +12,13 @@ public abstract class CollisionChecker {
     public static void checkCollisions(List<Actor> actors) {
         for (int k = actors.size() - 1; k >= 0; k--) {
             Actor a = actors.get(k);
-            if (a.hasMoved) {
-                for (int i = actors.size() - 1; i >= 0; i--) {
+     
+                for (int i = k-1; i >= 0; i--) {
                     Actor b = actors.get(i);
                     if (i != k && collide(a, b)) {
-                        System.out.println("Collision");
                         a.interact(b);
                         b.interact(a);
                     }
-                }
             }
         }
     }

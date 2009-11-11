@@ -45,7 +45,7 @@ public abstract class Actor {
         setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
-        myVelocity = new PhysicsVector(new Direction(-1, -1), 5);
+        myVelocity = new PhysicsVector(new Direction(-1, 1), 5);
         myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
         myKeyEvents = new HashMap<String, Action>();
         myInteractions = new HashMap<String, Action>();
