@@ -40,7 +40,7 @@ public class GameModel {
     private void initializeActors() 
     {
         Ball b = new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
-                myCanvas.getSize().width / 2 , myCanvas.getSize().height / 2 +32),
+                myCanvas.getSize().width / 2 -100 , myCanvas.getSize().height / 2 +32),
                 this);
         myActorList.add(b);
 

@@ -3,33 +3,33 @@ package actions;
 
 import java.awt.Point;
 import java.awt.geom.Rectangle2D;
+
+import utilities.CollisionChecker;
 import actors.Actor;
 import actors.PhysicsVector;
 
 public class Bounce implements Action {
 
     public void execute(Actor... actors) {
-        Rectangle2D a = actors[0].getShape().getBounds2D();
-        Rectangle2D b = actors[1].getShape().getBounds2D();
-        PhysicsVector v = actors[0].getVelocity();
-        Direction d = v.getDirection();
-//        System.out.println("HEY A BOUNCER!");
-//        System.out.println(actors[0].getClass());
-//        actors[0].setVelocity(new PhysicsVector(new Direction(0,0), 0));
-//        System.out.println(actors[0].getVelocity().getMagnitude());
-        if (a.contains(new Point((int)b.getMinX(), (int)b.getCenterY())) 
-                || a.contains(new Point((int)b.getMaxX(), (int)b.getCenterY())))
-        {
-            actors[0].setVelocity(new PhysicsVector(new Direction(d.xShift()*-1, d.yShift()), v.getMagnitude()));
-        }
-        
-        if (a.contains(new Point((int)b.getCenterX(), (int)b.getMinY())) 
-                || a.contains(new Point((int)b.getCenterX(), (int)b.getMaxY())))
-        {
-            actors[0].setVelocity(new PhysicsVector(new Direction(d.xShift(), d.yShift()*-1), v.getMagnitude()));
-        }
-        
+        Actor a = actors[0];
+        Actor b = actors[1];
+        Direction origDirection = a.getVelocity().getDirection();
+        double origMagnitude = a.getVelocity().getMagnitude();
+        if (CollisionChecker.intersects(b, new Point(a.getPosition().x, a.getTop())) ||
+                CollisionChecker.intersects(b, new Point(a.getPosition().x, a.getBottom())))
+            {
+                
+                a.setVelocity(new PhysicsVector(new Direction(origDirection.xShift(), origDirection.yShift()*-1), origMagnitude));
+            }
 
+            if (CollisionChecker.intersects(b, new Point(a.getLeft(), a.getPosition().y)) ||
+                CollisionChecker.intersects(b, new Point(a.getRight(), a.getPosition().y)))
+            {
+                a.setVelocity(new PhysicsVector(new Direction(origDirection.xShift()*-1, origDirection.yShift()), origMagnitude));
+            }
+       //TODO: Check to see if this works when bouncing off a corner
+        //TODO: There must be a better way to do this. Maybe make CollisionChecker tell Actors from what side
+        //the collision occurred and then have a reverse velocity action which takes an axis in its constructor?
     }
     
 

@@ -1,3 +1,4 @@
+//TODO: Consider removing this class
 package actions;
 
 public class Direction {
