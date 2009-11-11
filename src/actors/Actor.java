@@ -38,7 +38,6 @@ public abstract class Actor {
         setImage(image);
         setSize(size.width, size.height);
         myShape = makeShape(myImage);
-        setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
         myVelocity = new PhysicsVector(new Direction(0, 0), 0);
@@ -48,17 +47,6 @@ public abstract class Actor {
         loadBehavior();
     }
     
-    /**
-     * Changes shape's geometry.
-     */
-    protected void setShape (Shape shape)
-    {
-        if (shape != null)
-        {
-            myShape = new Area(shape);
-        }
-    }
-    
     protected abstract void loadBehavior();
     
     public void act(String myLastKeyPressed)
@@ -66,7 +54,7 @@ public abstract class Actor {
         hasChanged = false;
         for (String s : myKeyEvents.keySet())
         {
-            if (myLastKeyPressed.contains(s))
+            if (myLastKeyPressed.equals(s))
             {
                 myKeyEvents.get(s).execute(this);
                 hasChanged = true;
@@ -78,7 +66,6 @@ public abstract class Actor {
             myDefaultBehavior.execute(this);      
             hasChanged = true;
         }
-        
     }
     
     public void interact(Actor other)
@@ -235,12 +222,10 @@ public abstract class Actor {
 
     public void paint(Graphics pen)
     {
-        Graphics2D pen2D = (Graphics2D)pen;
-        pen2D.setColor(Color.GREEN);
-        pen2D.fill(getShape());
-        
+        pen.drawImage(myImage,
+                myPosition.y, myPosition.x, 
+                getSize().width, getSize().height,
+                null);      
     }
-    
-
-
+   
 }
