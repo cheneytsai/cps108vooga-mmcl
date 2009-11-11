@@ -12,6 +12,7 @@ import actors.Actor;
 import actors.Ball;
 import actors.Brick;
 import actors.Paddle;
+import actors.Wall;
 
 
 public class GameModel {
@@ -40,14 +41,23 @@ public class GameModel {
     private void initializeActors() 
     {
         Ball b = new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
-                myCanvas.getSize().width / 2 -100 , myCanvas.getSize().height / 2 +32),
+                myCanvas.getSize().width / 2 +17 , myCanvas.getSize().height * 5 / 6 - 32),
                 this);
+
         myActorList.add(b);
 
         Paddle p = new Paddle("src/images/paddle.gif", new Dimension(80, 16),
                 new Point(myCanvas.getSize().width / 2 + 17,
-                        myCanvas.getSize().height / 2 ), this);
+                        myCanvas.getSize().height * 5 / 6 ), this);
         myActorList.add(p);
+        
+        Wall top = new Wall("src/images/brick3.gif",new Dimension(960,1),new Point(0,0),this);
+        Wall left = new Wall("src/images/brick3.gif",new Dimension(1,720),new Point(0,0),this);
+        Wall right  = new Wall("src/images/brick3.gif",new Dimension(1,720),new Point(960,0),this);
+        
+        myActorList.add(top);
+        myActorList.add(left);
+        myActorList.add(right);
         
         for(int i = 1; i < 7; i++)
         {
