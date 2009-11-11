@@ -5,6 +5,7 @@ import java.awt.Point;
 
 import actions.Bounce;
 import actions.Direction;
+import actions.Lose;
 import actions.Move;
 import actions.NaturalMove;
 
@@ -22,6 +23,7 @@ public class Ball extends Actor {
         myInteractions.put(Paddle.class.getCanonicalName(), new Bounce());
         myInteractions.put(Brick.class.getCanonicalName(), new Bounce());
         myInteractions.put(Wall.class.getCanonicalName(), new Bounce());
+        myInteractions.put(BottomWall.class.getCanonicalName(), new Lose());
 
     }
 

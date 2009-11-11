@@ -10,6 +10,7 @@ import java.util.List;
 import utilities.CollisionChecker;
 import actors.Actor;
 import actors.Ball;
+import actors.BottomWall;
 import actors.Brick;
 import actors.Paddle;
 import actors.Wall;
@@ -38,27 +39,39 @@ public class GameModel {
         
     }
 
+    public void resetBall()
+    {
+        System.out.println("called");
+        myActorList.add(new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
+                myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 32),this));
+    }
+    
     private void initializeActors() 
     {
         //TODO: Make this read in through a file
         Ball b = new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
-                myCanvas.getSize().width / 2 +17 , myCanvas.getSize().height * 5 / 6 - 132),
-                this);
+                myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 32),this);
 
         myActorList.add(b);
 
         Paddle p = new Paddle("src/images/paddle.gif", new Dimension(80, 16),
-                new Point(myCanvas.getSize().width / 2 + 17,
+                new Point(myCanvas.getSize().width / 2 + 100,
                         myCanvas.getSize().height * 5 / 6 ), this);
         myActorList.add(p);
         
-        Wall top = new Wall("src/images/brick3.gif",new Dimension(960,1),new Point(0,0),this);
-        Wall left = new Wall("src/images/brick3.gif",new Dimension(1,720),new Point(0,0),this);
-        Wall right  = new Wall("src/images/brick3.gif",new Dimension(1,720),new Point(960,0),this);
+        Wall top = new Wall("src/images/brick3.gif",new 
+                Dimension(myCanvas.getSize().width*3,8),new Point(0,0),this);
+        Wall left = new Wall("src/images/brick3.gif",new 
+                Dimension(8,myCanvas.getSize().height*3),new Point(0,0),this);
+        Wall right  = new Wall("src/images/brick3.gif",new 
+                Dimension(8,myCanvas.getSize().height*3),new Point(myCanvas.getSize().width,0),this);
+        BottomWall bottom = new BottomWall("src/images/brick6.gif", new 
+                Dimension(8,myCanvas.getSize().width*3), new Point(myCanvas.getSize().width,0),this);
         
         myActorList.add(top);
         myActorList.add(left);
         myActorList.add(right);
+        myActorList.add(bottom);
         
         for(int i = 1; i < 8; i++)
         {

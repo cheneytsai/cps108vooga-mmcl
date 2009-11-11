@@ -45,11 +45,12 @@ public abstract class Actor {
         setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
-        myVelocity = new PhysicsVector(new Direction(-1, 1), 5);
+        myVelocity = new PhysicsVector(new Direction(-1, 1), 15);
         myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
         myKeyEvents = new HashMap<String, Action>();
         myInteractions = new HashMap<String, Action>();
         loadBehavior();
+        
         //TODO: make all this readable from a file
     }
     
@@ -89,6 +90,11 @@ public abstract class Actor {
                 {
                     myModel.updateScore(10);
                 }
+            
+                if(other.getClass().getCanonicalName().toString().equals("actors.BottomWall"))
+                {
+                    myModel.resetBall();
+                }
             }
         }
     }
@@ -125,6 +131,7 @@ public abstract class Actor {
     
     public void remove()
     {
+        System.out.println(this.getClass().getCanonicalName() + " " +myModel);
         myModel.remove(this);
     }   
 
