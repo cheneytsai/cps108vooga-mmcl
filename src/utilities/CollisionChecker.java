@@ -1,5 +1,7 @@
 package utilities;
 
+import java.awt.Dimension;
+import java.awt.geom.Area;
 import java.util.List;
 
 import actors.Actor;
@@ -11,14 +13,13 @@ public abstract class CollisionChecker
         for (int k = actors.size() - 1; k >= 0; k--)
         {
             Actor a = actors.get(k);
-            if (a.hasChanged)
+            if (a.hasMoved)
             {
                 for (int i = actors.size() - 1; i >= 0; i--)
                 {
                     Actor b = actors.get(i);
                     if (i != k && intersects(a, b))
                     {
-                        System.out.println(a.getClass().getCanonicalName() + " " + b.getClass().getCanonicalName());
                         a.interact(b);
                         b.interact(a);
                     }
@@ -27,8 +28,30 @@ public abstract class CollisionChecker
         }
     }
     
-    private static boolean intersects(Actor a, Actor b)
+    private static boolean intersects (Actor a, Actor b)
     {
-        return a.getShape().contains(b.getShape().getBounds2D());
+        return (getIntersectionArea(a, b) != null);
+    }
+
+
+    private static Area getIntersectionArea (Actor a, Actor b)
+    {
+        Dimension size = a.getSize();
+        Dimension otherSize = b.getSize();
+        double max = Math.max(size.getWidth(), size.getHeight()) +
+                     Math.max(otherSize.getWidth(), otherSize.getHeight());
+        if (a.getPosition().distance(b.getPosition()) < max / 2)
+        {
+            Area me = (Area)a.getShape();
+            Area you = (Area)b.getShape();
+            me.intersect(you);
+            you.intersect(me);
+            if (! me.isEmpty())
+            {
+                return me;
+            }
+        }
+        
+        return null;        
     }
 }

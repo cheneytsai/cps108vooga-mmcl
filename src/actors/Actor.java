@@ -1,3 +1,4 @@
+//TODO: Refactor all of this
 package actors;
 
 import java.awt.Dimension;
@@ -6,6 +7,7 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.awt.image.PixelGrabber;
 import java.util.*;
@@ -20,8 +22,10 @@ public abstract class Actor {
     
     private GameModel myModel;
     private Image myImage;
-    private Shape myShape;
+    private Area myShape;
+    protected AffineTransform myXform;
     private Point myPosition;
+    protected double myHeading;
     private Dimension mySize;
     private PhysicsVector myVelocity;
     private PhysicsVector myAcceleration;
@@ -29,15 +33,18 @@ public abstract class Actor {
     protected Map<String, Action> myInteractions;
     protected Action myDefaultBehavior;
     public boolean hasChanged;
+    public boolean hasMoved;
     
     public Actor(String image, Dimension size, Point position, GameModel model)
     {
+        myHeading = 0;
+        myXform = new AffineTransform();
         setImage(image);
         setSize(size.width, size.height);
-        myShape = makeShape(myImage);
+        setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
-        myVelocity = new PhysicsVector(new Direction(-1, 1), 5);
+        myVelocity = new PhysicsVector(new Direction(1, 1), 5);
         myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
         myKeyEvents = new HashMap<String, Action>();
         myInteractions = new HashMap<String, Action>();
@@ -49,7 +56,6 @@ public abstract class Actor {
     
     public void act(String myLastKeyPressed)
     {
-        System.out.println(myLastKeyPressed);
         hasChanged = false;
         for (String s : myKeyEvents.keySet())
         {
@@ -60,23 +66,25 @@ public abstract class Actor {
             else if (myLastKeyPressed.equalsIgnoreCase(s))
             {
                 myKeyEvents.get(s.toLowerCase()).execute(this);
-                hasChanged = true;
+                hasMoved = true;
             }
         }
         
         if (myDefaultBehavior != null)
         {
             myDefaultBehavior.execute(this);      
-            hasChanged = true;
+            hasMoved = true;
         }
     }
     
     public void interact(Actor other)
     {
+        System.out.println("??");
         for (String s : myInteractions.keySet())
         {
             if (other.getClass().getCanonicalName().equals(s))
             {
+                System.out.println(myInteractions.get(s).getClass().getCanonicalName());
                 myInteractions.get(s).execute(this, other);
             }
         }
@@ -134,9 +142,12 @@ public abstract class Actor {
         mySize = new Dimension(width, height);
     }
     
-    public Shape getShape()
+    /**
+     * Reports shape's geometry.
+     */
+    public Shape getShape ()
     {
-        return myShape;
+        return myShape.createTransformedArea(getTransform());
     }
     
     /**
@@ -221,6 +232,32 @@ public abstract class Actor {
         total.transform(AffineTransform.getScaleInstance(1.0 / w, 1.0 / h));
 
         return total;
+    }
+    
+    protected void setShape (Shape shape)
+    {
+        if (shape != null)
+        {
+            myShape = new Area(shape);
+        }
+    }
+    
+    /**
+     * Reports shape's attributes as a single transform.
+     */
+    protected AffineTransform getTransform ()
+    {
+        if (hasChanged)
+        {
+            myXform.setToIdentity();
+            // apply shape's attributes in proper order no matter how user set them
+            myXform.translate(myPosition.getX(), myPosition.getY());
+            myXform.rotate(myHeading);
+            myXform.scale(mySize.getWidth(), mySize.getHeight());
+            myXform.translate(-0.5, -0.5);
+            hasChanged = false;
+        }
+        return myXform;
     }
 
     public void paint(Graphics pen)
