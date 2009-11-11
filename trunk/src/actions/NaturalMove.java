@@ -6,7 +6,6 @@ import actors.Actor;
 
 public class NaturalMove implements Action {
 
-    @Override
     public void execute(Actor... actors) {
         Point original = actors[0].getPosition();
         Direction myDirection = actors[0].getVelocity().getDirection();
