@@ -3,21 +3,22 @@ package actions;
 import java.awt.Point;
 
 import actors.Actor;
+import actors.PhysicsVector;
 
 public class Move implements Action {
     
-    Direction myDirection;
-    double myMagnitude;
+    private PhysicsVector myVelocity;
     
-    public Move(Direction d, double e)
+    public Move(PhysicsVector v)
     {
-        myDirection = d;
-        myMagnitude = e;
+        myVelocity = v;
     }
     
     @Override
     public void execute(Actor...a) {
-       Point original = a[0].getPosition();
+        Point original = a[0].getPosition();
+        Direction myDirection = myVelocity.getDirection();
+        double myMagnitude = myVelocity.getMagnitude();
        a[0].setPosition(new Point((int)(original.x + myDirection.xShift()*myMagnitude), (int)(original.y + myDirection.yShift()*myMagnitude)));
     }
 

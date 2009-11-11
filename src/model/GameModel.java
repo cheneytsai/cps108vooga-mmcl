@@ -52,7 +52,7 @@ public class GameModel {
         for(int i = 1; i < 7; i++)
         {
             myActorList.add(new Brick("src/images/brick"+i+".gif",new Dimension(80,30),
-                    new Point(100 ,100+ 100 *i),this));
+                    new Point(100 ,100*i),this));
             
         }
     }

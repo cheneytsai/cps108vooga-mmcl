@@ -1,14 +1,11 @@
 package actors;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.awt.image.PixelGrabber;
 import java.util.*;
@@ -40,17 +37,19 @@ public abstract class Actor {
         myShape = makeShape(myImage);
         myPosition = position;
         myModel = model;
-        myVelocity = new PhysicsVector(new Direction(0, 0), 0);
+        myVelocity = new PhysicsVector(new Direction(-1, 1), 5);
         myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
         myKeyEvents = new HashMap<String, Action>();
         myInteractions = new HashMap<String, Action>();
         loadBehavior();
+        //TODO: make all this readable from a file
     }
     
     protected abstract void loadBehavior();
     
     public void act(String myLastKeyPressed)
     {
+        
         hasChanged = false;
         for (String s : myKeyEvents.keySet())
         {

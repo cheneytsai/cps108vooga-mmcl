@@ -18,6 +18,7 @@ public abstract class CollisionChecker
                     Actor b = actors.get(i);
                     if (i != k && intersects(a, b))
                     {
+                        System.out.println(a.getClass().getCanonicalName() + " " + b.getClass().getCanonicalName());
                         a.interact(b);
                         b.interact(a);
                     }
