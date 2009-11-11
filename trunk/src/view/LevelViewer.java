@@ -14,7 +14,6 @@ import actors.Actor;
 import actors.Ball;
 import model.GameModel;
 import util.resources.ResourceManager;
-import yourwork.Mover;
 
 /**
  * 
@@ -29,7 +28,7 @@ public class LevelViewer extends Canvas implements ActionListener
     private GameModel myGameModel;
     private List<Actor> myActors;
     private ListIterator<Actor> myIterator;
-    private List<Actor> myActorsToRemove;
+    private Collection<Actor> myActorsToRemove;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25;  // in milliseconds
 
