@@ -49,11 +49,15 @@ public abstract class Actor {
     
     public void act(String myLastKeyPressed)
     {
-        
+        System.out.println(myLastKeyPressed);
         hasChanged = false;
         for (String s : myKeyEvents.keySet())
         {
-            if (myLastKeyPressed.equalsIgnoreCase(s))
+            if(myLastKeyPressed == null)
+            {
+                ;
+            }
+            else if (myLastKeyPressed.equalsIgnoreCase(s))
             {
                 myKeyEvents.get(s.toLowerCase()).execute(this);
                 hasChanged = true;
