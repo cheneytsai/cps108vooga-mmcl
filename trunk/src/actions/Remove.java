@@ -5,7 +5,8 @@ import actors.Actor;
 public class Remove implements Action {
 
     public void execute(Actor... actors) {
-            actors[0].remove();
+        System.out.println(actors[0].getClass().getCanonicalName());    
+        actors[0].remove();
     }
 
 

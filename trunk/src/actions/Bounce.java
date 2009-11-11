@@ -29,9 +29,8 @@ public class Bounce implements Action {
                 System.out.println("X");
                 a.setVelocity(new PhysicsVector(new Direction(origDirection.xShift()*-1, origDirection.yShift()), origMagnitude));
             }
-       //TODO: Check to see if this works when bouncing off a corner
-        //TODO: There must be a better way to do this. Maybe make CollisionChecker tell Actors from what side
-        //the collision occurred and then have a reverse velocity action which takes an axis in its constructor?
+       //TODO: Perhaps replace this action with a ReverseVelocity action, Bounce might be too specific to arkanoid. This should
+            //also fix some of our collision bugs
     }
     
 

@@ -30,6 +30,7 @@ public class GameModel {
 
     public void update(String myLastKeyPressed) 
     {
+        System.out.println("next");
         for (int k = 0; k < myActorList.size(); k++)
         {
             myActorList.get(k).act(myLastKeyPressed);
@@ -41,14 +42,15 @@ public class GameModel {
 
     public void resetBall()
     {
+        //TODO: Generalize this into something that can be called when any game ends
         System.out.println("called");
         myActorList.add(new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
-                myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 32),this));
+                myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 132),this));
     }
     
     private void initializeActors() 
     {
-        //TODO: Make this read in through a file
+        //TODO: Make this read in through a file -> add new levels
         Ball b = new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
                 myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 32),this);
 
@@ -60,13 +62,13 @@ public class GameModel {
         myActorList.add(p);
         
         Wall top = new Wall("src/images/brick3.gif",new 
-                Dimension(myCanvas.getSize().width*3,8),new Point(0,0),this);
+                Dimension(myCanvas.getSize().width,16),new Point(myCanvas.getSize().width/2,0),this);
         Wall left = new Wall("src/images/brick3.gif",new 
-                Dimension(8,myCanvas.getSize().height*3),new Point(0,0),this);
+                Dimension(16,myCanvas.getSize().height),new Point(0,myCanvas.getSize().height/2),this);
         Wall right  = new Wall("src/images/brick3.gif",new 
-                Dimension(8,myCanvas.getSize().height*3),new Point(myCanvas.getSize().width,0),this);
+                Dimension(16,myCanvas.getSize().height),new Point(myCanvas.getSize().width, myCanvas.getSize().height/2),this);
         BottomWall bottom = new BottomWall("src/images/brick6.gif", new 
-                Dimension(8,myCanvas.getSize().width*3), new Point(myCanvas.getSize().width,0),this);
+                Dimension(myCanvas.getSize().width, 16), new Point(myCanvas.getSize().width/2,myCanvas.getSize().height),this);
         
         myActorList.add(top);
         myActorList.add(left);
@@ -94,6 +96,7 @@ public class GameModel {
 
     public void updateScore(int i)
     {
+        //TODO: Generalize this into something that can update any game state
         myCanvas.updateScore(i);
         
     }

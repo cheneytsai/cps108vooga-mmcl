@@ -1,3 +1,4 @@
+//TODO: Remove wall classes and replace them with boundary behaviors in all Actor classes
 package actors;
 
 import java.awt.Dimension;

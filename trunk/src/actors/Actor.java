@@ -21,7 +21,7 @@ import model.*;
 
 public abstract class Actor {
     
-    private GameModel myModel;
+    protected GameModel myModel;
     private Image myImage;
     private Area myShape;
     protected AffineTransform myXform;
@@ -30,8 +30,8 @@ public abstract class Actor {
     private Dimension mySize;
     private PhysicsVector myVelocity;
     private PhysicsVector myAcceleration;
-    protected Map<String, Action> myKeyEvents;
-    protected Map<String, Action> myInteractions;
+    protected Map<String, List<Action>> myKeyEvents;
+    protected Map<String, List<Action>> myInteractions;
     protected Action myDefaultBehavior;
     public boolean hasChanged;
     public boolean hasMoved;
@@ -45,10 +45,10 @@ public abstract class Actor {
         setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
-        myVelocity = new PhysicsVector(new Direction(-1, 1), 15);
+        myVelocity = new PhysicsVector(new Direction(-1, -1), 10);
         myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
-        myKeyEvents = new HashMap<String, Action>();
-        myInteractions = new HashMap<String, Action>();
+        myKeyEvents = new HashMap<String, List<Action>>();
+        myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
         
         //TODO: make all this readable from a file
@@ -67,7 +67,8 @@ public abstract class Actor {
             }
             else if (myLastKeyPressed.equalsIgnoreCase(s))
             {
-                myKeyEvents.get(s.toLowerCase()).execute(this);
+                for (Action a : myKeyEvents.get(s))
+                    a.execute(this);
                 hasMoved = true;
             }
         }
@@ -85,16 +86,8 @@ public abstract class Actor {
         {
             if (other.getClass().getCanonicalName().equals(s))
             {
-                myInteractions.get(s).execute(this, other);
-                if(this.getClass().getCanonicalName().toString().equals("actors.Brick"))
-                {
-                    myModel.updateScore(10);
-                }
-            
-                if(other.getClass().getCanonicalName().toString().equals("actors.BottomWall"))
-                {
-                    myModel.resetBall();
-                }
+                for (Action a : myInteractions.get(s))
+                    a.execute(this, other);
             }
         }
     }

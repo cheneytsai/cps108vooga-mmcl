@@ -1,7 +1,9 @@
-//TODO: Make this work with fancy pantsy outline/shape making thing
+//TODO: Fix the collision bugs, make this all work with duvall's shape making stuff
 package utilities;
 
+import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.geom.Area;
 import java.util.List;
 
 import actors.Actor;
@@ -13,7 +15,7 @@ public abstract class CollisionChecker {
      
                 for (int i = k-1; i >= 0; i--) {
                     Actor b = actors.get(i);
-                    if (i != k && collide(a, b)) {
+                    if (collide(a, b)) {
                         a.interact(b);
                         b.interact(a);
                     }
