@@ -26,7 +26,7 @@ public class LevelViewer extends Canvas implements ActionListener
     private String myGameName;
     private int myScore;
     private GameModel myGameModel;
-    private Collection<Actor> myActors;
+    private List<Actor> myActors;
     private ListIterator<Actor> myIterator;
     private Collection<Actor> myActorsToRemove;
     // animate 25 times per second if possible
