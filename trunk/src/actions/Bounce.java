@@ -19,12 +19,14 @@ public class Bounce implements Action {
                 CollisionChecker.intersects(b, new Point(a.getPosition().x, a.getBottom())))
             {
                 
+                System.out.println("Y");
                 a.setVelocity(new PhysicsVector(new Direction(origDirection.xShift(), origDirection.yShift()*-1), origMagnitude));
             }
 
             if (CollisionChecker.intersects(b, new Point(a.getLeft(), a.getPosition().y)) ||
                 CollisionChecker.intersects(b, new Point(a.getRight(), a.getPosition().y)))
             {
+                System.out.println("X");
                 a.setVelocity(new PhysicsVector(new Direction(origDirection.xShift()*-1, origDirection.yShift()), origMagnitude));
             }
        //TODO: Check to see if this works when bouncing off a corner

@@ -40,8 +40,9 @@ public class GameModel {
 
     private void initializeActors() 
     {
+        //TODO: Make this read in through a file
         Ball b = new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
-                myCanvas.getSize().width / 2 +17 , myCanvas.getSize().height * 5 / 6 - 32),
+                myCanvas.getSize().width / 2 +17 , myCanvas.getSize().height * 5 / 6 - 132),
                 this);
 
         myActorList.add(b);
@@ -59,7 +60,7 @@ public class GameModel {
         myActorList.add(left);
         myActorList.add(right);
         
-        for(int i = 1; i < 7; i++)
+        for(int i = 1; i < 8; i++)
         {
             myActorList.add(new Brick("src/images/brick"+i+".gif",new Dimension(80,30),
                     new Point(100*i ,100),this));

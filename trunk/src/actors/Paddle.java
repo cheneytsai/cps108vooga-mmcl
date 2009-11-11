@@ -16,8 +16,8 @@ public class Paddle extends Actor {
     @Override
     protected void loadBehavior() {
         myDefaultBehavior = null;
-        myKeyEvents.put("a", new Move(new PhysicsVector(new Direction(-1, 0), 3)));
-        myKeyEvents.put("d", new Move(new PhysicsVector(new Direction(1, 0), 3)));
+        myKeyEvents.put("a", new Move(new PhysicsVector(new Direction(-1, 0), 5)));
+        myKeyEvents.put("d", new Move(new PhysicsVector(new Direction(1, 0), 5)));
     }
 
 }
