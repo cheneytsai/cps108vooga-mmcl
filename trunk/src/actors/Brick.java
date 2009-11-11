@@ -2,6 +2,8 @@ package actors;
 
 import java.awt.Dimension;
 import java.awt.Point;
+
+import actions.Remove;
 import model.GameModel;
 
 public class Brick extends Actor
@@ -16,8 +18,7 @@ public class Brick extends Actor
     @Override
     protected void loadBehavior()
     {
-        // TODO Auto-generated method stub
-
+        myInteractions.put(Ball.class.getCanonicalName(), new Remove());
     }
 
 }
