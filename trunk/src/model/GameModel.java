@@ -1,6 +1,7 @@
 package model;
 
 import view.Canvas;
+import view.LevelViewer;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -30,13 +31,28 @@ public class GameModel {
 
     public void update(String myLastKeyPressed) 
     {
-        System.out.println("next");
+        
+        boolean proceed = true;
         for (int k = 0; k < myActorList.size(); k++)
         {
+//            System.out.println(myActorList.size() +" ");
+//            if(myActorList.get(k) instanceof Brick)
+//            {
+//                proceed = true;
+//            }
+            if(myActorList.size() == 6)
+            {
+                proceed = false;
+            }
             myActorList.get(k).act(myLastKeyPressed);
         }
         
         CollisionChecker.checkCollisions(myActorList);
+        if(proceed == false) 
+        {
+            myActorList.clear();
+            new LevelViewer(myCanvas.getGameName(), myCanvas.getGameName() + "win",0, myCanvas);
+        }
         
     }
 

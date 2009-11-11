@@ -24,7 +24,7 @@ public class Brick extends Actor
     {
         List<Action> ball = new ArrayList<Action>();
         ball.add(new Remove());
-        ball.add(new Update(myModel, 1));
+        ball.add(new Update(myModel, 10));
         myInteractions.put(Ball.class.getCanonicalName(), ball);
     }
 

@@ -124,7 +124,7 @@ public abstract class Actor {
     
     public void remove()
     {
-        System.out.println(this.getClass().getCanonicalName() + " " +myModel);
+//        System.out.println(this.getClass().getCanonicalName() + " " +myModel);
         myModel.remove(this);
     }   
 
