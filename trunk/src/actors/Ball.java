@@ -19,9 +19,9 @@ public class Ball extends Actor {
     @Override
     protected void loadBehavior() {
         myDefaultBehavior = new NaturalMove();
-//        myInteractions.put(Paddle.class.getCanonicalName(), new Bounce());
+        myInteractions.put(Paddle.class.getCanonicalName(), new Bounce());
         myInteractions.put(Brick.class.getCanonicalName(), new Bounce());
-        myInteractions.put(Brick.class.getCanonicalName(), new Bounce());
+        myInteractions.put(Wall.class.getCanonicalName(), new Bounce());
 
     }
 
