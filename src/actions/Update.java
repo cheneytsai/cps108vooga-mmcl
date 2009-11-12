@@ -15,7 +15,6 @@ public class Update implements Action {
         myIncrement = increment;
     }
     
-    @Override
     public void execute(Actor... actors) {
         myModel.updateScore(myIncrement);
 
