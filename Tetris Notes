@@ -1,0 +1,16 @@
+Grid
+Unified shape that is replaced with individual squares
+Use the grid to see if a row is full
+    Shift all rows above, sequentially
+Game is over when a block can't enter the screen without intersecting an existing piece
+New level at certain score
+High level = faster falling
+Only fall the number of rows of how many were removed
+Up = rotate
+Down = fall faster
+Right/Left = move
+New pieces start completely visible in the middle of the top of the grid
+Collision detection to make sure that they don't rotate through walls, other pieces
+Preview of next piece to fall
+Randomized pieces
+I, J, L, O, S, T, and Z
