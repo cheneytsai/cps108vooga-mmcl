@@ -14,9 +14,6 @@ import util.resources.ResourceManager;
 public class GameChooser extends Canvas
 {
 
-    private Canvas myCanvas;
-
-
     public GameChooser(Canvas canvas)
     {
         myCanvas = canvas;
@@ -83,7 +80,7 @@ public class GameChooser extends Canvas
                     }
                     else if(e.getY() > 400 && e.getY() < 450)
                     {
-                        //new GameMenu("Tetris?", myCanvas);
+                        //new GameMenu("Tetris", myCanvas);
                     }
                     else if (e.getY() > 500 && e.getY() < 550)
                     {
