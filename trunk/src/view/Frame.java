@@ -21,7 +21,6 @@ public class Frame extends JFrame
         setPreferredSize(mySize);
         setTitle(ResourceManager.getString("Title"));
         setJMenuBar(makeMenu());
-        myCanvas.addMouseListener(myCanvas.mouseListener());
 
         getContentPane().add(myCanvas);
 
@@ -40,7 +39,7 @@ public class Frame extends JFrame
         {
             public void actionPerformed(ActionEvent ev)
             {
-                if(myCanvas.getActive() != null && myCanvas.getGameName() != null)
+                if(myCanvas.isGameInProgress())
                 {
                     new GameMenu(myCanvas.getGameName(), myCanvas);
                 }
