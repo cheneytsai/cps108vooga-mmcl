@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+
+import actions.Quit;
 import util.resources.ResourceManager;
 
 /*
@@ -84,7 +86,7 @@ public class GameChooser extends Canvas
                     }
                     else if (e.getY() > 500 && e.getY() < 550)
                     {
-                        System.exit(0);
+                        new Quit().execute();
                     }
                 }
             }

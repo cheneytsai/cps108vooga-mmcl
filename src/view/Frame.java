@@ -5,6 +5,8 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+
+import actions.Quit;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
@@ -64,7 +66,7 @@ public class Frame extends JFrame
         {
             public void actionPerformed(ActionEvent ev)
             {
-                System.exit(0);
+                new Quit().execute();
             }
         });
         menu.add(fileMenu);

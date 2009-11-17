@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+
+import actions.Quit;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
@@ -89,7 +91,7 @@ public class GameMenu extends Canvas
                     }
                     else if (e.getY() > 600 && e.getY() < 650)
                     {
-                        System.exit(0);
+                        new Quit().execute();
                     }
                 }
             }

@@ -1,6 +1,7 @@
 Team MMCL: 2150
 Lisa Gutermuth, Megan Heysham, Cheney Tsai, Michael Yu
-This is best viewed from our website, which provides images and appropriate text wrapping.
+This is best viewed from our website, which provides images and appropriate
+text wrapping.
 
 The main program will create a Frame.
 This Frame will display a menu bar and a Canvas.
@@ -28,22 +29,95 @@ of myActive is changed when switching between Menus or between a Menu and
 LevelViewer (when Play Game is selected from a menu or when New Game is selected
 from the menu during game play).
 
-Menu:
+Menu (subclass of Canvas, considering changing to JPanel?):
 A Menu is created with its title and a Canvas.
 Our original idea was to also subclass Menu for each game and code the menu
 options for each game.
 However, now we are hoping to parse from a file to get information on what the
 menu options will be, where they will be located, and what each menu option will
 do when selected. We will have a map of each menu option to an Action which will
-be executed when that option in clicked on, via reflection.
+be executed when that option in clicked on, via reflection. For instance, Quit
+will map to the Quit Action.
 The options will be drawn in their given location, based on the text file.
+Uses mouseListeners to select menu options.
 
 
-LevelViewer:
+LevelViewer (subclass of Canvas, considering changing to JPanel?):
 A LevelViewer is created with its game name, level name, the current score, and
 a Canvas.
-The LevelViewer creates a new GameModel
-It contains an InformationPanel.
+The LevelViewer creates a new GameModel, which contains all the Actors needed
+for this level.
+Loops through the Actors and draws them along with the background and
+InformationPanel
+It contains and draws an InformationPanel (using the paint method of
+InformationPanel).
+Has a keyListener to let Actors make the decision on whether or not they need to
+respond to the keyPresses.
 
-InformationPanel:
+InformationPanel (subclass of JPanel):
 The InformationPanel will display, for example, the score.
+The Information Panel contains its location and a paint method
+It can contain the score, current level, next piece to appear, game name, arcade
+name, etc.
+Subclassed for each game?
+
+
+
+
+
+
+Playing the game:
+(2150menu)
+Original view (see Frame (including menu bar), Canvas, and Menu)
+Selecting a game title changes myActive in the Canvas to a Menu for that game
+Quit quits the game (go figure).
+
+(Arkanoidmenu)
+Game menu:
+Play Game starts the game at level 1
+Instructions displays the instructions for the game
+High scores displays the high scores for the game in its current run
+Level editor opens the level editor for the game
+Return to main menu returns to the menu that allows the user to select a game
+Quit quits the game (it works the same way here as above!)
+
+(Arkanoidlevel)
+Playing Arkaniod:
+    Use the "A" and "D" keys to move the paddle and catch the ball before it
+    falls past the bottom wall. Hit bricks to remove them and earn points. The
+    ball bounces off non-bottom walls, the paddle, and bricks as it destroys
+    them. When the ball moves pass the bottom wall, a new ball is created at the
+    original ball starting position in the middle of the screen. Clear all
+    bricks to advance to the next level.
+
+
+(Tetrislevel)
+Playing Tetris:
+    As the pieces fall, use the left and right arrow keys to move the falling
+    piece to the left or right. Use the up arrow to rotate the piece. Use the
+    down key to make the piece fall more quickly. Complete a row of blocks to
+    remove a row and cause all blocks above that row to shift down one row.
+    Falling blocks cannot be moved past the side walls. Pieces cannot rotate if
+    their rotation would cause them to intersect a wall or other blocks. A piece
+    stops moving and falling when they land on blocks below them. Earn points by
+    clearing rows. Clear 10 rows to advance a level. Falling speed of pieces
+    increases with higher levels.
+
+
+
+
+(Michael's stuff)
+
+
+
+How to create a new game:
+Edit MainMenu.properties
+Create ArkanoidMenu.properties
+Create any new Actors and Actions
+    Each Actor needs to have a map of which Actions are applied for each
+    possible collision that needs an Action
+    Each Actor also needs to know its default behavior if any
+    Also add any necessary image files
+Create a GameModel 
+Create level files 
+    
