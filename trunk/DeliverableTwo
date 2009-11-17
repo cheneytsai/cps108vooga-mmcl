@@ -1,0 +1,31 @@
+Team MMCL: 2150
+Lisa Gutermuth, Megan Heysham, Cheney Tsai, Michael Yu
+This is best viewed from our website, which provides images and appropriate text wrapping.
+
+The main program will create a Frame.
+This Frame will display a menu bar and a Canvas.
+
+Menu bar:
+The menu bar will contain the following options:
+    New Game (only works when the Canvas method isGameInProgress returns true, i.e, when the user is currently on a level.
+    Instructions (displays the instructions specific to the game currently being played, or about using the Arcade in general if the user is still on the main menu)
+    High Score (displays the high scores from the current game if the user has already selected a game)
+    Quit (quits the program; this is very important)
+
+Canvas:
+The Canvas will contain an instance variable myActive which will be the currently displayed content for the Canvas. MyActive subclasses Canvas (in order to draw easily and correctly) and will currently be either a Menu or a LevelViewer.
+Canvas also contains a method to change the value of myActive.
+Each subclass of Canvas contains a myCanvas variable. Thus the Canvas and its myActive are tied to each other and are able to reference each other. The value of myActive is changed when switching between Menus or between a Menu and LevelViewer (when Play Game is selected from a menu or when New Game is selected from the menu during game play).
+
+Menu:
+A Menu is created with its title and a Canvas.
+We are hoping to parse from a file to get information on what the menu options will be, where they will be located, and what each menu option will do when selected.
+Alternatively, each game will have a subclass of Menu that is specific to that game.
+
+LevelViewer:
+A LevelViewer is created with its game name, level name, the current score, and a Canvas.
+The LevelViewer creates a new GameModel
+It contains an InformationPanel.
+
+InformationPanel:
+The InformationPanel will display, for example, the score.
