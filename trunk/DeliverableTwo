@@ -19,8 +19,10 @@ Each subclass of Canvas contains a myCanvas variable. Thus the Canvas and its my
 
 Menu:
 A Menu is created with its title and a Canvas.
-We are hoping to parse from a file to get information on what the menu options will be, where they will be located, and what each menu option will do when selected.
-Alternatively, each game will have a subclass of Menu that is specific to that game.
+Our original idea was to also subclass Menu for each game and code the menu options for each game.
+However, now we are hoping to parse from a file to get information on what the menu options will be, where they will be located, and what each menu option will do when selected. We will have a map of each menu option to an Action which will be executed when that option in clicked on, via reflection.
+The options will be drawn in their given location, based on the text file.
+
 
 LevelViewer:
 A LevelViewer is created with its game name, level name, the current score, and a Canvas.
