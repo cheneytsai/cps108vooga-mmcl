@@ -1,5 +1,7 @@
 package actions;
 
+import java.awt.geom.AffineTransform;
+
 import actors.Actor;
 
 public class Rotate implements Action {
@@ -11,8 +13,10 @@ public class Rotate implements Action {
     }
 
     public void execute(Actor... actors) {
-        // TODO Auto-generated method stub
-        
+      //creating the AffineTransform instance
+        AffineTransform affineTransform = new AffineTransform();
+        //rotate the image
+        affineTransform.rotate(Math.toRadians(myDegrees*2*Math.PI/360));         
     }
 
 }

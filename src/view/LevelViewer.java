@@ -37,6 +37,7 @@ public class LevelViewer extends Canvas implements ActionListener
     
     public LevelViewer(String gameName, String levelName, int score, Canvas canvas)
     {
+
         myCanvas = canvas;
         myGameName = gameName;
         myLevelName = levelName;
