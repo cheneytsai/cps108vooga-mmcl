@@ -109,7 +109,8 @@ Playing Tetris:
 Framework classes for all games:
 
 GameModel: 
-    The role of GameModel is to coordinate between Actors, Physics, EventHandler, and the Canvas.
+    The role of GameModel is to coordinate between Actors, Physics,
+    EventHandler, and the Canvas.
     GameModel will include:
         List of Actors
         EventHandler object
@@ -118,19 +119,39 @@ GameModel:
 
     Behavior:   
     
-    During each iteration of gametime, GameModel will be passed a list of keys the user presses by the Canvas through its update() method. Then it will call the act() method on each of its Actors using those keys as parameters. Then it will pass the list of Actors on to the CollisionDetection class which will check for collisions. Then it will pass the list of Actors to the EventHandler's handleEvents method. Finally its getActors() method returns a list of actors (called by the Drawer).
+    During each iteration of gametime, GameModel will be passed a list of keys
+    the user presses by the Canvas through its update() method. Then it will
+    call the act() method on each of its Actors using those keys as parameters.
+    Then it will pass the list of Actors on to the CollisionDetection class
+    which will check for collisions. Then it will pass the list of Actors to
+    the EventHandler's handleEvents method. Finally its getActors() method
+    returns a list of actors (called by the Drawer).
 
-    Levels are initialized by the GameModel’s loadActors() method which will take a xml file which contains information on the Actors and their constructor parameters. This method can be called by other classes when switching levels.
+    Levels are initialized by the GameModel’s loadActors() method which will
+    take a xml file which contains information on the Actors and their
+    constructor parameters. This method can be called by other classes when
+    switching levels.
 
-The GameModel also contains a map of String -> Integer which store game information specific to each game. These values will be initialized in the initializeInfo() method and the update() and getInfo() methods update/retrieve these values respectively. Different games which extend GameModel will override the initializeInfo() method to account for whatever game state that game wants recorded.
+The GameModel also contains a map of String -> Integer which store game
+information specific to each game. These values will be initialized in the
+initializeInfo() method and the update() and getInfo() methods update/retrieve
+these values respectively. Different games which extend GameModel will override
+the initializeInfo() method to account for whatever game state that game wants
+recorded.
 
-    The GameModel also contains a method makeShape(Actor) which given an Actor’s image and dimension creates a shape for it. This method is overridden by different games, as depending on the type of game the way an image is translated to a shape may be different (for example games that just use a normal canvas vs. a game that uses a grid).
+    The GameModel also contains a method makeShape(Actor) which given an Actor’s
+    image and dimension creates a shape for it. This method is overridden by
+    different games, as depending on the type of game the way an image is
+    translated to a shape may be different (for example games that just use a
+    normal canvas vs. a game that uses a grid).
     
 
 Actor:
-    The role of the Actor class is to store the state of and handle the behavior of individual objects in the game world.
+    The role of the Actor class is to store the state of and handle the behavior
+    of individual objects in the game world.
     Actor will include:
-        State information (Velocity, Acceleration, Position, Shape, Image, etc...)
+        State information (Velocity, Acceleration, Position, Shape, Image,
+        etc...)
         Behavior information 
 Map of characters (keys pressed) -> Action objects
 Map of Actors -> Actions
@@ -139,65 +160,103 @@ Map of boundaries -> Actions
         
     Behavior:
 
-    Each iteration of gametime, an Actor object's act() method will be called with a list of keys pressed by the user. The act method will first check to see if any of the keys pressed match the keys in its behavior map. If so, it will call any associated Action objects' execute() method with itself as a parameter. It will also call the execute() method of its default Action.
+    Each iteration of gametime, an Actor object's act() method will be called
+    with a list of keys pressed by the user. The act method will first check to
+    see if any of the keys pressed match the keys in its behavior map. If so, it
+    will call any associated Action objects' execute() method with itself as a
+    parameter. It will also call the execute() method of its default Action.
 
-    Actor also has an interact() method which is called by CollisionDetector which takes another Actor and checks its map of interactions with other Actors and executes any applicable Actions. By convention each Actor is responsible for executing the Actions that apply to itself. 
+    Actor also has an interact() method which is called by CollisionDetector
+    which takes another Actor and checks its map of interactions with other
+    Actors and executes any applicable Actions. By convention each Actor is
+    responsible for executing the Actions that apply to itself. 
 
-    Actor also has a map of boundary actions which describe what the actor does when it encounters a boundary of the canvas (does it stop, bounce off, keep going, etc).
+    Actor also has a map of boundary actions which describe what the actor does
+    when it encounters a boundary of the canvas (does it stop, bounce off, keep
+    going, etc).
 
-    Each of these behavior maps are initialized in different methods (initializeKeys, initializeInteractions, etc.) and are overridden by different subclasses of Actor.
+    Each of these behavior maps are initialized in different methods
+    (initializeKeys, initializeInteractions, etc.) and are overridden by
+    different subclasses of Actor.
 
-    Actor also contains accessing methods for its state information, and a paint method which is used by the Canvas to paint it.
+    Actor also contains accessing methods for its state information, and a paint
+    method which is used by the Canvas to paint it.
 
     
 Action interface (and implementing classes):
-    The role of the Action classes are to handle state changing behavior for the game. Each Action class will simulate a different type of action (Move, Accelerate, SwapImage, CreateActor, RemoveActor, etc...)
+    The role of the Action classes are to handle state changing behavior for the
+    game. Each Action class will simulate a different type of action (Move,
+    Accelerate, SwapImage, CreateActor, RemoveActor, etc...)
     
-    Each class which implements Action must have an execute() method which takes some number of Actors (including none) and performs an action.
+    Each class which implements Action must have an execute() method which takes
+    some number of Actors (including none) and performs an action.
 
-    When an Action object is instantiated, it will be given parameters in its constructors specifying details of its specific action. For example, an Accelerate object would be instantiated with the magnitude of the acceleration as a parameter. Or a SwapImage action would be instantiated with the new image as a parameter.
+    When an Action object is instantiated, it will be given parameters in its
+    constructors specifying details of its specific action. For example, an
+    Accelerate object would be instantiated with the magnitude of the
+    acceleration as a parameter. Or a SwapImage action would be instantiated
+    with the new image as a parameter.
  
-    We plan on providing a large library of Actions for use in other games. But if necessary a game designer using our engine could always add his own.
+    We plan on providing a large library of Actions for use in other games.
+    But if necessary a game designer using our engine could always add his own.
 
 EventHandler:
-    EventHandler's role is to handle special interactions and actions whose triggering conditions are not known by individual actors
+    EventHandler's role is to handle special interactions and actions whose
+    triggering conditions are not known by individual actors
 
     EventHandler will include:
         A map of conditions -> Actions
 
     Behavior:
-    Each iteration of game-time, EventHandler will take in a list of Actors and a list of keys pressed as arguments of its handleEvents() method. It will then check to see if the evaluate() method of any of its conditions in its event map return true, if so it will perform any associated Actions.
+    Each iteration of game-time, EventHandler will take in a list of Actors and
+    a list of keys pressed as arguments of its handleEvents() method. It will
+    then check to see if the evaluate() method of any of its conditions in its
+    event map return true, if so it will perform any associated Actions.
 
-    Actions that belong in EventHandler are things like the win-condition for arkanoid (which is triggered by there not being any bricks left, information which no individual brick knows). 
+    Actions that belong in EventHandler are things like the win-condition for
+    arkanoid (which is triggered by there not being any bricks left, information
+    which no individual brick knows). 
 
-    EventHandler’s conditions map will be initialized by the initializeEvents method, which will take in a xml file with information on each Condition and Action.
+    EventHandler’s conditions map will be initialized by the initializeEvents
+    method, which will take in a xml file with information on each Condition and
+    Action.
 
 Conditions:
-    Conditions is an interface whose implementing classes implement the method evaluate() which returns a boolean. Conditions generally take a GameModel object as a parameter in its constructor, and uses the model’s getActors() and getInfo() methods to evaluate whether or not the condition its modeling returns true or false. 
+    Conditions is an interface whose implementing classes implement the method
+    evaluate() which returns a boolean. Conditions generally take a GameModel
+    object as a parameter in its constructor, and uses the model’s getActors()
+    and getInfo() methods to evaluate whether or not the condition its modeling
+    returns true or false. 
 
-    Like with Actions we plan on providing a large number of general conditions for game developers using our game engine to use, and more can be created as necessary.
+    Like with Actions we plan on providing a large number of general conditions
+    for game developers using our game engine to use, and more can be created as
+    necessary.
 
 Design of Arkanoid:
 
 ArkanoidModel:
-    The Arkanoid GameModel is just the basic one. The only information it records is the score.
+    The Arkanoid GameModel is just the basic one. The only information it
+    records is the score.
 
 Arkanoid Actors:
     Paddle: 
-        Responds to ‘a’ and ‘d’ keys with the Move action moving it left or right respectively
+        Responds to ‘a’ and ‘d’ keys with the Move action moving it left or
+        right respectively
         Interacts with powerups
             Lengthen/shortern paddle powerup -> SetSize
             Speed powerup -> Remove (to remove the current paddle), 
   Create (creates a   FastPaddle actor in the same location 
     Fast Paddle:
-        Extension of Paddle with the Move actions instantiated with greater values
+        Extension of Paddle with the Move actions instantiated with greater
+        values
 
     Ball:
         Interacts with Paddle and Brick with the Bounce Action
         Boundary behavior:      
 Bounces on left, right, and top boundaries
             EndGame on bottom boundary
-        Default action – NaturalMove (move according to velocity and acceleration)
+        Default action – NaturalMove (move according to velocity and
+        acceleration)
     Brick:
         Interactions:
             Ball ->     Remove
@@ -205,7 +264,8 @@ Bounces on left, right, and top boundaries
 
 EventHandler:
     Condition                   Action
-    ActorCount (Bricks == 0)            SetLevel (calls GameModel’s initializeActor)
+    ActorCount (Bricks == 0)            SetLevel (calls GameModel’s
+    initializeActor)
     
     Tetris design:
 Required Actors:
@@ -216,20 +276,38 @@ Required Actors:
         there will only be one FallingPiece at a time
     Blocks
         defaultbehavior is to do nothing
-    Grid (maintains placeholders for valid spaces for Blocks. Allows for easy removal of full lines of Blocks and transformation of FallingPieces into smaller Blocks)
+    Grid (maintains placeholders for valid spaces for Blocks. Allows for easy
+    removal of full lines of Blocks and transformation of FallingPieces into
+    smaller Blocks)
         defaultbehavior is to do nothing 
 
 Collisions:
-    FallingPiece/Wall: the falling piece is not allowed to move past this obstactle
-    FallingPiece/Block: when a FallingPiece collides with a Block, it stops moving. At this point, all Grid areas occupied by the FallingPiece will get a new Brick, the existing FallingPiece is removed from the list of Actors, and the Grid checks to see if it has a full row (any row that has just added a Block is checked). If it does, it calls ClearRow on the full row(s).
-    Block/Block, Block/Wall: won't really happen. When the Blocks are shifting down, they shift a set amount that will not actually cause them to collide, just come to rest next to
+    FallingPiece/Wall: the falling piece is not allowed to move past this
+    obstactle
+    FallingPiece/Block: when a FallingPiece collides with a Block, it stops
+    moving. At this point, all Grid areas occupied by the FallingPiece will get
+    a new Brick, the existing FallingPiece is removed from the list of Actors,
+    and the Grid checks to see if it has a full row (any row that has just added
+    a Block is checked). If it does, it calls ClearRow on the full row(s).
+    Block/Block, Block/Wall: won't really happen. When the Blocks are shifting
+    down, they shift a set amount that will not actually cause them to collide,
+    just come to rest next to
 
 Other actions:
-    MoveToSide: FallingPiece moves one unit to the left or right according to pressed arrow keys
-    Rotate: When the up arrow is pressed, the current FallingPiece rotates by 90 degrees, possibly by changing the image used to represent it? A piece is not allowed to rotate if such a rotation would cause it to intersect a Wall or a Block
-    Drop: While the down arrow is pressed, the speed of the FallingPiece increases
+    MoveToSide: FallingPiece moves one unit to the left or right according to
+    pressed arrow keys
+    Rotate: When the up arrow is pressed, the current FallingPiece rotates by 90
+    degrees, possibly by changing the image used to represent it? A piece is not
+    allowed to rotate if such a rotation would cause it to intersect a Wall or a
+    Block
+    Drop: While the down arrow is pressed, the speed of the FallingPiece
+    increases
     Speed Up: At level increase, the speed of FallingPieces becomes greater
-    ClearRow: when a row becomes full (as determined by the Grid) all Blocks with positions in that row are removed from the list of Actors. All spaces in the Grid above this row are checked for Blocks, starting with the row above the cleared row and moving upward. All Blocks found should MoveDown one row for each row cleared. Grid checks for full rows again!
+    ClearRow: when a row becomes full (as determined by the Grid) all Blocks
+    with positions in that row are removed from the list of Actors. All spaces
+    in the Grid above this row are checked for Blocks, starting with the row
+    above the cleared row and moving upward. All Blocks found should MoveDown
+    one row for each row cleared. Grid checks for full rows again!
     MoveDown: moves a Block from its current row to the next row down
 
 
@@ -243,4 +321,15 @@ Create any new Actors and Actions
     Also add any necessary image files
 Create a GameModel 
 Create level files 
+
+EditorCanvas -
+    Will have a MouseListener to record mouseclicks. When the user clicks on a location in the canvas, will create a popup box asking the user to type in the name of the Actor it would like to place there, and initial constructor parameters. 
+    Then the EditorCanvas will repaint itself with the new Actor in place
+Menu Buttons: 
+    Save – Will convert the EditorCanvas into a xml file containing the actor information
+    Load – Will open up a file chooser allowing the user to select a level file which will be displayed in the EditorCanvas
+    Return to menu – Returns to the game menu
+    Quit – Quits the program
+    About – Displays instructions on how to use the editor
+
     

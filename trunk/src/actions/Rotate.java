@@ -4,8 +4,10 @@ import actors.Actor;
 
 public class Rotate implements Action {
     
-    public Rotate(){
-        
+    private int myDegrees;
+    
+    public Rotate(int degrees){
+        myDegrees = degrees;
     }
 
     public void execute(Actor... actors) {
