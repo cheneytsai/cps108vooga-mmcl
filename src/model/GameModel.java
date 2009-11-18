@@ -59,9 +59,11 @@ public class GameModel {
     public void resetBall()
     {
         //TODO: Generalize this into something that can be called when any game ends
-        System.out.println("called");
-        myActorList.add(new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
-                myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 132),this));
+        System.out.println("ball reset");
+//        myActorList.add(new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
+//                myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 132),this));
+        myActorList.set(0,new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
+                myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 32),this));
     }
     
     private void initializeActors() 
