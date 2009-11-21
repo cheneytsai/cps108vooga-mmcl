@@ -28,7 +28,7 @@ public class Rotate implements Action {
         int width = (int) actors[0].getSize().getWidth();
         actors[0].setSize(height, width);
 //        actors[0].setImage(((FallingPiece)actors[0]).getCurrentImageName());
-        System.out.println("ROTATION!");
+//        System.out.println("ROTATION!");
     }
 
 }
