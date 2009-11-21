@@ -1,0 +1,4 @@
+actors.FallingPiece src/images/brick7.gif 16 16 480 0
+actors.BottomWall src/images/brick3.gif 960 16 480 670
+actors.Wall src/images/brick3.gif 16 720 300 360
+actors.Wall src/images/brick3.gif 16 720 660 360

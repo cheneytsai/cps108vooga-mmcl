@@ -4,10 +4,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 import util.resources.ResourceManager;
 
@@ -18,6 +23,7 @@ import util.resources.ResourceManager;
  *
  */
 
+@SuppressWarnings("serial")
 public class Menu extends Canvas{
     
     private Canvas myCanvas;
@@ -47,12 +53,15 @@ public class Menu extends Canvas{
 
     public void paintComponent(Graphics pen)
     {
+        try {
+            Scanner s = new Scanner(new File("src/resources/" + myName + ".menu"));
+        
         // Set Background
-        pen.drawImage(icon.getImage(), 0, 0, myCanvas.getWidth(), myCanvas.getHeight(), null);
+        pen.drawImage(new ImageIcon(s.next()).getImage(), 0, 0, myCanvas.getWidth(), myCanvas.getHeight(), null);
 
         // Set Pen
         Graphics2D myPen = (Graphics2D) pen;
-        myPen.setColor(Color.BLUE);
+        myPen.setColor(new Color(s.nextInt(), s.nextInt(), s.nextInt()));
 
         // Draw Title
         myPen.setFont(TITLE_FONT);
@@ -61,7 +70,9 @@ public class Menu extends Canvas{
 
         // Draw Options
         myPen.setFont(OPTION_FONT);
-        
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(myCanvas, "Menu File Not Found", "Error", 0);
+        }
 
         setOpaque(false);
     }
