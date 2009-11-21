@@ -81,7 +81,7 @@ public class GameModel {
     {
         //TODO: Make this read in through a file -> add new levels
         try {
-            Scanner input = new Scanner(new File("src/resources/ArkanoidLevel1.level"));
+            Scanner input = new Scanner(new File("src/resources/" + myCanvas.getGameName()+ "Level1.level"));
             while(input.hasNextLine()){
                 myActorList.add((Actor) Reflection.createInstance(input.next(),
                         input.next(),
