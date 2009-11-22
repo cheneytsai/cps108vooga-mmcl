@@ -1,4 +1,10 @@
 actors.FallingPiece src/images/tetrisipiece1.gif 25 100 480 0
+actors.FallingPiece src/images/tetrislpiece1.gif 50 75 50 0
+actors.FallingPiece src/images/tetrisopiece.gif 50 50 200 0
+actors.FallingPiece src/images/tetrisjpiece1.gif 50 75 350 0
+actors.FallingPiece src/images/tetrisspiece1.gif 75 50 550 0
+actors.FallingPiece src/images/tetriszpiece1.gif 75 50 700 0
+actors.FallingPiece src/images/tetristpiece1.gif 75 50 900 0
 actors.BottomWall src/images/brick3.gif 960 16 480 670
 actors.Wall src/images/brick3.gif 16 720 300 360
 actors.Wall src/images/brick3.gif 16 720 660 360

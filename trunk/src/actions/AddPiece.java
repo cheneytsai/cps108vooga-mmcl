@@ -8,11 +8,12 @@ import actors.Actor;
 public class AddPiece implements Action {
     
     private Random myRandom;
-    private ResourceBundle myResources;
+    private static ResourceBundle myResources;
     
     public AddPiece (String gameName){
         myRandom = new Random();
-        myResources = ResourceBundle.getBundle("resources."+gameName+"Pieces");
+        if(myResources == null)
+            myResources = ResourceBundle.getBundle("resources."+gameName+"Pieces");
     }
 
     public void execute(Actor... actors) {
