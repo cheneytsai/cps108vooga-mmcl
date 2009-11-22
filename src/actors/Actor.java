@@ -10,6 +10,7 @@ import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
+import java.awt.geom.Point2D;
 import java.awt.image.PixelGrabber;
 import java.util.*;
 
@@ -321,6 +322,10 @@ public abstract class Actor {
     public int getBottom ()
     {
         return getPosition().y + getSize().height / 2;
+    }
+
+    public Point2D getCenter() {
+        return new Point(getSize().width/2, getSize().height/2);
     }
    
 }

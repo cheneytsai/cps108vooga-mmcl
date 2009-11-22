@@ -7,10 +7,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import actions.Action;
+import actions.AddPiece;
 import actions.ChangeSpeed;
 import actions.Direction;
 import actions.Move;
 import actions.NaturalMove;
+import actions.Remove;
 import actions.Rotate;
 
 import model.GameModel;
@@ -21,7 +23,7 @@ public class FallingPiece extends Actor {
 
     public FallingPiece(String image, Dimension size, Point position, GameModel gameModel) {
         super(image, size, position, gameModel);
-        setVelocity(new PhysicsVector(new Direction(0,1), size.getHeight()));
+        setVelocity(new PhysicsVector(new Direction(0,1), 1));
         myCurrentImageName = image;
         loadBehavior();
         
@@ -46,8 +48,10 @@ public class FallingPiece extends Actor {
         myKeyEvents.put("d", right);
         List<Action> stop = new ArrayList<Action>();
         stop.add(new ChangeSpeed(0));
+        stop.add(new AddPiece("Tetris"));
+        stop.add(new Remove());
         myInteractions.put(BottomWall.class.getCanonicalName(), stop);
-
+        
     }
     
     public String getCurrentImageName(){
