@@ -29,15 +29,12 @@ public class AddPiece implements Action {
 
     public void execute(Actor... actors) {
         String image = myResources.getString(""+myRandom.nextInt(Integer.parseInt(myResources.getString("NumberOfPieces"))));
-        System.out.println(image);
         Image newImage = new ImageIcon(image).getImage();
         Dimension size = new Dimension(newImage.getWidth(null),newImage.getHeight(null));
-        System.out.println(size.width + " , " + size.height);
-        System.out.println(size.width%50);
-        if(size.width%50==0)
-            myModel.addActor(new FallingPiece(image, size, new Point(493,0), myModel));
+        if(size.width%52==0)
+            myModel.addActor(new FallingPiece(image, size, new Point(493,size.height/2), myModel));
         else
-            myModel.addActor(new FallingPiece(image, size, new Point(480,0), myModel));
+            myModel.addActor(new FallingPiece(image, size, new Point(480,size.height/2), myModel));
     }
 
 }
