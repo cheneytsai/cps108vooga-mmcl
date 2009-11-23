@@ -28,8 +28,10 @@ public class Rotate implements Action {
         int height = (int) actors[0].getSize().getHeight();
         int width = (int) actors[0].getSize().getWidth();
         actors[0].setSize(height, width);
-        if(height!=width)
+        if(height>width)
             actors[0].setPosition(new Point(actors[0].getPosition().x+13,actors[0].getPosition().y));
+        if(height<width)
+            actors[0].setPosition(new Point(actors[0].getPosition().x-13,actors[0].getPosition().y));
 //        actors[0].setImage(((FallingPiece)actors[0]).getCurrentImageName());
 //        System.out.println("ROTATION!");
     }
