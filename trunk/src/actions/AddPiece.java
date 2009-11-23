@@ -34,8 +34,8 @@ public class AddPiece implements Action {
                 addOne = false;
             }
         }
-        System.out.println(addOne);
-//        if(addOne){
+//        System.out.println(addOne);
+        if(addOne){
         String number = myResources.getString("NumberOfPieces");
 //        System.out.println("Number of pieces = " + number);
         int random = myRandom.nextInt(Integer.parseInt(number));
@@ -48,7 +48,7 @@ public class AddPiece implements Action {
             myModel.addActor(new FallingPiece(image, size, new Point(493,size.height/2), myModel));
         else
             myModel.addActor(new FallingPiece(image, size, new Point(480,size.height/2), myModel));
-//        }
+        }
     }
 
 }

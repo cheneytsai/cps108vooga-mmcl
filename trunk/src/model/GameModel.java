@@ -93,6 +93,7 @@ public class GameModel {
                         new Point(input.nextInt(), input.nextInt()),
                         this));
             }
+            
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }

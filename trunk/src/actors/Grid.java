@@ -11,7 +11,8 @@ public class Grid extends Actor {
     
     private static boolean[][] myStates;
     private static Marker[][] myPositions;
-    private GameModel myModel;
+    private static GameModel myModel;
+    private static Dimension gridSize;
     
 
     public Grid(String image, Dimension size, Point position, GameModel model) {
@@ -23,6 +24,7 @@ public class Grid extends Actor {
                 myPositions[i][j] = new Marker(image, new Dimension(1,1), new Point(position.x+i*26+13, position.y+j*26+13), model);
             }
         }
+        gridSize=size;
     }
 
     @Override
@@ -34,14 +36,28 @@ public class Grid extends Actor {
     @Override
     public void paint(Graphics pen){
         for(int i = 0; i<myPositions.length; i++){
-            for(Marker mark: myPositions[i]){
-                mark.paint(pen);
+            for(int j = 0; j < myPositions[i].length; j ++){
+                myPositions[i][j].paint(pen);
             }
         }
     }
     
-    public static Marker[][] getMarkers(){
-        return myPositions;
+    public static Marker getMarker(int i, int j){
+        return myPositions[i][j];
     }
+    
+    public static boolean getState(int i, int j){
+        return myStates[i][j];
+    }
+
+    public static Dimension getGridSize(){
+        return gridSize;
+    }
+    
+    public static void addBlock(int i, int j){
+         myStates[i][j] = true;
+    }
+    
+
 
 }
