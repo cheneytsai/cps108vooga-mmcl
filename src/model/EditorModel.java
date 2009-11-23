@@ -29,11 +29,6 @@ public class EditorModel extends GameModel
         myActorList = new ArrayList<Actor>();
         initializeActors();
     }
-
-    public void update(String myLastKeyPressed) 
-    {
-        
-    }
     
     private void initializeActors() 
     {        

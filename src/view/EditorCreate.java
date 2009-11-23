@@ -2,11 +2,18 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import model.EditorModel;
 import actors.Actor;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
@@ -22,21 +30,28 @@ import util.resources.ResourceManager;
 @SuppressWarnings("serial")
 public class EditorCreate extends JFrame
 {
-    private Dimension mySize = new Dimension(600, 600);
+    private Dimension mySize = new Dimension(250, 250);
     private JButton myButton;
+    private String[] actorStats;
+    private EditorModel myModel;
+    private JTextField myField;
+    private JTextField[] myPoint;
+    private JTextField[] myDimension;
+    private JComboBox myBox;
     
-    public EditorCreate(int x, int y)
+    public EditorCreate(EditorModel model, int x, int y)
     {
         setTitle(ResourceManager.getString("EditorTitle"));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        actorStats = new String[6];
+        myModel = model;
         
         JPanel p = new JPanel();
+        p.setLayout(new GridLayout(7,1));
         p.add(actorChooser());
         p.add(setImage());
-        p.add(setInt("xDimension"));
-        p.add(setInt("yDimension"));
-        p.add(setInt(x+""));
-        p.add(setInt(y+""));
+        p.add(setDimension());
+        p.add(setPoint(x,y));
         p.add(makeButton());
         getContentPane().add(p,BorderLayout.NORTH);
 
@@ -50,37 +65,50 @@ public class EditorCreate extends JFrame
     {
         String[] classNames = {"Ball","Brick","Paddle"};
         
-        return new JComboBox(classNames);
+        myBox = new JComboBox(classNames);
+        
+        return myBox;
     }
     
     private JComponent setImage()
     {
-        JTextField myField = new JTextField(30);
+        myField = new JTextField(30);
         
-        myField.setText("src/resources/insertClassNameHere.gif");
-//        
-//        myField.addKeyListener(new KeyListener() 
-//        {
-//            public void keyPressed(KeyEvent e)
-//            {
-//                int key = e.getKeyCode();
-//            } 
-//
-//            public void keyReleased(KeyEvent e) {}
-//            
-//            public void keyTyped(KeyEvent e){}
-//        }); 
+        myField.setText("src/images/Brick4.gif");
         
         return myField;
     }
     
-    private JComponent setInt(String location)
+    private JComponent setDimension()
     {
-        JTextField point = new JTextField(); 
+        JPanel panel = new JPanel();
+        myDimension = new JTextField[2];
+
+        myDimension[0] = new JTextField();
+        myDimension[0].setText("16");
+        myDimension[1] = new JTextField();
+        myDimension[1].setText("16");
         
-        point.setText(""+location);
+        panel.add(myDimension[0]);
+        panel.add(myDimension[1]);
         
-        return point;
+        return panel;
+    }
+    
+    private JComponent setPoint(int x, int y)
+    {
+        JPanel panel = new JPanel();
+        myPoint = new JTextField[2];
+
+        myPoint[0] = new JTextField();
+        myPoint[0].setText(""+x);
+        myPoint[1] = new JTextField();
+        myPoint[1].setText(""+y);
+        
+        panel.add(myPoint[0]);
+        panel.add(myPoint[1]);
+        
+        return panel;
     }
     
     private JComponent makeButton()
@@ -99,12 +127,38 @@ public class EditorCreate extends JFrame
     
     public void setStats()
     {
-        System.out.println("setting stats");
+        actorStats[0] = (String) myBox.getSelectedItem();//"Ball";
+        actorStats[1] = myField.getText();
+        actorStats[2] = myDimension[0].getText();
+        actorStats[3] = myDimension[1].getText();
+        actorStats[4] = myPoint[0].getText();
+        actorStats[5] = myPoint[1].getText();
+        
+        createInstance();
     }
     
-    public String[] getStats()
+    public void createInstance()
     {
-        // TODO Auto-generated method stub
-        return null;
+        myModel.add((Actor) Reflection.createInstance(
+                "actors."+actorStats[0],
+                actorStats[1],
+                new Dimension(Integer.parseInt(actorStats[2]),Integer.parseInt(actorStats[3])),
+                new Point(Integer.parseInt(actorStats[4]), Integer.parseInt(actorStats[5])),
+                myModel));
+        try
+        {
+            FileWriter output = new FileWriter("src/resources/ArkanoidLevel1.level",true);
+            output.append("\nactors."+actorStats[0]+" "+actorStats[1]+" "+actorStats[2]+" "
+                        +actorStats[3]+" "+actorStats[4]+" "+actorStats[5]);
+            output.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        catch (IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }
