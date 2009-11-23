@@ -31,6 +31,10 @@ public class GameModel {
     private List<Actor> myActorList;
     private Canvas myCanvas;
     
+    public GameModel()
+    {
+    }
+    
     public GameModel(Canvas canvas) 
     {
         myCanvas = canvas;
