@@ -130,6 +130,9 @@ public class GameModel {
         myActorList.remove(actor);
 
     }
+    public void addActor(Actor actor){
+        myActorList.add(actor);
+    }
 
     public List<Actor> getActors()
     {

@@ -30,6 +30,7 @@ public class Ball extends Actor {
         myInteractions.put(Paddle.class.getCanonicalName(), bounce);
         myInteractions.put(Brick.class.getCanonicalName(), bounce);
         myInteractions.put(Wall.class.getCanonicalName(), bounce);
+        myInteractions.put(LeftWall.class.getCanonicalName(), bounce);
         List<Action> bottomWall = new ArrayList<Action>();
         bottomWall.add(new Lose(myModel));
         bottomWall.add(new Remove());
