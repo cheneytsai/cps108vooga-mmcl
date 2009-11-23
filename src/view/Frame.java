@@ -21,6 +21,7 @@ public class Frame extends JFrame
         myCanvas.setActive(new GameChooser(myCanvas));
         setSize(mySize);
         setPreferredSize(mySize);
+
         setTitle(ResourceManager.getString("Title"));
         setJMenuBar(makeMenu());
 

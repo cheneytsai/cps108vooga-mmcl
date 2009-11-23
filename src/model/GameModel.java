@@ -87,7 +87,7 @@ public class GameModel {
         try {
             Scanner input = new Scanner(new File("src/resources/" + myCanvas.getGameName()+ "Level1.level"));
             while(input.hasNextLine()){
-                myActorList.add((Actor) Reflection.createInstance(input.next(),
+                addActor((Actor) Reflection.createInstance(input.next(),
                         input.next(),
                         new Dimension(input.nextInt(),input.nextInt()),
                         new Point(input.nextInt(), input.nextInt()),
@@ -135,6 +135,7 @@ public class GameModel {
 
     }
     public void addActor(Actor actor){
+//        System.out.println(actor);
         myActorList.add(actor);
     }
 

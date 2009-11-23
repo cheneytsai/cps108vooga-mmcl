@@ -14,6 +14,7 @@ import actions.Direction;
 import actions.Move;
 import actions.NaturalMove;
 import actions.Remove;
+import actions.Replace;
 import actions.Rotate;
 
 import model.GameModel;
@@ -27,7 +28,7 @@ public class FallingPiece extends Actor {
         setVelocity(new PhysicsVector(new Direction(0,1), 5));
         myCurrentImageName = image;
         loadBehavior();
-        
+        System.out.println("CREATED!");
         
     }
 
@@ -49,9 +50,11 @@ public class FallingPiece extends Actor {
         myKeyEvents.put("d", right);
         List<Action> stop = new ArrayList<Action>();
         stop.add(new ChangeSpeed(0));
-        stop.add(new AddPiece("Tetris",myModel));
+        stop.add(new Replace(myModel));
         stop.add(new Remove());
+        stop.add(new AddPiece("Tetris",myModel));
         myInteractions.put(BottomWall.class.getCanonicalName(), stop);
+        myInteractions.put(Block.class.getCanonicalName(), stop);
         List<Action> rightWall = new ArrayList<Action>();
         rightWall.add(new Move(new PhysicsVector(new Direction(-1,0),26)));
         myInteractions.put(Wall.class.getCanonicalName(), rightWall);

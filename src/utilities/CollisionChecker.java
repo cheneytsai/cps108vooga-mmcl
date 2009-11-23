@@ -33,7 +33,7 @@ public abstract class CollisionChecker {
     protected static Area getIntersectionArea (Actor a, Actor b)
     {
         Dimension size = a.getSize();
-        System.out.println(size);
+//        System.out.println(size);
         Dimension otherSize = b.getSize();
         System.out.println(otherSize);
         double max = Math.max(size.getWidth(), size.getHeight()) +
@@ -52,7 +52,7 @@ public abstract class CollisionChecker {
         return null;        
     }
 
-    private static boolean collide(Actor a, Actor b) {
+    public static boolean collide(Actor a, Actor b) {
         if (intersects(a, new Point(b.getPosition().x, b.getTop()))
                 || intersects(a, new Point(b.getPosition().x, b.getBottom()))) {
             return true;
