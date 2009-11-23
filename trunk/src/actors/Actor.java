@@ -87,8 +87,10 @@ public abstract class Actor {
         {
             if (other.getClass().getCanonicalName().equals(s))
             {
-                for (Action a : myInteractions.get(s))
+                for (Action a : myInteractions.get(s)){
+//                    System.out.println(a);
                     a.execute(this, other);
+                }
             }
         }
     }

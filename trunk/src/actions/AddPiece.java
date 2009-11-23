@@ -28,13 +28,27 @@ public class AddPiece implements Action {
     }
 
     public void execute(Actor... actors) {
-        String image = myResources.getString(""+myRandom.nextInt(Integer.parseInt(myResources.getString("NumberOfPieces"))));
+        boolean addOne = true;
+        for(Actor a: myModel.getActors()){
+            if(a instanceof FallingPiece){
+                addOne = false;
+            }
+        }
+        System.out.println(addOne);
+//        if(addOne){
+        String number = myResources.getString("NumberOfPieces");
+//        System.out.println("Number of pieces = " + number);
+        int random = myRandom.nextInt(Integer.parseInt(number));
+//        System.out.println("Random number = " + random);
+        String image = myResources.getString(""+random);
+        System.out.println("Piece is: " + image.charAt(17));
         Image newImage = new ImageIcon(image).getImage();
         Dimension size = new Dimension(newImage.getWidth(null),newImage.getHeight(null));
         if(size.width%52==0)
             myModel.addActor(new FallingPiece(image, size, new Point(493,size.height/2), myModel));
         else
             myModel.addActor(new FallingPiece(image, size, new Point(480,size.height/2), myModel));
+//        }
     }
 
 }

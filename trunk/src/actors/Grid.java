@@ -3,14 +3,15 @@ package actors;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.Collections;
 
 import model.GameModel;
 
 public class Grid extends Actor {
     
-    boolean[][] myStates;
-    Marker[][] myPositions;
-    GameModel myModel;
+    private static boolean[][] myStates;
+    private static Marker[][] myPositions;
+    private GameModel myModel;
     
 
     public Grid(String image, Dimension size, Point position, GameModel model) {
@@ -19,7 +20,7 @@ public class Grid extends Actor {
         myPositions = new Marker[size.width][size.height];
         for(int i = 0; i<myPositions.length; i++){
             for(int j = 0; j < myPositions[i].length; j++){
-                myPositions[i][j] = new Marker(image, new Dimension(5,5), new Point(position.x+i*26, position.y+j*26), model);
+                myPositions[i][j] = new Marker(image, new Dimension(1,1), new Point(position.x+i*26+13, position.y+j*26+13), model);
             }
         }
     }
@@ -37,6 +38,10 @@ public class Grid extends Actor {
                 mark.paint(pen);
             }
         }
+    }
+    
+    public static Marker[][] getMarkers(){
+        return myPositions;
     }
 
 }

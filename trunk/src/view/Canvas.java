@@ -30,6 +30,8 @@ protected ImageIcon icon;
     {
 //        myCanvas = this;
         setSize(mySize);
+
+
     }
 
     
