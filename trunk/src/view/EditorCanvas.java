@@ -21,14 +21,14 @@ import util.resources.ResourceManager;
 import actions.Quit;
 import actors.Actor;
 
-public class EditorCanvas extends Canvas
+@SuppressWarnings("serial")
+public class EditorCanvas extends Canvas implements ActionListener
 {
     private String myGameName;
 
     private EditorModel myEditorModel;
     private List<Actor> myActors;
-    private String myLastKeyPressed;
-    private String myLevelName;
+    public static final int DEFAULT_DELAY = 1000 / 25;  // in milliseconds
 
     
     public EditorCanvas(String gameName, String levelName, int score, Canvas canvas)
@@ -36,7 +36,6 @@ public class EditorCanvas extends Canvas
 
         myCanvas = canvas;
         myGameName = gameName;
-        myLevelName = levelName;
         myScore = score;
         myCanvas.removeAll();
         myCanvas.setActive(this);
@@ -55,8 +54,8 @@ public class EditorCanvas extends Canvas
         
         myEditorModel = new EditorModel(this);
         myActors = myEditorModel.getActors();
-        myEditorModel.update(myLastKeyPressed);
-
+        Timer timer = new Timer(DEFAULT_DELAY, this);
+        timer.start();
     }
 
     
@@ -114,19 +113,17 @@ public class EditorCanvas extends Canvas
 //              else,be able to update that object
                 if(used == false)
                 {
-                    EditorCreate created = new EditorCreate(e.getX(),e.getY());
-                    String[] actorStats = created.getStats();
-                    
-                    myEditorModel.add((Actor) Reflection.createInstance(
-                            actorStats[0],
-                            actorStats[1],
-                            new Dimension(Integer.parseInt(actorStats[2]),Integer.parseInt(actorStats[3])),
-                            new Point(Integer.parseInt(actorStats[4]), Integer.parseInt(actorStats[5])),
-                            this));
+                    new EditorCreate(myEditorModel,e.getX(),e.getY());
                 }
                  
             }
         };
         return myMouseAdapter;
+    }
+    
+    public void actionPerformed(ActionEvent arg0)
+    {     
+        // let Java runtime know panel needs to be repainted  
+        myCanvas.repaint();
     }
 }
