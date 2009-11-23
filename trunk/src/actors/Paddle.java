@@ -25,6 +25,12 @@ public class Paddle extends Actor {
         List<Action> d = new ArrayList<Action>();
         d.add(new Move(new PhysicsVector(new Direction(1, 0), 10)));
         myKeyEvents.put("d", d);
+        List<Action> rightWall = new ArrayList<Action>();
+        rightWall.add(new Move(new PhysicsVector(new Direction(-1,0),10)));
+        myInteractions.put(Wall.class.getCanonicalName(), rightWall);
+        List<Action> leftWall = new ArrayList<Action>();
+        leftWall.add(new Move(new PhysicsVector(new Direction(1,0),10)));
+        myInteractions.put(LeftWall.class.getCanonicalName(), leftWall);
     }
 
 }

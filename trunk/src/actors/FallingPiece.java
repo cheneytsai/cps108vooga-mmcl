@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import actions.Action;
 import actions.AddPiece;
+import actions.Bounce;
 import actions.ChangeSpeed;
 import actions.Direction;
 import actions.Move;
@@ -23,7 +24,7 @@ public class FallingPiece extends Actor {
 
     public FallingPiece(String image, Dimension size, Point position, GameModel gameModel) {
         super(image, size, position, gameModel);
-        setVelocity(new PhysicsVector(new Direction(0,1), 1));
+        setVelocity(new PhysicsVector(new Direction(0,1), 5));
         myCurrentImageName = image;
         loadBehavior();
         
@@ -41,16 +42,22 @@ public class FallingPiece extends Actor {
         down.add(new NaturalMove());
         myKeyEvents.put("s", down);
         List<Action> left = new ArrayList<Action>();
-        left.add(new Move(new PhysicsVector(new Direction(-1, 0), getVelocity().getMagnitude())));
+        left.add(new Move(new PhysicsVector(new Direction(-1, 0), 26)));
         myKeyEvents.put("a", left);
         List<Action> right = new ArrayList<Action>();
-        right.add(new Move(new PhysicsVector(new Direction(1, 0), getVelocity().getMagnitude())));
+        right.add(new Move(new PhysicsVector(new Direction(1, 0), 26)));
         myKeyEvents.put("d", right);
         List<Action> stop = new ArrayList<Action>();
         stop.add(new ChangeSpeed(0));
-        stop.add(new AddPiece("Tetris"));
+        stop.add(new AddPiece("Tetris",myModel));
         stop.add(new Remove());
         myInteractions.put(BottomWall.class.getCanonicalName(), stop);
+        List<Action> rightWall = new ArrayList<Action>();
+        rightWall.add(new Move(new PhysicsVector(new Direction(-1,0),26)));
+        myInteractions.put(Wall.class.getCanonicalName(), rightWall);
+        List<Action> leftWall = new ArrayList<Action>();
+        leftWall.add(new Move(new PhysicsVector(new Direction(1,0),26)));
+        myInteractions.put(LeftWall.class.getCanonicalName(), leftWall);
         
     }
     

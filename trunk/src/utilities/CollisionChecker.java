@@ -13,7 +13,7 @@ public abstract class CollisionChecker {
         for (int k = actors.size() - 1; k >= 0; k--) {
             Actor a = actors.get(k);
      
-                for (int i = k-1; i >= 0; i--) {
+                for (int i = actors.size() - 1; i >= 0; i--) {
                     Actor b = actors.get(i);
                     if (collide(a, b)) {
 //                      if(intersect(a,b)){  
