@@ -8,11 +8,12 @@ import actions.Remove;
 
 public class Wall extends Actor
 {
-
+    private static int numberOfWalls = 0;
     public Wall(String string, Dimension dimension, Point point,
             GameModel gameModel)
     {
         super(string,dimension,point,gameModel);
+        numberOfWalls++;
     }
 
     @Override
@@ -20,5 +21,9 @@ public class Wall extends Actor
     {
         myDefaultBehavior = null;
     }
-
+    public void remove()
+    {
+     numberOfWalls--;
+     super.remove();
+    }
 }

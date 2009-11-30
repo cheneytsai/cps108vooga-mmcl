@@ -14,11 +14,12 @@ public class Grid extends Actor {
     private static GameModel myModel;
     private static Dimension gridSize;
     
-
+    private static int numberOfGrids = 0;
     public Grid(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
         myStates = new boolean[size.width][size.height];
         myPositions = new Marker[size.width][size.height];
+        numberOfGrids++;
         for(int i = 0; i<myPositions.length; i++){
             for(int j = 0; j < myPositions[i].length; j++){
                 myPositions[i][j] = new Marker(image, new Dimension(1,1), new Point(position.x+i*26+13, position.y+j*26+13), model);
@@ -57,7 +58,11 @@ public class Grid extends Actor {
     public static void addBlock(int i, int j){
          myStates[i][j] = true;
     }
-    
+    public void remove()
+    {
+        numberOfGrids--;
+     super.remove();
+    }
 
 
 }
