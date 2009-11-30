@@ -26,11 +26,10 @@ import util.resources.ResourceManager;
 public class LevelViewer extends Canvas implements ActionListener
 {
     private String myGameName;
-
-    private GameModel myGameModel;
-    private List<Actor> myActors;
-    private String myLastKeyPressed;
-    private String myLevelName;
+    protected GameModel myGameModel;
+    protected List<Actor> myActors;
+    protected String myLastKeyPressed;
+    protected String myLevelName;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25;  // in milliseconds
 
@@ -73,10 +72,16 @@ public class LevelViewer extends Canvas implements ActionListener
         myActors = myGameModel.getActors();
         Timer timer = new Timer(DEFAULT_DELAY, this);
         timer.start();
-        myGameModel.update(myLastKeyPressed);
+
+        update();
 
     }
 
+    protected void update()
+    {
+        myGameModel.update(myLastKeyPressed);
+    }
+    
     
     public void paintComponent(Graphics pen)
     {        
@@ -84,7 +89,7 @@ public class LevelViewer extends Canvas implements ActionListener
         pen.setFont(SCOREBOARD_FONT);
         pen.setColor(Color.WHITE);
         pen.drawString(ResourceManager.getString("Title").substring(0,10),0,20);
-        pen.drawString(myGameName,0,40);//myLevelName,0,40);
+        pen.drawString(myGameName,0,40);
         pen.drawString(ResourceManager.getString("Score") + myScore, 800, 20);
         
         paint(pen);
@@ -114,7 +119,7 @@ public class LevelViewer extends Canvas implements ActionListener
 
     public void actionPerformed(ActionEvent arg0)
     {
-        myGameModel.update(myLastKeyPressed);
+        update();
         // let Java runtime know panel needs to be repainted        
         myCanvas.repaint();
     }
