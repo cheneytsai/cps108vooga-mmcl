@@ -36,7 +36,6 @@ public class FallingPiece extends Actor {
     protected void loadBehavior() {
         myDefaultBehavior = new NaturalMove();
         List<Action> up = new ArrayList<Action>();
-//        up.add(new Rotate(myResources.getString(myCurrentImageName)));
         up.add(new Rotate());
         myKeyEvents.put("w", up);
         List<Action> down = new ArrayList<Action>();
