@@ -7,8 +7,10 @@ import model.GameModel;
 
 public class Block extends Actor {
 
+    private static int numberOfBlocks = 0;
     public Block(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
+        numberOfBlocks++;
         // TODO Auto-generated constructor stub
     }
 
@@ -16,6 +18,11 @@ public class Block extends Actor {
     protected void loadBehavior() {
         // TODO Auto-generated method stub
 
+    }
+    public void remove()
+    {
+    numberOfBlocks--;
+     super.remove();
     }
 
 }

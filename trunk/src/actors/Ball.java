@@ -17,8 +17,10 @@ import model.GameModel;
 
 public class Ball extends Actor {
 
+    private static int numberOfBalls = 0;
     public Ball(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
+        numberOfBalls++;
     }
 
     @Override
@@ -36,6 +38,12 @@ public class Ball extends Actor {
         bottomWall.add(new Remove());
         myInteractions.put(BottomWall.class.getCanonicalName(), bottomWall);
 
+    }
+    
+    public void remove()
+    {
+     numberOfBalls--;
+     super.remove();
     }
 
 }

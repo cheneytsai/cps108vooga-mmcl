@@ -22,20 +22,22 @@ import model.*;
 
 public abstract class Actor {
     
-    protected GameModel myModel;
-    private Image myImage;
-    private Area myShape;
-    protected AffineTransform myXform;
-    private Point myPosition;
-    protected double myHeading;
-    private Dimension mySize;
-    private PhysicsVector myVelocity;
-    private PhysicsVector myAcceleration;
-    protected Map<String, List<Action>> myKeyEvents;
-    protected Map<String, List<Action>> myInteractions;
-    protected Action myDefaultBehavior;
-    public boolean hasChanged;
-    public boolean hasMoved;
+    protected GameModel myModel;                        // Model
+    private Image myImage;                              // Image
+    private Area myShape;                               // Bounding Shape
+    protected AffineTransform myXform;                  // Transform
+    private Point myPosition;                           // Position
+    protected double myHeading;                         // Heading
+    private Dimension mySize;                           // Size
+    private PhysicsVector myVelocity;                   // Velocity
+    private PhysicsVector myAcceleration;               // Acceleration
+    protected Map<String, List<Action>> myKeyEvents;    // KeyEvents
+    protected Map<String, List<Action>> myInteractions; // Interaction
+    protected Action myDefaultBehavior;                 // Default ACtion
+    public boolean hasChanged;                          // Flag - Changed?
+    public boolean hasMoved;                            // Flag - Moved?
+    
+    private static int numberOfActors = 0;
     
     public Actor(String image, Dimension size, Point position, GameModel model)
     {
@@ -51,7 +53,7 @@ public abstract class Actor {
         myKeyEvents = new HashMap<String, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
-        
+        numberOfActors++;
         //TODO: make all this readable from a file
     }
     
@@ -127,30 +129,23 @@ public abstract class Actor {
     
     public void remove()
     {
-//        System.out.println(this.getClass().getCanonicalName() + " " +myModel);
+        numberOfActors--;
         myModel.remove(this);
     }   
 
-    /**
-     * Returns shape's size.
-     */
+
     public Dimension getSize ()
     {
         return mySize;
     }
 
 
-    /**
-     * Resets shape's size.
-     */
     public void setSize (int width, int height)
     {
         mySize = new Dimension(width, height);
     }
     
-    /**
-     * Reports shape's geometry.
-     */
+ 
     public Shape getShape ()
     {
         return myShape.createTransformedArea(getTransform());
@@ -268,14 +263,7 @@ public abstract class Actor {
         return myXform;
     }
 
-//    public void paint(Graphics pen)
-//    {
-//        pen.drawImage(myImage,
-//                myPosition.y, myPosition.x, 
-//                getSize().width, getSize().height,
-//                null);      
-//    }
-    
+
     /**
      * Describes how to draw the shape on the screen.
      *
