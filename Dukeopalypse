@@ -1,0 +1,30 @@
+
+Grid Game
+
+Objects
+Player Character - 
+	keypad movement - 4 directional
+	Health
+	z - interact/attack
+	x - check items
+
+Environment - 
+Tree
+Wall
+Grass (walkable)
+Path (walkable)
+Floor (walkable)
+Road (walkable)
+
+Interactive -
+Door - Open w or w/o item
+Chest - Get Item
+NPC - Show message//get item
+Sign - Show message
+Heart - Heal
+Enemy - Random Movement// Collision = Damage
+Enemy Projectile - Linear Movement// Collision = Damage
+
+Other:
+Non Scrolling - Reload each screen as needed
+Objective: Basic Adventure Game
