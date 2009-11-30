@@ -1,5 +1,5 @@
-actors.FallingPiece src/images/tetrislpiece1.gif 26 104 480 52
-actors.BottomWall src/images/brick3.gif 960 36 480 694
+actors.FallingPiece src/images/tetrisipiece1.gif 26 104 480 52
+actors.BottomWall src/images/brick3.gif 960 36 480 680
 actors.LeftWall src/images/brick3.gif 100 720 286 360
 actors.Wall src/images/brick3.gif 100 720 700 360
 actors.Grid src/images/brick6.gif 12 26 336 0
