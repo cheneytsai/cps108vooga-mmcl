@@ -1,0 +1,6 @@
+What to refactor:
+
+Load conditions/interactions from file
+Create game file to point to level file, condition/interaction file and anything else
+Heirachy for actions
+factor out constants and words
