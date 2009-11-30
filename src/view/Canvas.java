@@ -51,8 +51,6 @@ protected ImageIcon icon;
         myActive = toUse;
     }
 
-
-
     public String getGameName()
     {
         return myActive.getGameName();

@@ -73,15 +73,11 @@ public class GameModel {
     public void resetBall()
     {
         //TODO: Generalize this into something that can be called when any game ends
-        System.out.println("ball reset");
-//        myActorList.add(new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
-//                myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 132),this));
-        
         myActorList.set(0,new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
                 myCanvas.getSize().width / 2 , myCanvas.getSize().height /2 + 100),this));
     }
     
-    private void initializeActors() 
+    protected void initializeActors() 
     {
         //TODO: Make this read in through a file -> add new levels
         try {
@@ -97,37 +93,6 @@ public class GameModel {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-        
-//        Ball b = new Ball("src/images/ball.gif", new Dimension(16, 16), new Point(
-//                myCanvas.getSize().width / 2 +100 , myCanvas.getSize().height * 5 / 6 - 32),this);
-
-//        myActorList.add(b);
-
-//        Paddle p = new Paddle("src/images/paddle.gif", new Dimension(80, 16),
-//                new Point(myCanvas.getSize().width / 2 + 100,
-//                        myCanvas.getSize().height * 5 / 6 ), this);
-//        myActorList.add(p);
-        
-//        Wall top = new Wall("src/images/brick3.gif",new 
-//                Dimension(myCanvas.getSize().width,16),new Point(myCanvas.getSize().width/2,0),this);
-//        Wall left = new Wall("src/images/brick3.gif",new 
-//                Dimension(16,myCanvas.getSize().height),new Point(0,myCanvas.getSize().height/2),this);
-//        Wall right  = new Wall("src/images/brick3.gif",new 
-//                Dimension(16,myCanvas.getSize().height),new Point(myCanvas.getSize().width, myCanvas.getSize().height/2),this);
-//        BottomWall bottom = new BottomWall("src/images/brick6.gif", new 
-//                Dimension(myCanvas.getSize().width, 16), new Point(myCanvas.getSize().width/2,myCanvas.getSize().height),this);
-        
-//        myActorList.add(top);
-//        myActorList.add(left);
-//        myActorList.add(right);
-//        myActorList.add(bottom);
-        
-//        for(int i = 1; i < 8; i++)
-//        {
-//            myActorList.add(new Brick("src/images/brick"+i+".gif",new Dimension(80,30),
-//                    new Point(100*i ,100),this));
-//            
-//        }
     }
 
     public void remove(Actor actor) 
@@ -136,7 +101,6 @@ public class GameModel {
 
     }
     public void addActor(Actor actor){
-//        System.out.println(actor);
         myActorList.add(actor);
     }
 

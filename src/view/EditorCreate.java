@@ -6,23 +6,16 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import model.EditorModel;
+import model.GameModel;
 import actors.Actor;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
@@ -33,13 +26,14 @@ public class EditorCreate extends JFrame
     private Dimension mySize = new Dimension(250, 250);
     private JButton myButton;
     private String[] actorStats;
-    private EditorModel myModel;
+    private GameModel myModel;
     private JTextField myField;
-    private JTextField[] myPoint;
-    private JTextField[] myDimension;
+    private JTextField[] myDimPoint;
     private JComboBox myBox;
     
-    public EditorCreate(EditorModel model, int x, int y)
+    public EditorCreate(GameModel model, Actor actor, 
+                        String image, int xDim, int yDim, 
+                        int x, int y)
     {
         setTitle(ResourceManager.getString("EditorTitle"));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -48,10 +42,12 @@ public class EditorCreate extends JFrame
         
         JPanel p = new JPanel();
         p.setLayout(new GridLayout(7,1));
-        p.add(actorChooser());
-        p.add(setImage());
-        p.add(setDimension());
-        p.add(setPoint(x,y));
+        if(actor == null)
+        {
+            p.add(actorChooser());
+        }
+        p.add(setImage(image));
+        p.add(setDimPoint(xDim,yDim,x,y));
         p.add(makeButton());
         getContentPane().add(p,BorderLayout.NORTH);
 
@@ -70,50 +66,34 @@ public class EditorCreate extends JFrame
         return myBox;
     }
     
-    private JComponent setImage()
+    private JComponent setImage(String name)
     {
         myField = new JTextField(30);
         
-        myField.setText("src/images/Brick4.gif");
+        myField.setText(name);
         
         return myField;
     }
     
-    private JComponent setDimension()
+    private JComponent setDimPoint(int xDim,int yDim,int x,int y)
     {
         JPanel panel = new JPanel();
-        myDimension = new JTextField[2];
+        myDimPoint = new JTextField[4];
 
-        myDimension[0] = new JTextField();
-        myDimension[0].setText("16");
-        myDimension[1] = new JTextField();
-        myDimension[1].setText("16");
-        
-        panel.add(myDimension[0]);
-        panel.add(myDimension[1]);
-        
-        return panel;
-    }
-    
-    private JComponent setPoint(int x, int y)
-    {
-        JPanel panel = new JPanel();
-        myPoint = new JTextField[2];
-
-        myPoint[0] = new JTextField();
-        myPoint[0].setText(""+x);
-        myPoint[1] = new JTextField();
-        myPoint[1].setText(""+y);
-        
-        panel.add(myPoint[0]);
-        panel.add(myPoint[1]);
+        int[] showValue = {xDim, yDim, x,y};
+        for(int i = 0; i < showValue.length; i++)
+        {
+            myDimPoint[i] = new JTextField();
+            myDimPoint[i].setText(""+xDim);
+            panel.add(myDimPoint[i]);
+        }
         
         return panel;
     }
     
     private JComponent makeButton()
     {
-        myButton = new JButton("Create!");
+        myButton = new JButton(ResourceManager.getString("LevelEditButton"));
         myButton.addActionListener(new ActionListener() 
         {
             public void actionPerformed(ActionEvent e) 
@@ -127,19 +107,19 @@ public class EditorCreate extends JFrame
     
     public void setStats()
     {
-        actorStats[0] = (String) myBox.getSelectedItem();//"Ball";
+        actorStats[0] = (String) myBox.getSelectedItem();
         actorStats[1] = myField.getText();
-        actorStats[2] = myDimension[0].getText();
-        actorStats[3] = myDimension[1].getText();
-        actorStats[4] = myPoint[0].getText();
-        actorStats[5] = myPoint[1].getText();
+        for(int i = 0; i < myDimPoint.length; i++)
+        {
+            actorStats[i+2] = myDimPoint[i].getText();
+        }
         
         createInstance();
     }
     
     public void createInstance()
     {
-        myModel.add((Actor) Reflection.createInstance(
+        myModel.addActor((Actor) Reflection.createInstance(
                 "actors."+actorStats[0],
                 actorStats[1],
                 new Dimension(Integer.parseInt(actorStats[2]),Integer.parseInt(actorStats[3])),
