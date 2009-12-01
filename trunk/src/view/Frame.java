@@ -19,6 +19,7 @@ public class Frame extends JFrame
     {
         myCanvas = new Canvas();
         myCanvas.setActive(new GameChooser(myCanvas));
+//        myCanvas.setActive(new Menu("MMCL", myCanvas));
         setSize(mySize);
         setPreferredSize(mySize);
 

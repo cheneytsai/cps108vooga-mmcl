@@ -25,8 +25,10 @@ public class FallingPiece extends Actor {
         setVelocity(new PhysicsVector(new Direction(0,1), 5));
         myCurrentImageName = image;
         loadBehavior();
+
         numberOfFallingPieces++;
         System.out.println("CREATED!");
+
         
     }
 

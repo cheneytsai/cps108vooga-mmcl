@@ -41,7 +41,7 @@ public class AddPiece implements Action {
         int random = myRandom.nextInt(Integer.parseInt(number));
 //        System.out.println("Random number = " + random);
         String image = myResources.getString(""+random);
-        System.out.println("Piece is: " + image.charAt(17));
+//        System.out.println("Piece is: " + image.charAt(17));
         Image newImage = new ImageIcon(image).getImage();
         Dimension size = new Dimension(newImage.getWidth(null),newImage.getHeight(null));
         if(size.width%52==0)
