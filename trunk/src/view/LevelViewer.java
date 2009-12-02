@@ -77,11 +77,10 @@ public class LevelViewer extends Canvas implements ActionListener
 
     }
 
-    protected void update()
+    public void update()
     {
         myGameModel.update(myLastKeyPressed);
     }
-    
     
     public void paintComponent(Graphics pen)
     {        
