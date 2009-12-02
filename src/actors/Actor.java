@@ -15,8 +15,6 @@ import java.awt.image.PixelGrabber;
 import java.util.*;
 
 import javax.swing.ImageIcon;
-import view.LevelViewer;
-
 import actions.*;
 import model.*;
 
