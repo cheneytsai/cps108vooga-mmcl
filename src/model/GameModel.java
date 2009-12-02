@@ -12,6 +12,7 @@ import java.util.Scanner;
 import conditions.ConditionChecker;
 
 import util.reflection.*;
+import util.resources.ResourceManager;
 import actors.Actor;
 import actors.Ball;
 
@@ -59,8 +60,7 @@ public class GameModel {
     private void initializeActors() {
         // TODO: Make this read in through a file -> add new levels
         try {
-            Scanner input = new Scanner(new File("src/resources/"
-                    + myCanvas.getGameName() + "Level1.level"));
+            Scanner input = new Scanner(new File(ResourceManager.getString("ArkanoidLevel1")));
             while (input.hasNextLine()) {
                 addActor((Actor) Reflection.createInstance(input.next(), input
                         .next(),
