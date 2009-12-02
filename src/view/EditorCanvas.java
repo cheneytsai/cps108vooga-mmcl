@@ -15,7 +15,7 @@ public class EditorCanvas extends LevelViewer
         myCanvas.addMouseListener(mouseListener());
     }
 
-    protected void update()
+    public void update()
     {
     }
 
