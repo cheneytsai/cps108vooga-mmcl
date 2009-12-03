@@ -35,7 +35,7 @@ public class Grid extends Actor {
 
     @Override
     protected void loadBehavior() {
-        // TODO Auto-generated method stub
+        //Nothing
 
     }
     

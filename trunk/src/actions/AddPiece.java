@@ -51,13 +51,11 @@ public class AddPiece implements Action {
        
 
         if (gameOver) {
-            System.out.println("You lost Tetris!");
             JOptionPane.showMessageDialog(myModel.myCanvas, "GAME OVER!");
 
         }
 
         else if (new NumberOf(myModel, FallingPiece.class.getName(), 0).evaluate()) {
-            System.out.println("added one");
             String number = myResources.getString("NumberOfPieces");
             int random = myRandom.nextInt(Integer.parseInt(number));
             String image = myResources.getString("" + random);
