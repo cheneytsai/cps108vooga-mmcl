@@ -36,7 +36,7 @@ public class FallingPiece extends Actor {
     protected void loadBehavior() {
         myDefaultBehavior = new NaturalMove();
         List<Action> up = new ArrayList<Action>();
-        up.add(new Rotate());
+        up.add(new Rotate(myModel.myCanvas.getGameName()));
         myKeyEvents.put("w", up);
         List<Action> down = new ArrayList<Action>();
         down.add(new NaturalMove());
@@ -49,9 +49,9 @@ public class FallingPiece extends Actor {
         myKeyEvents.put("d", right);
         List<Action> stop = new ArrayList<Action>();
         stop.add(new ChangeSpeed(0));
-        stop.add(new Replace(myModel));
+        stop.add(new Replace());
         stop.add(new Remove());
-        stop.add(new AddPiece("Tetris",myModel));
+        stop.add(new AddPiece(myModel.myCanvas.getGameName(),myModel));
         myInteractions.put(BottomWall.class.getCanonicalName(), stop);
         myInteractions.put(Block.class.getCanonicalName(), stop);
         List<Action> rightWall = new ArrayList<Action>();

@@ -9,10 +9,14 @@ import actors.FallingPiece;
 
 public class Rotate implements Action {
     
-    private ResourceBundle myResources = ResourceBundle.getBundle("resources.TetrisRotation");
+    private ResourceBundle myRotations;
+
+    public Rotate(String gameName) {
+       myRotations = ResourceBundle.getBundle("resources." + gameName + "Rotation");    
+   }
 
     public void execute(Actor... actors) {
-        String newImage = myResources.getString(((FallingPiece)actors[0]).getCurrentImageName());
+        String newImage = myRotations.getString(((FallingPiece)actors[0]).getCurrentImageName());
         actors[0].setImage(newImage);
         ((FallingPiece)actors[0]).setCurrentImageName(newImage);
         int height = (int) actors[0].getSize().getHeight();
