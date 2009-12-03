@@ -1,4 +1,4 @@
-//TODO: Make everything work with the outline/shape making stuff
+//TODO: ASAP: Make everything work with the outline/shape making stuff. OR TETRIS WLIL NEVER WORK
 //TODO: Refactor all of this
 package actors;
 
@@ -92,11 +92,12 @@ public abstract class Actor {
             if (other.getClass().getCanonicalName().equals(s))
             {
                 for (Action a : myInteractions.get(s)){
-//                    System.out.println(a);
                     a.execute(this, other);
                 }
             }
         }
+        //TODO: Maybe make this so that instead of having actions in a map, it has the name of an action
+        //and constructor values, and just creates a new action everytime as needed
     }
     
     public void setPosition(Point p)
