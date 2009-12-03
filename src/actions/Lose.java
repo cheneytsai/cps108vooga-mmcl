@@ -3,6 +3,11 @@ package actions;
 import model.GameModel;
 import actors.Actor;
 
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public class Lose implements Action
 {
     protected GameModel myModel;

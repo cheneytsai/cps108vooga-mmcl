@@ -18,6 +18,11 @@ import javax.swing.ImageIcon;
 import actions.*;
 import model.*;
 
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public abstract class Actor {
     
     protected GameModel myModel;                        // Model

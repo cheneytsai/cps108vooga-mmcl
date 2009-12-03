@@ -1,6 +1,11 @@
 //TODO: Consider removing this class
 package actions;
 
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public class Direction {
     private double myX;
     private double myY;

@@ -6,6 +6,11 @@ import utilities.CollisionChecker;
 import actors.Actor;
 import actors.PhysicsVector;
 
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public class Bounce implements Action {
 
     public void execute(Actor... actors) {
