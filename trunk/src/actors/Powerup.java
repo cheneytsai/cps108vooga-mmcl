@@ -11,7 +11,11 @@ import actions.Move;
 import actions.Remove;
 import util.resources.ResourceManager;
 import model.GameModel;
-
+/**
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
 public class Powerup extends Actor
 {
     public Powerup(String image, Dimension size, Point position, GameModel model)

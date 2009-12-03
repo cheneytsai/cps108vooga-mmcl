@@ -5,6 +5,11 @@ import java.awt.Point;
 
 import model.GameModel;
 
+/**
+ * 
+ * @author Megan Heysham
+ *
+ */
 public class Block extends Actor {
 
     private static int numberOfBlocks = 0;

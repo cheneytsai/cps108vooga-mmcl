@@ -8,7 +8,11 @@ import java.util.List;
 import actions.*;
 
 import model.GameModel;
-
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public class Paddle extends Actor {
     private static int numberOfPaddles = 0;
     

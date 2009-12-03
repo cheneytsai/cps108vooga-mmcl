@@ -4,7 +4,7 @@ import actors.Actor;
 
 /**
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 

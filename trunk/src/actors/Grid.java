@@ -7,7 +7,7 @@ import model.GameModel;
 
 /**
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 public class Grid extends Actor {

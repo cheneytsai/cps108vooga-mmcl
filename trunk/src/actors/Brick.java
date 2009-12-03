@@ -11,7 +11,11 @@ import actions.RandomAdd;
 import actions.Remove;
 import actions.Update;
 import model.GameModel;
-
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public class Brick extends Actor
 {
 

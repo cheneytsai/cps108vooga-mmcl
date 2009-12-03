@@ -4,7 +4,11 @@ package actors;
 import java.awt.Dimension;
 import java.awt.Point;
 import model.GameModel;
-
+/**
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
 public class Wall extends Actor
 {
     private static int numberOfWalls = 0;

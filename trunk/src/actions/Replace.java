@@ -6,7 +6,7 @@ import actors.Grid;
 
 /**
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 public class Replace implements Action {

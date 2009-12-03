@@ -6,7 +6,7 @@ import actors.Actor;
 
 /**
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 public class Add implements Action
