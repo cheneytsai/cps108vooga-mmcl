@@ -27,8 +27,6 @@ public class FallingPiece extends Actor {
         loadBehavior();
 
         numberOfFallingPieces++;
-//        System.out.println("CREATED!");
-
         
     }
 

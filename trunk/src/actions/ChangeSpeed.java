@@ -3,6 +3,12 @@ package actions;
 import actors.Actor;
 import actors.PhysicsVector;
 
+/**
+ * 
+ * @author meganheysham
+ *
+ */
+
 public class ChangeSpeed implements Action{
     private double mySpeed;
     

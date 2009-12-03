@@ -9,11 +9,19 @@ import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import conditions.NumberOf;
+
 import model.GameModel;
 
 import actors.Actor;
 import actors.FallingPiece;
 import actors.Grid;
+
+/**
+ * 
+ * @author meganheysham
+ *
+ */
 
 public class AddPiece implements Action {
 
@@ -31,22 +39,16 @@ public class AddPiece implements Action {
     }
 
     public void execute(Actor... actors) {
-        boolean addOne = true;
         boolean gameOver = false;
-//        boolean a =
-        for (Actor a : myModel.getActors()) {
-            if (a instanceof FallingPiece) {
-                addOne = false;
-            } else {
+            
                 for (int i = 0; i < Grid.getGridSize().width; i++) {
                     if (Grid.getState(i, 0)) {
-                        addOne = false;
                         gameOver = true;
                     }
                 }
-            }
 
-        }
+
+       
 
         if (gameOver) {
             System.out.println("You lost Tetris!");
@@ -54,7 +56,7 @@ public class AddPiece implements Action {
 
         }
 
-        if (addOne) {
+        else if (new NumberOf(myModel, FallingPiece.class.getName(), 0).evaluate()) {
             System.out.println("added one");
             String number = myResources.getString("NumberOfPieces");
             int random = myRandom.nextInt(Integer.parseInt(number));
