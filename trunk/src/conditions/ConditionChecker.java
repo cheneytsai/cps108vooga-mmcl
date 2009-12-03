@@ -11,7 +11,6 @@ import utilities.CollisionChecker;
 
 import actions.Action;
 import actors.Actor;
-import actors.Brick;
 
 public abstract class ConditionChecker {
     

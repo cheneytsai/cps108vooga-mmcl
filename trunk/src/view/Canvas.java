@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import util.resources.ResourceManager;
 import model.GameModel;
 
 @SuppressWarnings("serial")

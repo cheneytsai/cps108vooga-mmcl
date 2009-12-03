@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 import model.ArkanoidModel;
-import model.GameModel;
 import model.TetrisModel;
 
 import actions.Quit;
