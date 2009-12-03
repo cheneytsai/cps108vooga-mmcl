@@ -1,5 +1,9 @@
 package model;
 
+import javax.swing.JOptionPane;
+
+import actors.Grid;
+
 import conditions.TetrisConditions;
 import view.Canvas;
 
@@ -24,6 +28,19 @@ public class TetrisModel extends GameModel {
             myPreviousKey = myLastKeyPressed;
             super.update(myLastKeyPressed);
         }
+    }
+    
+    public void lose(){
+        JOptionPane.showMessageDialog(myCanvas, "GAME OVER!");
+    }
+    
+    public boolean gameOver(){
+        for (int i = 0; i < Grid.getGridSize().width; i++) {
+            if (Grid.getState(i, 0)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

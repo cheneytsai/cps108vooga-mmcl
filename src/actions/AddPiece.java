@@ -7,8 +7,6 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-
 import util.reflection.Reflection;
 
 import conditions.NumberOf;
@@ -16,7 +14,6 @@ import conditions.NumberOf;
 import model.GameModel;
 
 import actors.Actor;
-import actors.Grid;
 
 /**
  * 
@@ -40,21 +37,10 @@ public class AddPiece implements Action {
     }
 
     public void execute(Actor... actors) {
-        boolean gameOver = false;
-            
-                for (int i = 0; i < Grid.getGridSize().width; i++) {
-                    if (Grid.getState(i, 0)) {
-                        gameOver = true;
-                    }
-                }
 
-
-       
-
-        if (gameOver) {
-            JOptionPane.showMessageDialog(myModel.myCanvas, "GAME OVER!");
-
-        }
+      if(myModel.gameOver()){
+        myModel.lose();
+    }
 
         else if (new NumberOf(myModel, myResources.getString("PieceClass"), 0).evaluate()) {
             String number = myResources.getString("NumberOfPieces");
