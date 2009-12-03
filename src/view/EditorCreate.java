@@ -6,12 +6,17 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -29,10 +34,12 @@ public class EditorCreate extends JFrame
     private JButton myButton;
     private String[] actorStats;
     private String[] statAppend;
+    private Actor myActor;
     private GameModel myGameModel;
     private JTextField myField;
     private JTextField[] myDimPoint;
     private JComboBox myBox;
+    private JCheckBox myCheckBox;
     
     public EditorCreate(GameModel model, String levelName, Actor actor, 
                         String image, int xDim, int yDim, 
@@ -44,15 +51,17 @@ public class EditorCreate extends JFrame
         String toAppend = "Actor Type: ,Image Location: ,x Dimension: ,y Dimension: ,x Value: ,y Value: ";
         statAppend = toAppend.split(",");
         myGameModel = model;
+        myActor = actor;
         
         JPanel p = new JPanel();
         p.setLayout(new GridLayout(7,1));
-        if(actor == null)
-        {
-            p.add(actorChooser(levelName));
-        }
+        p.add(actorChooser(levelName));
         p.add(setImage(image));
         p.add(setDimPoint(xDim,yDim,x,y));
+        if(actor != null)
+        {
+            p.add(setDeleteOption());
+        }
         p.add(makeButton(levelName));
         getContentPane().add(p,BorderLayout.NORTH);
 
@@ -64,25 +73,17 @@ public class EditorCreate extends JFrame
     
     private JComponent actorChooser(String levelName)
     {
-        try
-        {
-            Scanner input = new Scanner(new File(ResourceManager.getString(
-                    levelName.substring(0,levelName.indexOf("level"))+"Main")));
-            input.nextLine();
-            String[] classNames = input.nextLine().split(" ")[0].split(",");
-            
-            myBox = new JComboBox(classNames);
-        }
-        catch(FileNotFoundException e)
-        {
-            System.out.println(e);
-        }
+        String[] classNames = ResourceManager.getString(levelName.substring(0,
+                levelName.indexOf("level"))+"Editables").split(",");
+       
+        myBox = new JComboBox(classNames);
+       
         return myBox;
     }
     
     private JComponent setImage(String name)
     {
-        myField = new JTextField(30);
+        myField = new JTextField(50);
         
         myField.setText(statAppend[1]+name);
         
@@ -103,6 +104,14 @@ public class EditorCreate extends JFrame
             panel.add(myDimPoint[i]);
         }
         return panel;
+    }
+    
+    private JComponent setDeleteOption()
+    {
+        myCheckBox = new JCheckBox("Delete Old Actor?");
+        myCheckBox.setSelected(false);
+        
+        return myCheckBox;
     }
     
     private JComponent makeButton(final String levelName)
@@ -128,11 +137,6 @@ public class EditorCreate extends JFrame
             actorStats[i+2] = myDimPoint[i].getText();
         }
         
-        createInstance(levelName);
-    }
-    
-    public void createInstance(String levelName)
-    {
         for(int i = 0; i < actorStats.length; i++)
         {
             if(actorStats[i].contains(statAppend[i]))
@@ -141,6 +145,16 @@ public class EditorCreate extends JFrame
             }
         }
         
+        createInstance(levelName);
+    }
+    
+    public void createInstance(String levelName)
+    {
+        if(myCheckBox != null && myCheckBox.isSelected())
+        {
+            deleteOldActor(levelName);
+        }
+
         //TODO add catches for illformatting
         myGameModel.addActor((Actor) Reflection.createInstance(
                 "actors."+actorStats[0],
@@ -154,6 +168,58 @@ public class EditorCreate extends JFrame
             output.append("\nactors."+actorStats[0]+" "+actorStats[1]+" "+actorStats[2]+" "
                         +actorStats[3]+" "+actorStats[4]+" "+actorStats[5]);
             output.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        catch (IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void deleteOldActor(String levelName)
+    {
+        int matchingIndex = myGameModel.getActors().size();
+        for(int i = 0; i < myGameModel.getActors().size(); i++)
+        {
+            if(myGameModel.getActors().get(i).equals(myActor))
+            {
+                matchingIndex = i;
+                break;
+            }
+        }
+        myGameModel.remove(myActor);
+        
+        try
+        {
+            File inFile = new File(ResourceManager.getString(levelName));
+
+            //Construct the new file that will later be renamed to the original filename. 
+            File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
+            
+            BufferedReader br = new BufferedReader(new FileReader(inFile));
+            PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+            
+            String line = null;
+
+            //Read from the original file and write to the new 
+            //unless content matches data to be removed.
+            int lineCount = 0;
+            while ((line = br.readLine()) != null) {
+              lineCount++;
+              if (lineCount != matchingIndex + 1) {
+
+                pw.println(line);
+                pw.flush();
+              }
+            }
+            pw.close();
+            br.close();
+            
+            inFile.delete();
+            tempFile.renameTo(inFile);
         }
         catch (FileNotFoundException e)
         {

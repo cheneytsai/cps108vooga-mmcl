@@ -22,6 +22,7 @@ public abstract class Actor {
     
     protected GameModel myModel;                        // Model
     private Image myImage;                              // Image
+    private String myImageString;
     private Area myShape;                               // Bounding Shape
     protected AffineTransform myXform;                  // Transform
     private Point myPosition;                           // Position
@@ -115,14 +116,15 @@ public abstract class Actor {
         return myVelocity;
     }
     
-    public Image getImage()
+    public String getImageString()
     {
-        return myImage;
+        return myImageString;
     }
     
     public void setImage(String newImage)
     {
         myImage = new ImageIcon(newImage).getImage();
+        myImageString = newImage;
     }
     
     public void remove()

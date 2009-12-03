@@ -29,10 +29,13 @@ public class EditorCanvas extends LevelViewer
                 Actor match = null;
                 for(Actor current : myActors)
                 {
-                    if(e.getPoint().equals(current.getCenter()))
+                    if(e.getX() >= current.getLeft() && e.getX() <= current.getRight())
                     {
-                        match = current;
-                        break;
+                        if(e.getY() >= current.getTop() && e.getY() <= current.getBottom())
+                        {
+                            match = current;
+                            break;
+                        }
                     }
                 }
                 
@@ -45,11 +48,11 @@ public class EditorCanvas extends LevelViewer
                 }
                 else
                 {
-                    new EditorCreate(myGameModel,getGameName()+"level"+myLevelNum,match,match.getImage().toString(),
+//                    System.out.println(match.getImage().toString());//sun.awt.image.ToolkitImage@df8ff1
+                    new EditorCreate(myGameModel,getGameName()+"level"+myLevelNum,match,match.getImageString(),
                             match.getSize().width, match.getSize().height,
-                            e.getX(),e.getY());
+                            (int)match.getPosition().getX(),(int)match.getPosition().getY());
                 }
-                 
             }
         };
         return myMouseAdapter;

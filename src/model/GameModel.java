@@ -49,6 +49,7 @@ public class GameModel {
             }
         }
         // Set Flag for movement here
+
         myConditions.checkConditions();
         for (int k = 0; k < myActorList.size(); k++) {
             myActorList.get(k).hasMoved = false;
