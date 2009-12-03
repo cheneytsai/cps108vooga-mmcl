@@ -33,6 +33,7 @@ public class GameModel {
     public GameModel(Canvas canvas) {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
+        gameOver = false;
     }
     public void update(String myLastKeyPressed) 
     {
@@ -95,10 +96,12 @@ public class GameModel {
         } 
         catch (FileNotFoundException e) 
         {
+            //gameOver = true;
             System.out.println("File not found");
         }
         catch(MissingResourceException e)
         {
+            //gameOver = true;
             if(!myCanvas.getGameName().equals("Win"))
             {
                 myCanvas.loadEnd();
@@ -119,7 +122,7 @@ public class GameModel {
     }
 
     public void updateScore(int i) {
-        // TODO: Generalize this into something that can update any game state
+        // TODO: Generalize this into something that can update any game state (make a map of info name -> values)
         myCanvas.updateScore(i);
     }
     
@@ -143,7 +146,11 @@ public class GameModel {
     
     public void setGameOver(boolean toSet)
     {
-        gameOver = toSet;
+        gameOver = false;
+    }
+    public void win() {
+        
+        myCanvas.loadEnd();
     }
 
 }
