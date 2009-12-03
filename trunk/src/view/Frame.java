@@ -5,6 +5,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import model.GameModel;
 
 import actions.Quit;
 import util.resources.ResourceManager;
@@ -18,6 +19,7 @@ public class Frame extends JFrame
     public Frame()
     {
         myCanvas = new Canvas();
+        
         myCanvas.setActive(new GameChooser(myCanvas));
 //        myCanvas.setActive(new Menu("MMCL", myCanvas));
         setSize(mySize);

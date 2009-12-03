@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import model.GameModel;
 
 @SuppressWarnings("serial")
 public class Canvas extends JPanel {
@@ -14,6 +15,7 @@ public class Canvas extends JPanel {
 
     protected Canvas myCanvas;
     private Canvas myActive;
+    protected GameModel myGameModel;
     // private Menu active;
     protected int myScore;
     protected static final Font TITLE_FONT = new Font("TAHOMA", Font.BOLD, 75);
@@ -26,7 +28,7 @@ public class Canvas extends JPanel {
     public Canvas() {
         // myCanvas = this;
         setSize(mySize);
-
+        myGameModel = new GameModel(this);
     }
 
     public void paintComponent(Graphics g) {
@@ -39,6 +41,7 @@ public class Canvas extends JPanel {
 
     public void setActive(Canvas toUse) {
         myActive = toUse;
+        myGameModel.newView(myActive);
     }
 
     public String getGameName() {
@@ -64,5 +67,9 @@ public class Canvas extends JPanel {
 
     public boolean isGameInProgress() {
         return myActive != null && getGameName() != null;
+    }
+    
+    protected GameModel getGameModel() {
+        return myGameModel;
     }
 }

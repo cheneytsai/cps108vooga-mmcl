@@ -18,7 +18,6 @@ public class GameMenu extends Canvas
     public GameMenu(String gameName, Canvas canvas)
     {
         myCanvas = canvas;
-        myCanvas.removeAll();
         myCanvas.setActive(this);
 
         if (myCanvas.getMouseListeners().length > 0)
