@@ -93,4 +93,9 @@ public class Canvas extends JPanel {
     public void loadEnd()
     {
     }
+    
+    public int getWinIncrement()
+    {
+        return 0;
+    }
 }
