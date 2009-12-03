@@ -36,6 +36,7 @@ public class GameModel {
     public GameModel(Canvas canvas) {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
+
     }
     public void update(String myLastKeyPressed) 
     {

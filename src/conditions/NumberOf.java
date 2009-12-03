@@ -18,7 +18,6 @@ public class NumberOf implements Condition {
         numberOf = number;
         System.out.println(myType);
     }
-    @Override
     public boolean evaluate() {
         int total = 0;
         List<Actor> actors = myModel.getActors();

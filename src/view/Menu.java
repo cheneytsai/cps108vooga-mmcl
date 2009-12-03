@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -20,7 +21,8 @@ import util.resources.ResourceManager;
 /**
  * This will be used instead of GameChooser and LevelViewer
  * Ultimate goal: read in menu options and actions from a file.
- * @author meganheysham
+ * 
+ * @author Megan Heysham
  *
  */
 
@@ -37,6 +39,8 @@ public class Menu extends Canvas{
     {
         myName = name;
         myFile = "src/resources/" + myName + ".menu";
+        myOptions = new TreeMap<String, Point>();
+        fillOptions();
         myCanvas = canvas;
         myCanvas.removeAll();
         myCanvas.setActive(this);
@@ -48,8 +52,6 @@ public class Menu extends Canvas{
         }
         myCanvas.addMouseListener(mouseListener());
         
-//        icon = new ImageIcon(ResourceManager.getString(myName));
-
         myCanvas.repaint();
         
     }
@@ -58,7 +60,6 @@ public class Menu extends Canvas{
         try {
             Scanner s = new Scanner(new File(myFile));
             myBackground = s.nextLine();
-            myTextColor = new Color(s.nextInt(), s.nextInt(), s.nextInt());
             while(s.hasNext()){
                 myOptions.put(s.next(),new Point(s.nextInt(),s.nextInt()));
             }
@@ -81,8 +82,7 @@ public class Menu extends Canvas{
 
         // Draw Title
         myPen.setFont(TITLE_FONT);
-        myPen.drawString(ResourceManager.getString(myName), myCanvas.getWidth() - AVG_PIXELS_PER_LETTER
-                * myName.length() / 2, 100);
+        myPen.drawString(ResourceManager.getString(myName), 100, 100);
 
         // Draw Options
         myPen.setFont(OPTION_FONT);
