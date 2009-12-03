@@ -52,7 +52,10 @@ public abstract class ConditionChecker {
         for (Condition c : myConditions.keySet())
         {
             if (c.evaluate())
+            {
+
                 myConditions.get(c).execute();
+            }
         }
     }
     

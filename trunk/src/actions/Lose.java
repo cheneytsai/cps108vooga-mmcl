@@ -12,6 +12,6 @@ public class Lose implements Action
     }
     public void execute(Actor... actors) 
     {
-        myModel.resetBall();
+        myModel.lose();
     }
 }
