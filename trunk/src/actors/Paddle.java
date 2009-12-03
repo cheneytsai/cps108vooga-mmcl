@@ -11,6 +11,7 @@ import model.GameModel;
 
 public class Paddle extends Actor {
     private static int numberOfPaddles = 0;
+    
     public Paddle(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
         numberOfPaddles++;
@@ -35,7 +36,7 @@ public class Paddle extends Actor {
     }
     public void remove()
     {
-     numberOfPaddles--;
-     super.remove();
+        numberOfPaddles--;
+        super.remove();
     }
 }

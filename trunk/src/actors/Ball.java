@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import util.resources.ResourceManager;
 
 import actions.Action;
 import actions.Bounce;
@@ -18,6 +19,11 @@ public class Ball extends Actor {
     public Ball(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
         numberOfBalls++;
+    }
+    
+    public Ball(Point position, GameModel model)
+    {
+        super(ResourceManager.getString("BallImage"),new Dimension(16,16),position,model);
     }
 
     @Override
