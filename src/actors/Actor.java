@@ -46,8 +46,8 @@ public abstract class Actor {
         setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
-        myVelocity = new PhysicsVector(new Direction(-1, -1), 10);
-        myAcceleration = new PhysicsVector(new Direction(0, 0), 0);
+        myVelocity = new PhysicsVector(new Direction(-1, -1), 10); //TODO: Make these parameters or something
+        myAcceleration = new PhysicsVector(new Direction(0, 0), 0); //This only works right now because ball is the only moving actor
         myKeyEvents = new HashMap<String, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
