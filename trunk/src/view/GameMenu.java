@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import actions.Quit;
@@ -42,7 +41,7 @@ public class GameMenu extends Canvas
 
         // Set Pen
         Graphics2D myPen = (Graphics2D) pen;
-        myPen.setColor(Color.BLUE);
+        myPen.setColor(Color.BLACK);
 
         // Draw Title
         myPen.setFont(TITLE_FONT);
