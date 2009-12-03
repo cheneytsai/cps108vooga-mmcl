@@ -133,6 +133,6 @@ public class LevelViewer extends Canvas implements ActionListener
     
     public void loadEnd()
     {
-        new EndView("Win",myScore,myCanvas);
+        new EndView("Win",myGameName,myScore,myCanvas);
     }
 }
