@@ -4,6 +4,11 @@ package actions;
 import model.GameModel;
 import actors.Actor;
 
+/**
+ * 
+ * @author meganheysham
+ *
+ */
 public class Update implements Action {
 
     private GameModel myModel;

@@ -4,6 +4,11 @@ import util.reflection.Reflection;
 import model.GameModel;
 import actors.Actor;
 
+/**
+ * 
+ * @author meganheysham
+ *
+ */
 public class Add implements Action
 {
     GameModel myModel;

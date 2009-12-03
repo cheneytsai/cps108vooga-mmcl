@@ -3,6 +3,11 @@ package actions;
 
 import actors.*;
 
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public interface Action
 {
 

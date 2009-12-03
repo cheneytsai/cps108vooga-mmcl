@@ -4,6 +4,11 @@ import java.awt.Point;
 
 import actors.Actor;
 
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public class NaturalMove implements Action {
 
     public void execute(Actor... actors) {

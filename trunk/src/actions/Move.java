@@ -5,6 +5,11 @@ import java.awt.Point;
 import actors.Actor;
 import actors.PhysicsVector;
 
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public class Move implements Action {
     
     private PhysicsVector myVelocity;
