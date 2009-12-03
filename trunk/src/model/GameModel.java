@@ -86,12 +86,14 @@ public class GameModel {
                                                                             +myCanvas.getLevelNum())));
 
             while (input.hasNextLine()) {
+
                 addActor((Actor) Reflection.createInstance(input.next(), input
                         .next(),
                         new Dimension(input.nextInt(), input.nextInt()),
                         new Point(input.nextInt(), input.nextInt()), this));
             }
-        } catch (FileNotFoundException e) 
+        } 
+        catch (FileNotFoundException e) 
         {
             System.out.println("File not found");
         }
