@@ -16,14 +16,17 @@ import actions.Rotate;
 
 import model.GameModel;
 
+/**
+ * 
+ * @author meganheysham
+ *
+ */
 public class FallingPiece extends Actor {
     
-    private String myCurrentImageName;
     private static int numberOfFallingPieces = 0;
     public FallingPiece(String image, Dimension size, Point position, GameModel gameModel) {
         super(image, size, position, gameModel);
         setVelocity(new PhysicsVector(new Direction(0,1), 5));
-        myCurrentImageName = image;
         loadBehavior();
 
         numberOfFallingPieces++;
@@ -61,12 +64,6 @@ public class FallingPiece extends Actor {
         
     }
     
-    public String getCurrentImageName(){
-        return myCurrentImageName;
-    }
-    public void setCurrentImageName(String image){
-        myCurrentImageName = image;
-    }
     public void remove()
     {
      numberOfFallingPieces--;
