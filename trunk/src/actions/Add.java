@@ -15,7 +15,6 @@ public class Add implements Action
         myActorType = actor;
     }
     
-    @Override
     public void execute(Actor... actors)
     {
         myModel.addActor((Actor) Reflection.createInstance(myActorType,actors[0].getPosition(),myModel));        
