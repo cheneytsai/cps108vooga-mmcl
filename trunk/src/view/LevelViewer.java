@@ -36,7 +36,7 @@ public class LevelViewer extends Canvas implements ActionListener
         myCanvas.setActive(this);
         myCanvas.requestFocus();
         myGameModel = canvas.getGameModel();
-        
+
         if (myCanvas.getMouseListeners().length > 0)
         {
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
@@ -133,6 +133,6 @@ public class LevelViewer extends Canvas implements ActionListener
     
     public void loadEnd()
     {
-        new LevelViewer("Win",1,myScore,myCanvas);
+        new EndView("Win",myScore,myCanvas);
     }
 }
