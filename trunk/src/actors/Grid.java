@@ -7,16 +7,19 @@ import model.GameModel;
 
 public class Grid extends Actor {
     
-    private static boolean[][] myStates;
+//    private static boolean[][] myStates;
     private static Marker[][] myPositions;
-//    private static GameModel myModel;
+    private static Block[][] myBlocks;
+    private static GameModel myModel;
     private static Dimension gridSize;
     
     private static int numberOfGrids = 0;
     public Grid(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
-        myStates = new boolean[size.width][size.height];
+//        myStates = new boolean[size.width][size.height];
         myPositions = new Marker[size.width][size.height];
+        myBlocks = new Block[size.width][size.height];
+        myModel = model;
         numberOfGrids++;
         for(int i = 0; i<myPositions.length; i++){
             for(int j = 0; j < myPositions[i].length; j++){
@@ -46,7 +49,8 @@ public class Grid extends Actor {
     }
     
     public static boolean getState(int i, int j){
-        return myStates[i][j];
+//        return myStates[i][j];
+        return myBlocks[i][j]!=null;
     }
 
     public static Dimension getGridSize(){
@@ -54,14 +58,43 @@ public class Grid extends Actor {
     }
     
     public static void addBlock(int i, int j){
-         myStates[i][j] = true;
+//         myStates[i][j] = true;
+         Block newBlock = new Block("src/images/tetrisblock.gif", new Dimension(26,26), Grid.getMarker(i, j).getPosition(), myModel);
+         myBlocks[i][j] = newBlock;
+         myModel.addActor(newBlock);
     }
     public void remove()
     {
         numberOfGrids--;
      super.remove();
     }
-
+    public static void removeFullRows(){
+        int numberInRow;
+//        int numberRowsRemoved = 0;
+        for(int i = 0; i<gridSize.height;i++){
+            numberInRow = 0;
+            for(int j = 0; j<gridSize.width;j++){
+                if(myBlocks[j][i]!=null){
+                    numberInRow++;
+                }
+            }
+            if(numberInRow == gridSize.width){
+//                numberRowsRemoved++;
+                for(int j = 0; j<gridSize.width;j++){
+                        myBlocks[j][i].remove();
+                        myBlocks[j][i] = null;
+                        for(int k = i; k>0;k--){
+                            
+                            myBlocks[j][k] = myBlocks[j][k-1];
+                            if(myBlocks[j][k]!=null)
+                            myBlocks[j][k].setPosition(Grid.getMarker(j, k).getPosition());
+                        }
+                    }
+                
+                
+            }
+        }
+    }
 
 
 }

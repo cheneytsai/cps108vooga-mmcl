@@ -21,10 +21,11 @@ public class Replace implements Action {
             for(int j = 0; j < Grid.getGridSize().height; j++){
                 if(CollisionChecker.collide(actors[0], Grid.getMarker(i,j))){
                     Grid.addBlock(i,j);
-                    myModel.addActor(new Block("src/images/tetrisblock.gif", new Dimension(26,26), Grid.getMarker(i, j).getPosition(), myModel));
+                    
                 }
             }
         }
+        Grid.removeFullRows();
         
 //        for(int i = Grid.getGridSize().height-1;i>0;i++)
 //        {

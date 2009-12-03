@@ -12,6 +12,7 @@ import model.GameModel;
 
 import actors.Actor;
 import actors.FallingPiece;
+import actors.Grid;
 
 public class AddPiece implements Action {
     
@@ -29,10 +30,20 @@ public class AddPiece implements Action {
 
     public void execute(Actor... actors) {
         boolean addOne = true;
+        boolean gameOver = false;
         for(Actor a: myModel.getActors()){
             if(a instanceof FallingPiece){
                 addOne = false;
             }
+            for(int i = 0; i < Grid.getGridSize().width; i++){
+                if(Grid.getState(i, 0)){
+                    addOne = false;
+                    gameOver = true;
+                }
+            }
+        }
+        if(gameOver){
+//            myModel.clearActors();
         }
 //        System.out.println(addOne);
         if(addOne){
