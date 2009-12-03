@@ -11,7 +11,7 @@ public class Grid extends Actor {
     
     private static boolean[][] myStates;
     private static Marker[][] myPositions;
-    private static GameModel myModel;
+//    private static GameModel myModel;
     private static Dimension gridSize;
     
     private static int numberOfGrids = 0;
