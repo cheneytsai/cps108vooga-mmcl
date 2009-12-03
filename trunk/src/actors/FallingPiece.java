@@ -19,18 +19,20 @@ import model.GameModel;
 /**
  * 
  * @author Megan Heysham
- *
+ * 
  */
 public class FallingPiece extends Actor {
-    
+
     private static int numberOfFallingPieces = 0;
-    public FallingPiece(String image, Dimension size, Point position, GameModel gameModel) {
+
+    public FallingPiece(String image, Dimension size, Point position,
+            GameModel gameModel) {
         super(image, size, position, gameModel);
-        setVelocity(new PhysicsVector(new Direction(0,1), 5));
+        setVelocity(new PhysicsVector(new Direction(0, 1), 5));
         loadBehavior();
 
         numberOfFallingPieces++;
-        
+
     }
 
     @Override
@@ -52,22 +54,21 @@ public class FallingPiece extends Actor {
         stop.add(new ChangeSpeed(0));
         stop.add(new Replace());
         stop.add(new Remove());
-        stop.add(new AddPiece(myModel.myCanvas.getGameName(),myModel));
+        stop.add(new AddPiece(myModel.myCanvas.getGameName(), myModel));
         myInteractions.put(BottomWall.class.getCanonicalName(), stop);
         myInteractions.put(Block.class.getCanonicalName(), stop);
         List<Action> rightWall = new ArrayList<Action>();
-        rightWall.add(new Move(new PhysicsVector(new Direction(-1,0),26)));
+        rightWall.add(new Move(new PhysicsVector(new Direction(-1, 0), 26)));
         myInteractions.put(Wall.class.getCanonicalName(), rightWall);
         List<Action> leftWall = new ArrayList<Action>();
-        leftWall.add(new Move(new PhysicsVector(new Direction(1,0),26)));
+        leftWall.add(new Move(new PhysicsVector(new Direction(1, 0), 26)));
         myInteractions.put(LeftWall.class.getCanonicalName(), leftWall);
-        
+
     }
-    
-    public void remove()
-    {
-     numberOfFallingPieces--;
-     super.remove();
+
+    public void remove() {
+        numberOfFallingPieces--;
+        super.remove();
     }
 
 }

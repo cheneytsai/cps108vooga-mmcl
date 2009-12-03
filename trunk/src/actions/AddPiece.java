@@ -18,7 +18,7 @@ import actors.Actor;
 /**
  * 
  * @author Megan Heysham
- *
+ * 
  */
 
 public class AddPiece implements Action {
@@ -36,13 +36,17 @@ public class AddPiece implements Action {
         myModel = model;
     }
 
+    /**
+     * Randomly creates a new actor from the resource file
+     */
     public void execute(Actor... actors) {
 
-      if(myModel.gameOver()){
-        myModel.lose();
-    }
+        if (myModel.gameOver()) {
+            myModel.lose();
+        }
 
-        else if (new NumberOf(myModel, myResources.getString("PieceClass"), 0).evaluate()) {
+        else if (new NumberOf(myModel, myResources.getString("PieceClass"), 0)
+                .evaluate()) {
             String number = myResources.getString("NumberOfPieces");
             int random = myRandom.nextInt(Integer.parseInt(number));
             String image = myResources.getString("" + random);
@@ -50,10 +54,12 @@ public class AddPiece implements Action {
             Dimension size = new Dimension(newImage.getWidth(null), newImage
                     .getHeight(null));
             if (size.width % 52 == 0)
-                myModel.addActor((Actor)Reflection.createInstance(myResources.getString("PieceClass"),image, size, new Point(493,
+                myModel.addActor((Actor) Reflection.createInstance(myResources
+                        .getString("PieceClass"), image, size, new Point(493,
                         size.height / 2), myModel));
             else
-                myModel.addActor((Actor)Reflection.createInstance(myResources.getString("PieceClass"), image, size, new Point(480,
+                myModel.addActor((Actor) Reflection.createInstance(myResources
+                        .getString("PieceClass"), image, size, new Point(480,
                         size.height / 2), myModel));
         }
     }

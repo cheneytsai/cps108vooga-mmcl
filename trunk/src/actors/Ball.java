@@ -12,21 +12,22 @@ import actions.NaturalMove;
 import actions.Remove;
 
 import model.GameModel;
+
 /**
  * 
  * @author Michael Yu
- *
+ * 
  */
 public class Ball extends Actor {
 
     public Ball(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
- 
+
     }
-    
-    public Ball(Point position, GameModel model)
-    {
-        super(ResourceManager.getString("BallImage"),new Dimension(16,16),position,model);
+
+    public Ball(Point position, GameModel model) {
+        super(ResourceManager.getString("BallImage"), new Dimension(16, 16),
+                position, model);
     }
 
     @Override
@@ -44,10 +45,9 @@ public class Ball extends Actor {
         myInteractions.put(BottomWall.class.getCanonicalName(), bottomWall);
 
     }
-    
-    public void remove()
-    {
-     super.remove();
+
+    public void remove() {
+        super.remove();
     }
 
 }

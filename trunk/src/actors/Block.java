@@ -8,11 +8,12 @@ import model.GameModel;
 /**
  * 
  * @author Megan Heysham
- *
+ * 
  */
 public class Block extends Actor {
 
     private static int numberOfBlocks = 0;
+
     public Block(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
         numberOfBlocks++;
@@ -23,10 +24,10 @@ public class Block extends Actor {
         // Blocks sit and do nothing
 
     }
-    public void remove()
-    {
-    numberOfBlocks--;
-     super.remove();
+
+    public void remove() {
+        numberOfBlocks--;
+        super.remove();
     }
 
 }

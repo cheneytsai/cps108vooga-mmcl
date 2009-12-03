@@ -1,4 +1,5 @@
 package view;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
@@ -9,17 +10,15 @@ import actions.Quit;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
-public class Frame extends JFrame
-{
+public class Frame extends JFrame {
     private Dimension mySize = new Dimension(960, 720);
     private Canvas myCanvas;
 
-    public Frame()
-    {
+    public Frame() {
         myCanvas = new Canvas();
-        
+
         myCanvas.setActive(new GameChooser(myCanvas));
-//        myCanvas.setActive(new Menu("Title", myCanvas));
+        // myCanvas.setActive(new Menu("Title", myCanvas));
         setSize(mySize);
         setPreferredSize(mySize);
 
@@ -33,41 +32,31 @@ public class Frame extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-
-    private JMenuBar makeMenu()
-    {
+    private JMenuBar makeMenu() {
         JMenuBar menu = new JMenuBar();
         JMenu fileMenu = new JMenu(ResourceManager.getString("File"));
 
-        fileMenu.add(new AbstractAction(ResourceManager.getString("NewGame"))
-        {
-            public void actionPerformed(ActionEvent ev)
-            {
-                if(myCanvas.isGameInProgress())
-                {
+        fileMenu.add(new AbstractAction(ResourceManager.getString("NewGame")) {
+            public void actionPerformed(ActionEvent ev) {
+                if (myCanvas.isGameInProgress()) {
                     new GameMenu(myCanvas.getGameName(), myCanvas);
                 }
             }
         });
         fileMenu.add(new AbstractAction(ResourceManager
-                .getString("Instructions"))
-        {
-            public void actionPerformed(ActionEvent ev)
-            {
-                //Will display instructions for the current game
+                .getString("Instructions")) {
+            public void actionPerformed(ActionEvent ev) {
+                // Will display instructions for the current game
             }
         });
-        fileMenu.add(new AbstractAction(ResourceManager.getString("HighScores"))
-        {
-            public void actionPerformed(ActionEvent ev)
-            {
-               // Will display high score for the current game
-            }
-        });
-        fileMenu.add(new AbstractAction(ResourceManager.getString("Quit"))
-        {
-            public void actionPerformed(ActionEvent ev)
-            {
+        fileMenu
+                .add(new AbstractAction(ResourceManager.getString("HighScores")) {
+                    public void actionPerformed(ActionEvent ev) {
+                        // Will display high score for the current game
+                    }
+                });
+        fileMenu.add(new AbstractAction(ResourceManager.getString("Quit")) {
+            public void actionPerformed(ActionEvent ev) {
                 new Quit().execute();
             }
         });

@@ -10,24 +10,22 @@ import actions.RandomAdd;
 import actions.Remove;
 import actions.Update;
 import model.GameModel;
+
 /**
  * 
  * @author Michael Yu
- *
+ * 
  */
-public class Brick extends Actor
-{
+public class Brick extends Actor {
 
     public Brick(String string, Dimension dimension, Point point,
-            GameModel gameModel)
-    {
-        super(string,dimension,point,gameModel);
+            GameModel gameModel) {
+        super(string, dimension, point, gameModel);
 
     }
 
     @Override
-    protected void loadBehavior()
-    {
+    protected void loadBehavior() {
         List<Action> ball = new ArrayList<Action>();
         ball.add(new Remove());
         ball.add(new RandomAdd(myModel));

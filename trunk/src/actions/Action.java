@@ -7,17 +7,17 @@ import actors.*;
 /**
  * 
  * @author Michael Yu
- *
+ * 
  */
-public interface Action
-{
+public interface Action {
     Random myRand = new Random();
 
     /**
-     * Execute associated action on given actor
-     * The actor calling the Action should be the first argument
+     * Execute associated action on given actor The actor calling the Action
+     * should be the first argument
+     * 
      * @param a
      */
-    public void execute(Actor...actors);
+    public void execute(Actor... actors);
 
 }
