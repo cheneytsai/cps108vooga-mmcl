@@ -109,20 +109,15 @@ public class Menu extends Canvas{
                    if (e.getX() > myOptions.get(option).x
                            && e.getX() < myOptions.get(option).x + option.length()*AVG_PIXELS_PER_LETTER)
                    {
-                       if (e.getY() > myOptions.get(option).y && e.getY() < myOptions.get(option).y + 50)
+                       if (e.getY() < myOptions.get(option).y && e.getY() > myOptions.get(option).y - OPTION_FONT.getSize())
                        {
-                           //Something needs to go here
+                           System.out.println(option);
                        }
                    }
                }
             }
         };
         return myMouseAdapter;
-    }
-    
-    public String getName()
-    {
-        return myName;
     }
 
 }

@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 
 import model.ArkanoidModel;
 import model.GameModel;
+import model.TetrisModel;
 
 import actions.Quit;
 import util.resources.ResourceManager;
@@ -85,7 +86,7 @@ public class GameChooser extends Canvas
                     }
                     else if(e.getY() > 400 && e.getY() < 450)
                     {
-                        myCanvas.setGame(new GameModel(myCanvas));
+                        myCanvas.setGame(new TetrisModel(myCanvas));
                         new GameMenu("Tetris", myCanvas);
                     }
                     else if (e.getY() > 500 && e.getY() < 550)
