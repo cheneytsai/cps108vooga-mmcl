@@ -32,7 +32,7 @@ public class EditorCreate extends JFrame
     private JTextField[] myDimPoint;
     private JComboBox myBox;
     
-    public EditorCreate(GameModel model, Actor actor, 
+    public EditorCreate(GameModel model, String levelName, Actor actor, 
                         String image, int xDim, int yDim, 
                         int x, int y)
     {
@@ -51,7 +51,7 @@ public class EditorCreate extends JFrame
         }
         p.add(setImage(image));
         p.add(setDimPoint(xDim,yDim,x,y));
-        p.add(makeButton());
+        p.add(makeButton(levelName));
         getContentPane().add(p,BorderLayout.NORTH);
 
         setSize(mySize);
@@ -94,21 +94,21 @@ public class EditorCreate extends JFrame
         return panel;
     }
     
-    private JComponent makeButton()
+    private JComponent makeButton(final String levelName)
     {
         myButton = new JButton(ResourceManager.getString("LevelEditButton"));
         myButton.addActionListener(new ActionListener() 
         {
             public void actionPerformed(ActionEvent e) 
             {
-                setStats();
+                setStats(levelName);
             }
         });
         
         return myButton;
     }
     
-    public void setStats()
+    public void setStats(String levelName)
     {
         actorStats[0] = (String) myBox.getSelectedItem();
         actorStats[1] = myField.getText();
@@ -117,10 +117,10 @@ public class EditorCreate extends JFrame
             actorStats[i+2] = myDimPoint[i].getText();
         }
         
-        createInstance();
+        createInstance(levelName);
     }
     
-    public void createInstance()
+    public void createInstance(String levelName)
     {
         for(int i = 0; i < actorStats.length; i++)
         {
@@ -139,7 +139,7 @@ public class EditorCreate extends JFrame
                 myGameModel));
         try
         {
-            FileWriter output = new FileWriter("src/resources/arkanoid/level1.level",true);
+            FileWriter output = new FileWriter(ResourceManager.getString(levelName),true);
             output.append("\nactors."+actorStats[0]+" "+actorStats[1]+" "+actorStats[2]+" "
                         +actorStats[3]+" "+actorStats[4]+" "+actorStats[5]);
             output.close();

@@ -49,8 +49,8 @@ public class Canvas extends JPanel {
         return myActive.getGameName();
     }
     
-    public String getLevelName() {
-        return null;
+    public int getLevelNum() {
+        return 0;
     }
 
     public MouseListener mouseListener() {

@@ -7,10 +7,11 @@ import actors.Actor;
 @SuppressWarnings("serial")
 public class EditorCanvas extends LevelViewer
 {  
-    public EditorCanvas(String gameName, String levelName, int score, Canvas canvas)
+    public EditorCanvas(String gameName, int levelNum, int score, Canvas canvas)
     {
-        super(gameName, levelName, score, canvas);
+        super(gameName, levelNum, score, canvas);
 
+        myLevelNum = levelNum;
         myCanvas.removeKeyListener(myCanvas.getKeyListeners()[0]);
         myCanvas.addMouseListener(mouseListener());
     }
@@ -39,11 +40,12 @@ public class EditorCanvas extends LevelViewer
 //              else,be able to update that object
                 if(match == null)
                 {
-                    new EditorCreate(myGameModel,null,"src/images/Paddle.gif",20,20,e.getX(),e.getY());
+                    new EditorCreate(myGameModel,getGameName()+"level"+myLevelNum,null,"src/images/Paddle.gif",
+                            20,20,e.getX(),e.getY());
                 }
                 else
                 {
-                    new EditorCreate(myGameModel,match,match.getImage().toString(),
+                    new EditorCreate(myGameModel,getGameName()+"level"+myLevelNum,match,match.getImage().toString(),
                             match.getSize().width, match.getSize().height,
                             e.getX(),e.getY());
                 }
