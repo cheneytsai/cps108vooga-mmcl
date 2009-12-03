@@ -31,9 +31,7 @@ public abstract class CollisionChecker {
 
     protected static Area getIntersectionArea(Actor a, Actor b) {
         Dimension size = a.getSize();
-        // System.out.println(size);
         Dimension otherSize = b.getSize();
-        // System.out.println(otherSize);
         double max = Math.max(size.getWidth(), size.getHeight())
                 + Math.max(otherSize.getWidth(), otherSize.getHeight());
         if (a.getCenter().distance(b.getCenter()) < max / 2) {

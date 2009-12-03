@@ -51,10 +51,10 @@ public abstract class Actor {
         myPosition = position;
         myModel = model;
         myVelocity = new PhysicsVector(new Direction(-1, -1), 10); // TODO: Make
-                                                                   // these
-                                                                   // parameters
-                                                                   // or
-                                                                   // something
+        // these
+        // parameters
+        // or
+        // something
         myKeyEvents = new HashMap<String, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
@@ -249,7 +249,6 @@ public abstract class Actor {
      */
     public int getLeft() {
         return getPosition().x - getSize().width / 2;
-        // return getPosition().x;
     }
 
     /**
@@ -257,7 +256,6 @@ public abstract class Actor {
      */
     public int getTop() {
         return getPosition().y - getSize().height / 2;
-        // return getPosition().y;
     }
 
     /**
@@ -265,7 +263,6 @@ public abstract class Actor {
      */
     public int getRight() {
         return getPosition().x + getSize().width / 2;
-        // return getPosition().x + getSize().width;
     }
 
     /**
@@ -275,7 +272,6 @@ public abstract class Actor {
      */
     public int getBottom() {
         return getPosition().y + getSize().height / 2;
-        // return getPosition().y + getSize().height;
     }
 
     public Point2D getCenter() {
