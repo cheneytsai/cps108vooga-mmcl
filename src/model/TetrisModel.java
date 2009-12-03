@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.Point;
-
 import conditions.TetrisConditions;
 import view.Canvas;
 
