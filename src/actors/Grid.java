@@ -57,7 +57,6 @@ public class Grid extends Actor {
     }
     
     public static void addBlock(int i, int j){
-//         myStates[i][j] = true;
         if(myBlocks[i][j]==null){
          Block newBlock = new Block("src/images/tetrisblock.gif", new Dimension(26,26), Grid.getMarker(i, j).getPosition(), myModel);
          myBlocks[i][j] = newBlock;

@@ -22,12 +22,12 @@ public class FallingPiece extends Actor {
     private static int numberOfFallingPieces = 0;
     public FallingPiece(String image, Dimension size, Point position, GameModel gameModel) {
         super(image, size, position, gameModel);
-        setVelocity(new PhysicsVector(new Direction(0,1), 5));
+        setVelocity(new PhysicsVector(new Direction(0,1), 10));
         myCurrentImageName = image;
         loadBehavior();
 
         numberOfFallingPieces++;
-        System.out.println("CREATED!");
+//        System.out.println("CREATED!");
 
         
     }

@@ -23,6 +23,7 @@ public class Block extends Actor {
     {
     numberOfBlocks--;
      super.remove();
+     System.out.println("removed block");
     }
 
 }
