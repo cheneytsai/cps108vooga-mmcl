@@ -39,8 +39,7 @@ public class EditorCanvas extends LevelViewer {
                             + myLevelNum, null, "src/images/Paddle.gif", 20,
                             20, e.getX(), e.getY());
                 } else {
-                    //System.out.println(match.getImage().toString());//sun.awt.
-                    // image.ToolkitImage@df8ff1
+
                     new EditorCreate(myGameModel, getGameName() + "level"
                             + myLevelNum, match, match.getImageString(), match
                             .getSize().width, match.getSize().height,

@@ -22,7 +22,6 @@ public class Bounce implements Action {
                 || CollisionChecker.intersects(b, new Point(a.getPosition().x,
                         a.getBottom()))) {
 
-            // System.out.println("Y");
             a.setVelocity(new PhysicsVector(new Direction(origDirection
                     .xShift(), origDirection.yShift() * -1), origMagnitude));
         }
@@ -31,7 +30,6 @@ public class Bounce implements Action {
                 .getPosition().y))
                 || CollisionChecker.intersects(b, new Point(a.getRight(), a
                         .getPosition().y))) {
-            // System.out.println("X");
             a.setVelocity(new PhysicsVector(new Direction(origDirection
                     .xShift()
                     * -1, origDirection.yShift()), origMagnitude));

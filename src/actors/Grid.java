@@ -26,7 +26,6 @@ public class Grid extends Actor {
 
     public Grid(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
-        // myStates = new boolean[size.width][size.height];
         myPositions = new Marker[size.width][size.height];
         myBlocks = new Block[size.width][size.height];
         myModel = model;
