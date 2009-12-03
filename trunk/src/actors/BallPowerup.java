@@ -7,10 +7,8 @@ import java.util.List;
 import util.resources.ResourceManager;
 import actions.Action;
 import actions.Add;
-import actions.Bounce;
 import actions.Direction;
 import actions.Move;
-import actions.NaturalMove;
 import actions.Remove;
 import model.GameModel;
 

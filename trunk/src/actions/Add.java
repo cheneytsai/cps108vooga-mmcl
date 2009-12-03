@@ -3,7 +3,6 @@ package actions;
 import util.reflection.Reflection;
 import model.GameModel;
 import actors.Actor;
-import actors.BallPowerup;
 
 public class Add implements Action
 {
