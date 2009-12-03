@@ -1,20 +1,21 @@
 package actions;
 
-import java.awt.Dimension;
+import java.util.ResourceBundle;
+
 import utilities.CollisionChecker;
-import model.GameModel;
 import actors.Actor;
-import actors.Block;
 import actors.Grid;
 
 public class Replace implements Action {
-
-    private GameModel myModel;
     
-    public Replace(GameModel model) {
+//    private String myImageName;
+//    private ResourceBundle myReplacements;
 
-        myModel = model;
-    }
+//    public Replace(String image, String gameName) {
+//        myImageName = image;
+//        myReplacements = ResourceBundle.getBundle("resources." + gameName + "Replacements");    
+
+//    }
 
     public void execute(Actor... actors) {
         for(int i = 0; i<Grid.getGridSize().width; i++){
@@ -25,33 +26,7 @@ public class Replace implements Action {
                 }
             }
         }
-        Grid.removeFullRows();
-        
-//        for(int i = Grid.getGridSize().height-1;i>0;i++)
-//        {
-//        Marker mark = new Marker("src/images/brick6.gif", new Dimension(Grid.getGridSize().width*26,1), new Point(480,(Grid.getGridSize().height*i)*26-13), myModel);
-//            int count = 0;
-//            for(Actor a: myModel.getActors()){
-//                if(CollisionChecker.collide(mark, a)){
-//                    count++;
-//                }
-//            }
-//            if(count==Grid.getGridSize().width){
-////                new RemoveRow(i);
-//            }
-//        }
-//        for(int i = Grid.getGridSize().height - 1; i>0; i--){
-//        
-//            int count = 0;
-//            for(int j = 0; j < Grid.getGridSize().width; j++){
-//                if(Grid.getState(j,i)){
-//                    count++;
-//                }
-//            }
-//            if(count==Grid.getGridSize().width)
-//                new RemoveRow(i).execute();
-//        }
-        
+        Grid.removeFullRowsAndDrop();
     }
 
 }

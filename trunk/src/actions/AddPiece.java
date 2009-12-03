@@ -7,6 +7,9 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+import util.resources.ResourceManager;
 
 import model.GameModel;
 
@@ -35,7 +38,7 @@ public class AddPiece implements Action {
             if(a instanceof FallingPiece){
                 addOne = false;
             }
-            for(int i = 0; i < Grid.getGridSize().width; i++){
+            for(int i = 6; i < 10; i++){
                 if(Grid.getState(i, 0)){
                     addOne = false;
                     gameOver = true;
@@ -43,16 +46,20 @@ public class AddPiece implements Action {
             }
         }
         if(gameOver){
-//            myModel.clearActors();
+            for(int i = 0;i<Grid.getGridSize().width;i++){
+                for(int j = 0;j<Grid.getGridSize().height;j++){
+                    if(!Grid.getState(i, j)){
+                        Grid.addBlock(i, j);
+                    }
+                }
+            }
+            
         }
-//        System.out.println(addOne);
+        
         if(addOne){
         String number = myResources.getString("NumberOfPieces");
-//        System.out.println("Number of pieces = " + number);
         int random = myRandom.nextInt(Integer.parseInt(number));
-//        System.out.println("Random number = " + random);
         String image = myResources.getString(""+random);
-//        System.out.println("Piece is: " + image.charAt(17));
         Image newImage = new ImageIcon(image).getImage();
         Dimension size = new Dimension(newImage.getWidth(null),newImage.getHeight(null));
         if(size.width%52==0)
