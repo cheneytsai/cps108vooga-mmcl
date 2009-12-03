@@ -9,12 +9,13 @@ import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import util.reflection.Reflection;
+
 import conditions.NumberOf;
 
 import model.GameModel;
 
 import actors.Actor;
-import actors.FallingPiece;
 import actors.Grid;
 
 /**
@@ -55,7 +56,7 @@ public class AddPiece implements Action {
 
         }
 
-        else if (new NumberOf(myModel, FallingPiece.class.getName(), 0).evaluate()) {
+        else if (new NumberOf(myModel, myResources.getString("PieceClass"), 0).evaluate()) {
             String number = myResources.getString("NumberOfPieces");
             int random = myRandom.nextInt(Integer.parseInt(number));
             String image = myResources.getString("" + random);
@@ -63,10 +64,10 @@ public class AddPiece implements Action {
             Dimension size = new Dimension(newImage.getWidth(null), newImage
                     .getHeight(null));
             if (size.width % 52 == 0)
-                myModel.addActor(new FallingPiece(image, size, new Point(493,
+                myModel.addActor((Actor)Reflection.createInstance(myResources.getString("PieceClass"),image, size, new Point(493,
                         size.height / 2), myModel));
             else
-                myModel.addActor(new FallingPiece(image, size, new Point(480,
+                myModel.addActor((Actor)Reflection.createInstance(myResources.getString("PieceClass"), image, size, new Point(480,
                         size.height / 2), myModel));
         }
     }
