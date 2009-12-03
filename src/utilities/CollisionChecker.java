@@ -12,12 +12,11 @@ public abstract class CollisionChecker {
 
         Actor a = movedActor;
 
-
         for (int i = actors.size() - 1; i >= 0; i--) {
             if (i < actors.size()) {
                 Actor b = actors.get(i);
                 if (collide(a, b)) {
-//                     if(intersect(a,b)){
+                    // if(intersect(a,b)){
                     a.interact(b);
                     b.interact(a);
                 }
@@ -34,7 +33,7 @@ public abstract class CollisionChecker {
         Dimension size = a.getSize();
         // System.out.println(size);
         Dimension otherSize = b.getSize();
-//        System.out.println(otherSize);
+        // System.out.println(otherSize);
         double max = Math.max(size.getWidth(), size.getHeight())
                 + Math.max(otherSize.getWidth(), otherSize.getHeight());
         if (a.getCenter().distance(b.getCenter()) < max / 2) {
@@ -67,8 +66,8 @@ public abstract class CollisionChecker {
      * this shape.
      */
     public static boolean intersects(Actor a, Point pt) {
-        return (a.getLeft() < pt.x && pt.x < a.getRight()
-                && a.getTop() < pt.y && pt.y < a.getBottom());
+        return (a.getLeft() < pt.x && pt.x < a.getRight() && a.getTop() < pt.y && pt.y < a
+                .getBottom());
     }
 
     // private static boolean intersects (Actor a, Actor b)

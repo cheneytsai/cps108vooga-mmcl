@@ -5,7 +5,7 @@ import actors.Actor;
 /**
  * 
  * @author Megan Heysham
- *
+ * 
  */
 
 public class Quit implements Action {

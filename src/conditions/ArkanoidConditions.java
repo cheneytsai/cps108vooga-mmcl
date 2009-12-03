@@ -14,8 +14,10 @@ public class ArkanoidConditions extends ConditionChecker {
 
     @Override
     protected void loadConditions() {
-        myConditions.put(new NumberOf(myModel, Brick.class.getName(), 0), new NextLevel(myModel));
-        myConditions.put(new NumberOf(myModel, Ball.class.getName(), 0), new Lose(myModel));
+        myConditions.put(new NumberOf(myModel, Brick.class.getName(), 0),
+                new NextLevel(myModel));
+        myConditions.put(new NumberOf(myModel, Ball.class.getName(), 0),
+                new Lose(myModel));
     }
 
 }

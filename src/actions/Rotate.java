@@ -4,10 +4,11 @@ import java.awt.Point;
 import java.util.ResourceBundle;
 
 import actors.Actor;
+
 /**
  * 
  * @author Megan Heysham
- *
+ * 
  */
 public class Rotate implements Action {
 
@@ -19,8 +20,7 @@ public class Rotate implements Action {
     }
 
     public void execute(Actor... actors) {
-        String newImage = myRotations.getString(actors[0]
-                .getImageString());
+        String newImage = myRotations.getString(actors[0].getImageString());
         actors[0].setImage(newImage);
         actors[0].setImage(newImage);
         int height = (int) actors[0].getSize().getHeight();

@@ -12,41 +12,36 @@ import util.resources.ResourceManager;
  * @author Lisa Gutermuth
  */
 @SuppressWarnings("serial")
-public class EndView extends Canvas
-{
-    public EndView(String endCondition,String gameName,int score,Canvas canvas)
-    {
+public class EndView extends Canvas {
+    public EndView(String endCondition, String gameName, int score,
+            Canvas canvas) {
         myCanvas = canvas;
         myScore = score;
         myCanvas.setActive(this);
-        
-        icon = new ImageIcon(ResourceManager.getString(endCondition+ ".background"));
-        
+
+        icon = new ImageIcon(ResourceManager.getString(endCondition
+                + ".background"));
+
         myGameModel.setGameOver(true);
         saveScores(gameName);
     }
-    
-    public void paintComponent(Graphics pen)
-    {
+
+    public void paintComponent(Graphics pen) {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
     }
-    
-    public void saveScores(String gameName)
-    {
-        String name = (String) JOptionPane.showInputDialog(ResourceManager.getString("Name"),null);
 
-        try
-        {
-            FileWriter output = new FileWriter(ResourceManager.getString(gameName+"Scores"),true);
-            output.append(name +"\t\t"+myScore);
+    public void saveScores(String gameName) {
+        String name = (String) JOptionPane.showInputDialog(ResourceManager
+                .getString("Name"), null);
+
+        try {
+            FileWriter output = new FileWriter(ResourceManager
+                    .getString(gameName + "Scores"), true);
+            output.append(name + "\t\t" + myScore);
             output.close();
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }

@@ -29,14 +29,13 @@ public class GameModel {
     private boolean gameOver;
     protected ConditionChecker myConditions;
 
-
     public GameModel(Canvas canvas) {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
         gameOver = false;
     }
-    public void update(String myLastKeyPressed) 
-    {
+
+    public void update(String myLastKeyPressed) {
         hotkeyCheck(myLastKeyPressed);
         for (int k = 0; k < myActorList.size(); k++) {
             Point tempPos = myActorList.get(k).getPosition();
@@ -55,26 +54,23 @@ public class GameModel {
     }
 
     /**
-     * This is a cheat for testing purposes.  It makes it so the tester
-     * can easily jump to the next level.
+     * This is a cheat for testing purposes. It makes it so the tester can
+     * easily jump to the next level.
      * 
      * @param myLastKeyPressed
      */
-    private void hotkeyCheck(String myLastKeyPressed)
-    {
-        if(myLastKeyPressed != null && myLastKeyPressed.equalsIgnoreCase("l"))
-        {
+    private void hotkeyCheck(String myLastKeyPressed) {
+        if (myLastKeyPressed != null && myLastKeyPressed.equalsIgnoreCase("l")) {
             loadNextLevel();
         }
     }
 
-    public void loadNextLevel()
-    {
+    public void loadNextLevel() {
         myCanvas.loadNextLevel();
     }
 
     public void lose() {
-       
+
     }
 
     public void clearActors() {
@@ -83,8 +79,9 @@ public class GameModel {
 
     private void initializeActors() {
         try {
-            Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName()+"level"
-                                                                            +myCanvas.getLevelNum())));
+            Scanner input = new Scanner(new File(ResourceManager
+                    .getString(myCanvas.getGameName() + "level"
+                            + myCanvas.getLevelNum())));
 
             while (input.hasNextLine()) {
 
@@ -93,17 +90,12 @@ public class GameModel {
                         new Dimension(input.nextInt(), input.nextInt()),
                         new Point(input.nextInt(), input.nextInt()), this));
             }
-        } 
-        catch (FileNotFoundException e) 
-        {
-            //gameOver = true;
+        } catch (FileNotFoundException e) {
+            // gameOver = true;
             System.out.println("File not found");
-        }
-        catch(MissingResourceException e)
-        {
-            //gameOver = true;
-            if(!myCanvas.getGameName().equals("Win"))
-            {
+        } catch (MissingResourceException e) {
+            // gameOver = true;
+            if (!myCanvas.getGameName().equals("Win")) {
                 myCanvas.loadEnd();
             }
         }
@@ -122,35 +114,32 @@ public class GameModel {
     }
 
     public void updateScore(int i) {
-        // TODO: Generalize this into something that can update any game state (make a map of info name -> values)
+        // TODO: Generalize this into something that can update any game state
+        // (make a map of info name -> values)
         myCanvas.updateScore(i);
     }
-    
+
     public void newView(Canvas canvas) {
         gameOver = true;
-        if(myActorList != null)
-        {
+        if (myActorList != null) {
             myActorList.clear();
         }
         myCanvas = canvas;
-        if(canvas instanceof LevelViewer || canvas instanceof EditorCanvas)
-        {
+        if (canvas instanceof LevelViewer || canvas instanceof EditorCanvas) {
             initializeActors();
-        }    
+        }
     }
-    
-    public boolean gameOver()
-    {
+
+    public boolean gameOver() {
         return gameOver;
     }
-    
-    public void setGameOver(boolean toSet)
-    {
+
+    public void setGameOver(boolean toSet) {
         gameOver = false;
     }
-    
+
     public void win() {
-        
+
         myCanvas.loadEnd();
     }
 

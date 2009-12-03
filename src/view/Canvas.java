@@ -22,8 +22,7 @@ public class Canvas extends JPanel {
     protected static final Font OPTION_FONT = new Font("TAHOMA", Font.BOLD, 40);
     protected static final Font SCOREBOARD_FONT = new Font("TAHOMA",
             Font.PLAIN, 20);
-    protected static final Font END_FONT = new Font("TAHOMA",
-            Font.PLAIN, 60);
+    protected static final Font END_FONT = new Font("TAHOMA", Font.PLAIN, 60);
     protected static final int AVG_PIXELS_PER_LETTER = 30;
     protected ImageIcon icon;
 
@@ -31,11 +30,10 @@ public class Canvas extends JPanel {
         // myCanvas = this;
         setSize(mySize);
         myGameModel = new GameModel(this);
-      
+
     }
-    
-    public void setGame(GameModel model)
-    {
+
+    public void setGame(GameModel model) {
         myGameModel = model;
     }
 
@@ -56,7 +54,7 @@ public class Canvas extends JPanel {
 
         return myActive.getGameName();
     }
-    
+
     public int getLevelNum() {
         return 0;
     }
@@ -80,16 +78,14 @@ public class Canvas extends JPanel {
     public boolean isGameInProgress() {
         return myActive != null && getGameName() != null;
     }
-    
+
     protected GameModel getGameModel() {
         return myGameModel;
     }
-    
-    public void loadNextLevel()
-    {
+
+    public void loadNextLevel() {
     }
-    
-    public void loadEnd()
-    {
+
+    public void loadEnd() {
     }
 }
