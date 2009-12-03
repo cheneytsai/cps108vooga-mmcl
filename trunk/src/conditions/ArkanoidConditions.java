@@ -10,7 +10,6 @@ public class ArkanoidConditions extends ConditionChecker {
 
     public ArkanoidConditions(GameModel model) {
         super(model);
-        // TODO Auto-generated constructor stub
     }
 
     @Override

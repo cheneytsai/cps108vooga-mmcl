@@ -19,7 +19,6 @@ public class LeftWall extends Wall {
         
         super(string, dimension, point, gameModel);
         numberOfLeftWalls++;
-        // TODO Auto-generated constructor stub
     }
     public void remove()
     {
