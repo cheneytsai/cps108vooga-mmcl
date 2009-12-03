@@ -19,7 +19,6 @@ public class GameChooser extends Canvas
     public GameChooser(Canvas canvas)
     {
         myCanvas = canvas;
-        myCanvas.removeAll();
         myCanvas.setActive(this);
 
         if (myCanvas.getMouseListeners().length > 0)

@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
@@ -21,7 +23,7 @@ import util.resources.ResourceManager;
 public class LevelViewer extends Canvas implements ActionListener
 {
     private String myGameName;
-    protected GameModel myGameModel;
+//    protected GameModel myGameModel;
     protected List<Actor> myActors;
     protected String myLastKeyPressed;
     protected String myLevelName;
@@ -31,14 +33,14 @@ public class LevelViewer extends Canvas implements ActionListener
     
     public LevelViewer(String gameName, String levelName, int score, Canvas canvas)
     {
-
         myCanvas = canvas;
         myGameName = gameName;
         myLevelName = levelName;
         myScore = score;
-        myCanvas.removeAll();
         myCanvas.setActive(this);
         myCanvas.requestFocus();
+        myGameModel = canvas.getGameModel();
+//        myActors = new ArrayList<Actor>();
         
         if (myCanvas.getMouseListeners().length > 0)
         {
@@ -61,15 +63,13 @@ public class LevelViewer extends Canvas implements ActionListener
         
         icon = new ImageIcon(ResourceManager.getString(levelName+ ".background"));
 
-        myCanvas.repaint(); 
+        myCanvas.repaint();         
         
-        myGameModel = new GameModel(this);
         myActors = myGameModel.getActors();
         Timer timer = new Timer(DEFAULT_DELAY, this);
         timer.start();
 
         update();
-
     }
 
     public void update()
