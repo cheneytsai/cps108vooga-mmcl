@@ -12,3 +12,4 @@ actors.Wall src/images/brick3.gif 960 16 480 -5
 actors.LeftWall src/images/brick3.gif 16 720 -5 360
 actors.Wall src/images/brick3.gif 16 720 965 360
 actors.BottomWall src/images/brick3.gif 960 16 480 725
+actors.Paddle src/images/Paddle.gif 20 20 342 180

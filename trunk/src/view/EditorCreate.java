@@ -6,9 +6,11 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -47,7 +49,7 @@ public class EditorCreate extends JFrame
         p.setLayout(new GridLayout(7,1));
         if(actor == null)
         {
-            p.add(actorChooser());
+            p.add(actorChooser(levelName));
         }
         p.add(setImage(image));
         p.add(setDimPoint(xDim,yDim,x,y));
@@ -60,12 +62,21 @@ public class EditorCreate extends JFrame
         setVisible(true);
     }
     
-    private JComponent actorChooser()
+    private JComponent actorChooser(String levelName)
     {
-        String[] classNames = {"Ball","Brick","Paddle"};
-        
-        myBox = new JComboBox(classNames);
-        
+        try
+        {
+            Scanner input = new Scanner(new File(ResourceManager.getString(
+                    levelName.substring(0,levelName.indexOf("level"))+"Main")));
+            input.nextLine();
+            String[] classNames = input.nextLine().split(" ")[0].split(",");
+            
+            myBox = new JComboBox(classNames);
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println(e);
+        }
         return myBox;
     }
     

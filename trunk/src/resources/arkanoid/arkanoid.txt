@@ -1,0 +1,3 @@
+4 #The addition to allow players to win at this time.
+Ball,Brick,Paddle #The items that can be added in the level editor.
+

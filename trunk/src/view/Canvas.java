@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import util.resources.ResourceManager;
 import model.GameModel;
 
 @SuppressWarnings("serial")
@@ -22,6 +23,8 @@ public class Canvas extends JPanel {
     protected static final Font OPTION_FONT = new Font("TAHOMA", Font.BOLD, 40);
     protected static final Font SCOREBOARD_FONT = new Font("TAHOMA",
             Font.PLAIN, 20);
+    protected static final Font END_FONT = new Font("TAHOMA",
+            Font.PLAIN, 60);
     protected static final int AVG_PIXELS_PER_LETTER = 30;
     protected ImageIcon icon;
 
@@ -79,6 +82,14 @@ public class Canvas extends JPanel {
     
     public void loadNextLevel()
     {
-        
+    }
+    
+    public void loadEnd()
+    {
+    }
+    
+    public int createWinIncrement()
+    {
+        return 0;
     }
 }

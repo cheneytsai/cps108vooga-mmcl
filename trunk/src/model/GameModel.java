@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.MissingResourceException;
 import java.util.Scanner;
 
 import conditions.ConditionChecker;
@@ -17,6 +18,7 @@ import util.reflection.*;
 import util.resources.ResourceManager;
 import actors.Actor;
 import actors.Ball;
+import actors.Brick;
 
 /**
  * 
@@ -28,6 +30,7 @@ public class GameModel {
     private List<Actor> myActorList;
     public Canvas myCanvas;
     private boolean gameOver;
+    int winIncrement;
 
     public GameModel() {
     }
@@ -35,12 +38,12 @@ public class GameModel {
     public GameModel(Canvas canvas) {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
-//        initializeActors();
     }
 
     public void update(String myLastKeyPressed) 
     {
         int stationary = myActorList.size();
+        hotkeyCheck(myLastKeyPressed);
         for (int k = 0; k < myActorList.size(); k++) {
             Point tempPos = myActorList.get(k).getPosition();
             myActorList.get(k).act(myLastKeyPressed);
@@ -53,7 +56,7 @@ public class GameModel {
             }
         }
         // Set Flag for movement here
-        if(stationary+4 == myActorList.size())
+        if(stationary+winIncrement == myActorList.size())
         {
             loadNextLevel();
         }
@@ -62,6 +65,20 @@ public class GameModel {
             myActorList.get(k).hasMoved = false;
         }
         // Reset All to no movement
+    }
+
+    /**
+     * This is a cheat for testing purposes.  It makes it so the tester
+     * can easily jump to the next level.
+     * 
+     * @param myLastKeyPressed
+     */
+    private void hotkeyCheck(String myLastKeyPressed)
+    {
+        if(myLastKeyPressed != null && myLastKeyPressed.equalsIgnoreCase("l"))
+        {
+            loadNextLevel();
+        }
     }
 
     private void loadNextLevel()
@@ -82,7 +99,6 @@ public class GameModel {
     private void initializeActors() {
         // TODO: Make this read in through a file -> add new levels
         try {
-            System.out.println(myCanvas.getLevelNum());
             Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName()+"level"
                                                                             +myCanvas.getLevelNum())));
 
@@ -92,8 +108,16 @@ public class GameModel {
                         new Dimension(input.nextInt(), input.nextInt()),
                         new Point(input.nextInt(), input.nextInt()), this));
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) 
+        {
             System.out.println("File not found");
+        }
+        catch(MissingResourceException e)
+        {
+            if(!myCanvas.getGameName().equals("Win"))
+            {
+                myCanvas.loadEnd();
+            }
         }
     }
 
@@ -124,6 +148,7 @@ public class GameModel {
         if(canvas instanceof LevelViewer || canvas instanceof EditorCanvas)
         {
             initializeActors();
+            winIncrement = myCanvas.createWinIncrement();
         }    
     }
     
