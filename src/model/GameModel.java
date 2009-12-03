@@ -82,7 +82,9 @@ public class GameModel {
     private void initializeActors() {
         // TODO: Make this read in through a file -> add new levels
         try {
-            Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getLevelName())));
+            System.out.println(myCanvas.getLevelNum());
+            Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName()+"level"
+                                                                            +myCanvas.getLevelNum())));
 
             while (input.hasNextLine()) {
                 addActor((Actor) Reflection.createInstance(input.next(), input

@@ -25,18 +25,19 @@ public class LevelViewer extends Canvas implements ActionListener
     private String myGameName;
     protected List<Actor> myActors;
     protected String myLastKeyPressed;
-    protected String myLevelName;
+    protected int myLevelNum;
     private Timer myTimer;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25;  // in milliseconds
 
     
-    public LevelViewer(String gameName, String levelName, int score, Canvas canvas)
+    public LevelViewer(String gameName, int levelNum, int score, Canvas canvas)
     {
         myCanvas = canvas;
         myGameName = gameName;
-        myLevelName = levelName;
+        myLevelNum = levelNum;
         myScore = score;
+        System.out.println(myLevelNum);
         myCanvas.setActive(this);
         myCanvas.requestFocus();
         myGameModel = canvas.getGameModel();
@@ -98,9 +99,9 @@ public class LevelViewer extends Canvas implements ActionListener
         return myGameName;
     }
     
-    public String getLevelName()
+    public int getLevelNum()
     {
-        return myLevelName;
+        return myLevelNum;
     }
     
     
@@ -129,8 +130,8 @@ public class LevelViewer extends Canvas implements ActionListener
     
     public void loadNextLevel()
     {
-        System.out.println("loadnew");
         myTimer.stop();
-        new LevelViewer(myGameName,myGameName+"level2",myScore,myCanvas);
+        myLevelNum++;
+        new LevelViewer(myGameName,myLevelNum,myScore,myCanvas);
     }
 }
