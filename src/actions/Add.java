@@ -11,12 +11,12 @@ import actors.Actor;
  */
 public class Add implements Action
 {
-    GameModel myModel;
     String myActorType;
-
+    GameModel myModel;
+    
     public Add(GameModel model, String actor) {
-        myModel = model;
         myActorType = actor;
+        myModel = model;
     }
     
     public void execute(Actor... actors)
