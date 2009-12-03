@@ -5,7 +5,7 @@ import actors.Actor;
 
 public class Lose implements Action
 {
-    private GameModel myModel;
+    protected GameModel myModel;
     public Lose(GameModel model)
     {
         myModel = model;

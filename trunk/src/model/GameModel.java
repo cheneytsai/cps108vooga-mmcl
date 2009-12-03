@@ -31,6 +31,7 @@ public class GameModel {
     public Canvas myCanvas;
     private boolean gameOver;
     int winIncrement;
+    private ConditionChecker myConditions;
 
     public GameModel() {
     }
@@ -38,6 +39,7 @@ public class GameModel {
     public GameModel(Canvas canvas) {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
+        myConditions = new ConditionChecker(this);
     }
 
     public void update(String myLastKeyPressed) 
@@ -60,7 +62,7 @@ public class GameModel {
         {
             loadNextLevel();
         }
-        ConditionChecker.checkConditions(myActorList, this);
+        myConditions.checkConditions();
         for (int k = 0; k < myActorList.size(); k++) {
             myActorList.get(k).hasMoved = false;
         }
@@ -81,7 +83,7 @@ public class GameModel {
         }
     }
 
-    private void loadNextLevel()
+    public void loadNextLevel()
     {
         myCanvas.loadNextLevel();
     }
