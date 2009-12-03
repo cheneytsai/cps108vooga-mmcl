@@ -52,7 +52,6 @@ public abstract class ConditionChecker {
         {
             if (c.evaluate())
             {
-
                 myConditions.get(c).execute();
             }
         }
