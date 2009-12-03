@@ -4,8 +4,6 @@ import java.awt.Point;
 import java.util.ResourceBundle;
 
 import actors.Actor;
-import actors.FallingPiece;
-
 /**
  * 
  * @author meganheysham
@@ -21,10 +19,10 @@ public class Rotate implements Action {
     }
 
     public void execute(Actor... actors) {
-        String newImage = myRotations.getString(((FallingPiece) actors[0])
+        String newImage = myRotations.getString(actors[0]
                 .getImageString());
         actors[0].setImage(newImage);
-        ((FallingPiece) actors[0]).setImage(newImage);
+        actors[0].setImage(newImage);
         int height = (int) actors[0].getSize().getHeight();
         int width = (int) actors[0].getSize().getWidth();
         actors[0].setSize(height, width);
