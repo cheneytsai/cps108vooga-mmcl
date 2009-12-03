@@ -13,6 +13,7 @@ import java.util.MissingResourceException;
 import java.util.Scanner;
 
 import conditions.ConditionChecker;
+import conditions.TetrisConditions;
 
 import util.reflection.*;
 import util.resources.ResourceManager;
