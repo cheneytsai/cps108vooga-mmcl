@@ -44,7 +44,7 @@ public class GameChooser extends Canvas
 
         // Set Pen
         Graphics2D myPen = (Graphics2D) pen;
-        myPen.setColor(Color.BLUE);
+        myPen.setColor(Color.BLACK);
 
         // Draw Title
         myPen.setFont(TITLE_FONT);
