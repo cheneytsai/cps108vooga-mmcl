@@ -9,8 +9,6 @@ import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import util.resources.ResourceManager;
-
 import model.GameModel;
 
 import actors.Actor;

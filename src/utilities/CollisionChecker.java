@@ -4,10 +4,7 @@ package utilities;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.Area;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-
 import actors.Actor;
 
 public abstract class CollisionChecker {

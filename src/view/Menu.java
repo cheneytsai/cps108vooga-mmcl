@@ -8,7 +8,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Collections;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -19,7 +18,7 @@ import javax.swing.JOptionPane;
 import util.resources.ResourceManager;
 
 /**
- * This will be used instead of GameChooser and LevelViewer
+ * This will be used instead of GameChooser and GameMenu
  * Ultimate goal: read in menu options and actions from a file.
  * 
  * @author Megan Heysham
@@ -93,11 +92,6 @@ public class Menu extends Canvas{
 
         setOpaque(false);
     }
-    
-    public Map<String, Point> getOptionMap(){
-        return Collections.unmodifiableMap(myOptions);
-    }
-
 
     public MouseAdapter mouseListener()
     {
@@ -105,7 +99,7 @@ public class Menu extends Canvas{
         {
             public void mouseClicked(MouseEvent e)
             {
-               for(String option: getOptionMap().keySet()){
+               for(String option: myOptions.keySet()){
                    if (e.getX() > myOptions.get(option).x
                            && e.getX() < myOptions.get(option).x + option.length()*AVG_PIXELS_PER_LETTER)
                    {

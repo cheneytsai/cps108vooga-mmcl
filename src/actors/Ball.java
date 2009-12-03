@@ -7,7 +7,6 @@ import java.util.List;
 
 import actions.Action;
 import actions.Bounce;
-import actions.Lose;
 import actions.NaturalMove;
 import actions.Remove;
 
