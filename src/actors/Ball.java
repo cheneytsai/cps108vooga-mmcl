@@ -12,7 +12,11 @@ import actions.NaturalMove;
 import actions.Remove;
 
 import model.GameModel;
-
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public class Ball extends Actor {
 
     public Ball(String image, Dimension size, Point position, GameModel model) {

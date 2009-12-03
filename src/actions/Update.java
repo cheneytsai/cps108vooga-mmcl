@@ -6,7 +6,7 @@ import actors.Actor;
 
 /**
  * 
- * @author meganheysham
+ * @author Michael Yu
  *
  */
 public class Update implements Action {

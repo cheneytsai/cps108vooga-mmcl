@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import actors.Actor;
 /**
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 public class Rotate implements Action {

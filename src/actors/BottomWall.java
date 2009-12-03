@@ -3,7 +3,11 @@ package actors;
 import java.awt.Dimension;
 import java.awt.Point;
 import model.GameModel;
-
+/**
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
 public class BottomWall extends Actor
 {
     public static int numberOfBottomWalls = 0;

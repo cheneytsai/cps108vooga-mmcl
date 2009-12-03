@@ -6,7 +6,7 @@ import java.awt.Point;
 import model.GameModel;
 /**
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 public class Marker extends Actor {

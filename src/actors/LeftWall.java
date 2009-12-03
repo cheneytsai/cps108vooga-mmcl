@@ -8,7 +8,7 @@ import model.GameModel;
  * Until we have directional collision detection, this is our way of knowing
  * which way things should go when they hit side walls.
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 public class LeftWall extends Wall {

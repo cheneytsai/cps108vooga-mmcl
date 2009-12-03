@@ -5,7 +5,7 @@ import actors.PhysicsVector;
 
 /**
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 

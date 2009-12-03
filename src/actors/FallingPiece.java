@@ -18,7 +18,7 @@ import model.GameModel;
 
 /**
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 public class FallingPiece extends Actor {

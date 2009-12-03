@@ -2,7 +2,11 @@
 package actors;
 
 import actions.Direction;
-
+/**
+ * 
+ * @author Michael Yu
+ *
+ */
 public class PhysicsVector {
     private Direction myDirection;
     private double myMagnitude;

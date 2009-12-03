@@ -19,7 +19,7 @@ import actors.Grid;
 
 /**
  * 
- * @author meganheysham
+ * @author Megan Heysham
  *
  */
 

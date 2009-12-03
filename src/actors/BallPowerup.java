@@ -2,15 +2,18 @@ package actors;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.List;
 import util.resources.ResourceManager;
 import actions.Action;
 import actions.Add;
-import actions.Direction;
-import actions.Move;
-import actions.Remove;
 import model.GameModel;
+
+/**
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
+
 
 public class BallPowerup extends Powerup
 {
