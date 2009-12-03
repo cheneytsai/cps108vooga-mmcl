@@ -12,37 +12,40 @@ import actors.Brick;
 
 public class ConditionChecker {
     
-    static List<Actor> myActors;
+    private GameModel myModel;
+    private List<Actor> myActors;
+    public ConditionChecker(GameModel model)
+    {
+        myModel = model;
+    }
 
     
-    public static void checkConditions(List<Actor> actors, GameModel model) 
+    public void checkConditions() 
     {
-       /* if (Brick.getNumberOfBricks() == 0)
-        {
-            model.clearActors();
-            JOptionPane.showMessageDialog(model.myCanvas, "You win", "Game Over", 0);
-        }
-        */
-        int numBrick = Brick.getNumberOfBricks();
-       // myActors = actors;
+
+        myActors = myModel.getActors();
+        collisionCheck();
         
-//        List<Actor> movedActors;
-        for (int k = 0; k < actors.size(); k++)
+
+    }
+    
+    private void collisionCheck()
+    {
+        for (int k = 0; k < myActors.size(); k++)
         {
-            if(actors.get(k).hasMoved = true)
+            if(myActors.get(k).hasMoved = true)
             {
-              CollisionChecker.checkCollisions(actors.get(k), actors);  
+              CollisionChecker.checkCollisions(myActors.get(k), myActors);  
             }
         }
-        
-        if (Brick.getNumberOfBricks() < numBrick)
-        {
-
-        }
-
-        
-        //Check Conditions....includes Collisions
     }
+    
+    private void conditionsCheck()
+    {
+        
+    }
+    
+    
     
 
 }
