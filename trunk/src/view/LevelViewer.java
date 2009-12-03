@@ -23,10 +23,10 @@ import util.resources.ResourceManager;
 public class LevelViewer extends Canvas implements ActionListener
 {
     private String myGameName;
-//    protected GameModel myGameModel;
     protected List<Actor> myActors;
     protected String myLastKeyPressed;
     protected String myLevelName;
+    private Timer myTimer;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25;  // in milliseconds
 
@@ -40,7 +40,6 @@ public class LevelViewer extends Canvas implements ActionListener
         myCanvas.setActive(this);
         myCanvas.requestFocus();
         myGameModel = canvas.getGameModel();
-//        myActors = new ArrayList<Actor>();
         
         if (myCanvas.getMouseListeners().length > 0)
         {
@@ -61,20 +60,25 @@ public class LevelViewer extends Canvas implements ActionListener
                 }
             });
         
-        icon = new ImageIcon(ResourceManager.getString(levelName+ ".background"));
+        icon = new ImageIcon(ResourceManager.getString(myGameName+ "level.background"));
 
         myCanvas.repaint();         
         
         myActors = myGameModel.getActors();
-        Timer timer = new Timer(DEFAULT_DELAY, this);
-        timer.start();
-
+        myGameModel.setGameOver(false);
+        myTimer = new Timer(DEFAULT_DELAY, this);
+        myTimer.start();
+        
         update();
     }
 
     public void update()
     {
         myGameModel.update(myLastKeyPressed);
+        if(myGameModel.gameOver())
+        {
+            myTimer.stop();
+        }
     }
     
     public void paintComponent(Graphics pen)
@@ -92,6 +96,11 @@ public class LevelViewer extends Canvas implements ActionListener
     public String getGameName()
     {
         return myGameName;
+    }
+    
+    public String getLevelName()
+    {
+        return myLevelName;
     }
     
     
@@ -112,9 +121,16 @@ public class LevelViewer extends Canvas implements ActionListener
     }
 
     public void actionPerformed(ActionEvent arg0)
-    {
+    {        
         update();
         // let Java runtime know panel needs to be repainted        
         myCanvas.repaint();
+    }
+    
+    public void loadNextLevel()
+    {
+        System.out.println("loadnew");
+        myTimer.stop();
+        new LevelViewer(myGameName,myGameName+"level2",myScore,myCanvas);
     }
 }

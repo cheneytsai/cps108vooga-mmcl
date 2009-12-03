@@ -27,6 +27,7 @@ public class GameModel {
 
     private List<Actor> myActorList;
     public Canvas myCanvas;
+    private boolean gameOver;
 
     public GameModel() {
     }
@@ -37,20 +38,35 @@ public class GameModel {
 //        initializeActors();
     }
 
-    public void update(String myLastKeyPressed) {
+    public void update(String myLastKeyPressed) 
+    {
+        int stationary = myActorList.size();
         for (int k = 0; k < myActorList.size(); k++) {
             Point tempPos = myActorList.get(k).getPosition();
             myActorList.get(k).act(myLastKeyPressed);
             if (myActorList.get(k).getPosition() != tempPos) {
                 myActorList.get(k).hasMoved = true;
             }
+            else
+            {
+                stationary--;
+            }
         }
         // Set Flag for movement here
+        if(stationary+4 == myActorList.size())
+        {
+            loadNextLevel();
+        }
         ConditionChecker.checkConditions(myActorList, this);
         for (int k = 0; k < myActorList.size(); k++) {
             myActorList.get(k).hasMoved = false;
         }
         // Reset All to no movement
+    }
+
+    private void loadNextLevel()
+    {
+        myCanvas.loadNextLevel();
     }
 
     public void resetBall() {
@@ -66,7 +82,7 @@ public class GameModel {
     private void initializeActors() {
         // TODO: Make this read in through a file -> add new levels
         try {
-            Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName() + "Level1")));
+            Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getLevelName())));
 
             while (input.hasNextLine()) {
                 addActor((Actor) Reflection.createInstance(input.next(), input
@@ -97,6 +113,7 @@ public class GameModel {
     }
     
     public void newView(Canvas canvas) {
+        gameOver = true;
         if(myActorList != null)
         {
             myActorList.clear();
@@ -105,7 +122,17 @@ public class GameModel {
         if(canvas instanceof LevelViewer || canvas instanceof EditorCanvas)
         {
             initializeActors();
-        }
+        }    
+    }
+    
+    public boolean gameOver()
+    {
+        return gameOver;
+    }
+    
+    public void setGameOver(boolean toSet)
+    {
+        gameOver = toSet;
     }
 
 }

@@ -39,7 +39,7 @@ public class EditorCanvas extends LevelViewer
 //              else,be able to update that object
                 if(match == null)
                 {
-                    new EditorCreate(myGameModel,null,null,0,0,e.getX(),e.getY());
+                    new EditorCreate(myGameModel,null,"src/images/Paddle.gif",20,20,e.getX(),e.getY());
                 }
                 else
                 {
