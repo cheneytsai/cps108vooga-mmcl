@@ -5,9 +5,13 @@ import java.awt.Graphics;
 import java.awt.Point;
 import model.GameModel;
 
+/**
+ * 
+ * @author meganheysham
+ *
+ */
 public class Grid extends Actor {
     
-//    private static boolean[][] myStates;
     private static Marker[][] myPositions;
     private static Block[][] myBlocks;
     private static GameModel myModel;
