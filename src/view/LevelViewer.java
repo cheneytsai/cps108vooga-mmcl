@@ -1,13 +1,17 @@
 package view;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 import actors.Actor;
@@ -29,7 +33,6 @@ public class LevelViewer extends Canvas implements ActionListener
     private Timer myTimer;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25;  // in milliseconds
-
     
     public LevelViewer(String gameName, int levelNum, int score, Canvas canvas)
     {
@@ -37,7 +40,6 @@ public class LevelViewer extends Canvas implements ActionListener
         myGameName = gameName;
         myLevelNum = levelNum;
         myScore = score;
-        System.out.println(myLevelNum);
         myCanvas.setActive(this);
         myCanvas.requestFocus();
         myGameModel = canvas.getGameModel();
@@ -64,6 +66,8 @@ public class LevelViewer extends Canvas implements ActionListener
         icon = new ImageIcon(ResourceManager.getString(myGameName+ "level.background"));
 
         myCanvas.repaint();         
+
+        createWinIncrement();
         
         myActors = myGameModel.getActors();
         myGameModel.setGameOver(false);
@@ -72,7 +76,21 @@ public class LevelViewer extends Canvas implements ActionListener
         
         update();
     }
-
+    
+    public int createWinIncrement()
+    {
+        try
+        {
+            Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName()+"Main")));
+            return input.nextInt();       
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println(e);
+        }
+        return 0;
+    }
+    
     public void update()
     {
         myGameModel.update(myLastKeyPressed);
@@ -133,5 +151,10 @@ public class LevelViewer extends Canvas implements ActionListener
         myTimer.stop();
         myLevelNum++;
         new LevelViewer(myGameName,myLevelNum,myScore,myCanvas);
+    }
+    
+    public void loadEnd()
+    {
+        new LevelViewer("Win",1,myScore,myCanvas);
     }
 }
