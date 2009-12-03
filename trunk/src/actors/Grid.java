@@ -3,8 +3,6 @@ package actors;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.util.Collections;
-
 import model.GameModel;
 
 public class Grid extends Actor {

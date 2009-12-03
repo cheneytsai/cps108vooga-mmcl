@@ -1,25 +1,15 @@
 package actions;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.geom.AffineTransform;
 import java.util.ResourceBundle;
 
 import actors.Actor;
 import actors.FallingPiece;
 
+
 public class Rotate implements Action {
     
-    private int myDegrees;
-    private String myImage;
     private ResourceBundle myResources = ResourceBundle.getBundle("resources.TetrisRotation");
-    
-    
-    public Rotate(){
-//        myDegrees = degrees;
-
-    }
 
     public void execute(Actor... actors) {
         String newImage = myResources.getString(((FallingPiece)actors[0]).getCurrentImageName());

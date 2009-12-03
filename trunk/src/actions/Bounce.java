@@ -2,8 +2,6 @@ package actions;
 
 
 import java.awt.Point;
-import java.awt.geom.Rectangle2D;
-
 import utilities.CollisionChecker;
 import actors.Actor;
 import actors.PhysicsVector;

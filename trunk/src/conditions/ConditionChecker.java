@@ -1,15 +1,10 @@
 //TODO: Write this
 package conditions;
 
-import java.awt.Dimension;
-import java.awt.Point;
 import java.util.List;
-
-import javax.swing.JOptionPane;
 
 import model.GameModel;
 
-import util.reflection.Reflection;
 import utilities.CollisionChecker;
 
 import actors.Actor;
@@ -31,7 +26,7 @@ public class ConditionChecker {
         int numBrick = Brick.getNumberOfBricks();
        // myActors = actors;
         
-        List<Actor> movedActors;
+//        List<Actor> movedActors;
         for (int k = 0; k < actors.size(); k++)
         {
             if(actors.get(k).hasMoved = true)

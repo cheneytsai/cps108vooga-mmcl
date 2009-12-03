@@ -13,7 +13,7 @@ public class RemoveRow implements Action {
 
     public void execute(Actor... actors) {
         for(int i = 0; i<Grid.getGridSize().width; i++){
-            
+            Grid.getMarker(myRowToRemove, i);
         }
     }
 
