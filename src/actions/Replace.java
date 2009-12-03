@@ -1,14 +1,11 @@
 package actions;
 
 import java.awt.Dimension;
-import java.awt.Point;
-
 import utilities.CollisionChecker;
 import model.GameModel;
 import actors.Actor;
 import actors.Block;
 import actors.Grid;
-import actors.Marker;
 
 public class Replace implements Action {
 

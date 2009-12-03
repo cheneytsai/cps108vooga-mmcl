@@ -1,19 +1,14 @@
 package view;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Collection;
 import java.util.List;
-import java.util.ListIterator;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 import actors.Actor;
-import actors.Ball;
 import model.GameModel;
 import util.resources.ResourceManager;
 

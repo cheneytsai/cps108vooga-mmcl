@@ -1,10 +1,8 @@
 package view;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -108,12 +106,12 @@ public class Menu extends Canvas{
             public void mouseClicked(MouseEvent e)
             {
                for(String option: getOptionMap().keySet()){
-                   if (e.getX() > 375
-                           && e.getX() < 375 + 12 * AVG_PIXELS_PER_LETTER)
+                   if (e.getX() > myOptions.get(option).x
+                           && e.getX() < myOptions.get(option).x + option.length()*AVG_PIXELS_PER_LETTER)
                    {
-                       if (e.getY() > 200 && e.getY() < 250)
+                       if (e.getY() > myOptions.get(option).y && e.getY() < myOptions.get(option).y + 50)
                        {
-                           new GameMenu("Arkanoid", myCanvas);
+                           //Something needs to go here
                        }
                    }
                }

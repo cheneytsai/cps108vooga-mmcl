@@ -4,7 +4,6 @@ package actors;
 import java.awt.Dimension;
 import java.awt.Point;
 import model.GameModel;
-import actions.Remove;
 
 public class Wall extends Actor
 {
