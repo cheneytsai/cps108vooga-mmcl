@@ -11,7 +11,6 @@ public class Block extends Actor {
     public Block(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
         numberOfBlocks++;
-        // TODO Auto-generated constructor stub
     }
 
     @Override
