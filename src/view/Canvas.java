@@ -32,6 +32,12 @@ public class Canvas extends JPanel {
         // myCanvas = this;
         setSize(mySize);
         myGameModel = new GameModel(this);
+      
+    }
+    
+    public void setGame(GameModel model)
+    {
+        myGameModel = model;
     }
 
     public void paintComponent(Graphics g) {
@@ -86,10 +92,5 @@ public class Canvas extends JPanel {
     
     public void loadEnd()
     {
-    }
-    
-    public int createWinIncrement()
-    {
-        return 0;
     }
 }

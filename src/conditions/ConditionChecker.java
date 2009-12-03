@@ -1,6 +1,7 @@
 //TODO: Write this
 package conditions;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ public abstract class ConditionChecker {
     public ConditionChecker(GameModel model)
     {
         myModel = model;
+        myConditions = new HashMap<Condition, Action>();
         loadConditions();
     }
 

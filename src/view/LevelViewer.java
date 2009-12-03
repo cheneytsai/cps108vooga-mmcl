@@ -67,7 +67,7 @@ public class LevelViewer extends Canvas implements ActionListener
 
         myCanvas.repaint();         
 
-        createWinIncrement();
+        //createWinIncrement();
         
         myActors = myGameModel.getActors();
         myGameModel.setGameOver(false);
@@ -76,20 +76,20 @@ public class LevelViewer extends Canvas implements ActionListener
         
         update();
     }
-    
-    public int createWinIncrement()
-    {
-        try
-        {
-            Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName()+"Main")));
-            return input.nextInt();       
-        }
-        catch(FileNotFoundException e)
-        {
-            System.out.println(e);
-        }
-        return 0;
-    }
+//    
+//    public int createWinIncrement()
+//    {
+//        try
+//        {
+//            Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName()+"Main")));
+//            return input.nextInt();       
+//        }
+//        catch(FileNotFoundException e)
+//        {
+//            System.out.println(e);
+//        }
+//        return 0;
+//    }
     
     public void update()
     {
@@ -102,6 +102,7 @@ public class LevelViewer extends Canvas implements ActionListener
     
     public void paintComponent(Graphics pen)
     {        
+
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         pen.setFont(SCOREBOARD_FONT);
         pen.setColor(Color.WHITE);
