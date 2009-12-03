@@ -48,6 +48,10 @@ public class Canvas extends JPanel {
 
         return myActive.getGameName();
     }
+    
+    public String getLevelName() {
+        return null;
+    }
 
     public MouseListener mouseListener() {
         return myActive.mouseListener();
@@ -71,5 +75,10 @@ public class Canvas extends JPanel {
     
     protected GameModel getGameModel() {
         return myGameModel;
+    }
+    
+    public void loadNextLevel()
+    {
+        
     }
 }

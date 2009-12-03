@@ -26,7 +26,8 @@ public class EditorCreate extends JFrame
     private Dimension mySize = new Dimension(250, 250);
     private JButton myButton;
     private String[] actorStats;
-    private GameModel myModel;
+    private String[] statAppend;
+    private GameModel myGameModel;
     private JTextField myField;
     private JTextField[] myDimPoint;
     private JComboBox myBox;
@@ -38,7 +39,9 @@ public class EditorCreate extends JFrame
         setTitle(ResourceManager.getString("EditorTitle"));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         actorStats = new String[6];
-        myModel = model;
+        String toAppend = "Actor Type: ,Image Location: ,x Dimension: ,y Dimension: ,x Value: ,y Value: ";
+        statAppend = toAppend.split(",");
+        myGameModel = model;
         
         JPanel p = new JPanel();
         p.setLayout(new GridLayout(7,1));
@@ -70,24 +73,24 @@ public class EditorCreate extends JFrame
     {
         myField = new JTextField(30);
         
-        myField.setText(name);
+        myField.setText(statAppend[1]+name);
         
         return myField;
     }
     
     private JComponent setDimPoint(int xDim,int yDim,int x,int y)
     {
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new GridLayout(2,2));
         myDimPoint = new JTextField[4];
 
         int[] showValue = {xDim, yDim, x,y};
+        
         for(int i = 0; i < showValue.length; i++)
         {
             myDimPoint[i] = new JTextField();
-            myDimPoint[i].setText(""+xDim);
+            myDimPoint[i].setText(statAppend[i+2]+showValue[i]);
             panel.add(myDimPoint[i]);
         }
-        
         return panel;
     }
     
@@ -119,15 +122,24 @@ public class EditorCreate extends JFrame
     
     public void createInstance()
     {
-        myModel.addActor((Actor) Reflection.createInstance(
+        for(int i = 0; i < actorStats.length; i++)
+        {
+            if(actorStats[i].contains(statAppend[i]))
+            {
+                actorStats[i] = actorStats[i].replace(statAppend[i],"");
+            }
+        }
+        
+        //TODO add catches for illformatting
+        myGameModel.addActor((Actor) Reflection.createInstance(
                 "actors."+actorStats[0],
                 actorStats[1],
                 new Dimension(Integer.parseInt(actorStats[2]),Integer.parseInt(actorStats[3])),
                 new Point(Integer.parseInt(actorStats[4]), Integer.parseInt(actorStats[5])),
-                myModel));
+                myGameModel));
         try
         {
-            FileWriter output = new FileWriter("src/resources/ArkanoidLevel1.level",true);
+            FileWriter output = new FileWriter("src/resources/arkanoid/level1.level",true);
             output.append("\nactors."+actorStats[0]+" "+actorStats[1]+" "+actorStats[2]+" "
                         +actorStats[3]+" "+actorStats[4]+" "+actorStats[5]);
             output.close();
