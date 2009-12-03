@@ -27,7 +27,7 @@ import actors.Brick;
  */
 public class GameModel {
 
-    private List<Actor> myActorList;
+    protected List<Actor> myActorList;
     public Canvas myCanvas;
     private boolean gameOver;
     protected ConditionChecker myConditions;
@@ -36,21 +36,15 @@ public class GameModel {
     public GameModel(Canvas canvas) {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
-
     }
     public void update(String myLastKeyPressed) 
     {
-        int stationary = myActorList.size();
         hotkeyCheck(myLastKeyPressed);
         for (int k = 0; k < myActorList.size(); k++) {
             Point tempPos = myActorList.get(k).getPosition();
             myActorList.get(k).act(myLastKeyPressed);
             if (myActorList.get(k).getPosition() != tempPos) {
                 myActorList.get(k).hasMoved = true;
-            }
-            else
-            {
-                stationary--;
             }
         }
         // Set Flag for movement here
@@ -80,10 +74,8 @@ public class GameModel {
         myCanvas.loadNextLevel();
     }
 
-    public void resetBall() {
-        myActorList.set(0, new Ball("src/images/ball.gif",
-                new Dimension(16, 16), new Point(myCanvas.getSize().width / 2,
-                        myCanvas.getSize().height / 2 + 100), this));
+    public void lose() {
+       
     }
 
     public void clearActors() {
