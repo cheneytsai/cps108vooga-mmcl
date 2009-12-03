@@ -5,11 +5,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import actions.Action;
-import actions.Add;
 import actions.Direction;
 import actions.Move;
 import actions.Remove;
-import util.resources.ResourceManager;
 import model.GameModel;
 /**
  * 
