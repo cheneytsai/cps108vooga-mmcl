@@ -1,6 +1,7 @@
 //TODO: Generalize Action classes to make them into some sort of heirarchy to make adding new ones easier
 package actions;
 
+import java.util.Random;
 import actors.*;
 
 /**
@@ -10,6 +11,7 @@ import actors.*;
  */
 public interface Action
 {
+    Random myRand = new Random();
 
     /**
      * Execute associated action on given actor

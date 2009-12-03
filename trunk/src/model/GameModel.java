@@ -148,6 +148,7 @@ public class GameModel {
     {
         gameOver = false;
     }
+    
     public void win() {
         
         myCanvas.loadEnd();

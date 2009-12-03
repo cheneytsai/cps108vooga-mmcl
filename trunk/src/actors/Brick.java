@@ -7,6 +7,7 @@ import java.util.List;
 
 import actions.Action;
 import actions.Add;
+import actions.RandomAdd;
 import actions.Remove;
 import actions.Update;
 import model.GameModel;
@@ -26,7 +27,7 @@ public class Brick extends Actor
     {
         List<Action> ball = new ArrayList<Action>();
         ball.add(new Remove());
-        ball.add(new Add(myModel,BallPowerup.class.getCanonicalName()));
+        ball.add(new RandomAdd(myModel));
         ball.add(new Update(myModel, 10));
         myInteractions.put(Ball.class.getCanonicalName(), ball);
     }

@@ -9,7 +9,6 @@ public class Win extends Lose implements Action {
         super(model);
     }
     
-    
     public void execute(Actor...actors)
     {
         myModel.win();

@@ -2,28 +2,25 @@ package actors;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.List;
+import model.GameModel;
 import util.resources.ResourceManager;
 import actions.Action;
 import actions.Add;
-import actions.Direction;
-import actions.Move;
-import actions.Remove;
-import model.GameModel;
+import actions.Resize;
 
-public class BallPowerup extends Powerup
+public class ShrinkPowerup extends Powerup
 {
-    public BallPowerup(Point position, GameModel model)
+    public ShrinkPowerup(Point position, GameModel model)
     {
-        super(ResourceManager.getString("BallPowerupImage"),new Dimension(16,16),position,model);
+        super(ResourceManager.getString("ShrinkPowerupImage"),new Dimension(16,16),position,model);
     }
 
     @Override
     protected void loadBehavior() {
         super.loadBehavior();
         List<Action> hitPaddle = myInteractions.get(Paddle.class.getCanonicalName());
-        hitPaddle.add(new Add(myModel, Ball.class.getCanonicalName()));
+        hitPaddle.add(new Resize(0.5));
         updateInteractions(hitPaddle);
     }
 }
