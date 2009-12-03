@@ -15,10 +15,9 @@ import model.GameModel;
 
 public class Ball extends Actor {
 
-    private static int numberOfBalls = 0;
     public Ball(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
-        numberOfBalls++;
+ 
     }
     
     public Ball(Point position, GameModel model)
@@ -44,7 +43,6 @@ public class Ball extends Actor {
     
     public void remove()
     {
-     numberOfBalls--;
      super.remove();
     }
 
