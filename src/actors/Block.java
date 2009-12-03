@@ -16,14 +16,13 @@ public class Block extends Actor {
 
     @Override
     protected void loadBehavior() {
-        // TODO Auto-generated method stub
+        // Blocks sit and do nothing
 
     }
     public void remove()
     {
     numberOfBlocks--;
      super.remove();
-     System.out.println("removed block");
     }
 
 }
