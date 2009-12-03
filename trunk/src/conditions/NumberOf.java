@@ -16,6 +16,7 @@ public class NumberOf implements Condition {
         myModel = model;
         myType = type;
         numberOf = number;
+        System.out.println(myType);
     }
     @Override
     public boolean evaluate() {
@@ -23,12 +24,15 @@ public class NumberOf implements Condition {
         List<Actor> actors = myModel.getActors();
         for (Actor a : actors)
         {
-            if (a.getClass().equals(myType))
+            if (a.getClass().getName().equals(myType))
                 total++;
                 
         }
         if (total == numberOf)
+        { 
             return true;
+           
+        }
         else
             return false;
     }

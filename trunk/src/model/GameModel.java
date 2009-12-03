@@ -30,18 +30,13 @@ public class GameModel {
     private List<Actor> myActorList;
     public Canvas myCanvas;
     private boolean gameOver;
-    int winIncrement;
-    private ConditionChecker myConditions;
+    protected ConditionChecker myConditions;
 
-    public GameModel() {
-    }
 
     public GameModel(Canvas canvas) {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
-        myConditions = new ConditionChecker(this);
     }
-
     public void update(String myLastKeyPressed) 
     {
         int stationary = myActorList.size();
@@ -58,10 +53,6 @@ public class GameModel {
             }
         }
         // Set Flag for movement here
-        if(stationary+winIncrement == myActorList.size())
-        {
-            loadNextLevel();
-        }
         myConditions.checkConditions();
         for (int k = 0; k < myActorList.size(); k++) {
             myActorList.get(k).hasMoved = false;
@@ -99,7 +90,6 @@ public class GameModel {
     }
 
     private void initializeActors() {
-        // TODO: Make this read in through a file -> add new levels
         try {
             Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName()+"level"
                                                                             +myCanvas.getLevelNum())));
@@ -150,7 +140,6 @@ public class GameModel {
         if(canvas instanceof LevelViewer || canvas instanceof EditorCanvas)
         {
             initializeActors();
-            winIncrement = myCanvas.createWinIncrement();
         }    
     }
     

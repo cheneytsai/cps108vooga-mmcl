@@ -6,6 +6,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
+import model.ArkanoidModel;
+import model.GameModel;
+
 import actions.Quit;
 import util.resources.ResourceManager;
 
@@ -73,6 +76,7 @@ public class GameChooser extends Canvas
                 {
                     if (e.getY() > 200 && e.getY() < 250)
                     {
+                        myCanvas.setGame(new ArkanoidModel(myCanvas));
                         new GameMenu("Arkanoid", myCanvas);
                     }
                     else if(e.getY() > 300 && e.getY() < 350)
@@ -81,6 +85,7 @@ public class GameChooser extends Canvas
                     }
                     else if(e.getY() > 400 && e.getY() < 450)
                     {
+                        myCanvas.setGame(new GameModel(myCanvas));
                         new GameMenu("Tetris", myCanvas);
                     }
                     else if (e.getY() > 500 && e.getY() < 550)

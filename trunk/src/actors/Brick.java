@@ -12,12 +12,12 @@ import model.GameModel;
 
 public class Brick extends Actor
 {
-    private static int numberOfBricks = 0;
+
     public Brick(String string, Dimension dimension, Point point,
             GameModel gameModel)
     {
         super(string,dimension,point,gameModel);
-        numberOfBricks++;
+
     }
 
     @Override
@@ -27,16 +27,5 @@ public class Brick extends Actor
         ball.add(new Remove());
         ball.add(new Update(myModel, 10));
         myInteractions.put(Ball.class.getCanonicalName(), ball);
-    }
-
-    public void remove()
-    {
-     numberOfBricks--;
-     super.remove();
-    }
-    
-    public static int getNumberOfBricks()
-    {
-        return numberOfBricks;
     }
 }
