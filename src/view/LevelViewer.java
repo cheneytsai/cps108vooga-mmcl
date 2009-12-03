@@ -59,8 +59,6 @@ public class LevelViewer extends Canvas implements ActionListener
         icon = new ImageIcon(ResourceManager.getString(myGameName+ "level.background"));
 
         myCanvas.repaint();         
-
-        getWinIncrement();
         
         myActors = myGameModel.getActors();
         myGameModel.setGameOver(false);
@@ -68,11 +66,6 @@ public class LevelViewer extends Canvas implements ActionListener
         myTimer.start();
         
         update();
-    }
-
-    public int getWinIncrement()
-    {
-        return Integer.parseInt(ResourceManager.getString(myGameName+"Win"));
     }
 
     public void update()

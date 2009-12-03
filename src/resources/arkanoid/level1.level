@@ -4,8 +4,8 @@ actors.Brick src/images/brick1.gif 80 30 100 100
 actors.Brick src/images/brick2.gif 80 30 200 100
 actors.Brick src/images/brick3.gif 80 30 300 100
 actors.Brick src/images/brick4.gif 80 30 400 100
-actors.Brick src/images/brick4.gif 80 30 500 100
-actors.Brick src/images/brick4.gif 80 30 600 100
+actors.Brick src/images/brick5.gif 80 30 500 100
+actors.Brick src/images/brick6.gif 80 30 600 100
 actors.Brick src/images/brick7.gif 80 30 700 100
 actors.Brick src/images/brick8.gif 80 30 800 100
 actors.Wall src/images/brick3.gif 960 16 480 -5
