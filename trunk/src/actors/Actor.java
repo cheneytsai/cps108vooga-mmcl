@@ -29,7 +29,6 @@ public abstract class Actor {
     protected double myHeading;                         // Heading
     private Dimension mySize;                           // Size
     private PhysicsVector myVelocity;                   // Velocity
-    private PhysicsVector myAcceleration;               // Acceleration
     protected Map<String, List<Action>> myKeyEvents;    // KeyEvents
     protected Map<String, List<Action>> myInteractions; // Interaction
     protected Action myDefaultBehavior;                 // Default ACtion
@@ -48,7 +47,6 @@ public abstract class Actor {
         myPosition = position;
         myModel = model;
         myVelocity = new PhysicsVector(new Direction(-1, -1), 10); //TODO: Make these parameters or something
-        myAcceleration = new PhysicsVector(new Direction(0, 0), 0); //This only works right now because ball is the only moving actor
         myKeyEvents = new HashMap<String, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
