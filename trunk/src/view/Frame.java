@@ -44,19 +44,30 @@ public class Frame extends JFrame {
             }
         });
         fileMenu.add(new AbstractAction(ResourceManager
-                .getString("Instructions")) {
-            public void actionPerformed(ActionEvent ev) {
-                // Will display instructions for the current game
+                .getString("Instructions"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
+                if(myCanvas.getGameName() != null)
+                {
+                    new SubMenuView(myCanvas.getGameName(),"Instructions",myCanvas);
+                }
             }
         });
-        fileMenu
-                .add(new AbstractAction(ResourceManager.getString("HighScores")) {
-                    public void actionPerformed(ActionEvent ev) {
-                        // Will display high score for the current game
-                    }
-                });
-        fileMenu.add(new AbstractAction(ResourceManager.getString("Quit")) {
-            public void actionPerformed(ActionEvent ev) {
+        fileMenu.add(new AbstractAction(ResourceManager.getString("HighScores"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
+                if(myCanvas.getGameName() != null)
+                {
+                    new SubMenuView(myCanvas.getGameName(),"Scores",myCanvas);
+                }
+            }
+        });
+        fileMenu.add(new AbstractAction(ResourceManager.getString("Quit"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
                 new Quit().execute();
             }
         });

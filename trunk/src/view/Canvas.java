@@ -16,6 +16,7 @@ public class Canvas extends JPanel {
     protected Canvas myCanvas;
     private Canvas myActive;
     protected GameModel myGameModel;
+    protected String myGameName;
     // private Menu active;
     protected int myScore;
     protected static final Font TITLE_FONT = new Font("TAHOMA", Font.BOLD, 75);

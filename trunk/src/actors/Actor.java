@@ -36,10 +36,10 @@ public abstract class Actor {
     private PhysicsVector myVelocity; // Velocity
     protected Map<String, List<Action>> myKeyEvents; // KeyEvents
     protected Map<String, List<Action>> myInteractions; // Interaction
-    protected Action myDefaultBehavior; // Default ACtion
-    public boolean hasChanged; // Flag - Changed?
-    public boolean hasMoved; // Flag - Moved?
-
+    protected Action myDefaultBehavior;                 // Default Action
+    public boolean hasChanged;                          // Flag - Changed?
+    public boolean hasMoved;                            // Flag - Moved?
+    
     private static int numberOfActors = 0;
 
     public Actor(String image, Dimension size, Point position, GameModel model) {

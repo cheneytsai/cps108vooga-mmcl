@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import util.resources.ResourceManager;
@@ -18,10 +19,10 @@ public class EndView extends Canvas {
         myCanvas = canvas;
         myScore = score;
         myCanvas.setActive(this);
-
-        icon = new ImageIcon(ResourceManager.getString(endCondition
-                + ".background"));
-
+        myGameName = gameName;
+        
+        icon = new ImageIcon(ResourceManager.getString(endCondition+ ".background"));
+        
         myGameModel.setGameOver(true);
         saveScores(gameName);
     }
@@ -29,20 +30,31 @@ public class EndView extends Canvas {
     public void paintComponent(Graphics pen) {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
     }
+    
+    public void saveScores(String gameName)
+    {
+        GregorianCalendar  time = new GregorianCalendar();
 
-    public void saveScores(String gameName) {
-        String name = (String) JOptionPane.showInputDialog(ResourceManager
-                .getString("Name"), null);
-
-        try {
-            FileWriter output = new FileWriter(ResourceManager
-                    .getString(gameName + "Scores"), true);
-            output.append(name + "\t\t" + myScore);
+        String name = (String) JOptionPane.showInputDialog(ResourceManager.getString("Name"),null);
+        if(name == null ||name.length() == 0)
+        {
+            name = ResourceManager.getString("NoName");
+        }
+        
+        try
+        {
+            FileWriter output = new FileWriter(ResourceManager.getString(gameName+"Scores"),true);
+            output.append("\n"+name+"\t\t"+myScore+"\t\t"+time.getTime());
             output.close();
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public String getGameName()
+    {
+        return myGameName;
     }
 }
