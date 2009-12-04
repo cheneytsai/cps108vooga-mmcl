@@ -7,7 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
 import actions.Quit;
 import util.resources.ResourceManager;
 
@@ -61,22 +60,33 @@ public class GameMenu extends Canvas {
         MouseAdapter myMouseAdapter = new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getX() > 375
-                        && e.getX() < 375 + 12 * AVG_PIXELS_PER_LETTER) {
-                    if (e.getY() > 200 && e.getY() < 250) {
-                        new LevelViewer(myGameName, 1, 0, myCanvas);
-                    } else if (e.getY() > 300 && e.getY() < 350) {
-                        // will display the instructions for the current game
-                    } else if (e.getY() > 400 && e.getY() < 450) {
-                        // will display the high scores for the current game
-                    } else if (e.getY() > 450 && e.getY() < 500) {
-                        String[] levels = { "1", "2" };
-                        String level = (String) JOptionPane.showInputDialog(
-                                null, "Pick a level to edit: \n",
-                                "Choose a Level", JOptionPane.PLAIN_MESSAGE,
-                                null, levels, null);
-                        new EditorCanvas(myGameName, Integer.parseInt(level),
-                                0, myCanvas);
-                    } else if (e.getY() > 500 && e.getY() < 550) {
+                        && e.getX() < 375 + 12 * AVG_PIXELS_PER_LETTER)
+                {
+                    if (e.getY() > 200 && e.getY() < 250)
+                    {
+                        new LevelViewer(myGameName, 1,0, myCanvas);
+                    }
+                    else if (e.getY() > 300 && e.getY() < 350)
+                    {
+                        new SubMenuView(myGameName,"Instructions",myCanvas);
+                    }
+                    else if (e.getY() > 375 && e.getY() < 450)
+                    {
+                        new SubMenuView(myGameName,"Scores",myCanvas);
+                    }
+                    else if(e.getY() > 450 && e.getY() < 500)
+                    {
+                        String[] levels = {"1","2"};
+                        String level = (String)JOptionPane.showInputDialog(
+                                null,
+                                "Pick a level to edit: \n",
+                                "Choose a Level",
+                                JOptionPane.PLAIN_MESSAGE,
+                                null,levels,null);
+                        new EditorCanvas(myGameName, Integer.parseInt(level),0,myCanvas);
+                    }
+                    else if (e.getY() > 500 && e.getY() < 550)
+                    {
                         new GameChooser(myCanvas);
                     } else if (e.getY() > 600 && e.getY() < 650) {
                         new Quit().execute();

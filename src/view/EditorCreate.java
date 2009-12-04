@@ -27,7 +27,7 @@ import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
 public class EditorCreate extends JFrame {
-    private Dimension mySize = new Dimension(250, 250);
+    private Dimension mySize = new Dimension(300, 300);
     private JButton myButton;
     private String[] actorStats;
     private String[] statAppend;
@@ -55,8 +55,9 @@ public class EditorCreate extends JFrame {
         p.add(setDimPoint(xDim, yDim, x, y));
         if (actor != null) {
             p.add(setDeleteOption());
+            p.add(makeDeleteButton(levelName));
         }
-        p.add(makeButton(levelName));
+        p.add(makeCreateButton(levelName));
         getContentPane().add(p, BorderLayout.NORTH);
 
         setSize(mySize);
@@ -103,9 +104,10 @@ public class EditorCreate extends JFrame {
 
         return myCheckBox;
     }
-
-    private JComponent makeButton(final String levelName) {
-        myButton = new JButton(ResourceManager.getString("LevelEditButton"));
+    
+    private JComponent makeCreateButton(final String levelName)
+    {
+        myButton = new JButton(ResourceManager.getString("EditButtonCreate"));
         myButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 setStats(levelName);
@@ -115,7 +117,23 @@ public class EditorCreate extends JFrame {
         return myButton;
     }
 
-    public void setStats(String levelName) {
+    
+    private JComponent makeDeleteButton(final String levelName)
+    {
+        myButton = new JButton(ResourceManager.getString("EditButtonDestroy"));
+        myButton.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                deleteOldActor(levelName);
+            }
+        });
+        
+        return myButton;
+    }
+    
+    public void setStats(String levelName)
+    {
         actorStats[0] = (String) myBox.getSelectedItem();
         actorStats[1] = myField.getText();
         for (int i = 0; i < myDimPoint.length; i++) {
