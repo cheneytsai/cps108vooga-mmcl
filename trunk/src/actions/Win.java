@@ -15,7 +15,7 @@ public class Win extends Lose implements Action {
     }
 
     public void execute(Actor... actors) {
-        myModel.win();
+        myModel.getCanvas().loadEnd("Win");
     }
 
 }

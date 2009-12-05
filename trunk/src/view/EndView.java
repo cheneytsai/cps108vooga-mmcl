@@ -14,20 +14,24 @@ import util.resources.ResourceManager;
  */
 @SuppressWarnings("serial")
 public class EndView extends Canvas {
-    public EndView(String endCondition, String gameName, int score,
-            Canvas canvas) {
+    public EndView(String endCondition, String gameName, int score,Canvas canvas) 
+    {
         myCanvas = canvas;
         myScore = score;
         myCanvas.setActive(this);
         myGameName = gameName;
+        myCanvas.requestFocus();
         
         icon = new ImageIcon(ResourceManager.getString(endCondition+ ".background"));
         
         myGameModel.setGameOver(true);
         saveScores(gameName);
+        
+        myCanvas.repaint();
     }
 
-    public void paintComponent(Graphics pen) {
+    public void paintComponent(Graphics pen)
+    {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
     }
     

@@ -62,7 +62,6 @@ public class SubMenuView extends Canvas
                 if(myScoreInfo.get(Integer.parseInt(lineArray[1])) != null)
                 {
                     lines = myScoreInfo.get(Integer.parseInt(lineArray[1]));
-//                    myScoreInfo.get(Integer.parseInt(lineArray[1]));
                     myScoreInfo.remove(Integer.parseInt(lineArray[1]));
                 }
                 lines.add(lineArray);
@@ -81,11 +80,6 @@ public class SubMenuView extends Canvas
         List<Integer> listToSort = new ArrayList<Integer>(); 
         listToSort.addAll(lines.keySet());
         Collections.sort(listToSort,Collections.reverseOrder());
-
-//        for(Integer small : listToSort)
-//        {
-//            System.out.println(small);
-//        }
         mySortedKeys = listToSort;
     }
     

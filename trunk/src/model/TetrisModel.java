@@ -3,7 +3,6 @@ package model;
 import actors.Grid;
 import conditions.TetrisConditions;
 import view.Canvas;
-import view.EndView;
 
 public class TetrisModel extends GameModel {
 
@@ -28,7 +27,7 @@ public class TetrisModel extends GameModel {
     }
 
     public void lose() {
-        new EndView("Lose","Tetris",myCanvas.getScore(),myCanvas);
+        myCanvas.loadEnd("Lose");
     }
 
     public boolean gameOver() {

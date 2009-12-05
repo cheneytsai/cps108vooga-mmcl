@@ -78,7 +78,7 @@ public class GameModel {
             System.out.println("File not found");
         } catch (MissingResourceException e) {
             if (!myCanvas.getGameName().equals("Win")) {
-                myCanvas.loadEnd();
+                myCanvas.loadEnd("Win");
             }
         }
     }
@@ -119,10 +119,10 @@ public class GameModel {
     public void setGameOver(boolean toSet) {
         gameOver = false;
     }
-
-    public void win() {
-
-        myCanvas.loadEnd();
+    
+    public Canvas getCanvas()
+    {
+        return myCanvas;
     }
 
 }

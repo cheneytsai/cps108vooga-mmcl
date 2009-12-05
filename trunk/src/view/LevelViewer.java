@@ -116,11 +116,12 @@ public class LevelViewer extends Canvas implements ActionListener {
 
     public void loadNextLevel() {
         myTimer.stop();
+        myGameModel.setGameOver(true);
         myLevelNum++;
         new LevelViewer(myGameName, myLevelNum, myScore, myCanvas);
     }
 
-    public void loadEnd() {
-        new EndView("Win", myGameName, myScore, myCanvas);
+    public void loadEnd(String endCondition) {
+        new EndView(endCondition, myGameName, myScore, myCanvas);
     }
 }
