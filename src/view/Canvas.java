@@ -90,6 +90,6 @@ public class Canvas extends JPanel {
     public void loadNextLevel() {
     }
 
-    public void loadEnd() {
+    public void loadEnd(String endCondition) {
     }
 }
