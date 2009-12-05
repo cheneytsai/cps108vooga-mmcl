@@ -70,20 +70,27 @@ public class GameMenu extends Canvas {
                     {
                         new SubMenuView(myGameName,"Instructions",myCanvas);
                     }
-                    else if (e.getY() > 375 && e.getY() < 450)
+                    else if (e.getY() > 375 && e.getY() < 425)
                     {
                         new SubMenuView(myGameName,"Scores",myCanvas);
                     }
                     else if(e.getY() > 450 && e.getY() < 500)
                     {
-                        String[] levels = {"1","2"};
+                        String[] levels = ResourceManager.getString(myGameName+"Levels").split(",");
                         String level = (String)JOptionPane.showInputDialog(
                                 null,
                                 "Pick a level to edit: \n",
                                 "Choose a Level",
                                 JOptionPane.PLAIN_MESSAGE,
                                 null,levels,null);
-                        new EditorCanvas(myGameName, Integer.parseInt(level),0,myCanvas);
+                        try
+                        {
+                            new EditorCanvas(myGameName, Integer.parseInt(level),0,myCanvas);
+                        }
+                        catch(NumberFormatException n)
+                        {
+                            System.out.println(n);
+                        }
                     }
                     else if (e.getY() > 500 && e.getY() < 550)
                     {
