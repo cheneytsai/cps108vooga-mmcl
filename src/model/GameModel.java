@@ -64,7 +64,7 @@ public class GameModel {
         myActorList.clear();
     }
 
-    private void initializeActors() {
+    protected void initializeActors() {
         try {
             Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName()+"level"
                                                                             +myCanvas.getLevelNum())));

@@ -1,5 +1,6 @@
 package model;
 
+import actions.AddPiece;
 import actors.Grid;
 import conditions.TetrisConditions;
 import view.Canvas;
@@ -37,6 +38,11 @@ public class TetrisModel extends GameModel {
             }
         }
         return false;
+    }
+    
+    protected void initializeActors(){
+        super.initializeActors();
+        new AddPiece(myCanvas.getGameName(), this).execute();
     }
 
 }
