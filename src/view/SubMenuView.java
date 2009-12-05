@@ -96,22 +96,24 @@ public class SubMenuView extends Canvas
         
         int numberToPrint = 0;
         
-        while(numberToPrint < 10)
+        for(int i = 0; i < mySortedKeys.size(); i++)
         {
-            for(int i = 0; i < mySortedKeys.size(); i++)
+            List<String[]> nameDateList = myScoreInfo.get(mySortedKeys.get(i));
+            for(String[] nameDate : nameDateList)
             {
-                List<String[]> nameDateList = myScoreInfo.get(mySortedKeys.get(i));
-                for(String[] nameDate : nameDateList)
-                {
-                    pen.drawString((numberToPrint+1)+".    "+nameDate[0]+"    "+nameDate[2]+"    "+nameDate[1],
-                                    120,200+numberToPrint*30);
-                    numberToPrint++;
-                    if(numberToPrint == 10)
-                        break;
-                }
+                pen.drawString((numberToPrint+1)+".    "+nameDate[0]+"    "+nameDate[2]+"    "+nameDate[1],
+                        120,200+numberToPrint*30);
+                numberToPrint++;
                 if(numberToPrint == 10)
                     break;
             }
+            if(numberToPrint == 10)
+                break;
         }
+    }
+    
+    public String getGameName() {
+        
+        return myGameName;
     }
 }

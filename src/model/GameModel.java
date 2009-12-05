@@ -15,13 +15,7 @@ import java.util.Scanner;
 import conditions.ConditionChecker;
 import util.reflection.*;
 import util.resources.ResourceManager;
-import actions.Add;
-import actions.Direction;
-import actions.Update;
 import actors.Actor;
-import actors.Ball;
-import actors.Paddle;
-import actors.PhysicsVector;
 
 /**
  * 
@@ -42,7 +36,6 @@ public class GameModel {
     }
 
     public void update(String myLastKeyPressed) {
-        hotkeyCheck(myLastKeyPressed);
         for (int k = 0; k < myActorList.size(); k++) {
             Point tempPos = myActorList.get(k).getPosition();
             myActorList.get(k).act(myLastKeyPressed);
@@ -57,46 +50,6 @@ public class GameModel {
             myActorList.get(k).hasMoved = false;
         }
         // Reset All to no movement
-    }
-
-    /**
-     * This is a cheat for testing purposes. It makes it so the tester can
-     * easily jump to the next level.
-     * 
-     * Move certain things to specific models later
-     * 
-     * @param myLastKeyPressed
-     */
-    private void hotkeyCheck(String myLastKeyPressed)
-    {
-        if(myLastKeyPressed != null)
-        {
-            if(myLastKeyPressed.equalsIgnoreCase("l"))
-            {
-                loadNextLevel();
-            }
-            else if(myLastKeyPressed.equalsIgnoreCase("g"))
-            {
-                Actor paddleActor = null;
-                for(Actor actor : myActorList)
-                {
-                    if(actor instanceof Paddle)
-                    {
-                        paddleActor = actor;
-                        break;
-                    }
-                }
-                if(paddleActor != null)
-                {
-                    new Add(this,Ball.class.getCanonicalName()).execute(paddleActor);
-                }
-                myActorList.get(myActorList.size()-1).setVelocity(new PhysicsVector(new Direction(1,1),10));
-            }
-            else if(myLastKeyPressed.equalsIgnoreCase("s"))
-            {
-                new Update(this,10).execute();
-            }
-        }
     }
 
     public void loadNextLevel() {
@@ -122,10 +75,8 @@ public class GameModel {
                         new Point(input.nextInt(), input.nextInt()), this));
             }
         } catch (FileNotFoundException e) {
-            // gameOver = true;
             System.out.println("File not found");
         } catch (MissingResourceException e) {
-            // gameOver = true;
             if (!myCanvas.getGameName().equals("Win")) {
                 myCanvas.loadEnd();
             }

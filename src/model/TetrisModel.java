@@ -1,11 +1,9 @@
 package model;
 
-import javax.swing.JOptionPane;
-
 import actors.Grid;
-
 import conditions.TetrisConditions;
 import view.Canvas;
+import view.EndView;
 
 public class TetrisModel extends GameModel {
 
@@ -30,7 +28,7 @@ public class TetrisModel extends GameModel {
     }
 
     public void lose() {
-        JOptionPane.showMessageDialog(myCanvas, "GAME OVER!");
+        new EndView("Lose","Tetris",myCanvas.getScore(),myCanvas);
     }
 
     public boolean gameOver() {

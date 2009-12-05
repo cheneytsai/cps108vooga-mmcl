@@ -31,7 +31,6 @@ public class Canvas extends JPanel {
         // myCanvas = this;
         setSize(mySize);
         myGameModel = new GameModel(this);
-
     }
 
     public void setGame(GameModel model) {
@@ -51,11 +50,15 @@ public class Canvas extends JPanel {
         myGameModel.newView(myActive);
     }
 
+    public int getScore()
+    {
+        return myScore;
+    }
     public String getGameName() {
 
         return myActive.getGameName();
     }
-
+        
     public int getLevelNum() {
         return 0;
     }

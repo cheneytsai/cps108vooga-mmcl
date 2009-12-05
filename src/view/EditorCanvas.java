@@ -12,6 +12,7 @@ public class EditorCanvas extends LevelViewer {
         myLevelNum = levelNum;
         myCanvas.removeKeyListener(myCanvas.getKeyListeners()[0]);
         myCanvas.addMouseListener(mouseListener());
+
     }
 
     public void update() {
