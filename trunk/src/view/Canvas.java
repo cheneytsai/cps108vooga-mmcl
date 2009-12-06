@@ -28,7 +28,7 @@ public class Canvas extends JPanel {
     protected ImageIcon icon;
 
     public Canvas() {
-        // myCanvas = this;
+        myActive = this;
         setSize(mySize);
         myGameModel = new GameModel(this);
     }
@@ -45,11 +45,16 @@ public class Canvas extends JPanel {
         setOpaque(false);
     }
 
-    public void setActive(Canvas toUse) {
+    public void setActive(Canvas toUse) 
+    {
+        myActive.stopTimer();
         myActive = toUse;
         myGameModel.newView(myActive);
     }
 
+    public void stopTimer()
+    {
+    }
     public int getScore()
     {
         return myScore;
