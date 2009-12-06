@@ -25,9 +25,10 @@ public class EndView extends Canvas {
         icon = new ImageIcon(ResourceManager.getString(endCondition+ ".background"));
         
         myGameModel.setGameOver(true);
-        saveScores(gameName);
         
+        saveScores(gameName);
         myCanvas.repaint();
+
     }
 
     public void paintComponent(Graphics pen)

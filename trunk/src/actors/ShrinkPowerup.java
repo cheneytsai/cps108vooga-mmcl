@@ -9,6 +9,7 @@ import actions.Action;
 import actions.Resize;
 
 public class ShrinkPowerup extends Powerup {
+    
     public ShrinkPowerup(Point position, GameModel model) {
         super(ResourceManager.getString("ShrinkPowerupImage"), new Dimension(
                 16, 16), position, model);

@@ -50,7 +50,7 @@ public class Frame extends JFrame {
             {
                 if(myCanvas.getGameName() != null)
                 {
-                    new SubMenuView(myCanvas.getGameName(),"Instructions",myCanvas);
+                    new ScoresView(myCanvas.getGameName(),"Instructions",myCanvas);
                 }
             }
         });
@@ -60,7 +60,7 @@ public class Frame extends JFrame {
             {
                 if(myCanvas.getGameName() != null)
                 {
-                    new SubMenuView(myCanvas.getGameName(),"Scores",myCanvas);
+                    new ScoresView(myCanvas.getGameName(),"Scores",myCanvas);
                 }
             }
         });
