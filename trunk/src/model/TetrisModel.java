@@ -25,6 +25,7 @@ public class TetrisModel extends GameModel {
             myPreviousKey = myLastKeyPressed;
             super.update(myLastKeyPressed);
         }
+        
     }
 
     public void lose() {
