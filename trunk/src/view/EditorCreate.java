@@ -32,7 +32,7 @@ public class EditorCreate extends JFrame {
     private String[] actorStats;
     private String[] statAppend;
     private Actor myActor;
-    private GameModel myGameModel;
+    private GameModel myModel;
     private JTextField myField;
     private JTextField[] myDimPoint;
     private JComboBox myBox;
@@ -45,7 +45,7 @@ public class EditorCreate extends JFrame {
         actorStats = new String[6];
         String toAppend = "Actor Type: ,Image Location: ,x Dimension: ,y Dimension: ,x Value: ,y Value: ";
         statAppend = toAppend.split(",");
-        myGameModel = model;
+        myModel = model;
         myActor = actor;
 
         JPanel p = new JPanel();
@@ -155,11 +155,11 @@ public class EditorCreate extends JFrame {
         }
 
         // TODO add catches for illformatting
-        myGameModel.addActor((Actor) Reflection.createInstance("actors."
+        myModel.addActor((Actor) Reflection.createInstance("actors."
                 + actorStats[0], actorStats[1], new Dimension(Integer
                 .parseInt(actorStats[2]), Integer.parseInt(actorStats[3])),
                 new Point(Integer.parseInt(actorStats[4]), Integer
-                        .parseInt(actorStats[5])), myGameModel));
+                        .parseInt(actorStats[5])), myModel));
         try {
             FileWriter output = new FileWriter(ResourceManager
                     .getString(levelName), true);
@@ -175,14 +175,14 @@ public class EditorCreate extends JFrame {
     }
 
     private void deleteOldActor(String levelName) {
-        int matchingIndex = myGameModel.getActors().size();
-        for (int i = 0; i < myGameModel.getActors().size(); i++) {
-            if (myGameModel.getActors().get(i).equals(myActor)) {
+        int matchingIndex = myModel.getActors().size();
+        for (int i = 0; i < myModel.getActors().size(); i++) {
+            if (myModel.getActors().get(i).equals(myActor)) {
                 matchingIndex = i;
                 break;
             }
         }
-        myGameModel.remove(myActor);
+        myModel.remove(myActor);
 
         try {
             File inFile = new File(ResourceManager.getString(levelName));

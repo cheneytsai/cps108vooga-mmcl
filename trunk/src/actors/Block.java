@@ -23,8 +23,5 @@ public class Block extends Actor {
 
     }
 
-    public void remove() {
-        super.remove();
-    }
 
 }

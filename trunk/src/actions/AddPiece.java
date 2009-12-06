@@ -23,13 +23,13 @@ import actors.Actor;
 
 public class AddPiece implements Action {
 
-    private static ResourceBundle myResources;
+    private static ResourceBundle myPieceResources;
     private static Actor myNext;
     private GameModel myModel;
 
     public AddPiece(String gameName, GameModel model) {
-        if (myResources == null)
-            myResources = ResourceBundle.getBundle("resources." + gameName
+        if (myPieceResources == null)
+            myPieceResources = ResourceBundle.getBundle("resources." + gameName
                     + "Pieces");
         myModel = model;
     }
@@ -43,7 +43,7 @@ public class AddPiece implements Action {
             myModel.lose();
         }
 
-        else if (new NumberOf(myModel, myResources.getString("PieceClass"), 0)
+        else if (new NumberOf(myModel, myPieceResources.getString("PieceClass"), 0)
                 .evaluate()) {
             if (myNext == null) {
                 myNext = createRandom();
@@ -61,18 +61,18 @@ public class AddPiece implements Action {
      * Randomly creates a new actor from the resource file
      */
     private Actor createRandom() {
-        String number = myResources.getString("NumberOfPieces");
+        String number = myPieceResources.getString("NumberOfPieces");
         int random = myModel.getRandom().nextInt(Integer.parseInt(number));
-        String image = myResources.getString("" + random);
+        String image = myPieceResources.getString("" + random);
         Image newImage = new ImageIcon(image).getImage();
         Dimension size = new Dimension(newImage.getWidth(null), newImage
                 .getHeight(null));
         if (size.width % 52 == 0)
-            return (Actor) Reflection.createInstance(myResources
+            return (Actor) Reflection.createInstance(myPieceResources
                     .getString("PieceClass"), image, size, new Point(493,
                     size.height / 2), myModel);
         else
-            return (Actor) Reflection.createInstance(myResources
+            return (Actor) Reflection.createInstance(myPieceResources
                     .getString("PieceClass"), image, size, new Point(480,
                     size.height / 2), myModel);
     }

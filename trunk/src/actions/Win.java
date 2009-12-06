@@ -9,7 +9,7 @@ import model.GameModel;
  * 
  */
 public class Win extends Lose implements Action {
-
+//TODO: Why does this extend Lose???
     public Win(GameModel model) {
         super(model);
     }

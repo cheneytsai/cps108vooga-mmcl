@@ -15,11 +15,9 @@ import model.GameModel;
  * 
  */
 public class Paddle extends Actor {
-    private static int numberOfPaddles = 0;
 
     public Paddle(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
-        numberOfPaddles++;
     }
 
     @Override
@@ -41,8 +39,4 @@ public class Paddle extends Actor {
         myInteractions.put(LeftWall.class.getCanonicalName(), leftWall);
     }
 
-    public void remove() {
-        numberOfPaddles--;
-        super.remove();
-    }
 }

@@ -37,7 +37,7 @@ public class LevelViewer extends Canvas implements ActionListener {
         myScore = score;
         myCanvas.setActive(this);
         myCanvas.requestFocus();
-        myGameModel = canvas.getGameModel();
+        myModel = canvas.getGameModel();
 
         if (myCanvas.getMouseListeners().length > 0) {
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
@@ -60,8 +60,8 @@ public class LevelViewer extends Canvas implements ActionListener {
 
         myCanvas.repaint();
 
-        myActors = myGameModel.getActors();
-        myGameModel.setGameOver(false);
+        myActors = myModel.getActors();
+        myModel.setGameOver(false);
         myTimer = new Timer(DEFAULT_DELAY, this);
         myTimer.start();
 
@@ -73,8 +73,8 @@ public class LevelViewer extends Canvas implements ActionListener {
     }
 
     public void update() {
-        myGameModel.update(myLastKeyPressed);
-        if (myGameModel.gameOver()) {
+        myModel.update(myLastKeyPressed);
+        if (myModel.gameOver()) {
             myTimer.stop();
         }
     }
@@ -148,7 +148,7 @@ public class LevelViewer extends Canvas implements ActionListener {
      *            smart pen to draw on the canvas with
      */
     public void paint(Graphics pen) {
-        myActors = myGameModel.getActors();
+        myActors = myModel.getActors();
         for (Actor current : myActors) {
             current.paint(pen);
         }
@@ -163,7 +163,7 @@ public class LevelViewer extends Canvas implements ActionListener {
 
     public void loadNextLevel() {
         myTimer.stop();
-        myGameModel.setGameOver(true);
+        myModel.setGameOver(true);
         myLevelNum++;
         new LevelViewer(myGameName, myLevelNum, myScore, myCanvas);
     }
