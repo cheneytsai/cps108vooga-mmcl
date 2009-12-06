@@ -40,7 +40,6 @@ public abstract class Actor {
     public boolean hasChanged;                          // Flag - Changed?
     public boolean hasMoved;                            // Flag - Moved?
     
-    private static int numberOfActors = 0;
 
     public Actor(String image, Dimension size, Point position, GameModel model) {
         myHeading = 0;
@@ -58,7 +57,6 @@ public abstract class Actor {
         myKeyEvents = new HashMap<String, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
-        numberOfActors++;
         // TODO: make all this readable from a file
     }
 
@@ -122,7 +120,7 @@ public abstract class Actor {
     }
 
     public void remove() {
-        numberOfActors--;
+
         myModel.remove(this);
     }
 
