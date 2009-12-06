@@ -16,7 +16,7 @@ public abstract class CollisionChecker {
             if (i < actors.size()) {
                 Actor b = actors.get(i);
                 if (collide(a, b)) {
-                    // if(intersect(a,b)){
+//                     if(intersect(a,b)){
                     a.interact(b);
                     b.interact(a);
                 }
