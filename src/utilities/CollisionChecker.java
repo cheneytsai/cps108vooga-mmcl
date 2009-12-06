@@ -68,30 +68,4 @@ public abstract class CollisionChecker {
                 .getBottom());
     }
 
-    // private static boolean intersects (Actor a, Actor b)
-    // {
-    // return (getIntersectionArea(a, b) != null);
-    // }
-    //
-    //
-    // private static Area getIntersectionArea (Actor a, Actor b)
-    // {
-    // Dimension size = a.getSize();
-    // Dimension otherSize = b.getSize();
-    // double max = Math.max(size.getWidth(), size.getHeight()) +
-    // Math.max(otherSize.getWidth(), otherSize.getHeight());
-    // if (a.getPosition().distance(b.getPosition()) < max / 2)
-    // {
-    // Area me = (Area)a.getShape();
-    // Area you = (Area)b.getShape();
-    // me.intersect(you);
-    // you.intersect(me);
-    // if (! me.isEmpty())
-    // {
-    // return me;
-    // }
-    // }
-    //        
-    // return null;
-    // }
 }
