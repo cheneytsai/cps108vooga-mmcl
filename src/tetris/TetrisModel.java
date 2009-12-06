@@ -1,8 +1,8 @@
-package model;
+package tetris;
 
+import model.GameModel;
 import actions.AddPiece;
 import actors.Grid;
-import conditions.TetrisConditions;
 import view.Canvas;
 
 public class TetrisModel extends GameModel {

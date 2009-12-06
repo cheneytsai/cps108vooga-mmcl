@@ -1,4 +1,7 @@
-package view;
+package tetris;
+
+import view.Canvas;
+import view.LevelViewer;
 
 @SuppressWarnings("serial")
 public class TetrisLevelViewer extends LevelViewer {

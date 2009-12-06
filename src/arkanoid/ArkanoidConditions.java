@@ -1,5 +1,7 @@
-package conditions;
+package arkanoid;
 
+import conditions.ConditionChecker;
+import conditions.NumberOf;
 import actions.Lose;
 import actions.NextLevel;
 import actors.Ball;
