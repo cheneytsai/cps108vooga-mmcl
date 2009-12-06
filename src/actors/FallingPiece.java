@@ -23,16 +23,13 @@ import model.GameModel;
  */
 public class FallingPiece extends Actor {
 
-    private static int numberOfFallingPieces = 0;
-
     public FallingPiece(String image, Dimension size, Point position,
             GameModel gameModel) {
         super(image, size, position, gameModel);
         setVelocity(new PhysicsVector(new Direction(0, 1), 5));
         loadBehavior();
-
-        numberOfFallingPieces++;
-
+        System.out.println("Speed is: " + getVelocity().getMagnitude()
+                * getVelocity().getDirection().yShift());
     }
 
     @Override
@@ -67,7 +64,6 @@ public class FallingPiece extends Actor {
     }
 
     public void remove() {
-        numberOfFallingPieces--;
         super.remove();
     }
 
