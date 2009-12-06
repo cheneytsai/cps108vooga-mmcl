@@ -9,6 +9,8 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
+
+import actions.AddPiece;
 import actors.Actor;
 import util.resources.ResourceManager;
 
@@ -64,9 +66,8 @@ public class LevelViewer extends Canvas implements ActionListener {
 
         update();
     }
-    
-    public void stopTimer()
-    {
+
+    public void stopTimer() {
         myTimer.stop();
     }
 
@@ -110,6 +111,16 @@ public class LevelViewer extends Canvas implements ActionListener {
         myActors = myGameModel.getActors();
         for (Actor current : myActors) {
             current.paint(pen);
+        }
+        if (myGameName.equals("Tetris")) {
+            pen.setColor(Color.WHITE);
+            pen.fillRect(800, 160, 110, 110);
+            pen.setColor(Color.BLACK);
+            pen.drawRect(800, 160, 110, 110);
+            pen.drawString("Next Piece:", 800, 155);
+            pen.drawImage(AddPiece.nextImage(), 855 - AddPiece.nextImage()
+                    .getWidth(null) / 2, 215 - AddPiece.nextImage().getHeight(
+                    null) / 2, null);
         }
     }
 
