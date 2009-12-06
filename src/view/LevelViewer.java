@@ -64,6 +64,11 @@ public class LevelViewer extends Canvas implements ActionListener {
 
         update();
     }
+    
+    public void stopTimer()
+    {
+        myTimer.stop();
+    }
 
     public void update() {
         myGameModel.update(myLastKeyPressed);

@@ -35,7 +35,8 @@ public class GameModel {
         gameOver = false;
     }
 
-    public void update(String myLastKeyPressed) {
+    public void update(String myLastKeyPressed) 
+    {
         for (int k = 0; k < myActorList.size(); k++) {
             Point tempPos = myActorList.get(k).getPosition();
             myActorList.get(k).act(myLastKeyPressed);
