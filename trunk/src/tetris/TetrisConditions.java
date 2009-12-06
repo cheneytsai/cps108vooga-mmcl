@@ -1,5 +1,6 @@
-package conditions;
+package tetris;
 
+import conditions.ConditionChecker;
 import model.GameModel;
 
 public class TetrisConditions extends ConditionChecker {

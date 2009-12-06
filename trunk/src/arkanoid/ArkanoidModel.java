@@ -1,7 +1,9 @@
-package model;
+package arkanoid;
 
 import java.awt.Dimension;
 import java.awt.Point;
+
+import model.GameModel;
 
 import actions.Add;
 import actions.Direction;
@@ -11,7 +13,6 @@ import actors.Ball;
 import actors.Paddle;
 import actors.PhysicsVector;
 import view.Canvas;
-import conditions.ArkanoidConditions;
 
 public class ArkanoidModel extends GameModel {
 

@@ -1,4 +1,7 @@
-package view;
+package arkanoid;
+
+import view.Canvas;
+import view.LevelViewer;
 
 @SuppressWarnings("serial")
 public class ArkanoidLevelViewer extends LevelViewer {
