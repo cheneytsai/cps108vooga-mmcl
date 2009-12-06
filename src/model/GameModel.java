@@ -1,3 +1,5 @@
+//TODO: Make this abstract?
+
 package model;
 
 import view.Canvas;
