@@ -12,6 +12,7 @@ import javax.swing.Timer;
 
 import actions.AddPiece;
 import actors.Actor;
+import actors.Grid;
 import util.resources.ResourceManager;
 
 /**
@@ -82,12 +83,51 @@ public class LevelViewer extends Canvas implements ActionListener {
 
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         pen.setFont(SCOREBOARD_FONT);
+        
+        
+        if (myGameName.equals("Tetris")) {
+            pen.setColor(Color.BLACK);
+            pen.drawString(ResourceManager.getString("Title").substring(0, 10), 800,
+                    25);
+            pen.drawString(myGameName, 800, 50);
+            pen.setColor(Color.WHITE);
+            pen.fillRect(800, 160, 110, 50);
+            pen.setColor(Color.BLACK);
+            pen.drawRect(800, 160, 110, 50);
+            pen.drawString(ResourceManager.getString("Score"), 800, 155);
+            pen.drawString("" + myScore, 805, 190);
+            pen.setColor(Color.WHITE);
+            pen.fillRect(800, 260, 110, 50);
+            pen.setColor(Color.BLACK);
+            pen.drawRect(800, 260, 110, 50);
+            pen.drawString("Level:", 800, 255);
+            pen.drawString(""+Grid.getNumRowsCleared()/10, 805, 290);
+            pen.setColor(Color.WHITE);
+            pen.fillRect(800, 360, 110, 50);
+            pen.setColor(Color.BLACK);
+            pen.drawRect(800, 360, 110, 50);
+            pen.drawString("Lines:", 800, 355);
+            pen.drawString("" + Grid.getNumRowsCleared(), 805, 390);
+            pen.setColor(Color.WHITE);
+            pen.fillRect(800, 460, 110, 110);
+            pen.setColor(Color.BLACK);
+            pen.drawRect(800, 460, 110, 110);
+            pen.drawString("Next Piece:", 800, 455);
+            pen.drawImage(AddPiece.nextImage(), 855 - AddPiece.nextImage()
+                    .getWidth(null) / 2, 515 - AddPiece.nextImage().getHeight(
+                    null) / 2, null);
+            
+        }
+        
+        else{
         pen.setColor(Color.WHITE);
         pen.drawString(ResourceManager.getString("Title").substring(0, 10), 0,
                 20);
         pen.drawString(myGameName, 0, 40);
         pen.drawString(ResourceManager.getString("Score") + myScore, 800, 20);
-
+        
+        }
+        
         paint(pen);
     }
 
@@ -112,16 +152,7 @@ public class LevelViewer extends Canvas implements ActionListener {
         for (Actor current : myActors) {
             current.paint(pen);
         }
-        if (myGameName.equals("Tetris")) {
-            pen.setColor(Color.WHITE);
-            pen.fillRect(800, 160, 110, 110);
-            pen.setColor(Color.BLACK);
-            pen.drawRect(800, 160, 110, 110);
-            pen.drawString("Next Piece:", 800, 155);
-            pen.drawImage(AddPiece.nextImage(), 855 - AddPiece.nextImage()
-                    .getWidth(null) / 2, 215 - AddPiece.nextImage().getHeight(
-                    null) / 2, null);
-        }
+        
     }
 
     public void actionPerformed(ActionEvent arg0) {

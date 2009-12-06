@@ -22,6 +22,7 @@ public class Grid extends Actor {
     private static Block[][] myBlocks;
     private static GameModel myModel;
     private static Dimension gridSize;
+    private static int myNumRowsCleared = 0;
 
     private static int numberOfGrids = 0;
 
@@ -94,6 +95,7 @@ public class Grid extends Actor {
             }
             if (numberInRow == gridSize.width) {
                 new Update(myModel,40).execute();
+                myNumRowsCleared++;
                 for (int j = 0; j < gridSize.width; j++) {
                     myBlocks[j][i].remove();
                     myBlocks[j][i] = null;
@@ -108,6 +110,10 @@ public class Grid extends Actor {
 
             }
         }
+    }
+    
+    public static int getNumRowsCleared(){
+        return myNumRowsCleared;
     }
 
 }

@@ -31,7 +31,6 @@ public class TetrisModel extends GameModel {
     public void lose() {
         myCanvas.loadEnd("Lose");
     }
-//TODO is this in conditions?
     public boolean gameOver() {
         for (int i = 0; i < Grid.getGridSize().width; i++) {
             if (Grid.getState(i, 0)) {
