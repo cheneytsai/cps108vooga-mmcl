@@ -28,8 +28,6 @@ public class FallingPiece extends Actor {
         super(image, size, position, gameModel);
         setVelocity(new PhysicsVector(new Direction(0, 1), 5));
         loadBehavior();
-        System.out.println("Speed is: " + getVelocity().getMagnitude()
-                * getVelocity().getDirection().yShift());
     }
 
     @Override
