@@ -23,14 +23,11 @@ import actors.Actor;
 
 public class AddPiece implements Action {
 
-    private static Random myRandom;
     private static ResourceBundle myResources;
     private static Actor myNext;
     private GameModel myModel;
 
     public AddPiece(String gameName, GameModel model) {
-        if (myRandom == null)
-            myRandom = new Random();
         if (myResources == null)
             myResources = ResourceBundle.getBundle("resources." + gameName
                     + "Pieces");
@@ -65,7 +62,7 @@ public class AddPiece implements Action {
      */
     private Actor createRandom() {
         String number = myResources.getString("NumberOfPieces");
-        int random = myRandom.nextInt(Integer.parseInt(number));
+        int random = myModel.getRandom().nextInt(Integer.parseInt(number));
         String image = myResources.getString("" + random);
         Image newImage = new ImageIcon(image).getImage();
         Dimension size = new Dimension(newImage.getWidth(null), newImage

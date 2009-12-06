@@ -2,7 +2,42 @@ What to refactor:
 
 Load conditions/interactions from file
 Create game file to point to level file, condition/interaction file and anything else
-Heirachy for actions
+Heirarchy for actions
 factor out constants and words
 
 //TODO: Write the EventHandler
+
+
+
+Arkanoid:
+Different strength bricks
+
+Tetris:
+Fix blocks
+Tetris = more points
+
+Paperwork:
+Comments
+Project artifact
+
+General:
+Dukeapolyse in its entirety
+
+Individual game packages and resources
+Move Random to...Model?
+Enlarge/Shrink = 1 powerup, not 2
+Type out instructions
+Keys, instructions,etc. in resources
+Decrement points, fix update?
+
+Health!
+
+if statement in numberOf
+
+make attributes changeable...constants, key presses
+remove numberOf from most methods
+myDefaultBehavior, myKeyEvents, myInteractions = can't find out what it is  (interface)
+
+myDefaultBehavior twice
+
+look at actors

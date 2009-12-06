@@ -10,7 +10,6 @@ import actors.*;
  * 
  */
 public interface Action {
-    Random myRand = new Random();
 
     /**
      * Execute associated action on given actor The actor calling the Action

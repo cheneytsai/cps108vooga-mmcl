@@ -14,7 +14,7 @@ public class RandomAdd implements Action {
     }
 
     public void execute(Actor... actors) {
-        int randomInt = myRand.nextInt(10);
+        int randomInt = myModel.getRandom().nextInt(10);
         if (randomInt == 0) {
             new Add(myModel, BallPowerup.class.getCanonicalName())
                     .execute(actors);

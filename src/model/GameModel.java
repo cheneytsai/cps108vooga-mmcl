@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.MissingResourceException;
+import java.util.Random;
 import java.util.Scanner;
 
 import conditions.ConditionChecker;
@@ -30,11 +31,13 @@ public class GameModel {
     public Canvas myCanvas;
     private boolean gameOver;
     protected ConditionChecker myConditions;
+    private Random myRandom;
 
     public GameModel(Canvas canvas) {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
         gameOver = false;
+        myRandom = new Random();
     }
 
     public void update(String myLastKeyPressed) 
@@ -126,6 +129,11 @@ public class GameModel {
     public Canvas getCanvas()
     {
         return myCanvas;
+    }
+    
+    public Random getRandom()
+    {
+        return myRandom;
     }
 
 }

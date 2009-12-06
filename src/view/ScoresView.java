@@ -14,13 +14,13 @@ import javax.swing.ImageIcon;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
-public class SubMenuView extends Canvas
+public class ScoresView extends Canvas
 {
     String myMenuType;
     List<Integer> mySortedKeys;
     Map<Integer,List<String[]>> myScoreInfo;
     
-    public SubMenuView(String gameName,String menuType,Canvas canvas)
+    public ScoresView(String gameName,String menuType,Canvas canvas)
     {
         myCanvas = canvas;
         myCanvas.setActive(this);

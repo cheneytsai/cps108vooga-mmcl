@@ -1,5 +1,7 @@
 package view;
 
+//TODO make abstract
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -48,6 +50,7 @@ public class Canvas extends JPanel {
     public void setActive(Canvas toUse) 
     {
         myActive.stopTimer();
+
         myActive = toUse;
         myGameModel.newView(myActive);
     }
@@ -55,6 +58,17 @@ public class Canvas extends JPanel {
     public void stopTimer()
     {
     }
+    
+    public boolean getTimerStat()
+    {
+        return myActive.isTimerRunning();
+    }
+    
+    private boolean isTimerRunning()
+    {
+        return false;
+    }
+
     public int getScore()
     {
         return myScore;
