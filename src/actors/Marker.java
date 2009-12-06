@@ -11,11 +11,9 @@ import model.GameModel;
  * 
  */
 public class Marker extends Actor {
-    private static int NumberOfMarkers = 0;
 
     public Marker(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
-        NumberOfMarkers++;
     }
 
     @Override
@@ -24,8 +22,4 @@ public class Marker extends Actor {
 
     }
 
-    public void remove() {
-        NumberOfMarkers--;
-        super.remove();
-    }
 }

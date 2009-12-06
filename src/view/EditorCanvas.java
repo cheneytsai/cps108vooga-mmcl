@@ -36,12 +36,12 @@ public class EditorCanvas extends LevelViewer {
                 // if nothing there, open popup
                 // else,be able to update that object
                 if (match == null) {
-                    new EditorCreate(myGameModel, getGameName() + "level"
+                    new EditorCreate(myModel, getGameName() + "level"
                             + myLevelNum, null, "src/images/Paddle.gif", 20,
                             20, e.getX(), e.getY());
                 } else {
 
-                    new EditorCreate(myGameModel, getGameName() + "level"
+                    new EditorCreate(myModel, getGameName() + "level"
                             + myLevelNum, match, match.getImageString(), match
                             .getSize().width, match.getSize().height,
                             (int) match.getPosition().getX(), (int) match

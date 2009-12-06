@@ -63,8 +63,5 @@ public class FallingPiece extends Actor {
 
     }
 
-    public void remove() {
-        super.remove();
-    }
 
 }

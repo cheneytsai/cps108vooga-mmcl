@@ -17,7 +17,7 @@ public class Canvas extends JPanel {
 
     protected Canvas myCanvas;
     private Canvas myActive;
-    protected GameModel myGameModel;
+    protected GameModel myModel;
     protected String myGameName;
     // private Menu active;
     protected int myScore;
@@ -32,11 +32,11 @@ public class Canvas extends JPanel {
     public Canvas() {
         myActive = this;
         setSize(mySize);
-        myGameModel = new GameModel(this);
+        myModel = new GameModel(this);
     }
 
     public void setGame(GameModel model) {
-        myGameModel = model;
+        myModel = model;
     }
 
     public void paintComponent(Graphics g) {
@@ -52,7 +52,7 @@ public class Canvas extends JPanel {
         myActive.stopTimer();
 
         myActive = toUse;
-        myGameModel.newView(myActive);
+        myModel.newView(myActive);
     }
 
     public void stopTimer()
@@ -103,7 +103,7 @@ public class Canvas extends JPanel {
     }
 
     protected GameModel getGameModel() {
-        return myGameModel;
+        return myModel;
     }
 
     public void loadNextLevel() {

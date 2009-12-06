@@ -24,14 +24,11 @@ public class Grid extends Actor {
     private static Dimension gridSize;
     private static int myNumRowsCleared = 0;
 
-    private static int numberOfGrids = 0;
-
     public Grid(String image, Dimension size, Point position, GameModel model) {
         super(image, size, position, model);
         myPositions = new Marker[size.width][size.height];
         myBlocks = new Block[size.width][size.height];
         myModel = model;
-        numberOfGrids++;
         for (int i = 0; i < myPositions.length; i++) {
             for (int j = 0; j < myPositions[i].length; j++) {
                 myPositions[i][j] = new Marker(image, new Dimension(0, 0),
@@ -80,7 +77,6 @@ public class Grid extends Actor {
     }
 
     public void remove() {
-        numberOfGrids--;
         super.remove();
     }
 

@@ -46,8 +46,4 @@ public class Ball extends Actor {
 
     }
 
-    public void remove() {
-        super.remove();
-    }
-
 }

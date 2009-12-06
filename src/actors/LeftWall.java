@@ -19,7 +19,4 @@ public class LeftWall extends Wall {
         super(string, dimension, point, gameModel);
     }
 
-    public void remove() {
-        super.remove();
-    }
 }
