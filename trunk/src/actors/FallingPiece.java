@@ -33,6 +33,12 @@ public class FallingPiece extends Actor {
     @Override
     protected void loadBehavior() {
         myDefaultBehavior = new NaturalMove();
+        List<Action> pause = new ArrayList<Action>();
+        pause.add(new ChangeSpeed(0));
+        myKeyEvents.put("p",pause);
+        List<Action> unpause = new ArrayList<Action>();
+        unpause.add(new ChangeSpeed(5));
+        myKeyEvents.put("l",unpause);
         List<Action> up = new ArrayList<Action>();
         up.add(new Rotate(myModel.myCanvas.getGameName()));
         myKeyEvents.put("w", up);
