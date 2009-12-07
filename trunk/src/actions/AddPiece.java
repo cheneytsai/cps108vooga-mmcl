@@ -3,7 +3,6 @@ package actions;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
