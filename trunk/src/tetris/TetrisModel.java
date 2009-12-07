@@ -1,5 +1,6 @@
 package tetris;
 
+import java.awt.event.KeyEvent;
 import model.GameModel;
 import actions.AddPiece;
 import actors.Actor;
@@ -8,7 +9,7 @@ import view.Canvas;
 
 public class TetrisModel extends GameModel {
 
-    private String [] myPreviousKeys = {"",""};
+    private int [] myPreviousKeys = {KeyEvent.VK_BACK_SLASH,KeyEvent.VK_BACK_SLASH};
 
     public TetrisModel(Canvas canvas) {
         super(canvas);
@@ -17,19 +18,20 @@ public class TetrisModel extends GameModel {
 
     }
 
-    public void update(String myLastKeyPressed) {
+    public void update(KeyEvent myLastKeyPressed) {
         if (myLastKeyPressed == null){
-            myPreviousKeys[0] = ""; 
-            myPreviousKeys[1] = "";
+            myPreviousKeys[0] = KeyEvent.VK_BACK_SLASH; 
+            myPreviousKeys[1] = KeyEvent.VK_BACK_SLASH;
             super.update(null);
         }
-        else if (myPreviousKeys[0].equals("W") && myLastKeyPressed.equals("W"))
-
-            super.update(null);
-            
-        else if (myLastKeyPressed.equals(myPreviousKeys[0]))
+        else if (myPreviousKeys[0] == KeyEvent.VK_W 
+                && myLastKeyPressed.getKeyCode() == KeyEvent.VK_W)
         {
-            if(myPreviousKeys[0].equals(myPreviousKeys[1])){
+            super.update(null);
+        }   
+        else if (myLastKeyPressed.getKeyCode() == myPreviousKeys[0])
+        {
+            if(myPreviousKeys[0] == myPreviousKeys[1]){
                 super.update(myLastKeyPressed);
             }
             else{
@@ -40,7 +42,7 @@ public class TetrisModel extends GameModel {
         }
         else{
             myPreviousKeys[1] = myPreviousKeys[0];
-            myPreviousKeys[0] = myLastKeyPressed;
+            myPreviousKeys[0] = myLastKeyPressed.getKeyCode();
             super.update(myLastKeyPressed);
         }
 
@@ -71,8 +73,8 @@ public class TetrisModel extends GameModel {
     
     public void addActor(Actor actor){
         super.addActor(actor);
-        myPreviousKeys[0] = ""; 
-        myPreviousKeys[1] = "";
+        myPreviousKeys[0] = KeyEvent.VK_BACK_SLASH; 
+        myPreviousKeys[1] = KeyEvent.VK_BACK_SLASH;
     }
 
 }

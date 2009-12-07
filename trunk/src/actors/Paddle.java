@@ -2,6 +2,7 @@ package actors;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +28,10 @@ public class Paddle extends Actor {
         myDefaultBehavior = null;
         List<Action> a = new ArrayList<Action>();
         a.add(new Move(new PhysicsVector(new Direction(-1, 0), 10)));
-        myKeyEvents.put("a", a);
+        myKeyEvents.put(KeyEvent.VK_LEFT, a);
         List<Action> d = new ArrayList<Action>();
         d.add(new Move(new PhysicsVector(new Direction(1, 0), 10)));
-        myKeyEvents.put("d", d);
+        myKeyEvents.put(KeyEvent.VK_RIGHT, d);
         List<Action> rightWall = new ArrayList<Action>();
         rightWall.add(new Move(new PhysicsVector(new Direction(-1, 0), 10)));
         myInteractions.put(Wall.class.getCanonicalName(), rightWall);
