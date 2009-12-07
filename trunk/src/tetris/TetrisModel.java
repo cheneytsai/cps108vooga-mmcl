@@ -8,37 +8,47 @@ import view.Canvas;
 
 public class TetrisModel extends GameModel {
 
-    private String myPreviousKey;
-//    private String [] myPreviousKeys = {"",""};
+    private String [] myPreviousKeys = {"",""};
 
     public TetrisModel(Canvas canvas) {
         super(canvas);
         myConditions = new TetrisConditions(this);
-        myPreviousKey = "";
 
 
     }
 
     public void update(String myLastKeyPressed) {
         if (myLastKeyPressed == null){
+            myPreviousKeys[0] = ""; 
+            myPreviousKeys[1] = "";
             super.update(null);
-//            myPreviousKeys[0] = ""; 
-//            myPreviousKeys[1] = "";
         }
-        else if (myPreviousKey.equals("W") && myLastKeyPressed.equals("W"))
-//        else if (myPreviousKey.equals(myLastKeyPressed))
-//        else if(myPreviousKeys[0].equals(myLastKeyPressed) && myPreviousKeys[1].equals("")){
-//            myPreviousKeys[1] = myPreviousKeys[0];
-//            myPreviousKeys[0] = myLastKeyPressed;
+        else if (myPreviousKeys[0].equals("W") && myLastKeyPressed.equals("W"))
+
             super.update(null);
-//        }
             
-        else {
-//            myPreviousKeys[1] = myPreviousKeys[0];
-//            myPreviousKeys[0] = myLastKeyPressed;
-            myPreviousKey = myLastKeyPressed;
+        else if (myLastKeyPressed.equals(myPreviousKeys[0]))
+        {
+            if(myPreviousKeys[0].equals(myPreviousKeys[1])){
+                super.update(myLastKeyPressed);
+            }
+            else{
+                myPreviousKeys[1] = myPreviousKeys[0];
+                super.update(null);
+                
+            }
+        }
+        else{
+            myPreviousKeys[1] = myPreviousKeys[0];
+            myPreviousKeys[0] = myLastKeyPressed;
             super.update(myLastKeyPressed);
         }
+
+        
+//        else {
+//            myPreviousKey = myLastKeyPressed;
+//            super.update(myLastKeyPressed);
+//        }
         
     }
 
@@ -61,8 +71,8 @@ public class TetrisModel extends GameModel {
     
     public void addActor(Actor actor){
         super.addActor(actor);
-//        myPreviousKeys[0] = ""; 
-//        myPreviousKeys[1] = "";
+        myPreviousKeys[0] = ""; 
+        myPreviousKeys[1] = "";
     }
 
 }
