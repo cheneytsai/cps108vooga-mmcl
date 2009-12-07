@@ -3,6 +3,7 @@ package tetris;
 import java.awt.event.KeyEvent;
 import model.GameModel;
 import actions.AddPiece;
+import actions.ChangeSpeed;
 import actors.Actor;
 import actors.Grid;
 import view.Canvas;
@@ -75,6 +76,7 @@ public class TetrisModel extends GameModel {
         super.addActor(actor);
         myPreviousKeys[0] = KeyEvent.VK_BACK_SLASH; 
         myPreviousKeys[1] = KeyEvent.VK_BACK_SLASH;
+        new ChangeSpeed(myCanvas.getLevelNum()).execute(actor);
     }
 
 }
