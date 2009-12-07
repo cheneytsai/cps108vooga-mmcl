@@ -2,6 +2,7 @@ package arkanoid;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 
 import model.GameModel;
 
@@ -21,15 +22,15 @@ public class ArkanoidModel extends GameModel {
         myConditions = new ArkanoidConditions(this);
     }
 
-    protected void hotkeyCheck(String myLastKeyPressed)
+    protected void hotkeyCheck(KeyEvent myLastKeyPressed)
     {
         if(myLastKeyPressed != null)
         {
-            if(myLastKeyPressed.equalsIgnoreCase("l"))
+            if(myLastKeyPressed.getKeyCode() == KeyEvent.VK_L)
             {
                 loadNextLevel();
             }
-            else if(myLastKeyPressed.equalsIgnoreCase("k"))
+            else if(myLastKeyPressed.getKeyCode() == KeyEvent.VK_B)
             {
                 Actor paddleActor = null;
                 for(Actor actor : myActorList)
@@ -46,7 +47,7 @@ public class ArkanoidModel extends GameModel {
                 }
                 myActorList.get(myActorList.size()-1).setVelocity(new PhysicsVector(new Direction(1,1),10));
             }
-            else if(myLastKeyPressed.equalsIgnoreCase("j"))
+            else if(myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
             {
                 new Update(this,10).execute();
             }
@@ -60,7 +61,7 @@ public class ArkanoidModel extends GameModel {
                         myCanvas.getSize().height / 2 + 100), this));
     }
     
-    public void update(String myLastKeyPressed)
+    public void update(KeyEvent myLastKeyPressed)
     {
         hotkeyCheck(myLastKeyPressed);
         super.update(myLastKeyPressed);

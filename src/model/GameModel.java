@@ -7,6 +7,7 @@ import view.EditorCanvas;
 import view.LevelViewer;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class GameModel {
         myRandom = new Random();
     }
 
-    public void update(String myLastKeyPressed) 
+    public void update(KeyEvent myLastKeyPressed) 
     {
         for (int k = 0; k < myActorList.size(); k++) {
             Point tempPos = myActorList.get(k).getPosition();

@@ -24,7 +24,7 @@ import util.resources.ResourceManager;
 public class LevelViewer extends Canvas implements ActionListener {
     private String myGameName;
     protected List<Actor> myActors;
-    protected String myLastKeyPressed;
+    protected KeyEvent myLastKeyPressed;
     protected int myLevelNum;
     private Timer myTimer;
     // animate 25 times per second if possible
@@ -46,12 +46,12 @@ public class LevelViewer extends Canvas implements ActionListener {
         myCanvas.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
 
-                myLastKeyPressed = KeyEvent.getKeyText(e.getKeyCode());
+                myLastKeyPressed = e;
             }
 
             public void keyReleased(KeyEvent e) {
 
-                myLastKeyPressed = "";
+                myLastKeyPressed = null;
             }
         });
 

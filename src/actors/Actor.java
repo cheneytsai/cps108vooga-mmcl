@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Shape;
+import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
@@ -34,7 +35,8 @@ public abstract class Actor {
     protected double myHeading; // Heading
     private Dimension mySize; // Size
     private PhysicsVector myVelocity; // Velocity
-    protected Map<String, List<Action>> myKeyEvents; // KeyEvents
+    protected Map<Integer,List<Action>> myKeyEvents;
+//    protected Map<String, List<Action>> myKeyEvents; // KeyEvents
     protected Map<String, List<Action>> myInteractions; // Interaction
     protected Action myDefaultBehavior;                 // Default Action
     public boolean hasChanged;                          // Flag - Changed?
@@ -54,7 +56,8 @@ public abstract class Actor {
         // parameters
         // or
         // something
-        myKeyEvents = new HashMap<String, List<Action>>();
+//        myKeyEvents = new HashMap<String, List<Action>>();
+        myKeyEvents = new HashMap<Integer, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
         // TODO: make all this readable from a file
@@ -62,13 +65,13 @@ public abstract class Actor {
 
     protected abstract void loadBehavior();
 
-    public void act(String myLastKeyPressed) {
+    public void act(KeyEvent myLastKeyPressed) {
         hasChanged = false;
-        for (String s : myKeyEvents.keySet()) {
+        for (Integer e : myKeyEvents.keySet()) {
             if (myLastKeyPressed == null) {
                 ;
-            } else if (myLastKeyPressed.equalsIgnoreCase(s)) {
-                for (Action a : myKeyEvents.get(s))
+            } else if (myLastKeyPressed.getKeyCode() == e) {
+                for (Action a : myKeyEvents.get(e))
                     a.execute(this);
                 hasMoved = true;
             }
