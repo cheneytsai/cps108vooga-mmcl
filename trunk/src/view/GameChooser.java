@@ -70,7 +70,7 @@ public class GameChooser extends Canvas {
                         
                     } else if (e.getY() > 300 && e.getY() < 350) {
                         
-                        // new GameMenu("Dukeopalypse", myCanvas);
+//                         new GameMenu("Dukeopalypse", myCanvas);
                     } else if (e.getY() > 400 && e.getY() < 450) {
                         
                         myCanvas.setGame(new TetrisModel(myCanvas));

@@ -1,18 +1,10 @@
 package dukeopalypse;
 
-import java.awt.Dimension;
-import java.awt.Point;
+
 import java.awt.event.KeyEvent;
 
 import model.GameModel;
 
-import actions.Add;
-import actions.Direction;
-import actions.Update;
-import actors.Actor;
-import actors.Ball;
-import actors.Paddle;
-import actors.PhysicsVector;
 import view.Canvas;
 
 public class DukeopalypseModel extends GameModel {
