@@ -130,9 +130,9 @@ public class GameModel {
     {
         return myCanvas;
     }
-    
-    public Random getRandom()
-    {
+
+
+    public Random getRandom() {
         return myRandom;
     }
 
