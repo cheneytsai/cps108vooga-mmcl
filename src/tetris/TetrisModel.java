@@ -24,8 +24,8 @@ public class TetrisModel extends GameModel {
             myPreviousKeys[1] = KeyEvent.VK_BACK_SLASH;
             super.update(null);
         }
-        else if (myPreviousKeys[0] == KeyEvent.VK_W 
-                && myLastKeyPressed.getKeyCode() == KeyEvent.VK_W)
+        else if (myPreviousKeys[0] == KeyEvent.VK_UP
+                && myLastKeyPressed.getKeyCode() == KeyEvent.VK_UP)
         {
             super.update(null);
         }   
