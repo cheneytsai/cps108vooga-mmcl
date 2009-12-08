@@ -54,7 +54,7 @@ public class FallingPiece extends Actor {
         myKeyEvents.put(KeyEvent.VK_RIGHT, right);
         List<Action> stop = new ArrayList<Action>();
         stop.add(new ChangeSpeed(0));
-        stop.add(new Replace());
+        stop.add(new Replace(myModel.myCanvas.getGameName()));
         stop.add(new Remove());
         stop.add(new AddPiece(myModel.myCanvas.getGameName(), myModel));
         myInteractions.put(BottomWall.class.getCanonicalName(), stop);
