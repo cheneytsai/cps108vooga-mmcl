@@ -1,10 +1,11 @@
 //TODO: Remove wall classes and replace them with boundary behaviors in all Actor classes
 package actors;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Point;
 
-import model.GameModel;
 
 /**
  * 

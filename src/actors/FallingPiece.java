@@ -1,5 +1,7 @@
 package actors;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -15,7 +17,6 @@ import actions.Remove;
 import actions.Replace;
 import actions.Rotate;
 
-import model.GameModel;
 
 /**
  * 

@@ -1,6 +1,6 @@
 package actions;
 
-import model.GameModel;
+import gameengine.GameModel;
 import actors.Actor;
 import actors.BallPowerup;
 import actors.EnlargePowerup;

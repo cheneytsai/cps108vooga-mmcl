@@ -1,5 +1,7 @@
 package actions;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
@@ -10,7 +12,6 @@ import util.reflection.Reflection;
 
 import conditions.NumberOf;
 
-import model.GameModel;
 
 import actors.Actor;
 

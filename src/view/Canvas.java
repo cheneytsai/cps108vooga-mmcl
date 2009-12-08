@@ -2,13 +2,14 @@ package view;
 
 //TODO make abstract
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import model.GameModel;
 
 @SuppressWarnings("serial")
 public class Canvas extends JPanel {
@@ -20,6 +21,7 @@ public class Canvas extends JPanel {
     protected GameModel myModel;
     protected String myGameName;
     // private Menu active;
+    //TODO: move score to model
     protected int myScore;
     protected static final Font TITLE_FONT = new Font("TAHOMA", Font.BOLD, 75);
     protected static final Font OPTION_FONT = new Font("TAHOMA", Font.BOLD, 40);

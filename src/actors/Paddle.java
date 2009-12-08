@@ -1,5 +1,7 @@
 package actors;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -8,7 +10,6 @@ import java.util.List;
 
 import actions.*;
 
-import model.GameModel;
 
 /**
  * 

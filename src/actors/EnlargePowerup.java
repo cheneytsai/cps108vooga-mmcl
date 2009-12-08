@@ -1,9 +1,10 @@
 package actors;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.List;
-import model.GameModel;
 import util.resources.ResourceManager;
 import actions.Action;
 import actions.Resize;

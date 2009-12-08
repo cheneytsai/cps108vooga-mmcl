@@ -1,9 +1,10 @@
 package tetris;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-import model.GameModel;
 import actions.AddPiece;
 import actors.*;
 import view.Canvas;

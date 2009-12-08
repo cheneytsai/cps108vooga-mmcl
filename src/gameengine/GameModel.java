@@ -1,6 +1,6 @@
 //TODO: Make this abstract?
 
-package model;
+package gameengine;
 
 import view.Canvas;
 import view.EditorCanvas;

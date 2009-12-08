@@ -1,7 +1,7 @@
 package dukeopalypse;
 
+import gameengine.GameModel;
 import conditions.ConditionChecker;
-import model.GameModel;
 
 public class DukeopalypseConditions extends ConditionChecker {
 

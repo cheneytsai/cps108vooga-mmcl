@@ -1,5 +1,7 @@
 package actors;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -12,7 +14,6 @@ import actions.NaturalMove;
 import actions.Reset;
 import actions.UpdateHealth;
 
-import model.GameModel;
 
 /**
  * 

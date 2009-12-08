@@ -1,5 +1,7 @@
 package actors;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -7,7 +9,6 @@ import java.awt.Point;
 import tetris.TetrisConditions;
 
 import actions.UpdateScore;
-import model.GameModel;
 
 /**
  * 
