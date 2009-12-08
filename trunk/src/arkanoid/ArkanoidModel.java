@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import model.GameModel;
 
 import actions.Add;
+import actions.BonusLevel;
 import actions.Direction;
 import actions.UpdateScore;
 import actors.Actor;
@@ -53,6 +54,10 @@ public class ArkanoidModel extends GameModel {
             else if(myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
             {
                 new UpdateScore(this,10).execute();
+            }
+            else if(myLastKeyPressed.getKeyCode() == KeyEvent.VK_G)
+            {
+                new BonusLevel(this,11).execute();
             }
         }
     }
