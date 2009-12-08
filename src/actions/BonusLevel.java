@@ -13,7 +13,6 @@ public class BonusLevel implements Action
         myModel = model;
     }
     
-    @Override
     public void execute(Actor... actors)
     {
         myModel.loadBonusLevel(bestBonusLevel);

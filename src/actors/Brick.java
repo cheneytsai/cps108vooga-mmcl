@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import actions.Action;
-import actions.RandomAdd;
 import actions.UpdateHealth;
 import actions.UpdateScore;
 import model.GameModel;
