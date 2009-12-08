@@ -67,7 +67,6 @@ public class LevelViewer extends Canvas implements ActionListener {
 
             myActors = myModel.getActors();
             myTimer = new Timer(DEFAULT_DELAY, this);
-            System.out.println("hi");
             myTimer.start();
 
             update();
