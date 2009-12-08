@@ -15,23 +15,24 @@ public class RandomAdd implements Action {
     }
 
     public void execute(Actor... actors) {
-        int randomInt = myModel.getRandom().nextInt(20);
-        if (randomInt == 0 || randomInt == 1) {
+        int randomInt = myModel.getRandom().nextInt(10);
+        if (randomInt == 0 ) {
             new Add(myModel, BallPowerup.class.getCanonicalName())
                     .execute(actors);
-        } else if (randomInt == 2 || randomInt == 3) {
+        } else if (randomInt == 1) {
             new Add(myModel, ShrinkPowerup.class.getCanonicalName())
                     .execute(actors);
-        } else if (randomInt == 4 || randomInt == 5) {
+        } else if (randomInt == 2) {
             new Add(myModel, EnlargePowerup.class.getCanonicalName())
                     .execute(actors);
-        } else if (randomInt == 6) {
-            if(myModel.getCanvas().getLevelNum() != 11)
-            {
-                new Add(myModel, BonusLevelPowerup.class.getCanonicalName())
-                    .execute(actors);
-            }
-        }
+        } 
+//        else if (randomInt == 6) {
+//            if(myModel.getCanvas().getLevelNum() != 11)
+//            {
+//                new Add(myModel, BonusLevelPowerup.class.getCanonicalName())
+//                    .execute(actors);
+//            }
+//        }
 
     }
 
