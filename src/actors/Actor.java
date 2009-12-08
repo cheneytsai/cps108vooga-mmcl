@@ -62,6 +62,26 @@ public abstract class Actor {
         loadBehavior();
         // TODO: make all this readable from a file
     }
+    
+    public Actor(String image, int width, int height, int xPos, int yPos, GameModel model) {
+        myHeading = 0;
+        myXform = new AffineTransform();
+        setImage(image);
+        setSize(width, height);
+        setShape(makeShape(myImage));
+        myPosition = new Point(xPos, yPos);
+        myModel = model;
+        myVelocity = new PhysicsVector(new Direction(-1, -1), 10); // TODO: Make
+        // these
+        // parameters
+        // or
+        // something
+//        myKeyEvents = new HashMap<String, List<Action>>();
+        myKeyEvents = new HashMap<Integer, List<Action>>();
+        myInteractions = new HashMap<String, List<Action>>();
+        loadBehavior();
+        // TODO: make all this readable from a file
+    }
 
     protected abstract void loadBehavior();
 

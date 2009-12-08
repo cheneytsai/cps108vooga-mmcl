@@ -1,4 +1,0 @@
-actors.Grid src/images/brick6.gif 12 25 337 0
-actors.BottomWall src/images/brick3.gif 960 36 480 668
-actors.LeftWall src/images/wall.jpg 100 720 287 360
-actors.Wall src/images/wall.jpg 100 720 699 360
