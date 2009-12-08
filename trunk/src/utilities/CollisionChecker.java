@@ -1,7 +1,6 @@
 //TODO: Fix the collision bugs, make this all work with duvall's shape making stuff
 package utilities;
 
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.Area;
 import java.util.List;
@@ -30,19 +29,19 @@ public abstract class CollisionChecker {
     }
 
     protected static Area getIntersectionArea(Actor a, Actor b) {
-        Dimension size = a.getSize();
-        Dimension otherSize = b.getSize();
-        double max = Math.max(size.getWidth(), size.getHeight())
-                + Math.max(otherSize.getWidth(), otherSize.getHeight());
-        if (a.getCenter().distance(b.getCenter()) < max / 2) {
+//        Dimension size = a.getSize();
+//        Dimension otherSize = b.getSize();
+//        double max = Math.max(size.getWidth(), size.getHeight())
+//                + Math.max(otherSize.getWidth(), otherSize.getHeight());
+//        if (a.getCenter().distance(b.getCenter()) < max / 2) {
             Area me = (Area) a.getShape();
             Area you = (Area) b.getShape();
             me.intersect(you);
-            you.intersect(me);
+//            you.intersect(me);
             if (!me.isEmpty()) {
                 return me;
             }
-        }
+//        }
         return null;
     }
 
