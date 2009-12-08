@@ -2,16 +2,19 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import java.util.MissingResourceException;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 import actions.AddPiece;
 import actors.Actor;
+import actors.Ball;
 import actors.Grid;
 import util.resources.ResourceManager;
 
@@ -37,37 +40,49 @@ public class LevelViewer extends Canvas implements ActionListener {
         myGameName = gameName;
         myLevelNum = levelNum;
         myScore = score;
-        myCanvas.setActive(this);
-        myCanvas.requestFocus();
-        myModel = canvas.getGameModel();
+        try
+        {
+            myCanvas.setActive(this);
+            myCanvas.requestFocus();
+            myModel = canvas.getGameModel();
 
-        if (myCanvas.getMouseListeners().length > 0) {
-            myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
+            if (myCanvas.getMouseListeners().length > 0) {
+                myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
+            }
+
+            myCanvas.addKeyListener(new KeyAdapter() {
+                public void keyPressed(KeyEvent e) {
+
+                    myLastKeyPressed = e;
+                }
+
+                public void keyReleased(KeyEvent e) {
+
+                    myLastKeyPressed = null;
+                }
+            });
+
+            icon = new ImageIcon(ResourceManager.getString(myGameName
+                    + "level.background"));
+
+            myCanvas.repaint();
+
+            myActors = myModel.getActors();
+            myTimer = new Timer(DEFAULT_DELAY, this);
+            System.out.println("hi");
+            myTimer.start();
+
+            update();
         }
-
-        myCanvas.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent e) {
-
-                myLastKeyPressed = e;
-            }
-
-            public void keyReleased(KeyEvent e) {
-
-                myLastKeyPressed = null;
-            }
-        });
-
-        icon = new ImageIcon(ResourceManager.getString(myGameName
-                + "level.background"));
-
-        myCanvas.repaint();
-
-        myActors = myModel.getActors();
-        myTimer = new Timer(DEFAULT_DELAY, this);
+        catch(MissingResourceException e)
+        {
+//            TODO now doubletime doesn't happen. but you can only lose.
+//            TODO the problem was that level4 still loaded in the background...
+//            TODO thats still a problem =/
+            System.out.println("fail");
+            myCanvas.loadEnd("Win");
+        }
         
-        myTimer.start();
-
-        update();
     }
 
     public void stopTimer() {

@@ -4,6 +4,7 @@ package model;
 
 import view.Canvas;
 import view.EditorCanvas;
+import view.EndView;
 import view.LevelViewer;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -83,9 +84,10 @@ public class GameModel {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
-        } catch (MissingResourceException e) {
-            myCanvas.loadEnd("Win");
-        }
+        } 
+//        catch (MissingResourceException e) {
+//            myCanvas.loadEnd("Win");
+//        }
     }
 
     public void remove(Actor actor) {
