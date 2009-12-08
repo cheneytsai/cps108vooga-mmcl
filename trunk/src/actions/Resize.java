@@ -11,8 +11,12 @@ public class Resize implements Action {
     }
 
     public void execute(Actor... actors) {
-        actors[1].setSize((int) (actors[1].getSize().getWidth() * myFactor),
+        if((actors[1].getSize().getWidth() >=40 && myFactor < 1)
+                ||(actors[1].getSize().getWidth() <= 120 && myFactor > 1)) {
+            
+            actors[1].setSize((int) (actors[1].getSize().getWidth() * myFactor),
                 (int) actors[1].getSize().getHeight());
+        }
 
     }
 }
