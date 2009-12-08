@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 
+import tetris.TetrisConditions;
+
 import actions.UpdateScore;
 import model.GameModel;
 
@@ -82,15 +84,10 @@ public class Grid extends Actor {
     }
 
     public static void removeFullRowsAndDrop() {
-        int numberInRow;
+
         for (int i = 0; i < gridSize.height; i++) {
-            numberInRow = 0;
-            for (int j = 0; j < gridSize.width; j++) {
-                if (myBlocks[j][i] != null) {
-                    numberInRow++;
-                }
-            }
-            if (numberInRow == gridSize.width) {
+            
+            if (TetrisConditions.isRowFull(i)) {
                 new UpdateScore(myModel,40).execute();
                 myNumRowsCleared++;
                 for (int j = 0; j < gridSize.width; j++) {
