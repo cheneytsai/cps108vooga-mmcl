@@ -1,5 +1,7 @@
 package arkanoid;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 import model.GameModel;
@@ -9,8 +11,11 @@ import actions.Direction;
 import actions.UpdateScore;
 import actors.Actor;
 import actors.Ball;
+import actors.BottomWall;
+import actors.LeftWall;
 import actors.Paddle;
 import actors.PhysicsVector;
+import actors.Wall;
 import view.Canvas;
 
 public class ArkanoidModel extends GameModel {
@@ -61,5 +66,13 @@ public class ArkanoidModel extends GameModel {
     {
         hotkeyCheck(myLastKeyPressed);
         super.update(myLastKeyPressed);
+    }
+    
+    public void initializeActors(){
+        super.initializeActors();
+        addActor(new Wall("src/images/brick3.gif", new Dimension(960, 16), new Point(480, -5), this));
+        addActor(new LeftWall("src/images/brick3.gif", new Dimension(16, 720), new Point(-5, 360), this));
+        addActor(new Wall("src/images/brick3.gif", new Dimension(16, 720), new Point(965, 360), this));
+        addActor(new BottomWall("src/images/brick3.gif", new Dimension(960, 16), new Point(480, 725), this));
     }
 }
