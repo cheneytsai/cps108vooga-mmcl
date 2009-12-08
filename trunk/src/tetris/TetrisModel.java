@@ -9,20 +9,19 @@ import actors.Grid;
 import view.Canvas;
 
 public class TetrisModel extends GameModel {
-
-    private int [] myPreviousKeys = {KeyEvent.VK_BACK_SLASH,KeyEvent.VK_BACK_SLASH};
+    
+    private int defaultKeyPressed = KeyEvent.VK_0;
+    private int [] myPreviousKeys = {defaultKeyPressed,defaultKeyPressed};
 
     public TetrisModel(Canvas canvas) {
         super(canvas);
         myConditions = new TetrisConditions(this);
-
-
     }
 
     public void update(KeyEvent myLastKeyPressed) {
         if (myLastKeyPressed == null){
-            myPreviousKeys[0] = KeyEvent.VK_BACK_SLASH; 
-            myPreviousKeys[1] = KeyEvent.VK_BACK_SLASH;
+            myPreviousKeys[0] = defaultKeyPressed; 
+            myPreviousKeys[1] = defaultKeyPressed;
             super.update(null);
         }
         else if (myPreviousKeys[0] == KeyEvent.VK_UP
@@ -46,12 +45,6 @@ public class TetrisModel extends GameModel {
             myPreviousKeys[0] = myLastKeyPressed.getKeyCode();
             super.update(myLastKeyPressed);
         }
-
-        
-//        else {
-//            myPreviousKey = myLastKeyPressed;
-//            super.update(myLastKeyPressed);
-//        }
         
     }
 
@@ -74,8 +67,8 @@ public class TetrisModel extends GameModel {
     
     public void addActor(Actor actor){
         super.addActor(actor);
-        myPreviousKeys[0] = KeyEvent.VK_BACK_SLASH; 
-        myPreviousKeys[1] = KeyEvent.VK_BACK_SLASH;
+        myPreviousKeys[0] = defaultKeyPressed; 
+        myPreviousKeys[1] = defaultKeyPressed;
 //        new ChangeSpeed(myCanvas.getLevelNum()).execute(actor);
     }
 

@@ -7,8 +7,8 @@ import java.util.List;
 
 import actions.Action;
 import actions.RandomAdd;
-import actions.Remove;
-import actions.Update;
+import actions.UpdateHealth;
+import actions.UpdateScore;
 import model.GameModel;
 
 /**
@@ -21,15 +21,15 @@ public class Brick extends Actor {
     public Brick(String string, Dimension dimension, Point point,
             GameModel gameModel) {
         super(string, dimension, point, gameModel);
-
+        setHealth(myModel.getRandom().nextInt(2)+1);
     }
 
     @Override
     protected void loadBehavior() {
         List<Action> ball = new ArrayList<Action>();
-        ball.add(new Remove());
-        ball.add(new RandomAdd(myModel));
-        ball.add(new Update(myModel, 10));
+        ball.add(new UpdateHealth(myModel,-1));
+//        ball.add(new RandomAdd(myModel));
+        ball.add(new UpdateScore(myModel, 10));
         myInteractions.put(Ball.class.getCanonicalName(), ball);
     }
 }

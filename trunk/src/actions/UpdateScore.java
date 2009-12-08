@@ -8,12 +8,12 @@ import actors.Actor;
  * @author Michael Yu
  * 
  */
-public class Update implements Action {
+public class UpdateScore implements Action {
 
     private GameModel myModel;
     private int myIncrement;
 
-    public Update(GameModel model, int increment) {
+    public UpdateScore(GameModel model, int increment) {
         myModel = model;
         myIncrement = increment;
     }

@@ -84,9 +84,7 @@ public class GameModel {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         } catch (MissingResourceException e) {
-            if (!myCanvas.getGameName().equals("Win")) {
-                myCanvas.loadEnd("Win");
-            }
+            myCanvas.loadEnd("Win");
         }
     }
 
@@ -110,8 +108,9 @@ public class GameModel {
 
     public void newView(Canvas canvas) {
         gameOver = true;
-        if (myActorList != null) {
+        if (myActorList != null ) {
             myActorList.clear();
+//            myCanvas.stopTimer();
         }
         myCanvas = canvas;
         if (canvas instanceof LevelViewer || canvas instanceof EditorCanvas) {
@@ -122,10 +121,6 @@ public class GameModel {
     public boolean gameOver() {
         return gameOver;
     }
-
-    public void setGameOver(boolean toSet) {
-        gameOver = false;
-    }
     
     public Canvas getCanvas()
     {
@@ -135,6 +130,12 @@ public class GameModel {
 
     public Random getRandom() {
         return myRandom;
+    }
+
+    public void loadBonusLevel(int level)
+    {
+        myCanvas.loadBonusLevel(level);
+        
     }
 
 }

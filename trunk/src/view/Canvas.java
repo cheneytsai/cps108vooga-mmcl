@@ -49,24 +49,19 @@ public class Canvas extends JPanel {
 
     public void setActive(Canvas toUse) 
     {
-        myActive.stopTimer();
-
+        try
+        {
+            myActive.stopTimer();
+        }
+        catch(NullPointerException e)
+        {
+        }
         myActive = toUse;
         myModel.newView(myActive);
     }
 
     public void stopTimer()
     {
-    }
-    
-    public boolean getTimerStat()
-    {
-        return myActive.isTimerRunning();
-    }
-    
-    private boolean isTimerRunning()
-    {
-        return false;
     }
 
     public int getScore()
@@ -110,5 +105,8 @@ public class Canvas extends JPanel {
     }
 
     public void loadEnd(String endCondition) {
+    }
+
+    public void loadBonusLevel(int level){
     }
 }

@@ -15,6 +15,9 @@ AHHHHH		80		Sun Dec 06 20:16:03 EST 2009
 Chris		0		Sun Dec 06 20:20:52 EST 2009
 sss		520		Sun Dec 06 20:31:43 EST 2009
 Andrielle		200		Sun Dec 06 20:55:39 EST 2009
+Corey		400		Mon Dec 07 01:02:45 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		0		Mon Dec 07 23:09:10 EST 2009
+Andrielle		200		Sun Dec 06 20:55:39 EST 2009
 The idiot who actually knows his or her name		480		Tue Dec 08 01:49:49 EST 2009
 Dodecahedron		600		Tue Dec 08 01:52:26 EST 2009
 The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 01:57:42 EST 2009
