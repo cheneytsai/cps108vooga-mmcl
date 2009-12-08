@@ -1,10 +1,11 @@
 package tetris;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import model.GameModel;
 import actions.AddPiece;
-import actors.Actor;
-import actors.Grid;
+import actors.*;
 import view.Canvas;
 
 public class TetrisModel extends GameModel {
@@ -65,6 +66,10 @@ public class TetrisModel extends GameModel {
     
     protected void initializeActors(){
         super.initializeActors();
+        addActor(new Wall("src/images/wall.jpg", new Dimension(100, 720), new Point(699, 360), this));
+        addActor(new LeftWall("src/images/wall.jpg", new Dimension(100, 720), new Point(287, 360), this));
+        addActor(new BottomWall("src/images/brick3.gif", new Dimension(960, 36), new Point(480, 668), this));
+        addActor(new Grid("src/images/brick6.gif", new Dimension(12, 25), new Point(337, 0), this));
         new AddPiece(myCanvas.getGameName(), this).execute();
     }
     
