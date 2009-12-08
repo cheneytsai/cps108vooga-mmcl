@@ -3,7 +3,6 @@ package actions;
 import model.GameModel;
 import actors.Actor;
 import actors.BallPowerup;
-import actors.BonusLevelPowerup;
 import actors.EnlargePowerup;
 import actors.ShrinkPowerup;
 
