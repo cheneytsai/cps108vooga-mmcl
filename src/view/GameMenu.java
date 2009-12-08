@@ -68,11 +68,11 @@ public class GameMenu extends Canvas {
                     }
                     else if (e.getY() > 300 && e.getY() < 350)
                     {
-                        new ScoresView(myGameName,"Instructions",myCanvas);
+                        new InstructionView(myGameName,myCanvas);
                     }
                     else if (e.getY() > 375 && e.getY() < 425)
                     {
-                        new ScoresView(myGameName,"Scores",myCanvas);
+                        new ScoresView(myGameName,myCanvas);
                     }
                     else if(e.getY() > 450 && e.getY() < 500)
                     {

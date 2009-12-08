@@ -63,8 +63,8 @@ public class LevelViewer extends Canvas implements ActionListener {
         myCanvas.repaint();
 
         myActors = myModel.getActors();
-        myModel.setGameOver(false);
         myTimer = new Timer(DEFAULT_DELAY, this);
+        
         myTimer.start();
 
         update();
@@ -76,9 +76,6 @@ public class LevelViewer extends Canvas implements ActionListener {
 
     public void update() {
         myModel.update(myLastKeyPressed);
-        if (myModel.gameOver()) {
-            myTimer.stop();
-        }
     }
 
     public void paintComponent(Graphics pen) {
@@ -122,11 +119,10 @@ public class LevelViewer extends Canvas implements ActionListener {
         }
         
         else{
-        pen.setColor(Color.WHITE);
-        pen.drawString(ResourceManager.getString("Title").substring(0, 10), 0,
-                20);
-        pen.drawString(myGameName, 0, 40);
-        pen.drawString(ResourceManager.getString("Score") + myScore, 800, 20);
+            pen.setColor(Color.WHITE);
+            pen.drawString(ResourceManager.getString("Title").substring(0, 10),0,20);
+            pen.drawString(myGameName, 0, 40);
+            pen.drawString(ResourceManager.getString("Score") + myScore, 800, 20);
         
         }
         
@@ -164,12 +160,13 @@ public class LevelViewer extends Canvas implements ActionListener {
     }
 
     public void loadNextLevel() {
-        myTimer.stop();
-        myModel.setGameOver(true);
         myLevelNum++;
         new LevelViewer(myGameName, myLevelNum, myScore, myCanvas);
     }
 
+    public void loadBonusLevel(int level) {
+        new LevelViewer(myGameName,level,myScore,myCanvas);
+    }
     public void loadEnd(String endCondition) {
         new EndView(endCondition, myGameName, myScore, myCanvas);
     }

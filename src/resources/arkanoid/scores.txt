@@ -21,3 +21,28 @@ The Idiot Who Doesn't Know His/Her Own Name		0		Fri Dec 04 23:31:46 EST 2009
 The Idiot Who Doesn't Know His/Her Own Name		0		Fri Dec 04 23:35:20 EST 2009
 Lisa		0		Sat Dec 05 21:13:05 EST 2009
 The Idiot Who Doesn't Know His/Her Own Name		0		Sat Dec 05 21:16:54 EST 2009
+Lisa		0		Mon Dec 07 23:04:10 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		0		Mon Dec 07 23:05:05 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		40		Mon Dec 07 23:09:39 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		-30		Mon Dec 07 23:50:45 EST 2009
+Tester		-30		Tue Dec 08 00:14:38 EST 2009
+Lisa		60		Tue Dec 08 00:22:48 EST 2009
+Score Tester		730		Tue Dec 08 00:33:58 EST 2009
+BonusLevelFun		1880		Tue Dec 08 01:27:17 EST 2009
+Woot		3050		Tue Dec 08 01:33:03 EST 2009
+Kizer C		4480		Tue Dec 08 01:42:22 EST 2009
+The idiot who does know his name		-2120		Tue Dec 08 01:43:08 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		50		Tue Dec 08 01:45:47 EST 2009
+Why so fast?		-8790		Tue Dec 08 01:46:48 EST 2009
+!		0		Tue Dec 08 01:55:35 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		70		Tue Dec 08 02:00:28 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		100		Tue Dec 08 02:02:55 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		40		Tue Dec 08 02:04:37 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 02:05:33 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 02:08:53 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 02:09:26 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 02:10:59 EST 2009
+Wooo!		3880		Tue Dec 08 02:13:05 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		20		Tue Dec 08 02:13:26 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		4120		Tue Dec 08 02:17:36 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		70		Tue Dec 08 02:18:08 EST 2009

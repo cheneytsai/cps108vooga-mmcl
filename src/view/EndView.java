@@ -1,12 +1,15 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import actors.Ball;
 import util.resources.ResourceManager;
 
 /**
@@ -23,8 +26,6 @@ public class EndView extends Canvas {
         myCanvas.requestFocus();
         
         icon = new ImageIcon(ResourceManager.getString(endCondition+ ".background"));
-        
-        myModel.setGameOver(true);
         
         saveScores(gameName);
         myCanvas.repaint();

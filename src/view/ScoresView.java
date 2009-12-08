@@ -16,16 +16,14 @@ import util.resources.ResourceManager;
 @SuppressWarnings("serial")
 public class ScoresView extends Canvas
 {
-    String myMenuType;
     List<Integer> mySortedKeys;
     Map<Integer,List<String[]>> myScoreInfo;
     
-    public ScoresView(String gameName,String menuType,Canvas canvas)
+    public ScoresView(String gameName,Canvas canvas)
     {
         myCanvas = canvas;
         myCanvas.setActive(this);
         myGameName = gameName;
-        myMenuType = menuType;
         
         icon = new ImageIcon(ResourceManager.getString(gameName));
         getScores();
@@ -37,7 +35,7 @@ public class ScoresView extends Canvas
     {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         pen.setFont(TITLE_FONT);
-        pen.drawString(myGameName+" "+myMenuType,100, 100);
+        pen.drawString(myGameName+" Scores",100, 100);
         
         drawScores(pen);
     }
@@ -46,7 +44,7 @@ public class ScoresView extends Canvas
     {
         try
         {
-            Scanner in = new Scanner(new File(ResourceManager.getString(myGameName+myMenuType)));
+            Scanner in = new Scanner(new File(ResourceManager.getString(myGameName+"Scores")));
             List<String[]> lines;
             myScoreInfo = new HashMap<Integer,List<String[]>>();
             String line;

@@ -35,12 +35,12 @@ public abstract class Actor {
     protected double myHeading; // Heading
     private Dimension mySize; // Size
     private PhysicsVector myVelocity; // Velocity
-    protected Map<Integer,List<Action>> myKeyEvents;
-//    protected Map<String, List<Action>> myKeyEvents; // KeyEvents
+    protected Map<Integer,List<Action>> myKeyEvents; //KeyEvents
     protected Map<String, List<Action>> myInteractions; // Interaction
     protected Action myDefaultBehavior;                 // Default Action
     public boolean hasChanged;                          // Flag - Changed?
     public boolean hasMoved;                            // Flag - Moved?
+    public int myHealth;
     
 
     public Actor(String image, Dimension size, Point position, GameModel model) {
@@ -105,6 +105,16 @@ public abstract class Actor {
         myVelocity = v;
     }
 
+    public int getHealth()
+    {
+        return myHealth;
+    }
+    
+    public void setHealth(int newHealth)
+    {
+        myHealth = newHealth;
+    }
+    
     public Point getPosition() {
         return myPosition;
     }

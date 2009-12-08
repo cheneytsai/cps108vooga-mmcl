@@ -1,14 +1,12 @@
 package arkanoid;
 
-import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 import model.GameModel;
 
 import actions.Add;
 import actions.Direction;
-import actions.Update;
+import actions.UpdateScore;
 import actors.Actor;
 import actors.Ball;
 import actors.Paddle;
@@ -44,21 +42,19 @@ public class ArkanoidModel extends GameModel {
                 if(paddleActor != null)
                 {
                     new Add(this,Ball.class.getCanonicalName()).execute(paddleActor);
+                    myActorList.get(myActorList.size()-1).setVelocity(new PhysicsVector(new Direction(1,1),10));
                 }
-                myActorList.get(myActorList.size()-1).setVelocity(new PhysicsVector(new Direction(1,1),10));
             }
             else if(myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
             {
-                new Update(this,10).execute();
+                new UpdateScore(this,10).execute();
             }
         }
     }
     
     public void lose() {
-        updateScore(-50);
-        myActorList.add(new Ball("src/images/ball.gif", new Dimension(16, 16),
-                new Point(myCanvas.getSize().width / 2,
-                        myCanvas.getSize().height / 2 + 100), this));
+        myCanvas.loadEnd("Lose");
+
     }
     
     public void update(KeyEvent myLastKeyPressed)
