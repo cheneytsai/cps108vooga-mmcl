@@ -63,10 +63,6 @@ public class ArkanoidModel extends GameModel {
         }
     }
     
-    public void lose() {
-        myCanvas.loadEnd("Lose");
-
-    }
     
     public void update(KeyEvent myLastKeyPressed)
     {

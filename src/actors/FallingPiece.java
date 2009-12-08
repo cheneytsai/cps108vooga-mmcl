@@ -42,7 +42,7 @@ public class FallingPiece extends Actor {
         unpause.add(new ChangeSpeed(5));
         myKeyEvents.put(KeyEvent.VK_L,unpause);
         List<Action> up = new ArrayList<Action>();
-        up.add(new Rotate(myModel.myCanvas.getGameName()));
+        up.add(new Rotate(myModel.getCanvas().getGameName()));
         myKeyEvents.put(KeyEvent.VK_UP, up);
         List<Action> down = new ArrayList<Action>();
         down.add(new NaturalMove());
@@ -55,9 +55,9 @@ public class FallingPiece extends Actor {
         myKeyEvents.put(KeyEvent.VK_RIGHT, right);
         List<Action> stop = new ArrayList<Action>();
         stop.add(new ChangeSpeed(0));
-        stop.add(new Replace(myModel.myCanvas.getGameName()));
+        stop.add(new Replace(myModel.getCanvas().getGameName()));
         stop.add(new Remove());
-        stop.add(new AddPiece(myModel.myCanvas.getGameName(), myModel));
+        stop.add(new AddPiece(myModel.getCanvas().getGameName(), myModel));
         myInteractions.put(BottomWall.class.getCanonicalName(), stop);
         myInteractions.put(Block.class.getCanonicalName(), stop);
         List<Action> rightWall = new ArrayList<Action>();
