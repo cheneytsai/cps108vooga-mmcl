@@ -33,7 +33,7 @@ public class Replace implements Action {
                 }
             }
         }
-        Grid.removeFullRowsAndDrop();
+        
     }
 
 }
