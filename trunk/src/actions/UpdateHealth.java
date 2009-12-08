@@ -13,7 +13,6 @@ public class UpdateHealth implements Action
         myIncrement = increment;
     }
     
-    @Override
     public void execute(Actor... actors)
     {
         actors[0].setHealth(actors[0].getHealth()+myIncrement);

@@ -3,7 +3,6 @@ package tetris;
 import java.awt.event.KeyEvent;
 import model.GameModel;
 import actions.AddPiece;
-import actions.ChangeSpeed;
 import actors.Actor;
 import actors.Grid;
 import view.Canvas;
