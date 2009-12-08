@@ -3,6 +3,7 @@ package actors;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+
 import actions.UpdateScore;
 import model.GameModel;
 
