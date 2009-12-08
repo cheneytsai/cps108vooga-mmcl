@@ -76,7 +76,7 @@ public class TetrisModel extends GameModel {
         super.addActor(actor);
         myPreviousKeys[0] = KeyEvent.VK_BACK_SLASH; 
         myPreviousKeys[1] = KeyEvent.VK_BACK_SLASH;
-        new ChangeSpeed(myCanvas.getLevelNum()).execute(actor);
+//        new ChangeSpeed(myCanvas.getLevelNum()).execute(actor);
     }
 
 }

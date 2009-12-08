@@ -31,6 +31,8 @@ public class LevelViewer extends Canvas implements ActionListener {
     public static final int DEFAULT_DELAY = 1000 / 25; // in milliseconds
 
     public LevelViewer(String gameName, int levelNum, int score, Canvas canvas) {
+        Grid.resetGrid();
+
         myCanvas = canvas;
         myGameName = gameName;
         myLevelNum = levelNum;

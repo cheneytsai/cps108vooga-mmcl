@@ -111,5 +111,8 @@ public class Grid extends Actor {
     public static int getNumRowsCleared(){
         return myNumRowsCleared;
     }
+    public static void resetGrid(){
+        myNumRowsCleared = 0;
+    }
 
 }
