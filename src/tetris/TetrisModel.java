@@ -19,7 +19,10 @@ public class TetrisModel extends GameModel {
     }
 
     public void update(KeyEvent myLastKeyPressed) {
-        if (myLastKeyPressed == null){
+        if (gameOver()) {
+            lose();
+        }
+        else if (myLastKeyPressed == null){
             myPreviousKeys[0] = defaultKeyPressed; 
             myPreviousKeys[1] = defaultKeyPressed;
             super.update(null);

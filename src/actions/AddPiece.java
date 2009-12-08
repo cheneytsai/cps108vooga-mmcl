@@ -38,11 +38,9 @@ public class AddPiece implements Action {
      */
     public void execute(Actor... actors) {
 
-        if (myModel.gameOver()) {
-            myModel.lose();
-        }
+        
 
-        else if (new NumberOf(myModel, myPieceResources.getString("PieceClass"), 0)
+       if (new NumberOf(myModel, myPieceResources.getString("PieceClass"), 0)
                 .evaluate()) {
             if (myNext == null) {
                 myNext = createRandom();
