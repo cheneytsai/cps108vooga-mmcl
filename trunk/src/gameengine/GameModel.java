@@ -4,7 +4,6 @@ package gameengine;
 
 import view.Canvas;
 import view.EditorCanvas;
-import view.EndView;
 import view.LevelViewer;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -13,7 +12,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.MissingResourceException;
 import java.util.Random;
 import java.util.Scanner;
 
