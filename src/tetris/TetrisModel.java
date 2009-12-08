@@ -47,6 +47,7 @@ public class TetrisModel extends GameModel {
             myPreviousKeys[0] = myLastKeyPressed.getKeyCode();
             super.update(myLastKeyPressed);
         }
+        Grid.removeFullRowsAndDrop();
         
     }
 
