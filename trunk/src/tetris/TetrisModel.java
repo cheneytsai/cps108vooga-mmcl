@@ -53,9 +53,6 @@ public class TetrisModel extends GameModel {
         
     }
 
-    public void lose() {
-        myCanvas.loadEnd("Lose");
-    }
     public boolean gameOver() {
         for (int i = 0; i < Grid.getGridSize().width; i++) {
             if (Grid.getState(i, 0)) {
@@ -71,7 +68,7 @@ public class TetrisModel extends GameModel {
         addActor(new LeftWall("src/images/wall.jpg", new Dimension(100, 720), new Point(287, 360), this));
         addActor(new BottomWall("src/images/brick3.gif", new Dimension(960, 36), new Point(480, 668), this));
         addActor(new Grid("src/images/brick6.gif", new Dimension(12, 25), new Point(337, 0), this));
-        new AddPiece(myCanvas.getGameName(), this).execute();
+        new AddPiece(getCanvas().getGameName(), this).execute();
     }
     
     public void addActor(Actor actor){

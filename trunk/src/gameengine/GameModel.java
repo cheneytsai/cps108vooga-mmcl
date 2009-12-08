@@ -28,7 +28,7 @@ import actors.Actor;
 public class GameModel {
 
     protected List<Actor> myActorList;
-    public Canvas myCanvas;
+    private Canvas myCanvas;
     private boolean gameOver;
     protected ConditionChecker myConditions;
     private Random myRandom;
@@ -63,7 +63,7 @@ public class GameModel {
     }
 
     public void lose() {
-
+        myCanvas.loadEnd("Lose");
     }
 
     public void clearActors() {
