@@ -1,9 +1,10 @@
 package dukeopalypse;
 
 
+import gameengine.GameModel;
+
 import java.awt.event.KeyEvent;
 
-import model.GameModel;
 
 import view.Canvas;
 

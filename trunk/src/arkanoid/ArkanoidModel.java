@@ -1,10 +1,11 @@
 package arkanoid;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 
-import model.GameModel;
 
 import actions.Add;
 import actions.BonusLevel;

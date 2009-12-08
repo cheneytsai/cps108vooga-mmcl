@@ -1,8 +1,8 @@
 package tetris;
 
+import gameengine.GameModel;
 import actors.Grid;
 import conditions.ConditionChecker;
-import model.GameModel;
 
 public class TetrisConditions extends ConditionChecker {
 

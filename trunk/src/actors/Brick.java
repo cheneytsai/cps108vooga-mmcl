@@ -1,5 +1,7 @@
 package actors;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -8,7 +10,6 @@ import java.util.List;
 import actions.Action;
 import actions.UpdateHealth;
 import actions.UpdateScore;
-import model.GameModel;
 
 /**
  * 

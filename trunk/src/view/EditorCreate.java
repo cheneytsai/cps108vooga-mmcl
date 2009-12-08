@@ -1,5 +1,7 @@
 package view;
 
+import gameengine.GameModel;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -20,7 +22,6 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import model.GameModel;
 import actors.Actor;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;

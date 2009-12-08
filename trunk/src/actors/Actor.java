@@ -2,6 +2,8 @@
 //TODO: Refactor all of this
 package actors;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -17,7 +19,6 @@ import java.util.*;
 
 import javax.swing.ImageIcon;
 import actions.*;
-import model.*;
 
 /**
  * 
@@ -64,23 +65,7 @@ public abstract class Actor {
     }
     
     public Actor(String image, int width, int height, int xPos, int yPos, GameModel model) {
-        myHeading = 0;
-        myXform = new AffineTransform();
-        setImage(image);
-        setSize(width, height);
-        setShape(makeShape(myImage));
-        myPosition = new Point(xPos, yPos);
-        myModel = model;
-        myVelocity = new PhysicsVector(new Direction(-1, -1), 10); // TODO: Make
-        // these
-        // parameters
-        // or
-        // something
-//        myKeyEvents = new HashMap<String, List<Action>>();
-        myKeyEvents = new HashMap<Integer, List<Action>>();
-        myInteractions = new HashMap<String, List<Action>>();
-        loadBehavior();
-        // TODO: make all this readable from a file
+        this(image, new Dimension(width, height), new Point(xPos, yPos), model);
     }
 
     protected abstract void loadBehavior();

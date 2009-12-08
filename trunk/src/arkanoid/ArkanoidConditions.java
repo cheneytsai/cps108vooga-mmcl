@@ -1,12 +1,12 @@
 package arkanoid;
 
+import gameengine.GameModel;
 import conditions.ConditionChecker;
 import conditions.NumberOf;
 import actions.Lose;
 import actions.NextLevel;
 import actors.Ball;
 import actors.Brick;
-import model.GameModel;
 
 public class ArkanoidConditions extends ConditionChecker {
 

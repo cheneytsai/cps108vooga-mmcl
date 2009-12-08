@@ -1,7 +1,7 @@
 package actions;
 
+import gameengine.GameModel;
 import util.reflection.Reflection;
-import model.GameModel;
 import actors.Actor;
 
 /**

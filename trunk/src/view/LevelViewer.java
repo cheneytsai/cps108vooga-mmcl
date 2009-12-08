@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -14,7 +13,6 @@ import javax.swing.Timer;
 
 import actions.AddPiece;
 import actors.Actor;
-import actors.Ball;
 import actors.Grid;
 import util.resources.ResourceManager;
 

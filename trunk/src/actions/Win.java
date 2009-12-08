@@ -1,7 +1,7 @@
 package actions;
 
+import gameengine.GameModel;
 import actors.Actor;
-import model.GameModel;
 
 /**
  * 

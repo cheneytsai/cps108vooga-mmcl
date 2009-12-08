@@ -1,9 +1,10 @@
 package conditions;
 
+import gameengine.GameModel;
+
 import java.util.List;
 
 import actors.Actor;
-import model.GameModel;
 
 public class NumberOf implements Condition {
 

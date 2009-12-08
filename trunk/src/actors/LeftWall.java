@@ -1,9 +1,10 @@
 package actors;
 
+import gameengine.GameModel;
+
 import java.awt.Dimension;
 import java.awt.Point;
 
-import model.GameModel;
 
 /**
  * Until we have directional collision detection, this is our way of knowing
