@@ -29,13 +29,14 @@ public class LevelViewer extends Canvas implements ActionListener
     protected KeyEvent myLastKeyPressed;
     protected int myLevelNum;
     private Timer myTimer;
+    private boolean isPaused;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25; // in milliseconds
 
     public LevelViewer(String gameName, int levelNum, int score, Canvas canvas)
     {
         Grid.resetGrid();
-
+        isPaused = false;
         myCanvas = canvas;
         myGameName = gameName;
         myLevelNum = levelNum;
@@ -55,8 +56,16 @@ public class LevelViewer extends Canvas implements ActionListener
             {
                 public void keyPressed(KeyEvent e)
                 {
+                    //TODO: make pause less spazzy
+                    if (e.getKeyCode() == KeyEvent.VK_P && myLastKeyPressed != null)
+                    {
 
-                    myLastKeyPressed = e;
+                            if (myLastKeyPressed.getKeyCode() != KeyEvent.VK_P)
+                                myLastKeyPressed = e;
+
+                    } else
+                        myLastKeyPressed = e;
+
                 }
 
                 public void keyReleased(KeyEvent e)
@@ -95,7 +104,15 @@ public class LevelViewer extends Canvas implements ActionListener
 
     public void update()
     {
-        myModel.update(myLastKeyPressed);
+        if (myLastKeyPressed != null
+                && myLastKeyPressed.getKeyCode() == KeyEvent.VK_P)
+        {
+            isPaused = !isPaused;
+        }
+        if (!isPaused)
+        {
+            myModel.update(myLastKeyPressed);
+        }
     }
 
     public void paintComponent(Graphics pen)

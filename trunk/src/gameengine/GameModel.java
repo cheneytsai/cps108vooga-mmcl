@@ -33,7 +33,6 @@ public class GameModel
     private boolean gameOver;
     protected ConditionChecker myConditions;
     private Random myRandom;
-    private boolean isPaused;
 
     public GameModel(Canvas canvas)
     {
@@ -45,8 +44,7 @@ public class GameModel
 
     public void update(KeyEvent myLastKeyPressed)
     {
-        if (!isPaused)
-        {
+
             for (int k = 0; k < myActorList.size(); k++)
             {
                 Point tempPos = myActorList.get(k).getPosition();
@@ -64,7 +62,7 @@ public class GameModel
                 myActorList.get(k).hasMoved = false;
             }
             // Reset All to no movement
-        }
+        
     }
 
     public void loadNextLevel()
@@ -163,8 +161,6 @@ public class GameModel
         myCanvas.loadBonusLevel(level);
 
     }
-    public void changePauseState(){
-        isPaused = !isPaused;
-    }
+    
 
 }

@@ -55,6 +55,7 @@ public class TetrisModel extends GameModel
             super.update(myLastKeyPressed);
         }
         Grid.removeFullRowsAndDrop();
+        
 
     }
 
