@@ -5,6 +5,7 @@ import gameengine.GameModel;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+
 import actions.AddPiece;
 import actions.ChangeSpeed;
 import actors.*;
@@ -13,14 +14,15 @@ import view.Canvas;
 public class TetrisModel extends GameModel
 {
 
-    private int defaultKeyPressed = KeyEvent.VK_0;
+    private final int DEFAULT_KEY = KeyEvent.VK_0;
     private int[] myPreviousKeys =
-    { defaultKeyPressed, defaultKeyPressed };
+    { DEFAULT_KEY, DEFAULT_KEY };
 
     public TetrisModel(Canvas canvas)
     {
         super(canvas);
         myConditions = new TetrisConditions(this);
+                
 
     }
 
@@ -31,8 +33,8 @@ public class TetrisModel extends GameModel
             lose();
         } else if (myLastKeyPressed == null)
         {
-            myPreviousKeys[0] = defaultKeyPressed;
-            myPreviousKeys[1] = defaultKeyPressed;
+            myPreviousKeys[0] = DEFAULT_KEY;
+            myPreviousKeys[1] = DEFAULT_KEY;
             super.update(null);
         } else if (myPreviousKeys[0] == KeyEvent.VK_UP
                 && myLastKeyPressed.getKeyCode() == KeyEvent.VK_UP)
@@ -91,8 +93,8 @@ public class TetrisModel extends GameModel
     public void addActor(Actor actor)
     {
         super.addActor(actor);
-        myPreviousKeys[0] = defaultKeyPressed;
-        myPreviousKeys[1] = defaultKeyPressed;
+        myPreviousKeys[0] = DEFAULT_KEY;
+        myPreviousKeys[1] = DEFAULT_KEY;
          new ChangeSpeed(5 + (getCanvas().getLevelNum()-1)).execute(actor);
     }
 
