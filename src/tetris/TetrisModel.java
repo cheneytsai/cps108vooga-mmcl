@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import actions.AddPiece;
+import actions.ChangeSpeed;
 import actors.*;
 import view.Canvas;
 
@@ -92,7 +93,7 @@ public class TetrisModel extends GameModel
         super.addActor(actor);
         myPreviousKeys[0] = defaultKeyPressed;
         myPreviousKeys[1] = defaultKeyPressed;
-        // new ChangeSpeed(myCanvas.getLevelNum()).execute(actor);
+         new ChangeSpeed(5 + (getCanvas().getLevelNum()-1)).execute(actor);
     }
 
 }
