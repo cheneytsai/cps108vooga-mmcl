@@ -84,7 +84,7 @@ public class ScoresView extends Canvas
     private void drawScores(Graphics pen)
     {
         pen.setFont(SCOREBOARD_FONT);
-        pen.setColor(Color.WHITE);
+        pen.setColor(Color.BLACK);
 
         int numberToPrint = 0;
 
