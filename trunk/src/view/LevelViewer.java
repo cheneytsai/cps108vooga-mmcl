@@ -30,6 +30,7 @@ public class LevelViewer extends Canvas implements ActionListener
     protected int myLevelNum;
     private Timer myTimer;
     private boolean isPaused;
+    private final int PAUSE_KEY = KeyEvent.VK_P;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25; // in milliseconds
 
@@ -57,22 +58,16 @@ public class LevelViewer extends Canvas implements ActionListener
                 public void keyPressed(KeyEvent e)
                 {
 
-                    if (e.getKeyCode() == KeyEvent.VK_P)
+                    if (e.getKeyCode() == PAUSE_KEY)
                     {
-                        if (myLastKeyPressed != null)
+                        if (myLastKeyPressed == null
+                                || (myLastKeyPressed != null
+                                && myLastKeyPressed.equals(e)))
                         {
-                            if (myLastKeyPressed.getKeyCode() != e.getKeyCode())
-                            {
-                                System.out.println(isPaused);
-                                isPaused = !isPaused;
-                                System.out.println(isPaused);
-                                myLastKeyPressed = e;
-                            }
 
-                        } else
-                        {
                             isPaused = !isPaused;
                             myLastKeyPressed = e;
+
                         }
 
                     } else
