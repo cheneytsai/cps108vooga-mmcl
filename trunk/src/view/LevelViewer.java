@@ -111,11 +111,15 @@ public class LevelViewer extends Canvas implements ActionListener
 
     public void update()
     {
-
+        
         if (!isPaused)
         {
+            if(myGameName.equals("Tetris")){
+                myLevelNum= Grid.getNumRowsCleared() / 10 + 1;
+            }
             myModel.update(myLastKeyPressed);
         }
+        
     }
 
     public void paintComponent(Graphics pen)
@@ -141,7 +145,7 @@ public class LevelViewer extends Canvas implements ActionListener
             pen.setColor(Color.BLACK);
             pen.drawRect(800, 260, 110, 50);
             pen.drawString("Level:", 800, 255);
-            pen.drawString("" + Grid.getNumRowsCleared() / 10, 805, 290);
+            pen.drawString(""+myLevelNum, 805, 290);
             pen.setColor(Color.WHITE);
             pen.fillRect(800, 360, 110, 50);
             pen.setColor(Color.BLACK);
