@@ -10,20 +10,22 @@ import java.util.List;
 
 import actions.*;
 
-
 /**
  * 
  * @author Michael Yu
  * 
  */
-public class Paddle extends Actor {
+public class Paddle extends Actor
+{
 
-    public Paddle(String image, Dimension size, Point position, GameModel model) {
+    public Paddle(String image, Dimension size, Point position, GameModel model)
+    {
         super(image, size, position, model);
     }
 
     @Override
-    protected void loadBehavior() {
+    protected void loadBehavior()
+    {
         // TODO: Add some methods to remove making lists all the time in this
         // method
         myDefaultBehavior = null;

@@ -12,17 +12,19 @@ import actions.BonusLevel;
 public class BonusLevelPowerup extends Powerup
 {
 
-    public BonusLevelPowerup(Point position, GameModel model) {
-        super(ResourceManager.getString("BonusLevelPowerupImage"), new Dimension(
-                16, 16), position, model);
+    public BonusLevelPowerup(Point position, GameModel model)
+    {
+        super(ResourceManager.getString("BonusLevelPowerupImage"),
+                new Dimension(16, 16), position, model);
     }
 
     @Override
-    protected void loadBehavior() {
+    protected void loadBehavior()
+    {
         super.loadBehavior();
         List<Action> hitPaddle = myInteractions.get(Paddle.class
                 .getCanonicalName());
-        hitPaddle.add(new BonusLevel(myModel,11));
+        hitPaddle.add(new BonusLevel(myModel, 11));
         updateInteractions(hitPaddle);
     }
 }

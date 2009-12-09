@@ -11,29 +11,35 @@ import actors.Grid;
  * @author Megan Heysham
  * 
  */
-public class Replace implements Action {
-    
+public class Replace implements Action
+{
+
     private ResourceBundle myReplacements;
 
     private String myGameName;
 
-    public Replace(String gameName) {
+    public Replace(String gameName)
+    {
         myGameName = gameName;
-        myReplacements = ResourceBundle.getBundle("resources."+myGameName + "Pieces");
+        myReplacements = ResourceBundle.getBundle("resources." + myGameName
+                + "Pieces");
     }
 
-
-
-    public void execute(Actor... actors) {
-        for (int i = 0; i < Grid.getGridSize().width; i++) {
-            for (int j = 0; j < Grid.getGridSize().height; j++) {
-                if (CollisionChecker.collide(actors[0], Grid.getMarker(i, j))) {
-                    Grid.addBlock(i, j, myReplacements.getString(actors[0].getImageString()));
+    public void execute(Actor... actors)
+    {
+        for (int i = 0; i < Grid.getGridSize().width; i++)
+        {
+            for (int j = 0; j < Grid.getGridSize().height; j++)
+            {
+                if (CollisionChecker.collide(actors[0], Grid.getMarker(i, j)))
+                {
+                    Grid.addBlock(i, j, myReplacements.getString(actors[0]
+                            .getImageString()));
 
                 }
             }
         }
-        
+
     }
 
 }

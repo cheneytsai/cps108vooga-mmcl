@@ -10,16 +10,19 @@ import actors.Actor;
  * @author Megan Heysham
  * 
  */
-public class Rotate implements Action {
+public class Rotate implements Action
+{
 
     private ResourceBundle myRotations;
 
-    public Rotate(String gameName) {
+    public Rotate(String gameName)
+    {
         myRotations = ResourceBundle.getBundle("resources." + gameName
                 + "Rotation");
     }
 
-    public void execute(Actor... actors) {
+    public void execute(Actor... actors)
+    {
         String newImage = myRotations.getString(actors[0].getImageString());
         actors[0].setImage(newImage);
         actors[0].setImage(newImage);

@@ -12,7 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Canvas extends JPanel {
+public class Canvas extends JPanel
+{
 
     protected Dimension mySize = new Dimension(960, 720);
 
@@ -21,7 +22,7 @@ public class Canvas extends JPanel {
     protected GameModel myModel;
     protected String myGameName;
     // private Menu active;
-    //TODO: move score to model
+    // TODO: move score to model
     protected int myScore;
     protected static final Font TITLE_FONT = new Font("TAHOMA", Font.BOLD, 75);
     protected static final Font OPTION_FONT = new Font("TAHOMA", Font.BOLD, 40);
@@ -31,31 +32,34 @@ public class Canvas extends JPanel {
     protected static final int AVG_PIXELS_PER_LETTER = 30;
     protected ImageIcon icon;
 
-    public Canvas() {
+    public Canvas()
+    {
         myActive = this;
         setSize(mySize);
         myModel = new GameModel(this);
     }
 
-    public void setGame(GameModel model) {
+    public void setGame(GameModel model)
+    {
         myModel = model;
     }
 
-    public void paintComponent(Graphics g) {
-        if (myActive != null) {
+    public void paintComponent(Graphics g)
+    {
+        if (myActive != null)
+        {
             myActive.paintComponent(g);
         }
         super.paintComponent(g);
         setOpaque(false);
     }
 
-    public void setActive(Canvas toUse) 
+    public void setActive(Canvas toUse)
     {
         try
         {
             myActive.stopTimer();
-        }
-        catch(NullPointerException e)
+        } catch (NullPointerException e)
         {
         }
         myActive = toUse;
@@ -70,45 +74,57 @@ public class Canvas extends JPanel {
     {
         return myScore;
     }
-    public String getGameName() {
+
+    public String getGameName()
+    {
 
         return myActive.getGameName();
     }
-        
-    public int getLevelNum() {
+
+    public int getLevelNum()
+    {
         return 0;
     }
 
-    public MouseListener mouseListener() {
+    public MouseListener mouseListener()
+    {
         return myActive.mouseListener();
     }
 
-    public void updateScore(int increment) {
+    public void updateScore(int increment)
+    {
         myScore += increment;
     }
 
-    public int getWidth() {
+    public int getWidth()
+    {
         return mySize.width;
     }
 
-    public int getHeight() {
+    public int getHeight()
+    {
         return mySize.height;
     }
 
-    public boolean isGameInProgress() {
+    public boolean isGameInProgress()
+    {
         return myActive != null && getGameName() != null;
     }
 
-    protected GameModel getGameModel() {
+    protected GameModel getGameModel()
+    {
         return myModel;
     }
 
-    public void loadNextLevel() {
+    public void loadNextLevel()
+    {
     }
 
-    public void loadEnd(String endCondition) {
+    public void loadEnd(String endCondition)
+    {
     }
 
-    public void loadBonusLevel(int level){
+    public void loadBonusLevel(int level)
+    {
     }
 }

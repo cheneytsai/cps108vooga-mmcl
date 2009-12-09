@@ -13,17 +13,20 @@ import util.resources.ResourceManager;
  * @author Lisa Gutermuth
  */
 @SuppressWarnings("serial")
-public class EndView extends Canvas {
-    public EndView(String endCondition, String gameName, int score,Canvas canvas) 
+public class EndView extends Canvas
+{
+    public EndView(String endCondition, String gameName, int score,
+            Canvas canvas)
     {
         myCanvas = canvas;
         myScore = score;
         myCanvas.setActive(this);
         myGameName = gameName;
         myCanvas.requestFocus();
-        
-        icon = new ImageIcon(ResourceManager.getString(endCondition+ ".background"));
-        
+
+        icon = new ImageIcon(ResourceManager.getString(endCondition
+                + ".background"));
+
         saveScores(gameName);
         myCanvas.repaint();
 
@@ -33,29 +36,34 @@ public class EndView extends Canvas {
     {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
     }
-    
+
     public void saveScores(String gameName)
     {
-        GregorianCalendar  time = new GregorianCalendar();
+        GregorianCalendar time = new GregorianCalendar();
 
-        String name = (String) JOptionPane.showInputDialog(ResourceManager.getString("Name"),null);
-        if(name == null ||name.length() == 0)
+        String name = (String) JOptionPane.showInputDialog(ResourceManager
+                .getString("Name"), null);
+        if (name == null || name.length() == 0)
         {
             name = ResourceManager.getString("NoName");
         }
-        
+
         try
         {
-            FileWriter output = new FileWriter(ResourceManager.getString(gameName+"Scores"),true);
-            output.append("\n"+name+"\t\t"+myScore+"\t\t"+time.getTime());
+            FileWriter output = new FileWriter(ResourceManager
+                    .getString(gameName + "Scores"), true);
+            output.append("\n" + name + "\t\t" + myScore + "\t\t"
+                    + time.getTime());
             output.close();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e)
+        {
             System.out.println(e.getMessage());
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public String getGameName()
     {
         return myGameName;

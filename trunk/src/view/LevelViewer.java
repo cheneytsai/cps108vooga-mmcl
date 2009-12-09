@@ -22,7 +22,8 @@ import util.resources.ResourceManager;
  * @author Lisa Gutermuth
  */
 @SuppressWarnings("serial")
-public class LevelViewer extends Canvas implements ActionListener {
+public class LevelViewer extends Canvas implements ActionListener
+{
     private String myGameName;
     protected List<Actor> myActors;
     protected KeyEvent myLastKeyPressed;
@@ -31,7 +32,8 @@ public class LevelViewer extends Canvas implements ActionListener {
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25; // in milliseconds
 
-    public LevelViewer(String gameName, int levelNum, int score, Canvas canvas) {
+    public LevelViewer(String gameName, int levelNum, int score, Canvas canvas)
+    {
         Grid.resetGrid();
 
         myCanvas = canvas;
@@ -44,17 +46,21 @@ public class LevelViewer extends Canvas implements ActionListener {
             myCanvas.requestFocus();
             myModel = canvas.getGameModel();
 
-            if (myCanvas.getMouseListeners().length > 0) {
+            if (myCanvas.getMouseListeners().length > 0)
+            {
                 myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
             }
 
-            myCanvas.addKeyListener(new KeyAdapter() {
-                public void keyPressed(KeyEvent e) {
+            myCanvas.addKeyListener(new KeyAdapter()
+            {
+                public void keyPressed(KeyEvent e)
+                {
 
                     myLastKeyPressed = e;
                 }
 
-                public void keyReleased(KeyEvent e) {
+                public void keyReleased(KeyEvent e)
+                {
 
                     myLastKeyPressed = null;
                 }
@@ -70,36 +76,39 @@ public class LevelViewer extends Canvas implements ActionListener {
             myTimer.start();
 
             update();
-        }
-        catch(MissingResourceException e)
+        } catch (MissingResourceException e)
         {
-//            TODO now doubletime doesn't happen. but you can only lose.
-//            TODO the problem was that level4 still loaded in the background...
-//            TODO thats still a problem =/
+            // TODO now doubletime doesn't happen. but you can only lose.
+            // TODO the problem was that level4 still loaded in the
+            // background...
+            // TODO thats still a problem =/
             System.out.println("fail");
             myCanvas.loadEnd("Win");
         }
-        
+
     }
 
-    public void stopTimer() {
+    public void stopTimer()
+    {
         myTimer.stop();
     }
 
-    public void update() {
+    public void update()
+    {
         myModel.update(myLastKeyPressed);
     }
 
-    public void paintComponent(Graphics pen) {
+    public void paintComponent(Graphics pen)
+    {
 
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         pen.setFont(SCOREBOARD_FONT);
-        
-        
-        if (myGameName.equals("Tetris")) {
+
+        if (myGameName.equals("Tetris"))
+        {
             pen.setColor(Color.BLACK);
-            pen.drawString(ResourceManager.getString("Title").substring(0, 10), 800,
-                    25);
+            pen.drawString(ResourceManager.getString("Title").substring(0, 10),
+                    800, 25);
             pen.drawString(myGameName, 800, 50);
             pen.setColor(Color.WHITE);
             pen.fillRect(800, 160, 110, 50);
@@ -112,7 +121,7 @@ public class LevelViewer extends Canvas implements ActionListener {
             pen.setColor(Color.BLACK);
             pen.drawRect(800, 260, 110, 50);
             pen.drawString("Level:", 800, 255);
-            pen.drawString(""+Grid.getNumRowsCleared()/10, 805, 290);
+            pen.drawString("" + Grid.getNumRowsCleared() / 10, 805, 290);
             pen.setColor(Color.WHITE);
             pen.fillRect(800, 360, 110, 50);
             pen.setColor(Color.BLACK);
@@ -127,25 +136,30 @@ public class LevelViewer extends Canvas implements ActionListener {
             pen.drawImage(AddPiece.nextImage(), 855 - AddPiece.nextImage()
                     .getWidth(null) / 2, 515 - AddPiece.nextImage().getHeight(
                     null) / 2, null);
-            
+
         }
-        
-        else{
+
+        else
+        {
             pen.setColor(Color.WHITE);
-            pen.drawString(ResourceManager.getString("Title").substring(0, 10),0,20);
+            pen.drawString(ResourceManager.getString("Title").substring(0, 10),
+                    0, 20);
             pen.drawString(myGameName, 0, 40);
-            pen.drawString(ResourceManager.getString("Score") + myScore, 800, 20);
-        
+            pen.drawString(ResourceManager.getString("Score") + myScore, 800,
+                    20);
+
         }
-        
+
         paint(pen);
     }
 
-    public String getGameName() {
+    public String getGameName()
+    {
         return myGameName;
     }
 
-    public int getLevelNum() {
+    public int getLevelNum()
+    {
         return myLevelNum;
     }
 
@@ -157,29 +171,36 @@ public class LevelViewer extends Canvas implements ActionListener {
      * @param pen
      *            smart pen to draw on the canvas with
      */
-    public void paint(Graphics pen) {
+    public void paint(Graphics pen)
+    {
         myActors = myModel.getActors();
-        for (Actor current : myActors) {
+        for (Actor current : myActors)
+        {
             current.paint(pen);
         }
-        
+
     }
 
-    public void actionPerformed(ActionEvent arg0) {
+    public void actionPerformed(ActionEvent arg0)
+    {
         update();
         // let Java runtime know panel needs to be repainted
         myCanvas.repaint();
     }
 
-    public void loadNextLevel() {
+    public void loadNextLevel()
+    {
         myLevelNum++;
         new LevelViewer(myGameName, myLevelNum, myScore, myCanvas);
     }
 
-    public void loadBonusLevel(int level) {
-        new LevelViewer(myGameName,level,myScore,myCanvas);
+    public void loadBonusLevel(int level)
+    {
+        new LevelViewer(myGameName, level, myScore, myCanvas);
     }
-    public void loadEnd(String endCondition) {
+
+    public void loadEnd(String endCondition)
+    {
         new EndView(endCondition, myGameName, myScore, myCanvas);
     }
 }

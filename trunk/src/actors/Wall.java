@@ -6,26 +6,29 @@ import gameengine.GameModel;
 import java.awt.Dimension;
 import java.awt.Point;
 
-
 /**
  * 
  * @author Lisa Gutermuth
  * 
  */
-public class Wall extends Actor {
+public class Wall extends Actor
+{
 
     public Wall(String string, Dimension dimension, Point point,
-            GameModel gameModel) {
+            GameModel gameModel)
+    {
         super(string, dimension, point, gameModel);
     }
 
     public Wall(String image, int width, int height, int xPos, int yPos,
-            GameModel model) {
-       super(image, width, height, xPos, yPos, model);
+            GameModel model)
+    {
+        super(image, width, height, xPos, yPos, model);
     }
 
     @Override
-    protected void loadBehavior() {
+    protected void loadBehavior()
+    {
         myDefaultBehavior = null;
     }
 }

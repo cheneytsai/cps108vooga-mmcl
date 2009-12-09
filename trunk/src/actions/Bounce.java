@@ -10,9 +10,11 @@ import actors.PhysicsVector;
  * @author Michael Yu
  * 
  */
-public class Bounce implements Action {
+public class Bounce implements Action
+{
 
-    public void execute(Actor... actors) {
+    public void execute(Actor... actors)
+    {
         Actor a = actors[0];
         Actor b = actors[1];
         Direction origDirection = a.getVelocity().getDirection();
@@ -20,7 +22,8 @@ public class Bounce implements Action {
         if (CollisionChecker.intersects(b, new Point(a.getPosition().x, a
                 .getTop()))
                 || CollisionChecker.intersects(b, new Point(a.getPosition().x,
-                        a.getBottom()))) {
+                        a.getBottom())))
+        {
 
             a.setVelocity(new PhysicsVector(new Direction(origDirection
                     .xShift(), origDirection.yShift() * -1), origMagnitude));
@@ -29,7 +32,8 @@ public class Bounce implements Action {
         if (CollisionChecker.intersects(b, new Point(a.getLeft(), a
                 .getPosition().y))
                 || CollisionChecker.intersects(b, new Point(a.getRight(), a
-                        .getPosition().y))) {
+                        .getPosition().y)))
+        {
             a.setVelocity(new PhysicsVector(new Direction(origDirection
                     .xShift()
                     * -1, origDirection.yShift()), origMagnitude));

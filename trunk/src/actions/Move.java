@@ -10,15 +10,18 @@ import actors.PhysicsVector;
  * @author Michael Yu
  * 
  */
-public class Move implements Action {
+public class Move implements Action
+{
 
     private PhysicsVector myVelocity;
 
-    public Move(PhysicsVector v) {
+    public Move(PhysicsVector v)
+    {
         myVelocity = v;
     }
 
-    public void execute(Actor... a) {
+    public void execute(Actor... a)
+    {
         Point original = a[0].getPosition();
         Direction myDirection = myVelocity.getDirection();
         double myMagnitude = myVelocity.getMagnitude();

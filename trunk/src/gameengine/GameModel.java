@@ -25,117 +25,146 @@ import actors.Actor;
  * 
  * @author Lisa Gutermuth
  */
-public class GameModel {
+public class GameModel
+{
 
     protected List<Actor> myActorList;
     private Canvas myCanvas;
     private boolean gameOver;
     protected ConditionChecker myConditions;
     private Random myRandom;
+    private boolean isPaused;
 
-    public GameModel(Canvas canvas) {
+    public GameModel(Canvas canvas)
+    {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
         gameOver = false;
         myRandom = new Random();
     }
 
-    public void update(KeyEvent myLastKeyPressed) 
+    public void update(KeyEvent myLastKeyPressed)
     {
-        for (int k = 0; k < myActorList.size(); k++) {
-            Point tempPos = myActorList.get(k).getPosition();
-            myActorList.get(k).act(myLastKeyPressed);
-            if (myActorList.get(k).getPosition() != tempPos) {
-                myActorList.get(k).hasMoved = true;
+        if (!isPaused)
+        {
+            for (int k = 0; k < myActorList.size(); k++)
+            {
+                Point tempPos = myActorList.get(k).getPosition();
+                myActorList.get(k).act(myLastKeyPressed);
+                if (myActorList.get(k).getPosition() != tempPos)
+                {
+                    myActorList.get(k).hasMoved = true;
+                }
             }
-        }
-        // Set Flag for movement here
+            // Set Flag for movement here
 
-        myConditions.checkConditions();
-        for (int k = 0; k < myActorList.size(); k++) {
-            myActorList.get(k).hasMoved = false;
+            myConditions.checkConditions();
+            for (int k = 0; k < myActorList.size(); k++)
+            {
+                myActorList.get(k).hasMoved = false;
+            }
+            // Reset All to no movement
         }
-        // Reset All to no movement
     }
 
-    public void loadNextLevel() {
+    public void loadNextLevel()
+    {
         myCanvas.loadNextLevel();
     }
 
-    public void lose() {
+    public void lose()
+    {
         myCanvas.loadEnd("Lose");
     }
 
-    public void clearActors() {
+    public void clearActors()
+    {
         myActorList.clear();
     }
 
-    protected void initializeActors() {
-        try {
-            Scanner input = new Scanner(new File(ResourceManager.getString(myCanvas.getGameName()+"level"
-                                                                            +myCanvas.getLevelNum())));
-            while (input.hasNextLine()) {
+    protected void initializeActors()
+    {
+        try
+        {
+            Scanner input = new Scanner(new File(ResourceManager
+                    .getString(myCanvas.getGameName() + "level"
+                            + myCanvas.getLevelNum())));
+            while (input.hasNextLine())
+            {
                 input.skip("");
-                addActor((Actor) Reflection.createInstance(input.next(), input.next(),
+                addActor((Actor) Reflection.createInstance(input.next(), input
+                        .next(),
                         new Dimension(input.nextInt(), input.nextInt()),
                         new Point(input.nextInt(), input.nextInt()), this));
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e)
+        {
             System.out.println("File not found");
-        } 
-//        catch (MissingResourceException e) {
-//            myCanvas.loadEnd("Win");
-//        }
+        }
+        // catch (MissingResourceException e) {
+        // myCanvas.loadEnd("Win");
+        // }
     }
 
-    public void remove(Actor actor) {
+    public void remove(Actor actor)
+    {
         myActorList.remove(actor);
     }
 
-    public void addActor(Actor actor) {
+    public void addActor(Actor actor)
+    {
         myActorList.add(actor);
     }
 
-    public List<Actor> getActors() {
+    public List<Actor> getActors()
+    {
         return myActorList;
     }
 
-    public void updateScore(int i) {
+    public void updateScore(int i)
+    {
         // TODO: Generalize this into something that can update any game state
         // (make a map of info name -> values)
         myCanvas.updateScore(i);
     }
 
-    public void newView(Canvas canvas) {
+    public void newView(Canvas canvas)
+    {
         gameOver = true;
-        if (myActorList != null ) {
+        if (myActorList != null)
+        {
             myActorList.clear();
-//            myCanvas.stopTimer();
+            // myCanvas.stopTimer();
         }
         myCanvas = canvas;
-        if (canvas instanceof LevelViewer || canvas instanceof EditorCanvas) {
+        if (canvas instanceof LevelViewer || canvas instanceof EditorCanvas)
+        {
             initializeActors();
         }
     }
 
-    public boolean gameOver() {
+    public boolean gameOver()
+    {
         return gameOver;
     }
-    
+
     public Canvas getCanvas()
     {
         return myCanvas;
     }
 
-
-    public Random getRandom() {
+    public Random getRandom()
+    {
         return myRandom;
     }
 
     public void loadBonusLevel(int level)
     {
         myCanvas.loadBonusLevel(level);
-        
+
+    }
+    public void changePauseState(){
+        isPaused = !isPaused;
     }
 
 }

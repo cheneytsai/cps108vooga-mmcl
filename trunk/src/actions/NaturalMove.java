@@ -9,9 +9,11 @@ import actors.Actor;
  * @author Michael Yu
  * 
  */
-public class NaturalMove implements Action {
+public class NaturalMove implements Action
+{
 
-    public void execute(Actor... actors) {
+    public void execute(Actor... actors)
+    {
         Point original = actors[0].getPosition();
         Direction myDirection = actors[0].getVelocity().getDirection();
         double myMagnitude = actors[0].getVelocity().getMagnitude();

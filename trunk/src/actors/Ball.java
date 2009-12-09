@@ -14,30 +14,33 @@ import actions.NaturalMove;
 import actions.Reset;
 import actions.UpdateHealth;
 
-
 /**
  * 
  * @author Michael Yu
  * 
  */
-public class Ball extends Actor {
+public class Ball extends Actor
+{
 
     private int defaultHealth = 2;
-    
-    public Ball(String image, Dimension size, Point position, GameModel model) {
+
+    public Ball(String image, Dimension size, Point position, GameModel model)
+    {
         super(image, size, position, model);
         setHealth(defaultHealth);
 
     }
 
-    public Ball(Point position, GameModel model) {
+    public Ball(Point position, GameModel model)
+    {
         super(ResourceManager.getString("BallImage"), new Dimension(16, 16),
                 position, model);
         setHealth(defaultHealth);
     }
 
     @Override
-    protected void loadBehavior() {
+    protected void loadBehavior()
+    {
         myDefaultBehavior = new NaturalMove();
         List<Action> bounce = new ArrayList<Action>();
         bounce.add(new Bounce());
@@ -48,7 +51,7 @@ public class Ball extends Actor {
         myInteractions.put(LeftWall.class.getCanonicalName(), bounce);
         List<Action> bottomWall = new ArrayList<Action>();
         bottomWall.add(new Reset());
-        bottomWall.add(new UpdateHealth(myModel,-1));
+        bottomWall.add(new UpdateHealth(myModel, -1));
         myInteractions.put(BottomWall.class.getCanonicalName(), bottomWall);
 
     }

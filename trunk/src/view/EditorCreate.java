@@ -27,7 +27,8 @@ import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
-public class EditorCreate extends JFrame {
+public class EditorCreate extends JFrame
+{
     private Dimension mySize = new Dimension(300, 300);
     private JButton myButton;
     private String[] actorStats;
@@ -40,7 +41,8 @@ public class EditorCreate extends JFrame {
     private JCheckBox myCheckBox;
 
     public EditorCreate(GameModel model, String levelName, Actor actor,
-            String image, int xDim, int yDim, int x, int y) {
+            String image, int xDim, int yDim, int x, int y)
+    {
         setTitle(ResourceManager.getString("EditorTitle"));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         actorStats = new String[6];
@@ -54,7 +56,8 @@ public class EditorCreate extends JFrame {
         p.add(actorChooser(levelName));
         p.add(setImage(image));
         p.add(setDimPoint(xDim, yDim, x, y));
-        if (actor != null) {
+        if (actor != null)
+        {
             p.add(setDeleteOption());
             p.add(makeDeleteButton(levelName));
         }
@@ -67,7 +70,8 @@ public class EditorCreate extends JFrame {
         setVisible(true);
     }
 
-    private JComponent actorChooser(String levelName) {
+    private JComponent actorChooser(String levelName)
+    {
         String[] classNames = ResourceManager.getString(
                 levelName.substring(0, levelName.indexOf("level"))
                         + "Editables").split(",");
@@ -77,7 +81,8 @@ public class EditorCreate extends JFrame {
         return myBox;
     }
 
-    private JComponent setImage(String name) {
+    private JComponent setImage(String name)
+    {
         myField = new JTextField(50);
 
         myField.setText(statAppend[1] + name);
@@ -85,13 +90,16 @@ public class EditorCreate extends JFrame {
         return myField;
     }
 
-    private JComponent setDimPoint(int xDim, int yDim, int x, int y) {
+    private JComponent setDimPoint(int xDim, int yDim, int x, int y)
+    {
         JPanel panel = new JPanel(new GridLayout(2, 2));
         myDimPoint = new JTextField[4];
 
-        int[] showValue = { xDim, yDim, x, y };
+        int[] showValue =
+        { xDim, yDim, x, y };
 
-        for (int i = 0; i < showValue.length; i++) {
+        for (int i = 0; i < showValue.length; i++)
+        {
             myDimPoint[i] = new JTextField();
             myDimPoint[i].setText(statAppend[i + 2] + showValue[i]);
             panel.add(myDimPoint[i]);
@@ -99,18 +107,21 @@ public class EditorCreate extends JFrame {
         return panel;
     }
 
-    private JComponent setDeleteOption() {
+    private JComponent setDeleteOption()
+    {
         myCheckBox = new JCheckBox("Delete Old Actor?");
         myCheckBox.setSelected(false);
 
         return myCheckBox;
     }
-    
+
     private JComponent makeCreateButton(final String levelName)
     {
         myButton = new JButton(ResourceManager.getString("EditButtonCreate"));
-        myButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        myButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 setStats(levelName);
             }
         });
@@ -118,31 +129,33 @@ public class EditorCreate extends JFrame {
         return myButton;
     }
 
-    
     private JComponent makeDeleteButton(final String levelName)
     {
         myButton = new JButton(ResourceManager.getString("EditButtonDestroy"));
-        myButton.addActionListener(new ActionListener() 
+        myButton.addActionListener(new ActionListener()
         {
-            public void actionPerformed(ActionEvent e) 
+            public void actionPerformed(ActionEvent e)
             {
                 deleteOldActor(levelName);
             }
         });
-        
+
         return myButton;
     }
-    
+
     public void setStats(String levelName)
     {
         actorStats[0] = (String) myBox.getSelectedItem();
         actorStats[1] = myField.getText();
-        for (int i = 0; i < myDimPoint.length; i++) {
+        for (int i = 0; i < myDimPoint.length; i++)
+        {
             actorStats[i + 2] = myDimPoint[i].getText();
         }
 
-        for (int i = 0; i < actorStats.length; i++) {
-            if (actorStats[i].contains(statAppend[i])) {
+        for (int i = 0; i < actorStats.length; i++)
+        {
+            if (actorStats[i].contains(statAppend[i]))
+            {
                 actorStats[i] = actorStats[i].replace(statAppend[i], "");
             }
         }
@@ -150,8 +163,10 @@ public class EditorCreate extends JFrame {
         createInstance(levelName);
     }
 
-    public void createInstance(String levelName) {
-        if (myCheckBox != null && myCheckBox.isSelected()) {
+    public void createInstance(String levelName)
+    {
+        if (myCheckBox != null && myCheckBox.isSelected())
+        {
             deleteOldActor(levelName);
         }
 
@@ -161,31 +176,38 @@ public class EditorCreate extends JFrame {
                 .parseInt(actorStats[2]), Integer.parseInt(actorStats[3])),
                 new Point(Integer.parseInt(actorStats[4]), Integer
                         .parseInt(actorStats[5])), myModel));
-        try {
+        try
+        {
             FileWriter output = new FileWriter(ResourceManager
                     .getString(levelName), true);
             output.append("\nactors." + actorStats[0] + " " + actorStats[1]
                     + " " + actorStats[2] + " " + actorStats[3] + " "
                     + actorStats[4] + " " + actorStats[5]);
             output.close();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e)
+        {
             System.out.println(e.getMessage());
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             System.out.println(e.getMessage());
         }
     }
 
-    private void deleteOldActor(String levelName) {
+    private void deleteOldActor(String levelName)
+    {
         int matchingIndex = myModel.getActors().size();
-        for (int i = 0; i < myModel.getActors().size(); i++) {
-            if (myModel.getActors().get(i).equals(myActor)) {
+        for (int i = 0; i < myModel.getActors().size(); i++)
+        {
+            if (myModel.getActors().get(i).equals(myActor))
+            {
                 matchingIndex = i;
                 break;
             }
         }
         myModel.remove(myActor);
 
-        try {
+        try
+        {
             File inFile = new File(ResourceManager.getString(levelName));
 
             // Construct the new file that will later be renamed to the original
@@ -200,9 +222,11 @@ public class EditorCreate extends JFrame {
             // Read from the original file and write to the new
             // unless content matches data to be removed.
             int lineCount = 0;
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null)
+            {
                 lineCount++;
-                if (lineCount != matchingIndex + 1) {
+                if (lineCount != matchingIndex + 1)
+                {
 
                     pw.println(line);
                     pw.flush();
@@ -213,9 +237,11 @@ public class EditorCreate extends JFrame {
 
             inFile.delete();
             tempFile.renameTo(inFile);
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e)
+        {
             System.out.println(e.getMessage());
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             System.out.println(e.getMessage());
         }
     }

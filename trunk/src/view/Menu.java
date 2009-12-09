@@ -26,7 +26,8 @@ import util.resources.ResourceManager;
  */
 
 @SuppressWarnings("serial")
-public class Menu extends Canvas {
+public class Menu extends Canvas
+{
 
     private Canvas myCanvas;
     private String myName;
@@ -35,7 +36,8 @@ public class Menu extends Canvas {
     private String myBackground;
     private Color myTextColor;
 
-    public Menu(String name, Canvas canvas) {
+    public Menu(String name, Canvas canvas)
+    {
         myName = name;
         myFile = "src/resources/" + myName + ".menu";
         myOptions = new TreeMap<String, Point>();
@@ -44,7 +46,8 @@ public class Menu extends Canvas {
         myCanvas.removeAll();
         myCanvas.setActive(this);
 
-        if (myCanvas.getMouseListeners().length > 0) {
+        if (myCanvas.getMouseListeners().length > 0)
+        {
             myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
 
         }
@@ -54,21 +57,26 @@ public class Menu extends Canvas {
 
     }
 
-    public void fillOptions() {
-        try {
+    public void fillOptions()
+    {
+        try
+        {
             Scanner s = new Scanner(new File(myFile));
             myBackground = s.nextLine();
-            while (s.hasNext()) {
+            while (s.hasNext())
+            {
                 myOptions.put(s.next(), new Point(s.nextInt(), s.nextInt()));
             }
 
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e)
+        {
             JOptionPane.showMessageDialog(myCanvas, "Menu File Not Found",
                     "Error", 0);
         }
     }
 
-    public void paintComponent(Graphics pen) {
+    public void paintComponent(Graphics pen)
+    {
 
         // Set Background
         pen.drawImage(new ImageIcon(myBackground).getImage(), 0, 0, myCanvas
@@ -84,7 +92,8 @@ public class Menu extends Canvas {
 
         // Draw Options
         myPen.setFont(OPTION_FONT);
-        for (String option : myOptions.keySet()) {
+        for (String option : myOptions.keySet())
+        {
             myPen.drawString(option, myOptions.get(option).x, myOptions
                     .get(option).y);
         }
@@ -92,16 +101,22 @@ public class Menu extends Canvas {
         setOpaque(false);
     }
 
-    public MouseAdapter mouseListener() {
-        MouseAdapter myMouseAdapter = new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                for (String option : myOptions.keySet()) {
+    public MouseAdapter mouseListener()
+    {
+        MouseAdapter myMouseAdapter = new MouseAdapter()
+        {
+            public void mouseClicked(MouseEvent e)
+            {
+                for (String option : myOptions.keySet())
+                {
                     if (e.getX() > myOptions.get(option).x
                             && e.getX() < myOptions.get(option).x
-                                    + option.length() * AVG_PIXELS_PER_LETTER) {
+                                    + option.length() * AVG_PIXELS_PER_LETTER)
+                    {
                         if (e.getY() < myOptions.get(option).y
                                 && e.getY() > myOptions.get(option).y
-                                        - OPTION_FONT.getSize()) {
+                                        - OPTION_FONT.getSize())
+                        {
                             System.out.println(option);
                         }
                     }

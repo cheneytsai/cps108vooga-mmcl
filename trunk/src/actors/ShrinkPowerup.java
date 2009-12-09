@@ -9,15 +9,18 @@ import util.resources.ResourceManager;
 import actions.Action;
 import actions.Resize;
 
-public class ShrinkPowerup extends Powerup {
-    
-    public ShrinkPowerup(Point position, GameModel model) {
+public class ShrinkPowerup extends Powerup
+{
+
+    public ShrinkPowerup(Point position, GameModel model)
+    {
         super(ResourceManager.getString("ShrinkPowerupImage"), new Dimension(
                 16, 16), position, model);
     }
 
     @Override
-    protected void loadBehavior() {
+    protected void loadBehavior()
+    {
         super.loadBehavior();
         List<Action> hitPaddle = myInteractions.get(Paddle.class
                 .getCanonicalName());

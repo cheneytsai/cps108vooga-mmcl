@@ -5,13 +5,15 @@ import view.Frame;
  * 
  * @author Megan Heysham
  */
-public class Main {
+public class Main
+{
     /**
      * Main method to create the Frame in which all views will be placed
      * 
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         new Frame();
     }
 }

@@ -25,7 +25,8 @@ import actions.*;
  * @author Michael Yu
  * 
  */
-public abstract class Actor {
+public abstract class Actor
+{
 
     protected GameModel myModel; // Model
     private Image myImage; // Image
@@ -36,15 +37,15 @@ public abstract class Actor {
     protected double myHeading; // Heading
     private Dimension mySize; // Size
     private PhysicsVector myVelocity; // Velocity
-    protected Map<Integer,List<Action>> myKeyEvents; //KeyEvents
+    protected Map<Integer, List<Action>> myKeyEvents; // KeyEvents
     protected Map<String, List<Action>> myInteractions; // Interaction
-    protected Action myDefaultBehavior;                 // Default Action
-    public boolean hasChanged;                          // Flag - Changed?
-    public boolean hasMoved;                            // Flag - Moved?
+    protected Action myDefaultBehavior; // Default Action
+    public boolean hasChanged; // Flag - Changed?
+    public boolean hasMoved; // Flag - Moved?
     public int myHealth;
-    
 
-    public Actor(String image, Dimension size, Point position, GameModel model) {
+    public Actor(String image, Dimension size, Point position, GameModel model)
+    {
         myHeading = 0;
         myXform = new AffineTransform();
         setImage(image);
@@ -57,41 +58,52 @@ public abstract class Actor {
         // parameters
         // or
         // something
-//        myKeyEvents = new HashMap<String, List<Action>>();
+        // myKeyEvents = new HashMap<String, List<Action>>();
         myKeyEvents = new HashMap<Integer, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
         // TODO: make all this readable from a file
     }
-    
-    public Actor(String image, int width, int height, int xPos, int yPos, GameModel model) {
+
+    public Actor(String image, int width, int height, int xPos, int yPos,
+            GameModel model)
+    {
         this(image, new Dimension(width, height), new Point(xPos, yPos), model);
     }
 
     protected abstract void loadBehavior();
 
-    public void act(KeyEvent myLastKeyPressed) {
+    public void act(KeyEvent myLastKeyPressed)
+    {
         hasChanged = false;
-        for (Integer e : myKeyEvents.keySet()) {
-            if (myLastKeyPressed == null) {
+        for (Integer e : myKeyEvents.keySet())
+        {
+            if (myLastKeyPressed == null)
+            {
                 ;
-            } else if (myLastKeyPressed.getKeyCode() == e) {
+            } else if (myLastKeyPressed.getKeyCode() == e)
+            {
                 for (Action a : myKeyEvents.get(e))
                     a.execute(this);
                 hasMoved = true;
             }
         }
 
-        if (myDefaultBehavior != null) {
+        if (myDefaultBehavior != null)
+        {
             myDefaultBehavior.execute(this);
             hasMoved = true;
         }
     }
 
-    public void interact(Actor other) {
-        for (String s : myInteractions.keySet()) {
-            if (other.getClass().getCanonicalName().equals(s)) {
-                for (Action a : myInteractions.get(s)) {
+    public void interact(Actor other)
+    {
+        for (String s : myInteractions.keySet())
+        {
+            if (other.getClass().getCanonicalName().equals(s))
+            {
+                for (Action a : myInteractions.get(s))
+                {
                     a.execute(this, other);
                 }
             }
@@ -102,11 +114,13 @@ public abstract class Actor {
         // needed
     }
 
-    public void setPosition(Point p) {
+    public void setPosition(Point p)
+    {
         myPosition = p;
     }
 
-    public void setVelocity(PhysicsVector v) {
+    public void setVelocity(PhysicsVector v)
+    {
         myVelocity = v;
     }
 
@@ -114,43 +128,51 @@ public abstract class Actor {
     {
         return myHealth;
     }
-    
+
     public void setHealth(int newHealth)
     {
         myHealth = newHealth;
     }
-    
-    public Point getPosition() {
+
+    public Point getPosition()
+    {
         return myPosition;
     }
 
-    public PhysicsVector getVelocity() {
+    public PhysicsVector getVelocity()
+    {
         return myVelocity;
     }
 
-    public String getImageString() {
+    public String getImageString()
+    {
         return myImageString;
     }
 
-    public void setImage(String newImage) {
+    public void setImage(String newImage)
+    {
         myImage = new ImageIcon(newImage).getImage();
         myImageString = newImage;
     }
 
-    public void remove() {
+    public void remove()
+    {
 
         myModel.remove(this);
     }
 
-    public Dimension getSize() {
+    public Dimension getSize()
+    {
         return mySize;
     }
 
-    public void setSize(int width, int height) {
+    public void setSize(int width, int height)
+    {
         mySize = new Dimension(width, height);
     }
 
-    public Shape getShape() {
+    public Shape getShape()
+    {
         return myShape.createTransformedArea(getTransform());
     }
 
@@ -161,15 +183,18 @@ public abstract class Actor {
      * convex polygon around that edge. Otherwise, it will simply create a
      * rectangular region around the image.
      */
-    private Shape makeShape(java.awt.Image image) {
+    private Shape makeShape(java.awt.Image image)
+    {
         int h = image.getHeight(null);
         int w = image.getWidth(null);
         int[] pixels = new int[w * h];
-        try {
+        try
+        {
             PixelGrabber grabber = new PixelGrabber(image, 0, 0, w, h, pixels,
                     0, w);
             grabber.grabPixels();
-        } catch (InterruptedException e) {
+        } catch (InterruptedException e)
+        {
         }
 
         // scan line algorithm to find edges at transparent boundaries:
@@ -178,16 +203,20 @@ public abstract class Actor {
         List<List<Integer>> pts = new ArrayList<List<Integer>>(h);
         Point start = null;
         Point end = new Point();
-        for (int y = 0; y < h; y++) {
+        for (int y = 0; y < h; y++)
+        {
             pts.add(new ArrayList<Integer>());
             int lastAlpha = 0;
-            for (int x = 0; x < w; x++) {
+            for (int x = 0; x < w; x++)
+            {
                 int alpha = (pixels[y * w + x] >> 24) & 0xff;
                 // at an edge?
                 if ((alpha != 0 && lastAlpha == 0)
-                        || (alpha == 0 && lastAlpha != 0)) {
+                        || (alpha == 0 && lastAlpha != 0))
+                {
                     pts.get(y).add(x);
-                    if (start == null) {
+                    if (start == null)
+                    {
                         start = new Point(x, y);
                     }
                     end.setLocation(x, y);
@@ -195,7 +224,8 @@ public abstract class Actor {
                 lastAlpha = alpha;
             }
             // sprite overlaps the right side
-            if (lastAlpha != 0) {
+            if (lastAlpha != 0)
+            {
                 pts.get(y).add(w - 1);
                 end.setLocation(w - 1, y);
             }
@@ -205,18 +235,22 @@ public abstract class Actor {
         GeneralPath total = new GeneralPath();
         total.moveTo(start.x, start.y);
         int lastX = start.x;
-        for (int y = start.y + 1; y <= end.y; y++) {
+        for (int y = start.y + 1; y <= end.y; y++)
+        {
             List<Integer> row = pts.get(y);
-            if (!row.isEmpty()) {
+            if (!row.isEmpty())
+            {
                 lastX = row.get(0);
             }
             total.lineTo(lastX, y);
         }
         total.lineTo(end.x, end.y);
         lastX = end.x;
-        for (int y = end.y - 1; y >= start.y; y--) {
+        for (int y = end.y - 1; y >= start.y; y--)
+        {
             List<Integer> row = pts.get(y);
-            if (!row.isEmpty()) {
+            if (!row.isEmpty())
+            {
                 lastX = row.get(row.size() - 1);
             }
             total.lineTo(lastX, y);
@@ -227,8 +261,10 @@ public abstract class Actor {
         return total;
     }
 
-    protected void setShape(Shape shape) {
-        if (shape != null) {
+    protected void setShape(Shape shape)
+    {
+        if (shape != null)
+        {
             myShape = new Area(shape);
         }
     }
@@ -236,8 +272,10 @@ public abstract class Actor {
     /**
      * Reports shape's attributes as a single transform.
      */
-    protected AffineTransform getTransform() {
-        if (hasChanged) {
+    protected AffineTransform getTransform()
+    {
+        if (hasChanged)
+        {
             myXform.setToIdentity();
             // apply shape's attributes in proper order no matter how user set
             // them
@@ -255,7 +293,8 @@ public abstract class Actor {
      * 
      * Currently, draws the shape as an image.
      */
-    public void paint(Graphics pen) {
+    public void paint(Graphics pen)
+    {
         pen.drawImage(myImage, getLeft(), getTop(), getSize().width,
                 getSize().height, null);
     }
@@ -263,21 +302,24 @@ public abstract class Actor {
     /**
      * Returns shape's left-most coordinate.
      */
-    public int getLeft() {
+    public int getLeft()
+    {
         return getPosition().x - getSize().width / 2;
     }
 
     /**
      * Returns shape's top-most coordinate.
      */
-    public int getTop() {
+    public int getTop()
+    {
         return getPosition().y - getSize().height / 2;
     }
 
     /**
      * Returns shape's right-most coordinate.
      */
-    public int getRight() {
+    public int getRight()
+    {
         return getPosition().x + getSize().width / 2;
     }
 
@@ -286,11 +328,13 @@ public abstract class Actor {
      * 
      * @return bottom-most coordinate
      */
-    public int getBottom() {
+    public int getBottom()
+    {
         return getPosition().y + getSize().height / 2;
     }
 
-    public Point2D getCenter() {
+    public Point2D getCenter()
+    {
         return new Point(getSize().width / 2, getSize().height / 2);
     }
 

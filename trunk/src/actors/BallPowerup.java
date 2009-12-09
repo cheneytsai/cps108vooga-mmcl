@@ -15,14 +15,17 @@ import actions.Add;
  * 
  */
 
-public class BallPowerup extends Powerup {
-    public BallPowerup(Point position, GameModel model) {
+public class BallPowerup extends Powerup
+{
+    public BallPowerup(Point position, GameModel model)
+    {
         super(ResourceManager.getString("BallPowerupImage"), new Dimension(16,
                 16), position, model);
     }
 
     @Override
-    protected void loadBehavior() {
+    protected void loadBehavior()
+    {
         super.loadBehavior();
         List<Action> hitPaddle = myInteractions.get(Paddle.class
                 .getCanonicalName());

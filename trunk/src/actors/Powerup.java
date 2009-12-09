@@ -16,13 +16,16 @@ import actions.Remove;
  * @author Lisa Gutermuth
  * 
  */
-public class Powerup extends Actor {
-    public Powerup(String image, Dimension size, Point position, GameModel model) {
+public class Powerup extends Actor
+{
+    public Powerup(String image, Dimension size, Point position, GameModel model)
+    {
         super(image, size, position, model);
     }
 
     @Override
-    protected void loadBehavior() {
+    protected void loadBehavior()
+    {
         myDefaultBehavior = new Move(new PhysicsVector(new Direction(0, 1), 10));
         List<Action> bottomWall = new ArrayList<Action>();
         bottomWall.add(new Remove());
@@ -33,7 +36,8 @@ public class Powerup extends Actor {
 
     }
 
-    protected void updateInteractions(List<Action> hitPaddle) {
+    protected void updateInteractions(List<Action> hitPaddle)
+    {
         myInteractions.remove(Paddle.class.getCanonicalName());
         myInteractions.put(Paddle.class.getCanonicalName(), hitPaddle);
     }

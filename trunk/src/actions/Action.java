@@ -8,7 +8,8 @@ import actors.*;
  * @author Michael Yu
  * 
  */
-public interface Action {
+public interface Action
+{
 
     /**
      * Execute associated action on given actor The actor calling the Action
