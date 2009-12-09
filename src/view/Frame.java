@@ -10,11 +10,13 @@ import actions.Quit;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
-public class Frame extends JFrame {
+public class Frame extends JFrame
+{
     private Dimension mySize = new Dimension(960, 720);
     private Canvas myCanvas;
 
-    public Frame() {
+    public Frame()
+    {
         myCanvas = new Canvas();
 
         myCanvas.setActive(new GameChooser(myCanvas));
@@ -32,13 +34,17 @@ public class Frame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private JMenuBar makeMenu() {
+    private JMenuBar makeMenu()
+    {
         JMenuBar menu = new JMenuBar();
         JMenu fileMenu = new JMenu(ResourceManager.getString("File"));
 
-        fileMenu.add(new AbstractAction(ResourceManager.getString("NewGame")) {
-            public void actionPerformed(ActionEvent ev) {
-                if (myCanvas.isGameInProgress()) {
+        fileMenu.add(new AbstractAction(ResourceManager.getString("NewGame"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
+                if (myCanvas.isGameInProgress())
+                {
                     new GameMenu(myCanvas.getGameName(), myCanvas);
                 }
             }
@@ -48,22 +54,23 @@ public class Frame extends JFrame {
         {
             public void actionPerformed(ActionEvent ev)
             {
-                if(myCanvas.getGameName() != null)
+                if (myCanvas.getGameName() != null)
                 {
-                    new InstructionView(myCanvas.getGameName(),myCanvas);
+                    new InstructionView(myCanvas.getGameName(), myCanvas);
                 }
             }
         });
-        fileMenu.add(new AbstractAction(ResourceManager.getString("HighScores"))
-        {
-            public void actionPerformed(ActionEvent ev)
-            {
-                if(myCanvas.getGameName() != null)
+        fileMenu
+                .add(new AbstractAction(ResourceManager.getString("HighScores"))
                 {
-                    new ScoresView(myCanvas.getGameName(),myCanvas);
-                }
-            }
-        });
+                    public void actionPerformed(ActionEvent ev)
+                    {
+                        if (myCanvas.getGameName() != null)
+                        {
+                            new ScoresView(myCanvas.getGameName(), myCanvas);
+                        }
+                    }
+                });
         fileMenu.add(new AbstractAction(ResourceManager.getString("Quit"))
         {
             public void actionPerformed(ActionEvent ev)

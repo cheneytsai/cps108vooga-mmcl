@@ -10,16 +10,19 @@ import java.awt.Point;
  * @author Lisa Gutermuth
  * 
  */
-public class BottomWall extends Actor {
+public class BottomWall extends Actor
+{
 
     public BottomWall(String string, Dimension dimension, Point point,
-            GameModel gameModel) {
+            GameModel gameModel)
+    {
 
         super(string, dimension, point, gameModel);
     }
 
     @Override
-    protected void loadBehavior() {
+    protected void loadBehavior()
+    {
         myDefaultBehavior = null;
 
     }

@@ -12,7 +12,6 @@ import util.reflection.Reflection;
 
 import conditions.NumberOf;
 
-
 import actors.Actor;
 
 /**
@@ -21,13 +20,15 @@ import actors.Actor;
  * 
  */
 
-public class AddPiece implements Action {
+public class AddPiece implements Action
+{
 
     private static ResourceBundle myPieceResources;
     private static Actor myNext;
     private GameModel myModel;
 
-    public AddPiece(String gameName, GameModel model) {
+    public AddPiece(String gameName, GameModel model)
+    {
         if (myPieceResources == null)
             myPieceResources = ResourceBundle.getBundle("resources." + gameName
                     + "Pieces");
@@ -37,17 +38,19 @@ public class AddPiece implements Action {
     /**
      * Randomly creates a new actor from the resource file
      */
-    public void execute(Actor... actors) {
+    public void execute(Actor... actors)
+    {
 
-        
-
-       if (new NumberOf(myModel, myPieceResources.getString("PieceClass"), 0)
-                .evaluate()) {
-            if (myNext == null) {
+        if (new NumberOf(myModel, myPieceResources.getString("PieceClass"), 0)
+                .evaluate())
+        {
+            if (myNext == null)
+            {
                 myNext = createRandom();
                 execute();
 
-            } else {
+            } else
+            {
                 myModel.addActor(myNext);
                 myNext = createRandom();
             }
@@ -58,7 +61,9 @@ public class AddPiece implements Action {
     /**
      * Randomly creates a new actor from the resource file
      */
-    private Actor createRandom() {
+    private Actor createRandom()
+    {
+
         String number = myPieceResources.getString("NumberOfPieces");
         int random = myModel.getRandom().nextInt(Integer.parseInt(number));
         String image = myPieceResources.getString("" + random);
@@ -74,9 +79,15 @@ public class AddPiece implements Action {
                     .getString("PieceClass"), image, size, new Point(480,
                     size.height / 2), myModel);
     }
-    
-    public static Image nextImage(){
+
+    public static Image nextImage()
+    {
         return new ImageIcon(myNext.getImageString()).getImage();
+    }
+
+    public static void clearNext()
+    {
+        myNext = null;
     }
 
 }

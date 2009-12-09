@@ -9,9 +9,9 @@ public class Reset implements Action
 
     public void execute(Actor... actors)
     {
-        actors[0].setPosition(new Point(480,450));
-        actors[0].setVelocity(new PhysicsVector(new Direction(-1,-1),10));
-        
+        actors[0].setPosition(new Point(480, 450));
+        actors[0].setVelocity(new PhysicsVector(new Direction(-1, -1), 10));
+
     }
 
 }

@@ -1,16 +1,16 @@
 package dukeopalypse;
 
-
 import gameengine.GameModel;
 
 import java.awt.event.KeyEvent;
 
-
 import view.Canvas;
 
-public class DukeopalypseModel extends GameModel {
+public class DukeopalypseModel extends GameModel
+{
 
-    public DukeopalypseModel(Canvas canvas) {
+    public DukeopalypseModel(Canvas canvas)
+    {
         super(canvas);
         myConditions = new DukeopalypseConditions(this);
     }
@@ -18,13 +18,13 @@ public class DukeopalypseModel extends GameModel {
     protected void hotkeyCheck(String myLastKeyPressed)
     {
 
+    }
+
+    public void lose()
+    {
 
     }
-    
-    public void lose() {
-       
-    }
-    
+
     public void update(KeyEvent myLastKeyPressed)
     {
         super.update(myLastKeyPressed);

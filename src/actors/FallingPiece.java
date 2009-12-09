@@ -17,30 +17,32 @@ import actions.Remove;
 import actions.Replace;
 import actions.Rotate;
 
-
 /**
  * 
  * @author Megan Heysham
  * 
  */
-public class FallingPiece extends Actor {
+public class FallingPiece extends Actor
+{
 
     public FallingPiece(String image, Dimension size, Point position,
-            GameModel gameModel) {
+            GameModel gameModel)
+    {
         super(image, size, position, gameModel);
         setVelocity(new PhysicsVector(new Direction(0, 1), 5));
         loadBehavior();
     }
 
     @Override
-    protected void loadBehavior() {
+    protected void loadBehavior()
+    {
         myDefaultBehavior = new NaturalMove();
         List<Action> pause = new ArrayList<Action>();
         pause.add(new ChangeSpeed(0));
-        myKeyEvents.put(KeyEvent.VK_P,pause);
+        myKeyEvents.put(KeyEvent.VK_P, pause);
         List<Action> unpause = new ArrayList<Action>();
         unpause.add(new ChangeSpeed(5));
-        myKeyEvents.put(KeyEvent.VK_L,unpause);
+        myKeyEvents.put(KeyEvent.VK_L, unpause);
         List<Action> up = new ArrayList<Action>();
         up.add(new Rotate(myModel.getCanvas().getGameName()));
         myKeyEvents.put(KeyEvent.VK_UP, up);
@@ -68,6 +70,5 @@ public class FallingPiece extends Actor {
         myInteractions.put(LeftWall.class.getCanonicalName(), leftWall);
 
     }
-
 
 }
