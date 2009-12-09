@@ -56,12 +56,6 @@ public class LevelViewer extends Canvas implements ActionListener
             {
                 public void keyPressed(KeyEvent e)
                 {
-                    // TODO: make pause less spazzy
-                    // if (myLastKeyPressed != null
-                    // && myLastKeyPressed.getKeyCode() == KeyEvent.VK_W)
-                    // {
-                    // isPaused = !isPaused;
-                    // }
 
                     if (e.getKeyCode() == KeyEvent.VK_P)
                     {
