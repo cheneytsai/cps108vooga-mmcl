@@ -73,8 +73,9 @@ public class GameMenu extends Canvas
                 {
                     if (e.getY() > 200 && e.getY() < 250)
                     {
-                        
-                        Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "LevelViewer", myGameName, 1, myCanvas);
+//                        myModel.clearScore();
+                        Reflection.createInstance(myCanvas.getGameName().toLowerCase() + "." + myCanvas.getGameName() + "LevelViewer", myCanvas.getGameName(), 1, myCanvas);
+
                         
                     } else if (e.getY() > 300 && e.getY() < 350)
                     {
