@@ -97,7 +97,8 @@ public class LevelViewer extends Canvas implements ActionListener
             System.out.println("fail");
             myCanvas.loadEnd("Win");
         }
-        myModel.clearScore();
+        if(myLevelNum == 1)
+            myModel.clearScore();
 
     }
 
