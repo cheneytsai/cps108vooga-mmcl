@@ -33,9 +33,11 @@ public class GameModel
     private boolean gameOver;
     protected ConditionChecker myConditions;
     private Random myRandom;
+    protected int myScore;
 
     public GameModel(Canvas canvas)
     {
+        System.out.println("new gameModel");
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
         gameOver = false;
@@ -119,11 +121,13 @@ public class GameModel
         return myActorList;
     }
 
-    public void updateScore(int i)
+    public void updateScore(int increment)
     {
         // TODO: Generalize this into something that can update any game state
         // (make a map of info name -> values)
-        myCanvas.updateScore(i);
+        myScore += increment;
+        System.out.println(myScore);
+        System.out.println(this.getClass().getCanonicalName());
     }
 
     public void newView(Canvas canvas)
@@ -160,6 +164,17 @@ public class GameModel
     {
         myCanvas.loadBonusLevel(level);
 
+    }
+    public int getScore()
+    {
+        return myScore;
+    }
+
+    public void clearScore()
+    {
+        System.out.println("score cleared");
+        myScore = 0;
+        
     }
     
 

@@ -7,11 +7,10 @@ import actors.Actor;
 @SuppressWarnings("serial")
 public class EditorCanvas extends LevelViewer
 {
-    public EditorCanvas(String gameName, int levelNum, int score, Canvas canvas)
+    public EditorCanvas(String gameName, int levelNum, Canvas canvas)
     {
-        super(gameName, levelNum, score, canvas);
+        super(gameName, levelNum, canvas);
 
-        myLevelNum = levelNum;
         myCanvas.removeKeyListener(myCanvas.getKeyListeners()[0]);
         myCanvas.addMouseListener(mouseListener());
 
@@ -28,7 +27,7 @@ public class EditorCanvas extends LevelViewer
             public void mouseClicked(MouseEvent e)
             {
                 Actor match = null;
-                for (Actor current : myActors)
+                for (Actor current : myModel.getActors())
                 {
                     if (e.getX() >= current.getLeft()
                             && e.getX() <= current.getRight())
@@ -47,13 +46,13 @@ public class EditorCanvas extends LevelViewer
                 if (match == null)
                 {
                     new EditorCreate(myModel, getGameName() + "level"
-                            + myLevelNum, null, "src/images/Paddle.gif", 20,
+                            + getLevelNum(), null, "src/images/Paddle.gif", 20,
                             20, e.getX(), e.getY());
                 } else
                 {
 
                     new EditorCreate(myModel, getGameName() + "level"
-                            + myLevelNum, match, match.getImageString(), match
+                            + getLevelNum(), match, match.getImageString(), match
                             .getSize().width, match.getSize().height,
                             (int) match.getPosition().getX(), (int) match
                                     .getPosition().getY());

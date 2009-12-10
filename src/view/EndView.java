@@ -15,11 +15,10 @@ import util.resources.ResourceManager;
 @SuppressWarnings("serial")
 public class EndView extends Canvas
 {
-    public EndView(String endCondition, String gameName, int score,
+    public EndView(String endCondition, String gameName,
             Canvas canvas)
     {
         myCanvas = canvas;
-        myScore = score;
         myCanvas.setActive(this);
         myGameName = gameName;
         myCanvas.requestFocus();
@@ -52,7 +51,7 @@ public class EndView extends Canvas
         {
             FileWriter output = new FileWriter(ResourceManager
                     .getString(gameName + "Scores"), true);
-            output.append("\n" + name + "\t\t" + myScore + "\t\t"
+            output.append("\n" + name + "\t\t" + myModel.getScore() + "\t\t"
                     + time.getTime());
             output.close();
         } catch (FileNotFoundException e)

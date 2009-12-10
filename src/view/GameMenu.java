@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import actions.Quit;
+import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
@@ -72,7 +73,9 @@ public class GameMenu extends Canvas
                 {
                     if (e.getY() > 200 && e.getY() < 250)
                     {
-                        new LevelViewer(myGameName, 1, 0, myCanvas);
+                        
+                        Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "LevelViewer", myGameName, 1, myCanvas);
+                        
                     } else if (e.getY() > 300 && e.getY() < 350)
                     {
                         new InstructionView(myGameName, myCanvas);
@@ -90,7 +93,7 @@ public class GameMenu extends Canvas
                         try
                         {
                             new EditorCanvas(myGameName, Integer
-                                    .parseInt(level), 0, myCanvas);
+                                    .parseInt(level), myCanvas);
                         } catch (NumberFormatException n)
                         {
                             System.out.println(n);
