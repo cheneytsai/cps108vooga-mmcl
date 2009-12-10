@@ -55,7 +55,7 @@ public class ArkanoidModel extends GameModel
                 }
             } else if (myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
             {
-                new UpdateScore(100).execute();
+                new UpdateScore(100, this).execute();
             } else if (myLastKeyPressed.getKeyCode() == KeyEvent.VK_G)
             {
                 new BonusLevel(this, 11).execute();

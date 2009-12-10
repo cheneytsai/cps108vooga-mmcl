@@ -32,7 +32,7 @@ public class Brick extends Actor
         List<Action> ball = new ArrayList<Action>();
         ball.add(new UpdateHealth(getModel(), -1));
         // ball.add(new RandomAdd(myModel));
-        ball.add(new UpdateScore(100));
+        ball.add(new UpdateScore(100, getModel()));
         myInteractions.put(Ball.class.getCanonicalName(), ball);
     }
 }

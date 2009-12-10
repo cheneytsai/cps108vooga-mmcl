@@ -33,7 +33,7 @@ public class Powerup extends Actor
         myInteractions.put(BottomWall.class.getCanonicalName(), bottomWall);
         List<Action> hitPaddle = new ArrayList<Action>();
         hitPaddle.add(new Remove());
-        hitPaddle.add(new UpdateScore(50));
+        hitPaddle.add(new UpdateScore(50, getModel()));
         myInteractions.put(Paddle.class.getCanonicalName(), hitPaddle);
 
     }
