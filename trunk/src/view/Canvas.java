@@ -23,7 +23,7 @@ public class Canvas extends JPanel
     protected String myGameName;
     // private Menu active;
     // TODO: move score to model
-    protected int myScore;
+    
     protected static final Font TITLE_FONT = new Font("TAHOMA", Font.BOLD, 75);
     protected static final Font OPTION_FONT = new Font("TAHOMA", Font.BOLD, 40);
     protected static final Font SCOREBOARD_FONT = new Font("TAHOMA",
@@ -70,10 +70,7 @@ public class Canvas extends JPanel
     {
     }
 
-    public int getScore()
-    {
-        return myScore;
-    }
+    
 
     public String getGameName()
     {
@@ -91,10 +88,6 @@ public class Canvas extends JPanel
         return myActive.mouseListener();
     }
 
-    public void updateScore(int increment)
-    {
-        myScore += increment;
-    }
 
     public int getWidth()
     {

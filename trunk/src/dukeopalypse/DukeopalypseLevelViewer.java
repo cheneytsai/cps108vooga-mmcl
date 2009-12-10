@@ -7,10 +7,10 @@ import view.LevelViewer;
 public class DukeopalypseLevelViewer extends LevelViewer
 {
 
-    public DukeopalypseLevelViewer(String gameName, int levelNum, int score,
+    public DukeopalypseLevelViewer(String gameName, int levelNum,
             Canvas canvas)
     {
-        super(gameName, levelNum, score, canvas);
+        super(gameName, levelNum, canvas);
         // TODO Auto-generated constructor stub
     }
 

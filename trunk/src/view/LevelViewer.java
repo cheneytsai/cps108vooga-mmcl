@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +10,6 @@ import java.util.MissingResourceException;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
-import actions.AddPiece;
 import actors.Actor;
 import actors.Grid;
 import util.resources.ResourceManager;
@@ -25,8 +23,8 @@ import util.resources.ResourceManager;
 public class LevelViewer extends Canvas implements ActionListener
 {
     private String myGameName;
-    protected List<Actor> myActors;
-    protected KeyEvent myLastKeyPressed;
+    private List<Actor> myActors;
+    private KeyEvent myLastKeyPressed;
     protected int myLevelNum;
     private Timer myTimer;
     private boolean isPaused;
@@ -34,14 +32,13 @@ public class LevelViewer extends Canvas implements ActionListener
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25; // in milliseconds
 
-    public LevelViewer(String gameName, int levelNum, int score, Canvas canvas)
+    public LevelViewer(String gameName, int levelNum, Canvas canvas)
     {
         Grid.resetGrid();
         isPaused = false;
         myCanvas = canvas;
         myGameName = gameName;
         myLevelNum = levelNum;
-        myScore = score;
         try
         {
             myCanvas.setActive(this);
@@ -101,6 +98,7 @@ public class LevelViewer extends Canvas implements ActionListener
             System.out.println("fail");
             myCanvas.loadEnd("Win");
         }
+        myModel.clearScore();
 
     }
 
@@ -114,9 +112,7 @@ public class LevelViewer extends Canvas implements ActionListener
         
         if (!isPaused)
         {
-            if(myGameName.equals("Tetris")){
-                myLevelNum= Grid.getNumRowsCleared() / 10 + 1;
-            }
+            
             myModel.update(myLastKeyPressed);
         }
         
@@ -124,55 +120,8 @@ public class LevelViewer extends Canvas implements ActionListener
 
     public void paintComponent(Graphics pen)
     {
-
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         pen.setFont(SCOREBOARD_FONT);
-
-        if (myGameName.equals("Tetris"))
-        {
-            pen.setColor(Color.BLACK);
-            pen.drawString(ResourceManager.getString("Title").substring(0, 10),
-                    800, 25);
-            pen.drawString(myGameName, 800, 50);
-            pen.setColor(Color.WHITE);
-            pen.fillRect(800, 160, 110, 50);
-            pen.setColor(Color.BLACK);
-            pen.drawRect(800, 160, 110, 50);
-            pen.drawString(ResourceManager.getString("Score"), 800, 155);
-            pen.drawString("" + myScore, 805, 190);
-            pen.setColor(Color.WHITE);
-            pen.fillRect(800, 260, 110, 50);
-            pen.setColor(Color.BLACK);
-            pen.drawRect(800, 260, 110, 50);
-            pen.drawString("Level:", 800, 255);
-            pen.drawString(""+myLevelNum, 805, 290);
-            pen.setColor(Color.WHITE);
-            pen.fillRect(800, 360, 110, 50);
-            pen.setColor(Color.BLACK);
-            pen.drawRect(800, 360, 110, 50);
-            pen.drawString("Lines:", 800, 355);
-            pen.drawString("" + Grid.getNumRowsCleared(), 805, 390);
-            pen.setColor(Color.WHITE);
-            pen.fillRect(800, 460, 110, 110);
-            pen.setColor(Color.BLACK);
-            pen.drawRect(800, 460, 110, 110);
-            pen.drawString("Next Piece:", 800, 455);
-            pen.drawImage(AddPiece.nextImage(), 855 - AddPiece.nextImage()
-                    .getWidth(null) / 2, 515 - AddPiece.nextImage().getHeight(
-                    null) / 2, null);
-
-        }
-
-        else
-        {
-            pen.setColor(Color.WHITE);
-            pen.drawString(ResourceManager.getString("Title").substring(0, 10),
-                    0, 20);
-            pen.drawString(myGameName, 0, 40);
-            pen.drawString(ResourceManager.getString("Score") + myScore, 800,
-                    20);
-
-        }
 
         paint(pen);
     }
@@ -197,7 +146,6 @@ public class LevelViewer extends Canvas implements ActionListener
      */
     public void paint(Graphics pen)
     {
-        myActors = myModel.getActors();
         for (Actor current : myActors)
         {
             current.paint(pen);
@@ -215,16 +163,16 @@ public class LevelViewer extends Canvas implements ActionListener
     public void loadNextLevel()
     {
         myLevelNum++;
-        new LevelViewer(myGameName, myLevelNum, myScore, myCanvas);
+        new LevelViewer(myGameName, myLevelNum, myCanvas);
     }
 
     public void loadBonusLevel(int level)
     {
-        new LevelViewer(myGameName, level, myScore, myCanvas);
+        new LevelViewer(myGameName, level, myCanvas);
     }
 
     public void loadEnd(String endCondition)
     {
-        new EndView(endCondition, myGameName, myScore, myCanvas);
+        new EndView(endCondition, myGameName, myCanvas);
     }
 }

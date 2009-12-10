@@ -7,6 +7,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
+import dukeopalypse.DukeopalypseModel;
+
 import actions.Quit;
 import arkanoid.ArkanoidModel;
 import tetris.TetrisModel;
@@ -80,7 +82,8 @@ public class GameChooser extends Canvas
                     } else if (e.getY() > 300 && e.getY() < 350)
                     {
 
-                        // new GameMenu("Dukeopalypse", myCanvas);
+                        myCanvas.setGame(new DukeopalypseModel(myCanvas));
+                        new GameMenu("Dukeopalypse", myCanvas);
                     } else if (e.getY() > 400 && e.getY() < 450)
                     {
 
