@@ -33,5 +33,7 @@ public class TetrisConditions extends ConditionChecker
         return numberInRow == Grid.getGridSize().width;
 
     }
+    
+    
 
 }
