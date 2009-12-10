@@ -23,16 +23,16 @@ public class Brick extends Actor
             GameModel gameModel)
     {
         super(string, dimension, point, gameModel);
-        setHealth(myModel.getRandom().nextInt(2) + 1);
+        setHealth(getModel().getRandom().nextInt(2) + 1);
     }
 
     @Override
     protected void loadBehavior()
     {
         List<Action> ball = new ArrayList<Action>();
-        ball.add(new UpdateHealth(myModel, -1));
+        ball.add(new UpdateHealth(getModel(), -1));
         // ball.add(new RandomAdd(myModel));
-        ball.add(new UpdateScore(myModel, 10));
+        ball.add(new UpdateScore(100));
         myInteractions.put(Ball.class.getCanonicalName(), ball);
     }
 }

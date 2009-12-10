@@ -24,7 +24,7 @@ public class BonusLevelPowerup extends Powerup
         super.loadBehavior();
         List<Action> hitPaddle = myInteractions.get(Paddle.class
                 .getCanonicalName());
-        hitPaddle.add(new BonusLevel(myModel, 11));
+        hitPaddle.add(new BonusLevel(getModel(), 11));
         updateInteractions(hitPaddle);
     }
 }

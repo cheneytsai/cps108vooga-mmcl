@@ -10,6 +10,7 @@ import actions.Action;
 import actions.Direction;
 import actions.Move;
 import actions.Remove;
+import actions.UpdateScore;
 
 /**
  * 
@@ -32,6 +33,7 @@ public class Powerup extends Actor
         myInteractions.put(BottomWall.class.getCanonicalName(), bottomWall);
         List<Action> hitPaddle = new ArrayList<Action>();
         hitPaddle.add(new Remove());
+        hitPaddle.add(new UpdateScore(50));
         myInteractions.put(Paddle.class.getCanonicalName(), hitPaddle);
 
     }

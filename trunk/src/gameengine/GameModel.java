@@ -169,7 +169,6 @@ public class GameModel
 
     public void clearScore()
     {
-        System.out.println("score cleared");
         myScore = 0;
         
     }

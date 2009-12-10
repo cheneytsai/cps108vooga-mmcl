@@ -105,7 +105,7 @@ public class Grid extends Actor
 
             if (TetrisConditions.isRowFull(i))
             {
-                new UpdateScore(myModel, 40).execute();
+                new UpdateScore(40).execute();
                 myNumRowsCleared++;
                 for (int j = 0; j < gridSize.width; j++)
                 {

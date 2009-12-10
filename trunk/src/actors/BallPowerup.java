@@ -29,7 +29,7 @@ public class BallPowerup extends Powerup
         super.loadBehavior();
         List<Action> hitPaddle = myInteractions.get(Paddle.class
                 .getCanonicalName());
-        hitPaddle.add(new Add(myModel, Ball.class.getCanonicalName()));
+        hitPaddle.add(new Add(getModel(), Ball.class.getCanonicalName()));
         updateInteractions(hitPaddle);
     }
 }
