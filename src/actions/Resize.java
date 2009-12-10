@@ -5,7 +5,7 @@ import actors.Actor;
 public class Resize implements Action
 {
 
-    double myFactor;
+    private double myFactor;
 
     public Resize(double factor)
     {

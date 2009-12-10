@@ -8,7 +8,7 @@ import actors.ShrinkPowerup;
 
 public class RandomAdd implements Action
 {
-    GameModel myModel;
+    private GameModel myModel;
 
     public RandomAdd(GameModel model)
     {

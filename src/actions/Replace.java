@@ -13,9 +13,7 @@ import actors.Grid;
  */
 public class Replace implements Action
 {
-
     private ResourceBundle myReplacements;
-
     private String myGameName;
 
     public Replace(String gameName)
