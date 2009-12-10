@@ -12,6 +12,7 @@ import javax.swing.Timer;
 
 import actors.Actor;
 import actors.Grid;
+import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
 /**
@@ -163,12 +164,12 @@ public class LevelViewer extends Canvas implements ActionListener
     public void loadNextLevel()
     {
         myLevelNum++;
-        new LevelViewer(myGameName, myLevelNum, myCanvas);
+        Reflection.createInstance(myGameName.toLowerCase() + "."+ myGameName + "LevelViewer", myGameName, myLevelNum, myCanvas);
     }
 
     public void loadBonusLevel(int level)
     {
-        new LevelViewer(myGameName, level, myCanvas);
+        Reflection.createInstance(myGameName.toLowerCase() + "."+ myGameName + "LevelViewer", myGameName, level, myCanvas);
     }
 
     public void loadEnd(String endCondition)

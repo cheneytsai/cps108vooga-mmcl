@@ -28,7 +28,7 @@ import actions.*;
 public abstract class Actor
 {
 
-    protected GameModel myModel; // Model
+    private GameModel myModel; // Model
     private Image myImage; // Image
     private String myImageString;
     private Area myShape; // Bounding Shape
@@ -158,7 +158,7 @@ public abstract class Actor
     public void remove()
     {
 
-        myModel.remove(this);
+        getModel().remove(this);
     }
 
     public Dimension getSize()
@@ -336,6 +336,10 @@ public abstract class Actor
     public Point2D getCenter()
     {
         return new Point(getSize().width / 2, getSize().height / 2);
+    }
+    
+    public GameModel getModel(){
+        return myModel;
     }
 
 }

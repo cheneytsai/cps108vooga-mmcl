@@ -51,7 +51,7 @@ public class Ball extends Actor
         myInteractions.put(LeftWall.class.getCanonicalName(), bounce);
         List<Action> bottomWall = new ArrayList<Action>();
         bottomWall.add(new Reset());
-        bottomWall.add(new UpdateHealth(myModel, -1));
+        bottomWall.add(new UpdateHealth(getModel(), -1));
         myInteractions.put(BottomWall.class.getCanonicalName(), bottomWall);
 
     }
