@@ -18,6 +18,8 @@ public class TetrisLevelViewer extends LevelViewer
             Canvas canvas)
     {
         super(gameName, levelNum, canvas);
+        Grid.resetGrid();
+
     }
     
     @Override
@@ -58,7 +60,7 @@ public class TetrisLevelViewer extends LevelViewer
     
     @Override
     public void update(){
-            if( Grid.getNumRowsCleared() / 10 + 1 > getLevelNum()){
+            if( Grid.getNumRowsCleared() / 10 + 1 > myLevelNum){
                 myLevelNum++;
             }
             super.update();

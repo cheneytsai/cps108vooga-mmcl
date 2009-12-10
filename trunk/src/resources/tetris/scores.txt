@@ -1,35 +1,22 @@
 Lisa		80		Fri Dec 04 19:21:57 EST 2009
-Megan		0		Fri Dec 04 23:38:14 EST 2009
 Chris		40		Fri Dec 04 23:39:18 EST 2009
-Megan		0		Sat Dec 05 17:54:25 EST 2009
 Megan		640		Sat Dec 05 17:59:45 EST 2009
 Megan		680		Sat Dec 05 20:55:55 EST 2009
-The Idiot Who Doesn't Know His/Her Own Name		0		Sat Dec 05 23:38:10 EST 2009
-The Idiot Who Doesn't Know His/Her Own Name		0		Sat Dec 05 23:39:16 EST 2009
 Lisa		2320		Sun Dec 06 14:50:21 EST 2009
 Bowen		160		Sun Dec 06 16:01:29 EST 2009
 The Idiot Who Doesn't Know His/Her Own Name		80		Sun Dec 06 16:28:35 EST 2009
-The Idiot Who Doesn't Know His/Her Own Name		0		Sun Dec 06 20:08:01 EST 2009
-Pip		0		Sun Dec 06 20:10:18 EST 2009
 AHHHHH		80		Sun Dec 06 20:16:03 EST 2009
-Chris		0		Sun Dec 06 20:20:52 EST 2009
 sss		520		Sun Dec 06 20:31:43 EST 2009
 Andrielle		200		Sun Dec 06 20:55:39 EST 2009
 Corey		400		Mon Dec 07 01:02:45 EST 2009
-The Idiot Who Doesn't Know His/Her Own Name		0		Mon Dec 07 23:09:10 EST 2009
 Andrielle		200		Sun Dec 06 20:55:39 EST 2009
 The idiot who actually knows his or her name		480		Tue Dec 08 01:49:49 EST 2009
 Dodecahedron		600		Tue Dec 08 01:52:26 EST 2009
-The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 01:57:42 EST 2009
-Megan		0		Tue Dec 08 12:26:50 EST 2009
-The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 12:27:20 EST 2009
-The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 12:27:43 EST 2009
 KizerCk		1800		Tue Dec 08 13:26:37 EST 2009
 Megan		720		Tue Dec 08 14:43:44 EST 2009
 KizerCk		1800		Tue Dec 08 13:26:37 EST 2009
 Lisa		2160		Tue Dec 08 13:36:07 EST 2009
 Regdor		1520		Tue Dec 08 14:11:12 EST 2009
-Megan		0		Tue Dec 08 15:49:08 EST 2009
 The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 15:52:42 EST 2009
 The Idiot Who Doesn't Know His/Her Own Name		0		Tue Dec 08 15:53:11 EST 2009
 GILGAMESH		320		Tue Dec 08 17:07:28 EST 2009
@@ -41,3 +28,6 @@ Wheeeeeee		1600		Wed Dec 09 14:50:26 EST 2009
 Megan		2320		Wed Dec 09 22:39:56 EST 2009
 Molly		80		Wed Dec 09 22:49:02 EST 2009
 Megan		1120		Wed Dec 09 22:56:23 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		0		Thu Dec 10 15:05:24 EST 2009
+Megan		0		Thu Dec 10 15:11:40 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		80		Thu Dec 10 15:15:24 EST 2009

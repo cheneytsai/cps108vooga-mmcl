@@ -20,6 +20,7 @@ public class EndView extends Canvas
     {
         myCanvas = canvas;
         myCanvas.setActive(this);
+        myModel = myCanvas.getGameModel();
         myGameName = gameName;
         myCanvas.requestFocus();
 

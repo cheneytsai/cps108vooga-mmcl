@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 import actors.Actor;
-import actors.Grid;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
@@ -35,7 +34,6 @@ public class LevelViewer extends Canvas implements ActionListener
 
     public LevelViewer(String gameName, int levelNum, Canvas canvas)
     {
-        Grid.resetGrid();
         isPaused = false;
         myCanvas = canvas;
         myGameName = gameName;
@@ -164,7 +162,7 @@ public class LevelViewer extends Canvas implements ActionListener
     public void loadNextLevel()
     {
         myLevelNum++;
-        Reflection.createInstance(myGameName.toLowerCase() + "."+ myGameName + "LevelViewer", myGameName, myLevelNum, myCanvas);
+        Reflection.createInstance(myGameName.toLowerCase() + "."+ myGameName + "LevelViewer", myGameName, getLevelNum(), myCanvas);
     }
 
     public void loadBonusLevel(int level)
@@ -176,4 +174,5 @@ public class LevelViewer extends Canvas implements ActionListener
     {
         new EndView(endCondition, myGameName, myCanvas);
     }
+
 }
