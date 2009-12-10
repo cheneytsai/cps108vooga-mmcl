@@ -11,8 +11,8 @@ import actors.Actor;
  */
 public class Add implements Action
 {
-    String myActorType;
-    GameModel myModel;
+    private String myActorType;
+    private GameModel myModel;
 
     public Add(GameModel model, String actor)
     {

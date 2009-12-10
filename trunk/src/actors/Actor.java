@@ -32,9 +32,9 @@ public abstract class Actor
     private Image myImage; // Image
     private String myImageString;
     private Area myShape; // Bounding Shape
-    protected AffineTransform myXform; // Transform
+    private AffineTransform myXform; // Transform
     private Point myPosition; // Position
-    protected double myHeading; // Heading
+    private double myHeading; // Heading
     private Dimension mySize; // Size
     private PhysicsVector myVelocity; // Velocity
     protected Map<Integer, List<Action>> myKeyEvents; // KeyEvents
@@ -42,7 +42,7 @@ public abstract class Actor
     protected Action myDefaultBehavior; // Default Action
     public boolean hasChanged; // Flag - Changed?
     public boolean hasMoved; // Flag - Moved?
-    public int myHealth;
+    private int myHealth;
 
     public Actor(String image, Dimension size, Point position, GameModel model)
     {
