@@ -37,7 +37,6 @@ public class GameModel
 
     public GameModel(Canvas canvas)
     {
-        System.out.println("new gameModel");
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
         gameOver = false;
@@ -126,8 +125,6 @@ public class GameModel
         // TODO: Generalize this into something that can update any game state
         // (make a map of info name -> values)
         myScore += increment;
-        System.out.println(myScore);
-        System.out.println(this.getClass().getCanonicalName());
     }
 
     public void newView(Canvas canvas)
