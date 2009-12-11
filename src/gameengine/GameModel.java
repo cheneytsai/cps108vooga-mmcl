@@ -110,6 +110,8 @@ public class GameModel
             }
 
 
+
+
             myConditions.checkConditions();
 //            for (int k = 0; k < myActorList.size(); k++)
 //            {
@@ -119,6 +121,8 @@ public class GameModel
         
     }
 
+
+    
     protected void hotKeyCheck(KeyEvent myLastKeyPressed)
     {
         if (myLastKeyPressed != null && myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
@@ -126,6 +130,9 @@ public class GameModel
             new UpdateScore(100, this).execute();
         }
     }
+
+
+
     
     public void clearActors()
     {
@@ -253,8 +260,6 @@ public class GameModel
             }
         }
     }
-    
-   
 
 
 }
