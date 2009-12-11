@@ -1,0 +1,9 @@
+Actors:
+
+Interactions:
+1 1	
+conditions.MousePress 500 MouseClicks
+actions.LoadLevel Duvall
+1 1
+conditions.KeyPress 32  Space
+actions.LoadLevel Duvall

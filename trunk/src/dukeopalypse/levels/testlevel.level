@@ -1,0 +1,36 @@
+Actors:
+actors.Background background src/dukeopalypse/images/background.jpg 
+actors.Thing paddle src/images/paddle.gif 80 16 580 600
+
+Interactions:
+1 2
+conditions.PreInitialize
+actions.CreateNewActor background
+actions.CreateNewActor paddle
+1 1
+conditions.KeyPress 37  Left
+actions.NewMove paddle -1 0 10
+1 1
+conditions.KeyPress 39  Right
+actions.NewMove paddle 1 0 10
+1 1
+conditions.KeyPress 38  Up
+actions.NewMove paddle 0 -1 10
+1 1
+conditions.KeyPress 40  Down
+actions.NewMove paddle 0 1 10
+1 1
+conditions.KeyPress  36 (upleft)Home
+actions.NewMove paddle -1 -1 10
+1 1
+conditions.KeyPress 34  (downright)PgDown
+actions.NewMove paddle 1 1 10
+1 1
+conditions.KeyPress 33  (topright)PgUp
+actions.NewMove paddle 1 -1 10
+1 1
+conditions.KeyPress 35  (downleft)End
+actions.NewMove paddle -1 1 10
+1 1
+conditions.KeyPress 32  Space
+actions.CreateNewActor paddle

@@ -1,0 +1,66 @@
+Actors:
+actors.Background background src/dukeopalypse/images/splashscreen.jpg 
+actors.Image storybutton src/dukeopalypse/images/story.jpg 220 70 480 150
+actors.Image playbutton src/dukeopalypse/images/playgame.jpg 220 70 200 350
+actors.Image loadbutton src/dukeopalypse/images/loadlevel.jpg 220 70 750 350
+actors.Image returnbutton src/dukeopalypse/images/returnmenu.jpg 220 70 480 550
+actors.Image duvall src/dukeopalypse/images/duvallChar/frontstop.png 80 100 480 350
+actors.Thing paddle src/images/paddle.gif 80 16 580 600
+actors.Thing paddle2 src/images/paddle.gif 80 16 580 600
+
+Interactions:
+1 6
+conditions.PreInitialize
+actions.CreateNewActor background
+actions.CreateNewActor playbutton
+actions.CreateNewActor loadbutton
+actions.CreateNewActor returnbutton
+actions.CreateNewActor storybutton
+actions.CreateNewActor duvall
+1 1
+conditions.KeyPress 32  Space
+actions.RemoveActor paddle2
+2 1	
+conditions.MousePress 500 MouseClicks
+conditions.MouseLocationOn playbutton
+actions.LoadLevel Intro
+2 1	
+conditions.MousePress 500 MouseClicks
+conditions.MouseLocationOn loadbutton
+actions.LoadLevel Intro
+2 1	
+conditions.MousePress 500 MouseClicks
+conditions.MouseLocationOn returnbutton
+actions.GoToGameChooser
+2 1	
+conditions.MousePress 500 MouseClicks
+conditions.MouseLocationOn storybutton
+actions.LoadLevel Story
+1 2
+conditions.MouseLocationOn playbutton
+actions.ChangeImg playbutton src/dukeopalypse/images/playgame2.jpg
+actions.ChangeImg duvall src/dukeopalypse/images/duvallchar/leftstop.png
+1 1
+conditions.MouseLocationOff playbutton
+actions.ChangeImg playbutton src/dukeopalypse/images/playgame.jpg
+1 2
+conditions.MouseLocationOn loadbutton
+actions.ChangeImg loadbutton src/dukeopalypse/images/loadlevel2.jpg
+actions.ChangeImg duvall src/dukeopalypse/images/duvallchar/rightstop.png
+1 1
+conditions.MouseLocationOff loadbutton
+actions.ChangeImg loadbutton src/dukeopalypse/images/loadlevel.jpg
+1 2
+conditions.MouseLocationOn returnbutton
+actions.ChangeImg returnbutton src/dukeopalypse/images/returnmenu2.jpg
+actions.ChangeImg duvall src/dukeopalypse/images/duvallchar/frontstop.png
+1 1
+conditions.MouseLocationOff returnbutton
+actions.ChangeImg returnbutton src/dukeopalypse/images/returnmenu.jpg
+1 2
+conditions.MouseLocationOn storybutton
+actions.ChangeImg storybutton src/dukeopalypse/images/story2.jpg
+actions.ChangeImg duvall src/dukeopalypse/images/duvallchar/frontstop.png
+1 1
+conditions.MouseLocationOff storybutton
+actions.ChangeImg storybutton src/dukeopalypse/images/story.jpg
