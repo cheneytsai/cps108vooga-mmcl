@@ -19,7 +19,6 @@ import conditions.ConditionChecker;
 import util.reflection.*;
 import util.resources.ResourceManager;
 import actors.Actor;
-import arkanoid.ArkanoidConditions;
 
 /**
  * 
