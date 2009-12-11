@@ -17,18 +17,28 @@ public class Rotate implements Action
 
     public Rotate(String gameName)
     {
-        myRotations = ResourceBundle.getBundle("resources." + gameName
-                + "Rotation");
+//        myRotations = ResourceBundle.getBundle("resources." + gameName
+//                + "Rotation");
     }
 
     public void execute(Actor... actors)
     {
-        String newImage = myRotations.getString(actors[0].getImageString());
-        actors[0].setImage(newImage);
-        actors[0].setImage(newImage);
+//        String newImage = myRotations.getString(actors[0].getImageString());
+//        actors[0].setImage(newImage);
+//        actors[0].setImage(newImage);
         int height = (int) actors[0].getSize().getHeight();
         int width = (int) actors[0].getSize().getWidth();
-        actors[0].setSize(height, width);
+//        actors[0].setSize(height, width);
+//        if (height > width)
+//            actors[0].setPosition(new Point(actors[0].getPosition().x + 13,
+//                    actors[0].getPosition().y));
+//        if (height < width)
+//            actors[0].setPosition(new Point(actors[0].getPosition().x - 13,
+//                    actors[0].getPosition().y));
+        
+        Actor a = actors[0];
+        double d = a.getHeading();
+        a.setHeading(d + Math.toRadians(90));
         if (height > width)
             actors[0].setPosition(new Point(actors[0].getPosition().x + 13,
                     actors[0].getPosition().y));
