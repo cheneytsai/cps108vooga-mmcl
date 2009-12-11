@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -100,6 +101,10 @@ public class ReplayView extends LevelViewer implements ActionListener
         if (!myInput.hasNextLine())
         {
             myTimer.stop();
+            JOptionPane.showMessageDialog(null,
+                    "Replay complete!",
+                    "Complete", 0);
+            new GameMenu(myGameName,myCanvas);
         }
     }
 

@@ -23,7 +23,7 @@ import util.resources.ResourceManager;
 @SuppressWarnings("serial")
 public class LevelViewer extends Canvas implements ActionListener
 {
-    private String myGameName;
+    protected String myGameName;
     protected List<Actor> myActors;
     private KeyEvent myLastKeyPressed;
     protected String myLevelName;
