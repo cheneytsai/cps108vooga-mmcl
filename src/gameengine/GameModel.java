@@ -37,6 +37,7 @@ public class GameModel
     protected int myScore;
     private String[] myLevelProgression;
     private LevelViewer myLevelViewer;
+    private int myCurrentLevel;
 
     public GameModel(String gameName, Canvas canvas)
     {
@@ -44,10 +45,12 @@ public class GameModel
         myActorList = new ArrayList<Actor>();
         gameOver = false;
         myScore = 0;
+        myCurrentLevel = 0;
         myRandom = new Random();
         myLevelProgression = ResourceManager.getString(gameName+"Levels").split(",");
         myConditions = (ConditionChecker) Reflection.createInstance(gameName.toLowerCase()+"."+gameName+"Conditions",this);
-        myLevelViewer = (LevelViewer) Reflection.createInstance(gameName.toLowerCase()+"."+gameName+"LevelViewer",gameName,myLevelProgression[0],canvas,this);
+        myLevelViewer = (LevelViewer) Reflection.createInstance(gameName.toLowerCase()+"."+gameName+"LevelViewer",
+                gameName,myLevelProgression[0],canvas,this);
         initializeActors();
         myLevelViewer.startGame();
     }
@@ -154,7 +157,18 @@ public class GameModel
 
     public void loadNextLevel()
     {
-        myLevelViewer.loadNextLevel();
+        myCurrentLevel++;
+        if(myLevelProgression.length < myCurrentLevel)
+        {
+            loadEnd("Win");
+        }
+        else
+        {
+            myLevelViewer.loadNextLevel(myLevelProgression[myCurrentLevel]);
+            myActorList.clear();
+            initializeActors();
+            myLevelViewer.startGame();
+        }
     }
 
     public void loadEnd(String endCondition)

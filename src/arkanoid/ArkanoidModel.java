@@ -34,7 +34,8 @@ public class ArkanoidModel extends GameModel
             if (myLastKeyPressed.getKeyCode() == KeyEvent.VK_L)
             {
                 loadNextLevel();
-            } else if (myLastKeyPressed.getKeyCode() == KeyEvent.VK_B)
+            } 
+            else if (myLastKeyPressed.getKeyCode() == KeyEvent.VK_B)
             {
                 Actor paddleActor = null;
                 for (Actor actor : myActorList)

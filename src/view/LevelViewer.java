@@ -72,6 +72,7 @@ public class LevelViewer extends Canvas implements ActionListener
             }
         });
 
+        myTimer = new Timer(DEFAULT_DELAY, this);
         icon = new ImageIcon(ResourceManager.getString(myGameName+ "level.background"));
 
         myCanvas.repaint();       
@@ -80,7 +81,6 @@ public class LevelViewer extends Canvas implements ActionListener
     public void startGame()
     {
         myActors = myModel.getActors();
-        myTimer = new Timer(DEFAULT_DELAY, this);
         myTimer.start();
 
         update();
@@ -144,8 +144,10 @@ public class LevelViewer extends Canvas implements ActionListener
         myCanvas.repaint();
     }
 
-    public void loadNextLevel()
+    public void loadNextLevel(String levelName)
     {
+        myLevelName = levelName; 
+        
 //        advance to next level in model's array
 //        TODO reset actors, new read in, keep level viewer
 //        Reflection.createInstance(myGameName.toLowerCase() + "."+ myGameName + "LevelViewer", myGameName, getLevelNum(), myCanvas);
