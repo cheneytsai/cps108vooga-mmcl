@@ -1,0 +1,8 @@
+Actors:
+actors.Background background src/dukeopalypse/images/background.jpg 
+actors.Thing paddle src/images/paddle.gif 80 16 580 600
+
+Interactions:
+1 1
+conditions.PreInitialize
+actions.CreateNewActor background
