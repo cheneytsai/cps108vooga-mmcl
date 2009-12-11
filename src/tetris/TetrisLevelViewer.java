@@ -67,5 +67,10 @@ public class TetrisLevelViewer extends LevelViewer
             }
             super.update();
     }
+    
+    public int getLevelNum()
+    {
+        return myLevelNum;
+    }
 
 }
