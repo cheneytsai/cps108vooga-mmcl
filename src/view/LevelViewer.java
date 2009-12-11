@@ -23,11 +23,11 @@ import util.resources.ResourceManager;
 public class LevelViewer extends Canvas implements ActionListener
 {
     private String myGameName;
-    private List<Actor> myActors;
+    protected List<Actor> myActors;
     private KeyEvent myLastKeyPressed;
     protected String myLevelName;
-    private Timer myTimer;
-    private boolean isPaused;
+    protected Timer myTimer;
+    protected boolean isPaused;
     private final int PAUSE_KEY = KeyEvent.VK_P;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25; // in milliseconds
@@ -147,10 +147,6 @@ public class LevelViewer extends Canvas implements ActionListener
     public void loadNextLevel(String levelName)
     {
         myLevelName = levelName; 
-        
-//        advance to next level in model's array
-//        TODO reset actors, new read in, keep level viewer
-//        Reflection.createInstance(myGameName.toLowerCase() + "."+ myGameName + "LevelViewer", myGameName, getLevelNum(), myCanvas);
     }
 
 

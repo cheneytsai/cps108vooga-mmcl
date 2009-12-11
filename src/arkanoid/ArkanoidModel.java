@@ -22,9 +22,9 @@ import view.Canvas;
 public class ArkanoidModel extends GameModel
 {
 
-    public ArkanoidModel(String gameName,Canvas canvas)
+    public ArkanoidModel(String gameName,String viewType,Canvas canvas)
     {
-        super(gameName,canvas);
+        super(gameName,viewType,canvas);
     }
 
     protected void hotkeyCheck(KeyEvent myLastKeyPressed)
