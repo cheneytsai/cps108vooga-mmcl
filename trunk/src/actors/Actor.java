@@ -14,7 +14,6 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
 import java.awt.image.PixelGrabber;
 import java.util.*;
 
