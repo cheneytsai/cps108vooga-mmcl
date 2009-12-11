@@ -1,4 +1,3 @@
-//TODO: Write this
 package conditions;
 
 import gameengine.GameModel;
@@ -35,7 +34,7 @@ public abstract class ConditionChecker
         {
             myActors.add(a);
         }
-        
+
         CollisionChecker.checkCollisions(myActors);
         conditionsCheck();
 
