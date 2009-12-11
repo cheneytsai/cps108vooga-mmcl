@@ -28,7 +28,7 @@ public class ReplayView extends LevelViewer implements ActionListener
         super(gameName, null, canvas, null);
         myActors = new ArrayList<Object[]>();
 
-        File folder = new File("src/arkanoid/replays");
+        File folder = new File("src/"+gameName+"/replays");
         File[] listOfFiles = new File[folder.listFiles().length - 1];
         System.arraycopy(folder.listFiles(), 1, listOfFiles, 0, folder
                 .listFiles().length - 1);
