@@ -103,7 +103,6 @@ public class GameModel
         writeStateToFile(myPrinter);
         myPrinter.println("update");   
 
-        //System.out.println("UPDATED");
         for (int k = 0; k < myActorList.size(); k++)
             {
                 myActorList.get(k).act(myLastKeyPressed);
@@ -232,6 +231,7 @@ public class GameModel
             output.append("\n"+myLevelViewer.getGameName()+"level"+name+" = "+fileName);
             output.append("\n"+myLevelViewer.getGameName()+name+"Levels = "+name+newProgression);
             output.close();
+            myLevelViewer.startTimer();
             
         } catch (IOException e)
         {

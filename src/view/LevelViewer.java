@@ -86,6 +86,11 @@ public class LevelViewer extends Canvas implements ActionListener
         update();
     }
     
+    public void startTimer()
+    {
+        myTimer.start();
+    }
+    
     public void stopTimer()
     {
         myTimer.stop();
