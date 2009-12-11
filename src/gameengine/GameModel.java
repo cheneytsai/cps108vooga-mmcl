@@ -101,18 +101,14 @@ public class GameModel
     {
 		hotKeyCheck(myLastKeyPressed);
         writeStateToFile(myPrinter);
-        myPrinter.println("update");        hotKeyCheck(myLastKeyPressed);
-        writeStateToFile(myPrinter);
-        myPrinter.println("update");
+        myPrinter.println("update");   
 
         //System.out.println("UPDATED");
         for (int k = 0; k < myActorList.size(); k++)
             {
                 myActorList.get(k).act(myLastKeyPressed);
             }
-        }
 
-        myConditions.checkConditions();
 
             myConditions.checkConditions();
 //            for (int k = 0; k < myActorList.size(); k++)
@@ -121,15 +117,6 @@ public class GameModel
 //            }
             // Reset All to no movement
         
-    }
-
-    }
-    protected void hotKeyCheck(KeyEvent myLastKeyPressed)
-    {
-        if (myLastKeyPressed != null && myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
-        {
-            new UpdateScore(100, this).execute();
-        }
     }
 
     protected void hotKeyCheck(KeyEvent myLastKeyPressed)
@@ -267,60 +254,7 @@ public class GameModel
         }
     }
     
-    public void saveState()
-    {
-        try
-        {
-            myLevelViewer.stopTimer();
-            
-            String name = (String) JOptionPane.showInputDialog("Name your save file", null);
-            if (name == null || name.length() == 0)
-            {
-                name = new GregorianCalendar().getTime().toString().replace(":","_");
-            }
-            String fileName = "src/"
-                + myLevelViewer.getGameName().toLowerCase()
-                + "/savedGames/" + name+ ".txt";
+   
 
-            PrintWriter pw = new PrintWriter(new FileWriter(fileName));
-            writeStateToFile(pw);
-            pw.close();
-            
-            String newProgression = "";
-            for(int i = myCurrentLevel+1; i < myLevelProgression.length; i++)
-            {
-                newProgression += ","+myLevelProgression[i];
-            }
-            FileWriter output = new FileWriter("src/resources/English.properties",true);
-            output.append("\n"+myLevelViewer.getGameName()+"level"+name+" = "+fileName);
-            output.append("\n"+myLevelViewer.getGameName()+name+"Levels = "+name+newProgression);
-            output.close();
-            
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
 
-    }
-
-    /**
-     * @param pw
-     */
-    private void writeStateToFile(PrintWriter printer)
-    {
-        for (Actor actor : myActorList)
-        {
-            if (!(actor instanceof Wall) && !(actor instanceof Grid))
-            {
-                printer.println(actor.getClass().getCanonicalName() + " "
-                        + actor.getImageString() + " " + actor.getSize().width
-                        + " " + actor.getSize().height + " "
-                        + actor.getPosition().x + " " + actor.getPosition().y
-                        + " " + actor.getVelocity().getDirection().xShift()
-                        + " " + actor.getVelocity().getDirection().yShift()
-                        + " " + actor.getVelocity().getMagnitude());
-                printer.flush();
-            }
-        }
-    }
 }
