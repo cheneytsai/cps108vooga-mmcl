@@ -1,7 +1,9 @@
+//TODO: Write this
 package conditions;
 
 import gameengine.GameModel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,12 +12,6 @@ import utilities.CollisionChecker;
 
 import actions.Action;
 import actors.Actor;
-
-/**
- * 
- * @author Michael Yu
- * 
- */
 
 public abstract class ConditionChecker
 {
@@ -33,8 +29,13 @@ public abstract class ConditionChecker
 
     public void checkConditions()
     {
-        myActors = myModel.getActors();
-
+        myActors = new ArrayList<Actor>();
+        List<Actor> actors = myModel.getActors();
+        for (Actor a : actors)
+        {
+            myActors.add(a);
+        }
+        
         CollisionChecker.checkCollisions(myActors);
         conditionsCheck();
 
