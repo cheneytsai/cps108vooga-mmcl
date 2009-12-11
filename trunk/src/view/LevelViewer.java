@@ -161,7 +161,7 @@ public class LevelViewer extends Canvas implements ActionListener
 
     public void loadEnd(String endCondition)
     {
-        new EndView(endCondition, myGameName, myCanvas);
+        new EndView(endCondition, myGameName, myCanvas,myModel);
     }
 
 }
