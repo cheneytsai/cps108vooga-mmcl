@@ -1,0 +1,3 @@
+"b" = Press this to gain more balls - increasing your lifespan, making
+        it easier to hit bricks, and making the game more amusing!
+"s" = Press this to gain 100 points!
