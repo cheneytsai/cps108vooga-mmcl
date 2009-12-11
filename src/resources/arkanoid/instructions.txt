@@ -9,4 +9,6 @@ S: Shrinks the paddle
 L: Makes the paddle grow larger
 B: Places a new ball
 
+Catch a powerup and earn 50 additional points!
+
 Clear all the bricks to advance a level. Clear all the levels to win!
