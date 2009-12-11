@@ -2,7 +2,6 @@ package cheney;
 
 import conditions.Condition;
 
-
 public class Chance implements Condition
 {
 
@@ -15,7 +14,7 @@ public class Chance implements Condition
 
     public boolean evaluate()
     {
-        int num = (int)(Math.random()+ myProbability);
+        int num = (int) (Math.random() + myProbability);
         if (num == 1)
             return true;
         else

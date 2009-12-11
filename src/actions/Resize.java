@@ -6,7 +6,7 @@ import actors.Actor;
  * Resizes an Actor by a given factor.
  * 
  * @author Lisa Gutermuth
- *
+ * 
  */
 
 public class Resize implements Action

@@ -16,7 +16,6 @@ import actors.Actor;
 public abstract class CollisionChecker
 {
 
-
     public static void checkCollisions(List<Actor> actors)
     {
 
@@ -41,8 +40,6 @@ public abstract class CollisionChecker
 
         }
     }
-
-    
 
     public static boolean preliminaryCheck(Actor a, Actor b)
     {
@@ -78,7 +75,6 @@ public abstract class CollisionChecker
             return true;
         }
         return false;
-
 
     }
 

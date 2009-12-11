@@ -17,7 +17,7 @@ import util.resources.ResourceManager;
  * Displays instructions from a text file.
  * 
  * @author Megan Heysham
- *
+ * 
  */
 
 @SuppressWarnings("serial")
@@ -25,7 +25,7 @@ public class InstructionView extends Canvas
 {
     Image MMCL;
     boolean revealed;
-    
+
     public InstructionView(String gameName, Canvas canvas)
     {
         myCanvas = canvas;
@@ -34,9 +34,10 @@ public class InstructionView extends Canvas
         revealed = false;
 
         myCanvas.addMouseListener(mouseListener());
-        
+
         icon = new ImageIcon(ResourceManager.getString(gameName));
-        MMCL = new ImageIcon(ResourceManager.getString("BonusLevelPowerupImage")).getImage();
+        MMCL = new ImageIcon(ResourceManager
+                .getString("BonusLevelPowerupImage")).getImage();
 
         myCanvas.repaint();
     }
@@ -47,29 +48,32 @@ public class InstructionView extends Canvas
         pen.setFont(TITLE_FONT);
         pen.drawString(myGameName + " Instructions", 100, 100);
         pen.setFont(SCOREBOARD_FONT);
-        
-        pen.drawImage(MMCL,900,590,30,30,null);
+
+        pen.drawImage(MMCL, 900, 590, 30, 30, null);
         drawInstructions(pen);
-        
-        if(revealed)
+
+        if (revealed)
         {
             paintCheats(pen);
         }
     }
 
-    private void drawInstructions(Graphics pen){
+    private void drawInstructions(Graphics pen)
+    {
         try
         {
-            Scanner s = new Scanner(new File("src/resources/" + myGameName.toLowerCase()+"/instructions.txt"));
+            Scanner s = new Scanner(new File("src/resources/"
+                    + myGameName.toLowerCase() + "/instructions.txt"));
             int i = 0;
-            while(s.hasNext()){
-                pen.drawString(s.nextLine(), 50, 150 + 20*i);
+            while (s.hasNext())
+            {
+                pen.drawString(s.nextLine(), 50, 150 + 20 * i);
                 i++;
             }
         } catch (FileNotFoundException e)
         {
-            JOptionPane.showMessageDialog(this, "This game has no instruction file",
-                    "Error", 0);
+            JOptionPane.showMessageDialog(this,
+                    "This game has no instruction file", "Error", 0);
         }
     }
 
@@ -77,21 +81,22 @@ public class InstructionView extends Canvas
     {
         try
         {
-            Scanner in = new Scanner(new File(ResourceManager.getString(myGameName+"Cheats")));
+            Scanner in = new Scanner(new File(ResourceManager
+                    .getString(myGameName + "Cheats")));
             int i = 0;
             pen.setColor(Color.YELLOW);
-            while(in.hasNext()){
-                pen.drawString(in.nextLine(), 50, 500 + 30*i);
+            while (in.hasNext())
+            {
+                pen.drawString(in.nextLine(), 50, 500 + 30 * i);
                 i++;
             }
-        }
-        catch (FileNotFoundException e)
+        } catch (FileNotFoundException e)
         {
-            JOptionPane.showMessageDialog(this, "Sorry, this game has no cheats.",
-                    "What a Cheater", 0);
+            JOptionPane.showMessageDialog(this,
+                    "Sorry, this game has no cheats.", "What a Cheater", 0);
         }
     }
-    
+
     public MouseAdapter mouseListener()
     {
         MouseAdapter myMouseAdapter = new MouseAdapter()
@@ -110,7 +115,7 @@ public class InstructionView extends Canvas
         };
         return myMouseAdapter;
     }
-    
+
     public String getGameName()
     {
         return myGameName;

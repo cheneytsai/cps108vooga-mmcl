@@ -98,8 +98,8 @@ public class GameModel
             }
         } catch (FileNotFoundException e)
         {
-            JOptionPane.showMessageDialog(myLevelViewer, "Level file not found",
-                    "Error", 0);
+            JOptionPane.showMessageDialog(myLevelViewer,
+                    "Level file not found", "Error", 0);
         }
     }
 
@@ -232,11 +232,11 @@ public class GameModel
             output.close();
 
             myLevelViewer.startTimer();
-            
+
         } catch (IOException e)
         {
-            JOptionPane.showMessageDialog(myLevelViewer, "There was an error saving to this location",
-                    "Error", 0);
+            JOptionPane.showMessageDialog(myLevelViewer,
+                    "There was an error saving to this location", "Error", 0);
         }
 
     }

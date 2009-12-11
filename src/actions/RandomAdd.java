@@ -10,7 +10,7 @@ import actors.ShrinkPowerup;
  * Adds a random powerup type to a give GameModel.
  * 
  * @author Lisa Gutermuth
- *
+ * 
  */
 
 public class RandomAdd implements Action

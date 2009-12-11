@@ -15,28 +15,33 @@ import actors.Actor;
  * information.
  * 
  * @author Lisa Gutermuth
- *
+ * 
  */
 
 @SuppressWarnings("serial")
 public class EditorCanvas extends LevelViewer
 {
     private String mySaveFile;
-    
-    public EditorCanvas(String gameName, String levelName, Canvas canvas, GameModel model)
+
+    public EditorCanvas(String gameName, String levelName, Canvas canvas,
+            GameModel model)
     {
         super(gameName, levelName, canvas, model);
 
         isPaused = true;
         myCanvas.removeKeyListener(myCanvas.getKeyListeners()[0]);
         myCanvas.addMouseListener(mouseListener());
-        
-        mySaveFile = (String) JOptionPane.showInputDialog(String.format(ResourceManager
-                .getString("EditorSave")), ResourceManager.getString(gameName+"level"+levelName));
-        if(mySaveFile == null)
+
+        mySaveFile = (String) JOptionPane.showInputDialog(String
+                .format(ResourceManager.getString("EditorSave")),
+                ResourceManager.getString(gameName + "level" + levelName));
+        if (mySaveFile == null)
         {
-            mySaveFile = "src/resources/"+gameName+"level"+new GregorianCalendar()
-                    .getTime().toString().replace(":","_")+".level";
+            mySaveFile = "src/resources/"
+                    + gameName
+                    + "level"
+                    + new GregorianCalendar().getTime().toString().replace(":",
+                            "_") + ".level";
         }
     }
 
@@ -45,7 +50,7 @@ public class EditorCanvas extends LevelViewer
         myActors = myModel.getActors();
         myTimer.start();
     }
-    
+
     public void update()
     {
     }
@@ -76,14 +81,15 @@ public class EditorCanvas extends LevelViewer
                 if (match == null)
                 {
                     new EditorCreate(myModel, getGameName() + "level"
-                            + getLevelName(), mySaveFile,null, "src/images/Paddle.gif", 20,
-                            20, e.getX(), e.getY());
+                            + getLevelName(), mySaveFile, null,
+                            "src/images/Paddle.gif", 20, 20, e.getX(), e.getY());
                 } else
                 {
 
                     new EditorCreate(myModel, getGameName() + "level"
-                            + getLevelName(), mySaveFile,match, match.getImageString(), match
-                            .getSize().width, match.getSize().height,
+                            + getLevelName(), mySaveFile, match, match
+                            .getImageString(), match.getSize().width, match
+                            .getSize().height,
                             (int) match.getPosition().getX(), (int) match
                                     .getPosition().getY());
                 }

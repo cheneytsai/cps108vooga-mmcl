@@ -24,7 +24,7 @@ import util.resources.ResourceManager;
  * 
  * @author Megan Heysham
  * @author Lisa Gutermuth
- *
+ * 
  */
 
 @SuppressWarnings("serial")
@@ -33,41 +33,36 @@ public class ReplayView extends LevelViewer implements ActionListener
     private Scanner myInput;
     private ArrayList<Object[]> myActors;
 
-
     public ReplayView(String gameName, Canvas canvas)
     {
         super(gameName, null, canvas, null);
         myActors = new ArrayList<Object[]>();
 
-        File folder = new File("src/"+gameName+"/replays");
+        File folder = new File("src/" + gameName + "/replays");
         File[] listOfFiles = new File[folder.listFiles().length - 1];
         System.arraycopy(folder.listFiles(), 1, listOfFiles, 0, folder
                 .listFiles().length - 1);
-        File file =
-                (File) JOptionPane.showInputDialog(null,
-                        "Pick a game to replay:", "Replay Mode",
-                        JOptionPane.PLAIN_MESSAGE, null, listOfFiles, null);
+        File file = (File) JOptionPane.showInputDialog(null,
+                "Pick a game to replay:", "Replay Mode",
+                JOptionPane.PLAIN_MESSAGE, null, listOfFiles, null);
         if (file == null)
         {
             JOptionPane.showMessageDialog(this,
                     "You have not chosen a game to replay!", "Error", 0);
             new GameMenu(gameName, canvas);
-        }
-        else
+        } else
         {
             try
             {
                 myInput = new Scanner(file);
-            }
-            catch (FileNotFoundException e)
+            } catch (FileNotFoundException e)
             {
                 System.out.println(e);
             }
         }
 
-        icon =
-                new ImageIcon(ResourceManager.getString(gameName
-                        + "level.background"));
+        icon = new ImageIcon(ResourceManager.getString(gameName
+                + "level.background"));
 
         update();
         myTimer = new Timer((int) (DEFAULT_DELAY), this);
@@ -77,7 +72,6 @@ public class ReplayView extends LevelViewer implements ActionListener
         myCanvas.repaint();
 
     }
-
 
     public void update()
     {
@@ -95,21 +89,18 @@ public class ReplayView extends LevelViewer implements ActionListener
             allInfo = thisLine.split(" ");
 
             myActor[0] = allInfo[1];
-            myActor[1] =
-                    new Dimension(Integer.parseInt(allInfo[2]), Integer
-                            .parseInt(allInfo[3]));
-            myActor[2] =
-                    new Point(Integer.parseInt(allInfo[4]), Integer
-                            .parseInt(allInfo[5]));
+            myActor[1] = new Dimension(Integer.parseInt(allInfo[2]), Integer
+                    .parseInt(allInfo[3]));
+            myActor[2] = new Point(Integer.parseInt(allInfo[4]), Integer
+                    .parseInt(allInfo[5]));
 
             myActors.add(myActor);
         }
-        if(!myInput.hasNextLine())
+        if (!myInput.hasNextLine())
         {
             myTimer.stop();
         }
     }
-
 
     public void paint(Graphics pen)
     {
@@ -117,22 +108,21 @@ public class ReplayView extends LevelViewer implements ActionListener
         {
             Image icon = new ImageIcon((String) actor[0]).getImage();
             pen
-            .drawImage(
-                    icon,
-                    (int) (((Point) actor[2]).x - .5 * ((Dimension) actor[1]).width),
-                    (int) (((Point) actor[2]).y - .5 * ((Dimension) actor[1]).height),
-                    ((Dimension) actor[1]).width,
-                    ((Dimension) actor[1]).height, null);
+                    .drawImage(
+                            icon,
+                            (int) (((Point) actor[2]).x - .5 * ((Dimension) actor[1]).width),
+                            (int) (((Point) actor[2]).y - .5 * ((Dimension) actor[1]).height),
+                            ((Dimension) actor[1]).width,
+                            ((Dimension) actor[1]).height, null);
         }
 
     }
-    
+
     public void paintComponent(Graphics pen)
     {
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         paint(pen);
     }
-
 
     public void actionPerformed(ActionEvent arg0)
     {

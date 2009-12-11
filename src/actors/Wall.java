@@ -19,7 +19,8 @@ public class Wall extends Actor
     public Wall(String string, Dimension dimension, Point point,
             GameModel gameModel)
     {
-        super(string, dimension, point, gameModel, new PhysicsVector(new Direction(0,0),0));
+        super(string, dimension, point, gameModel, new PhysicsVector(
+                new Direction(0, 0), 0));
     }
 
     @Override

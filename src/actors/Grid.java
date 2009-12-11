@@ -27,14 +27,17 @@ public class Grid extends Actor
     private static Dimension gridSize;
     private static int myNumRowsCleared = 0;
 
-    
-    public Grid(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
-        this(image,size,position,model);
+    public Grid(String image, Dimension size, Point position, GameModel model,
+            PhysicsVector velocity)
+    {
+        this(image, size, position, model);
         setVelocity(velocity);
     }
+
     public Grid(String image, Dimension size, Point position, GameModel model)
     {
-        super(image, size, position, model, new PhysicsVector(new Direction(0,0),0));
+        super(image, size, position, model, new PhysicsVector(new Direction(0,
+                0), 0));
         myPositions = new Marker[size.width][size.height];
         myBlocks = new Block[size.width][size.height];
         myModel = model;
@@ -42,7 +45,7 @@ public class Grid extends Actor
         {
             for (int j = 0; j < myPositions[i].length; j++)
             {
-                myPositions[i][j] = new Marker(image, new Dimension(0,0),
+                myPositions[i][j] = new Marker(image, new Dimension(0, 0),
                         new Point(position.x + i * 26 + 13, position.y + j * 26
                                 + 13), model);
             }
@@ -88,7 +91,8 @@ public class Grid extends Actor
         if (myBlocks[i][j] == null)
         {
             Block newBlock = new Block(image, new Dimension(26, 26), Grid
-                    .getMarker(i, j).getPosition(), myModel, new PhysicsVector(new Direction(0,0),0));
+                    .getMarker(i, j).getPosition(), myModel, new PhysicsVector(
+                    new Direction(0, 0), 0));
             myBlocks[i][j] = newBlock;
             myModel.addActor(newBlock);
         }
@@ -136,8 +140,5 @@ public class Grid extends Actor
     {
         myNumRowsCleared = 0;
     }
-
-    
-    
 
 }

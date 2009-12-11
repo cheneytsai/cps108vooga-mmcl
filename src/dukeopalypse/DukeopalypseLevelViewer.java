@@ -9,9 +9,9 @@ public class DukeopalypseLevelViewer extends ArkanoidLevelViewer
 {
 
     public DukeopalypseLevelViewer(String gameName, String levelName,
-            Canvas canvas,GameModel model)
+            Canvas canvas, GameModel model)
     {
-        super(gameName, levelName, canvas,model);
+        super(gameName, levelName, canvas, model);
     }
 
 }

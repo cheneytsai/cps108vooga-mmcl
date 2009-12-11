@@ -23,7 +23,8 @@ public class Collision implements Condition
     {
         for (Actor a : myEngine.getActorsByID(actor1))
         {
-            if(CollisionChecker.checkCollision(a, myEngine.getActorsByID(actor2)))
+            if (CollisionChecker.checkCollision(a, myEngine
+                    .getActorsByID(actor2)))
                 return true;
         }
         return false;

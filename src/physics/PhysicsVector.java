@@ -1,7 +1,5 @@
 package physics;
 
-
-
 /**
  * 
  * @author Michael Yu

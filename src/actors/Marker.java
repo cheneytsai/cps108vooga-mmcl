@@ -18,7 +18,8 @@ public class Marker extends Actor
 
     public Marker(String image, Dimension size, Point position, GameModel model)
     {
-        super(image, size, position, model, new PhysicsVector(new Direction(0,0),0));
+        super(image, size, position, model, new PhysicsVector(new Direction(0,
+                0), 0));
     }
 
     @Override

@@ -42,12 +42,12 @@ public abstract class Actor
     private PhysicsVector myVelocity;
     protected Map<Integer, List<Action>> myKeyEvents;
     protected Map<String, List<Action>> myInteractions; // Map of class names to
-                                                        // a List of Actions to
-                                                        // occur on collision
-                                                        // with an Actor of that
-                                                        // type.
+    // a List of Actions to
+    // occur on collision
+    // with an Actor of that
+    // type.
     protected Action myDefaultBehavior; // Default Action
-    public boolean hasChanged; 
+    public boolean hasChanged;
     private int myHealth;
 
     public Actor(String image, Dimension size, Point position, GameModel model,
@@ -66,7 +66,7 @@ public abstract class Actor
         loadBehavior();
         myXform = new AffineTransform();
     }
-    
+
     public Actor(String image, Dimension d, Point p, GameModel model)
     {
         this(image, d, p, model, new PhysicsVector(new Direction(-1, -1), 10));

@@ -104,8 +104,8 @@ public class TetrisModel extends GameModel
         myPreviousKeys[1] = DEFAULT_KEY;
         /*
          * Would make the speed of FallingPieces increase with the level if our
-         * collision detection was more robust.
-         * new ChangeSpeed(5 + (getCanvas().getLevelNum()-1)).execute(actor);
+         * collision detection was more robust. new ChangeSpeed(5 +
+         * (getCanvas().getLevelNum()-1)).execute(actor);
          */
     }
 

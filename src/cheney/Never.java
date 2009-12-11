@@ -2,7 +2,6 @@ package cheney;
 
 import conditions.Condition;
 
-
 public class Never implements Condition
 {
 

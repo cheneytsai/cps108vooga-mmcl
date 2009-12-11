@@ -33,7 +33,8 @@ public class LevelViewer extends Canvas implements ActionListener
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25; // in milliseconds
 
-    public LevelViewer(String gameName, String levelName, Canvas canvas, GameModel model)
+    public LevelViewer(String gameName, String levelName, Canvas canvas,
+            GameModel model)
     {
         isPaused = false;
         myCanvas = canvas;
@@ -56,8 +57,9 @@ public class LevelViewer extends Canvas implements ActionListener
 
                 if (e.getKeyCode() == PAUSE_KEY)
                 {
-                    if (myLastKeyPressed == null || (myLastKeyPressed != null
-                                    && myLastKeyPressed.equals(e)))
+                    if (myLastKeyPressed == null
+                            || (myLastKeyPressed != null && myLastKeyPressed
+                                    .equals(e)))
                     {
                         isPaused = !isPaused;
                         myLastKeyPressed = e;
@@ -74,11 +76,12 @@ public class LevelViewer extends Canvas implements ActionListener
         });
 
         myTimer = new Timer(DEFAULT_DELAY, this);
-        icon = new ImageIcon(ResourceManager.getString(myGameName+ "level.background"));
+        icon = new ImageIcon(ResourceManager.getString(myGameName
+                + "level.background"));
 
-        myCanvas.repaint();       
+        myCanvas.repaint();
     }
-    
+
     public void startGame()
     {
         myActors = myModel.getActors();
@@ -86,12 +89,12 @@ public class LevelViewer extends Canvas implements ActionListener
 
         update();
     }
-    
+
     public void startTimer()
     {
         myTimer.start();
     }
-    
+
     public void stopTimer()
     {
         myTimer.stop();
@@ -100,9 +103,9 @@ public class LevelViewer extends Canvas implements ActionListener
     public void update()
     {
         if (!isPaused)
-        {       
+        {
             myModel.update(myLastKeyPressed);
-        }      
+        }
     }
 
     public void paintComponent(Graphics pen)
@@ -110,7 +113,7 @@ public class LevelViewer extends Canvas implements ActionListener
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         pen.setFont(SCOREBOARD_FONT);
 
-        if(myActors != null)
+        if (myActors != null)
         {
             paint(pen);
         }
@@ -152,14 +155,15 @@ public class LevelViewer extends Canvas implements ActionListener
 
     public void loadBonusLevel(int level)
     {
-        Reflection.createInstance(myGameName.toLowerCase() + "."+ myGameName + "LevelViewer", myGameName, level, myCanvas);
+        Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName
+                + "LevelViewer", myGameName, level, myCanvas);
     }
 
     public void loadEnd(String endCondition)
     {
-        new EndView(endCondition, myGameName, myCanvas,myModel);
+        new EndView(endCondition, myGameName, myCanvas, myModel);
     }
-    
+
     public void saveState()
     {
         myModel.saveState();

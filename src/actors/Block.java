@@ -16,9 +16,11 @@ import physics.PhysicsVector;
 public class Block extends Actor
 {
 
-    public Block(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
-        super(image,size,position,model,velocity);
-        setVelocity(new PhysicsVector(new Direction(1,1),0));
+    public Block(String image, Dimension size, Point position, GameModel model,
+            PhysicsVector velocity)
+    {
+        super(image, size, position, model, velocity);
+        setVelocity(new PhysicsVector(new Direction(1, 1), 0));
     }
 
     @Override

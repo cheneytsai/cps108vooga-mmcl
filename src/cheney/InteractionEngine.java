@@ -33,22 +33,22 @@ public class InteractionEngine
         myInteractions = new HashMap<List<Condition>, List<Action>>();
     }
 
-    public void loadInteractions(Map<List<Condition>, List<Action>> newInteractions)
+    public void loadInteractions(
+            Map<List<Condition>, List<Action>> newInteractions)
     {
         myInteractions = newInteractions;
     }
-    
-    
+
     public void addInteractions(List<Condition> c, List<Action> a)
     {
         myInteractions.put(c, a);
     }
-    
+
     public void clearInteractions()
     {
         myInteractions.clear();
     }
-    
+
     public void doInteractions()
     {
         myActors = myEngine.getActors();
@@ -61,31 +61,32 @@ public class InteractionEngine
         myActors = myEngine.getActors();
     }
 
-
     private void checkConditions()
     {
         for (List<Condition> conditionSet : myInteractions.keySet())
         {
             for (int i = 0; i < conditionSet.size(); i++)
             {
-                if (!conditionSet.get(i).evaluate())       //if any condition evaluate as false, break
+                if (!conditionSet.get(i).evaluate()) // if any condition
+                                                     // evaluate as false, break
                 {
                     break;
                 }
-                if (i == conditionSet.size()-1)             //activates if all true
+                if (i == conditionSet.size() - 1) // activates if all true
                 {
 
-                    for (Action a : myInteractions.get(conditionSet))       //iterates through every action
+                    for (Action a : myInteractions.get(conditionSet)) // iterates
+                                                                      // through
+                                                                      // every
+                                                                      // action
                     {
                         a.execute();
                     }
                 }
-                    
+
             }
-            
+
         }
     }
-
-
 
 }
