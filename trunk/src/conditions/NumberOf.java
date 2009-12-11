@@ -31,12 +31,7 @@ public class NumberOf implements Condition
                 total++;
 
         }
-        if (total == numberOf)
-        {
-            return true;
-
-        } else
-            return false;
+        return total == numberOf;
     }
 
 }
