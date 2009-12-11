@@ -9,7 +9,6 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import actions.Quit;
-import arkanoid.ArkanoidModel;
 import util.reflection.Reflection;
 import util.reflection.ReflectionException;
 import util.resources.ResourceManager;
