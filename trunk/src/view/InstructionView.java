@@ -1,13 +1,19 @@
 package view;
 
 import java.awt.Graphics;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
 public class InstructionView extends Canvas
 {
-
+    
     public InstructionView(String gameName, Canvas canvas)
     {
         myCanvas = canvas;
@@ -16,7 +22,6 @@ public class InstructionView extends Canvas
 
         icon = new ImageIcon(ResourceManager
                 .getString("InstructionsBackground"));
-        // getScores();
 
         myCanvas.repaint();
     }
@@ -26,10 +31,26 @@ public class InstructionView extends Canvas
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         pen.setFont(TITLE_FONT);
         pen.drawString(myGameName + " Instructions", 100, 100);
-
-        // drawScores(pen);
+        pen.setFont(SCOREBOARD_FONT);
+        drawInstructions(pen);
     }
 
+    private void drawInstructions(Graphics pen){
+        try
+        {
+            Scanner s = new Scanner(new File("src/resources/" + myGameName.toLowerCase()+"/instructions.txt"));
+            int i = 0;
+            while(s.hasNext()){
+                pen.drawString(s.nextLine(), 50, 150 + 20*i);
+                i++;
+            }
+        } catch (FileNotFoundException e)
+        {
+            // TODO Auto-generated catch block
+            JOptionPane.showMessageDialog(this, "This game has no instruction file",
+                    "Error", 0);
+        }
+    }
     // private void getInstructions()
     // {
     // try
@@ -64,37 +85,6 @@ public class InstructionView extends Canvas
     // }
     // }
     //    
-    // private void sortScores(Map<Integer,List<String[]>> lines)
-    // {
-    // List<Integer> listToSort = new ArrayList<Integer>();
-    // listToSort.addAll(lines.keySet());
-    // Collections.sort(listToSort,Collections.reverseOrder());
-    // mySortedKeys = listToSort;
-    // }
-    //    
-    // private void drawScores(Graphics pen)
-    // {
-    // pen.setFont(SCOREBOARD_FONT);
-    // pen.setColor(Color.WHITE);
-    //        
-    // int numberToPrint = 0;
-    //        
-    // for(int i = 0; i < mySortedKeys.size(); i++)
-    // {
-    // List<String[]> nameDateList = myScoreInfo.get(mySortedKeys.get(i));
-    // for(String[] nameDate : nameDateList)
-    // {
-    // pen.drawString((numberToPrint+1)+".    "+nameDate[0]+"    "+nameDate[2]+
-    // "    "+nameDate[1],
-    // 120,200+numberToPrint*30);
-    // numberToPrint++;
-    // if(numberToPrint == 10)
-    // break;
-    // }
-    // if(numberToPrint == 10)
-    // break;
-    // }
-    // }
 
     public String getGameName()
     {
