@@ -68,7 +68,7 @@ public class InteractionEngine
             for (int i = 0; i < conditionSet.size(); i++)
             {
                 if (!conditionSet.get(i).evaluate()) // if any condition
-                                                     // evaluate as false, break
+                // evaluate as false, break
                 {
                     break;
                 }
@@ -76,9 +76,9 @@ public class InteractionEngine
                 {
 
                     for (Action a : myInteractions.get(conditionSet)) // iterates
-                                                                      // through
-                                                                      // every
-                                                                      // action
+                    // through
+                    // every
+                    // action
                     {
                         a.execute();
                     }

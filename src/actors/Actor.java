@@ -1,5 +1,3 @@
-//TODO: ASAP: Make everything work with the outline/shape making stuff. OR TETRIS WLIL NEVER WORK
-//TODO: Refactor all of this
 package actors;
 
 import gameengine.GameModel;
@@ -46,44 +44,37 @@ public abstract class Actor
     private int maxDimension;
     private int myHealth;
 
-    public Actor(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity)
+    public Actor(String image, Dimension size, Point position, GameModel model,
+            PhysicsVector velocity)
     {
         myHeading = 0;
-        
+
         setImage(image);
         setSize(size.width, size.height);
         setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
-        myVelocity = velocity; // TODO: Make
-        // these
-        // parameters
-        // or
-        // something
-        // myKeyEvents = new HashMap<String, List<Action>>();
+        myVelocity = velocity;
         myKeyEvents = new HashMap<Integer, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
         myXform = new AffineTransform();
-        // TODO: make all this readable from a file
     }
-    
+
     public void setHeading(double heading)
     {
         hasChanged = true;
         myHeading = heading;
     }
-    
+
     public double getHeading()
     {
         return myHeading;
     }
-    
 
-    public Actor(String image, Dimension d, Point p,
-            GameModel model)
+    public Actor(String image, Dimension d, Point p, GameModel model)
     {
-        this(image, d, p, model,  new PhysicsVector(new Direction(-1, -1), 10));
+        this(image, d, p, model, new PhysicsVector(new Direction(-1, -1), 10));
     }
 
     protected abstract void loadBehavior();
@@ -92,13 +83,13 @@ public abstract class Actor
     {
         if (hasChanged)
             myXform = getTransform();
-            
+
         hasChanged = false;
         if (myDefaultBehavior != null)
         {
             myDefaultBehavior.execute(this);
         }
-        
+
         for (Integer e : myKeyEvents.keySet())
         {
             if (myLastKeyPressed == null)
@@ -125,7 +116,7 @@ public abstract class Actor
                 }
             }
         }
-        
+
         if (hasChanged)
             myXform = getTransform();
     }
@@ -296,14 +287,14 @@ public abstract class Actor
     protected AffineTransform getTransform()
     {
 
-            myXform.setToIdentity();
-            // apply shape's attributes in proper order no matter how user set
-            // them
-            myXform.translate(myPosition.getX(), myPosition.getY());
-            myXform.rotate(myHeading);
-            myXform.scale(mySize.getWidth(), mySize.getHeight());
-            myXform.translate(-0.5, -0.5);
-            return myXform;
+        myXform.setToIdentity();
+        // apply shape's attributes in proper order no matter how user set
+        // them
+        myXform.translate(myPosition.getX(), myPosition.getY());
+        myXform.rotate(myHeading);
+        myXform.scale(mySize.getWidth(), mySize.getHeight());
+        myXform.translate(-0.5, -0.5);
+        return myXform;
     }
 
     /**
@@ -312,10 +303,9 @@ public abstract class Actor
      * Currently, draws the shape as an image.
      */
 
-    
-    public void paint (Graphics pen)
+    public void paint(Graphics pen)
     {
-        Graphics2D pen2D = (Graphics2D)pen;
+        Graphics2D pen2D = (Graphics2D) pen;
         java.awt.geom.AffineTransform old = pen2D.getTransform();
         pen2D.transform(getTransform());
         pen2D.drawImage(myImage, 0, 0, 1, 1, null);
@@ -355,7 +345,7 @@ public abstract class Actor
     {
         return getPosition().y + maxDimension / 2;
     }
-    
+
     /**
      * Returns shape's left-most coordinate.
      */
@@ -377,7 +367,7 @@ public abstract class Actor
      */
     public int getRight()
     {
-        return getPosition().x + getSize().width  / 2;
+        return getPosition().x + getSize().width / 2;
     }
 
     /**
@@ -387,10 +377,11 @@ public abstract class Actor
      */
     public int getBottom()
     {
-        return getPosition().y + getSize().height/ 2;
+        return getPosition().y + getSize().height / 2;
     }
-    
-    public GameModel getModel(){
+
+    public GameModel getModel()
+    {
         return myModel;
     }
 
