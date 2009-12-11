@@ -1,3 +1,13 @@
-Up = rotate
-Left/Right to move
-Down to make the piece move more quickly
+Place the Tetrominoes to complete rows.
+When a row is filled, it will clear and the rows above it will drop down.
+
+Use the arrow keys to manipulate the Tetrominoe as it falls:
+UP: Rotate
+RIGHT/LEFT: Move
+DOWN: Fall more quickly
+
+Each cleared line gives you 40 points.
+Clear 10 lines to advance a level.
+If the screen fills up, you lose!
+
+Oh yeah, all the Tetrominoes secretly think they're rectangles. You'll see.
