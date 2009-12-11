@@ -1,3 +1,5 @@
+//TODO: ASAP: Make everything work with the outline/shape making stuff. OR TETRIS WLIL NEVER WORK
+//TODO: Refactor all of this
 package actors;
 
 import gameengine.GameModel;
@@ -17,13 +19,9 @@ import java.awt.image.PixelGrabber;
 import java.util.*;
 
 import javax.swing.ImageIcon;
-
-import physics.Direction;
-import physics.PhysicsVector;
 import actions.*;
 
 /**
- * A component of a game.
  * 
  * @author Michael Yu
  * 
@@ -31,69 +29,75 @@ import actions.*;
 public abstract class Actor
 {
 
-    private GameModel myModel;
-    private Image myImage;
+    private GameModel myModel; // Model
+    private Image myImage; // Image
     private String myImageString;
-    private Area myShape;
-    private AffineTransform myXform;
-    private Point myPosition;
-    private double myHeading;
-    private Dimension mySize;
-    private PhysicsVector myVelocity;
-    protected Map<Integer, List<Action>> myKeyEvents;
-    protected Map<String, List<Action>> myInteractions; // Map of class names to
-    // a List of Actions to
-    // occur on collision
-    // with an Actor of that
-    // type.
+    private Area myShape; // Bounding Shape
+    private AffineTransform myXform; // Transform
+    private Point myPosition; // Position
+    private double myHeading; // Heading
+    private Dimension mySize; // Size
+    private PhysicsVector myVelocity; // Velocity
+    protected Map<Integer, List<Action>> myKeyEvents; // KeyEvents
+    protected Map<String, List<Action>> myInteractions; // Interaction
     protected Action myDefaultBehavior; // Default Action
-    public boolean hasChanged;
+    public boolean hasChanged; // Flag - Changed?
+    private int maxDimension;
     private int myHealth;
 
-    public Actor(String image, Dimension size, Point position, GameModel model,
-            PhysicsVector velocity)
+    public Actor(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity)
     {
         myHeading = 0;
-
+        
         setImage(image);
         setSize(size.width, size.height);
         setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
-        myVelocity = velocity;
+        myVelocity = velocity; // TODO: Make
+        // these
+        // parameters
+        // or
+        // something
+        // myKeyEvents = new HashMap<String, List<Action>>();
         myKeyEvents = new HashMap<Integer, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
         myXform = new AffineTransform();
+        // TODO: make all this readable from a file
     }
-
-    public Actor(String image, Dimension d, Point p, GameModel model)
-    {
-        this(image, d, p, model, new PhysicsVector(new Direction(-1, -1), 10));
-    }
-
+    
     public void setHeading(double heading)
     {
         hasChanged = true;
         myHeading = heading;
     }
-
+    
     public double getHeading()
     {
         return myHeading;
     }
+    
 
-    /**
-     * Sets myKeyEvents, myInteractions, and myDefaultBehavior
-     */
+    public Actor(String image, Dimension d, Point p,
+            GameModel model)
+    {
+        this(image, d, p, model,  new PhysicsVector(new Direction(-1, -1), 10));
+    }
+
     protected abstract void loadBehavior();
 
     public void act(KeyEvent myLastKeyPressed)
     {
         if (hasChanged)
             myXform = getTransform();
-
+            
         hasChanged = false;
+        if (myDefaultBehavior != null)
+        {
+            myDefaultBehavior.execute(this);
+        }
+        
         for (Integer e : myKeyEvents.keySet())
         {
             if (myLastKeyPressed == null)
@@ -106,15 +110,10 @@ public abstract class Actor
             }
         }
 
-        if (myDefaultBehavior != null)
-        {
-            myDefaultBehavior.execute(this);
-        }
     }
 
     public void interact(Actor other)
     {
-
         for (String s : myInteractions.keySet())
         {
             if (other.getClass().getCanonicalName().equals(s))
@@ -125,7 +124,9 @@ public abstract class Actor
                 }
             }
         }
-
+        
+        if (hasChanged)
+            myXform = getTransform();
     }
 
     public void setPosition(Point p)
@@ -187,6 +188,7 @@ public abstract class Actor
     {
         hasChanged = true;
         mySize = new Dimension(width, height);
+        maxDimension = Math.max(getSize().width, getSize().height);
     }
 
     public Shape getShape()
@@ -292,8 +294,7 @@ public abstract class Actor
      */
     protected AffineTransform getTransform()
     {
-        if (hasChanged)
-        {
+
             myXform.setToIdentity();
             // apply shape's attributes in proper order no matter how user set
             // them
@@ -301,9 +302,7 @@ public abstract class Actor
             myXform.rotate(myHeading);
             myXform.scale(mySize.getWidth(), mySize.getHeight());
             myXform.translate(-0.5, -0.5);
-            hasChanged = false;
-        }
-        return myXform;
+            return myXform;
     }
 
     /**
@@ -312,15 +311,50 @@ public abstract class Actor
      * Currently, draws the shape as an image.
      */
 
-    public void paint(Graphics pen)
+    
+    public void paint (Graphics pen)
     {
-        Graphics2D pen2D = (Graphics2D) pen;
+        Graphics2D pen2D = (Graphics2D)pen;
         java.awt.geom.AffineTransform old = pen2D.getTransform();
         pen2D.transform(getTransform());
         pen2D.drawImage(myImage, 0, 0, 1, 1, null);
         pen2D.setTransform(old);
     }
 
+    /**
+     * Returns shape's greatest possible left-most coordinate.
+     */
+    public int getMaxLeft()
+    {
+        return getPosition().x - maxDimension / 2;
+    }
+
+    /**
+     * Returns shape's greatest possible top-most coordinate.
+     */
+    public int getMaxTop()
+    {
+        return getPosition().y - maxDimension / 2;
+    }
+
+    /**
+     * Returns shape's greatest possible right-most coordinate.
+     */
+    public int getMaxRight()
+    {
+        return getPosition().x + maxDimension / 2;
+    }
+
+    /**
+     * Reports shape's greatest possible bottom-most coordinate.
+     * 
+     * @return bottom-most coordinate
+     */
+    public int getMaxBottom()
+    {
+        return getPosition().y + maxDimension / 2;
+    }
+    
     /**
      * Returns shape's left-most coordinate.
      */
@@ -342,27 +376,20 @@ public abstract class Actor
      */
     public int getRight()
     {
-        return getPosition().x + getSize().width / 2;
+        return getPosition().x + getSize().width  / 2;
     }
 
     /**
      * Reports shape's bottom-most coordinate.
+     * 
+     * @return bottom-most coordinate
      */
     public int getBottom()
     {
-        return getPosition().y + getSize().height / 2;
+        return getPosition().y + getSize().height/ 2;
     }
-
-    public Point2D getCenter()
-    {
-        return new Point(getSize().width / 2, getSize().height / 2);
-    }
-
-    /**
-     * Reports model in which the actor is contained.
-     */
-    public GameModel getModel()
-    {
+    
+    public GameModel getModel(){
         return myModel;
     }
 
