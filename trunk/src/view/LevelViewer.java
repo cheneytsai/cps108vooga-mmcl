@@ -140,15 +140,13 @@ public class LevelViewer extends Canvas implements ActionListener
     public void actionPerformed(ActionEvent arg0)
     {
         update();
-        // let Java runtime know panel needs to be repainted
         myCanvas.repaint();
     }
 
-    public void loadNextLevel(String levelName)
+    public void setLevelName(String levelName)
     {
-        myLevelName = levelName; 
+        myLevelName = levelName;
     }
-
 
     public void loadBonusLevel(int level)
     {
@@ -159,5 +157,10 @@ public class LevelViewer extends Canvas implements ActionListener
     {
         new EndView(endCondition, myGameName, myCanvas,myModel);
     }
-
+    
+    public void saveState()
+    {
+        System.out.println("save");
+        myModel.saveState();
+    }
 }

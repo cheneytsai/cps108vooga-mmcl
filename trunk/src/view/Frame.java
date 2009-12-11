@@ -14,18 +14,22 @@ public class Frame extends JFrame
 {
     private Dimension mySize = new Dimension(960, 694);
     private Canvas myCanvas;
+    private JMenu myGamePlayMenu;
 
     public Frame()
     {
         myCanvas = new Canvas();
 
         myCanvas.setActive(new GameChooser(myCanvas));
-        // myCanvas.setActive(new Menu("Title", myCanvas));
         setSize(mySize);
         setPreferredSize(mySize);
 
         setTitle(ResourceManager.getString("Title"));
-        setJMenuBar(makeMenu());
+        JMenuBar menu = new JMenuBar();
+        menu.add(makeMenu());
+        menu.add(makeGamePlayMenu());
+//        myGamePlayMenu.setVisible(false);
+        setJMenuBar(menu);
 
         getContentPane().add(myCanvas);
 
@@ -34,9 +38,8 @@ public class Frame extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private JMenuBar makeMenu()
+    private JMenu makeMenu()
     {
-        JMenuBar menu = new JMenuBar();
         JMenu fileMenu = new JMenu(ResourceManager.getString("File"));
 
         fileMenu.add(new AbstractAction(ResourceManager.getString("NewGame"))
@@ -78,8 +81,40 @@ public class Frame extends JFrame
                 new Quit().execute();
             }
         });
-        menu.add(fileMenu);
 
-        return menu;
+        return fileMenu;
+    }
+    
+    private JMenu makeGamePlayMenu()
+    {
+        myGamePlayMenu = new JMenu(ResourceManager.getString("GameOptions"));
+
+        myGamePlayMenu.add(new AbstractAction(ResourceManager.getString("Save"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
+                if (myCanvas.getActive() instanceof LevelViewer)
+                {
+                    ((LevelViewer) myCanvas.getActive()).saveState();
+                }
+            }
+        });
+        myGamePlayMenu.add(new AbstractAction(ResourceManager.getString("NewGame"))
+        {
+            public void actionPerformed(ActionEvent ev)
+            {
+                if (myCanvas.getGameName() != null)
+                {
+                    new GameMenu(myCanvas.getGameName(), myCanvas);
+                }
+            }
+        });
+
+        return myGamePlayMenu;
+    }
+    
+    public void setGamePlayMenuVisibility(boolean visibility)
+    {
+        myGamePlayMenu.setVisible(visibility);
     }
 }

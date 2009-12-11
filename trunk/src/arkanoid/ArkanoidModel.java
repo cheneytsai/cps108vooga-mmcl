@@ -51,16 +51,17 @@ public class ArkanoidModel extends GameModel
             } else if (myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
             {
                 new UpdateScore(100, this).execute();
+            }else if(myLastKeyPressed.getKeyCode() == KeyEvent.VK_L)
+            {
+                loadNextLevel();
             }
         }
     }
 
     public void update(KeyEvent myLastKeyPressed)
     {
-        
-            hotkeyCheck(myLastKeyPressed);
-            super.update(myLastKeyPressed);
-
+        super.update(myLastKeyPressed);
+        hotkeyCheck(myLastKeyPressed);
     }
 
     protected void initializeActors()

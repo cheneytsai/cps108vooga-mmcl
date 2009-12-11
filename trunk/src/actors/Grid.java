@@ -51,7 +51,6 @@ public class Grid extends Actor
     protected void loadBehavior()
     {
         // Nothing
-
     }
 
     @Override
