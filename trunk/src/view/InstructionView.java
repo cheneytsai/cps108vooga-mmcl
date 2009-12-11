@@ -20,8 +20,7 @@ public class InstructionView extends Canvas
         myCanvas.setActive(this);
         myGameName = gameName;
 
-        icon = new ImageIcon(ResourceManager
-                .getString("InstructionsBackground"));
+        icon = new ImageIcon(ResourceManager.getString(gameName));
 
         myCanvas.repaint();
     }
