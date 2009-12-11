@@ -1,1 +1,12 @@
 Try to earn the most points possible by destroying bricks with balls.
+Move your paddle left and right using the arrow keys to prevent the ball from
+hitting the bottom of the screen.
+
+Hit a brick with the ball to earn 100 points.
+Bricks will take anywhere from 1-3 hits before they are cleared.
+Some bricks drop powerups:
+S: Shrinks the paddle
+L: Makes the paddle grow larger
+B: Places a new ball
+
+Clear all the bricks to advance a level. Clear all the levels to win!
