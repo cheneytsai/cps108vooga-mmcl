@@ -38,6 +38,7 @@ public class GameModel
     private LevelViewer myLevelViewer;
     private int myCurrentLevel;
 
+
     public GameModel(String gameName,int level,String viewType,Canvas canvas)
     {
         myCanvas = canvas;
@@ -77,7 +78,7 @@ public class GameModel
     
     public void update(KeyEvent myLastKeyPressed)
     {
-
+       
             for (int k = 0; k < myActorList.size(); k++)
             {
                 Point tempPos = myActorList.get(k).getPosition();
@@ -95,6 +96,8 @@ public class GameModel
                 myActorList.get(k).hasMoved = false;
             }
             // Reset All to no movement 
+            
+            
     }
 
     public void clearActors()

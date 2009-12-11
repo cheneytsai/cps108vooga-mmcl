@@ -79,6 +79,7 @@ public class TetrisModel extends GameModel
                 new Point(337, 0), this));
         AddPiece.clearNext();
         new AddPiece(getCanvas().getGameName(), this).execute();
+        Grid.resetGrid();
 
     }
 
