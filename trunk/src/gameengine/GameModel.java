@@ -38,19 +38,19 @@ public class GameModel
     private LevelViewer myLevelViewer;
     private int myCurrentLevel;
 
-    public GameModel(String gameName, String viewType,Canvas canvas)
+    public GameModel(String gameName,int level,String viewType,Canvas canvas)
     {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
         gameOver = false;
         myScore = 0;
-        myCurrentLevel = 0;
+        myCurrentLevel = level;
         myRandom = new Random();
         myLevelProgression = ResourceManager.getString(gameName+"Levels").split(",");
         myConditions = (ConditionChecker) Reflection.createInstance(gameName.toLowerCase()+"."+gameName+"Conditions",this);
 
         myLevelViewer = (LevelViewer) Reflection.createInstance(viewType,
-                gameName,myLevelProgression[0],canvas,this);
+                gameName,myLevelProgression[myCurrentLevel],canvas,this);
         initializeActors();
         myLevelViewer.startGame();
     }

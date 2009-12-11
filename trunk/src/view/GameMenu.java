@@ -16,6 +16,7 @@ import util.resources.ResourceManager;
 public class GameMenu extends Canvas
 {
     private String myGameName;
+    private int DEFAULT_LEVEL_START = 0;
 
     public GameMenu(String gameName, Canvas canvas)
     {
@@ -75,7 +76,7 @@ public class GameMenu extends Canvas
                     if (e.getY() > 200 && e.getY() < 250)
                     {
                         Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
-                                myGameName, myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
+                                myGameName, DEFAULT_LEVEL_START,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
                     } else if (e.getY() > 300 && e.getY() < 350)
                     {
                         new InstructionView(myGameName, myCanvas);
@@ -92,9 +93,17 @@ public class GameMenu extends Canvas
                                 null, levels, null);
                         try
                         {
+                            int showLevel = levels.length;
+                            for(int i = 0; i < levels.length; i++)
+                            {
+                                if(level.equals(levels[i]))
+                                {
+                                    showLevel = i;
+                                }
+                            }
                             Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
-                                    myGameName, "view.EditorCanvas",myCanvas);
-                        } catch (NumberFormatException n)
+                                    myGameName, showLevel,"view.EditorCanvas",myCanvas);
+                        } catch (NullPointerException n)
                         {
                             System.out.println(n);
                         }

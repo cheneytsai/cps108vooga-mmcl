@@ -15,9 +15,9 @@ public class TetrisModel extends GameModel
     private final int DEFAULT_KEY = KeyEvent.VK_0;
     private int[] myPreviousKeys;
 
-    public TetrisModel(String gameName,String viewType,Canvas canvas)
+    public TetrisModel(String gameName,int level,String viewType,Canvas canvas)
     {
-        super(gameName,viewType,canvas);
+        super(gameName,level,viewType,canvas);
     }
 
     public void update(KeyEvent myLastKeyPressed)
