@@ -12,7 +12,6 @@ public class DukeopalypseLevelViewer extends ArkanoidLevelViewer
             Canvas canvas,GameModel model)
     {
         super(gameName, levelName, canvas,model);
-        // TODO Auto-generated constructor stub
     }
 
 }
