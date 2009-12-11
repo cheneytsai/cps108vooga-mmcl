@@ -57,8 +57,18 @@ public class ArkanoidModel extends GameModel
 
     public void update(KeyEvent myLastKeyPressed)
     {
-        hotkeyCheck(myLastKeyPressed);
-        super.update(myLastKeyPressed);
+        if (myLastKeyPressed!=null && myPreviousKeys[0] == KeyEvent.VK_L && myLastKeyPressed.getKeyCode() == KeyEvent.VK_L)
+        {
+            super.update(null);
+            myPreviousKeys[0] = KeyEvent.VK_L;
+            myPreviousKeys[1] = KeyEvent.VK_L;
+        } 
+        else
+        {
+            hotkeyCheck(myLastKeyPressed);
+            super.update(myLastKeyPressed);
+        }
+
     }
 
     protected void initializeActors()
