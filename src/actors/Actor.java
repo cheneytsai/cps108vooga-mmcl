@@ -44,7 +44,7 @@ public abstract class Actor
     public boolean hasChanged; // Flag - Changed?
     private int myHealth;
 
-    public Actor(String image, Dimension size, Point position, GameModel model)
+    public Actor(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity)
     {
         myHeading = 0;
         
@@ -53,7 +53,7 @@ public abstract class Actor
         setShape(makeShape(myImage));
         myPosition = position;
         myModel = model;
-        myVelocity = new PhysicsVector(new Direction(-1, -1), 10); // TODO: Make
+        myVelocity = velocity; // TODO: Make
         // these
         // parameters
         // or
@@ -78,10 +78,10 @@ public abstract class Actor
     }
     
 
-    public Actor(String image, int width, int height, int xPos, int yPos,
+    public Actor(String image, Dimension d, Point p,
             GameModel model)
     {
-        this(image, new Dimension(width, height), new Point(xPos, yPos), model);
+        this(image, d, p, model,  new PhysicsVector(new Direction(-1, -1), 10));
     }
 
     protected abstract void loadBehavior();
