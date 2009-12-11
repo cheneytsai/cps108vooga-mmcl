@@ -15,7 +15,7 @@ import util.resources.ResourceManager;
 public class GameMenu extends Canvas
 {
     private String myGameName;
-    private int DEFAULT_LEVEL_START = 0;
+    private final int DEFAULT_START_LEVEL = 0;
 
     public GameMenu(String gameName, Canvas canvas)
     {
@@ -75,7 +75,7 @@ public class GameMenu extends Canvas
                     if (e.getY() > 200 && e.getY() < 250)
                     {
                         Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
-                                myGameName, DEFAULT_LEVEL_START,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
+                                myGameName, DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
                     } else if (e.getY() > 300 && e.getY() < 350)
                     {
                         new InstructionView(myGameName, myCanvas);
