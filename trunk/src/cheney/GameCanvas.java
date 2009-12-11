@@ -31,11 +31,11 @@ public class GameCanvas extends Canvas implements ActionListener
 
     public GameCanvas(String gameName, Canvas canvas)
     {
-        super(gameName, canvas);
-        myEngine = myCanvas.getGameEngine();
+//        super(gameName, canvas);
+//        myEngine = myCanvas.getGameEngine();
 
         // Listener for Keyboard and Mouse
-        myCanvas.resetMouseListener();
+//        myCanvas.resetMouseListener();
         addKeyListener();
 
         myCanvas.repaint();

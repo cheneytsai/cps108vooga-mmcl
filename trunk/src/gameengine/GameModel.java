@@ -252,7 +252,7 @@ public class GameModel
     {
         for (Actor actor : myActorList)
         {
-            if (!(actor instanceof Wall) && !(actor instanceof Grid))
+            if (!(actor instanceof Grid))
             {
                 printer.println(actor.getClass().getCanonicalName() + " "
                         + actor.getImageString() + " " + actor.getSize().width
