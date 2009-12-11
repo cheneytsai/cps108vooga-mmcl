@@ -41,7 +41,7 @@ public class GameEngine
     public void initialize(String gameName)
     {
         myGameName = gameName;
-        myCanvas.updateGameName(myGameName);
+//        myCanvas.updateGameName(myGameName);
         myDataEngine.loadGame(myGameName);
         update(null, null);
         doneInitialize = true;
@@ -76,12 +76,12 @@ public class GameEngine
             myActorList.get(k).act(myLastKeyPressed);
             if (myActorList.get(k).getPosition() != tempPos)
             {
-                myActorList.get(k).hasMoved = true;
+//                myActorList.get(k).hasMoved = true;
             }
         }
         for (int k = 0; k < myActorList.size(); k++)
         {
-            myActorList.get(k).hasMoved = false;
+//            myActorList.get(k).hasMoved = false;
         }
 
     }
@@ -159,8 +159,8 @@ public class GameEngine
         ArrayList<Actor> filteredActors = new ArrayList<Actor>();
         for (Actor a : myActorList)
         {
-            if (a.getID().equals(id))
-                filteredActors.add(a);
+//            if (a.getID().equals(id))
+//                filteredActors.add(a);
         }
         return filteredActors;
     }

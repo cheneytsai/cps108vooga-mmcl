@@ -1,4 +1,4 @@
-actors.Ball src/images/ball.gif 16 16 480 450 -1 -1 10
+actors.Ball src/images/ball.gif 16 16 520 450 -1 -1 10
 actors.Paddle src/images/paddle.gif 80 16 580 600 1 1 0
 actors.Brick src/images/brick1.gif 80 30 100 100 1 1 0
 actors.Brick src/images/brick2.gif 80 30 200 100 1 1 0

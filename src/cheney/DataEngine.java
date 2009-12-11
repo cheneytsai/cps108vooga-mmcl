@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import util.resources.VoogaResources;
-import datamanager.FileParser;
 
 /**
  * GameEngine Supplement for Data
@@ -29,7 +28,7 @@ public class DataEngine
     public void loadGame(String gameName)
     {
         myGameName = gameName;
-        myCurrentLevel = FileParser.getFirstLevel(gameName);
+//        myCurrentLevel = FileParser.getFirstLevel(gameName);
         loadLevelData(myCurrentLevel);
 
     }
@@ -39,10 +38,10 @@ public class DataEngine
 
         myCurrentLevel = levelName;
         VoogaResources.setGamePath(myGameName);
-        myLevelActors = FileParser.loadActors(new File(VoogaResources
-                .getLevelFactoryReference(myCurrentLevel)));
-        myLevelInteractions = FileParser.loadInteractions(new File(
-                VoogaResources.getLevelFactoryReference(myCurrentLevel)));
+//        myLevelActors = FileParser.loadActors(new File(VoogaResources
+//                .getLevelFactoryReference(myCurrentLevel)));
+//        myLevelInteractions = FileParser.loadInteractions(new File(
+//                VoogaResources.getLevelFactoryReference(myCurrentLevel)));
         for (List<String[]> conditionSet : myLevelInteractions.keySet())
         {
             loadInteraction(conditionSet, myLevelInteractions.get(conditionSet));

@@ -45,6 +45,7 @@ public class ReplayView extends LevelViewer implements ActionListener
         File file = (File) JOptionPane.showInputDialog(null,
                 "Pick a game to replay:", "Replay Mode",
                 JOptionPane.PLAIN_MESSAGE, null, listOfFiles, null);
+        
         if (file == null)
         {
             JOptionPane.showMessageDialog(this,
@@ -65,7 +66,7 @@ public class ReplayView extends LevelViewer implements ActionListener
                 + "level.background"));
 
         update();
-        myTimer = new Timer((int) (DEFAULT_DELAY), this);
+        myTimer = new Timer(DEFAULT_DELAY, this);
         myTimer.start();
 
         repaint();
@@ -107,9 +108,7 @@ public class ReplayView extends LevelViewer implements ActionListener
         for (Object[] actor : myActors)
         {
             Image icon = new ImageIcon((String) actor[0]).getImage();
-            pen
-                    .drawImage(
-                            icon,
+            pen.drawImage(  icon,
                             (int) (((Point) actor[2]).x - .5 * ((Dimension) actor[1]).width),
                             (int) (((Point) actor[2]).y - .5 * ((Dimension) actor[1]).height),
                             ((Dimension) actor[1]).width,
