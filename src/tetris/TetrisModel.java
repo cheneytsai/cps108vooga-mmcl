@@ -75,7 +75,7 @@ public class TetrisModel extends GameModel
                 new Point(287, 325), this));
         addActor(new BottomWall("src/images/brick3.gif",
                 new Dimension(960, 36), new Point(480, 642), this));
-        addActor(new Grid("src/images/brick6.gif", new Dimension(12, 25),
+        addActor(new Grid("src/images/brick6.gif", new Dimension(12, 24),
                 new Point(337, 0), this));
         AddPiece.clearNext();
         new AddPiece(getCanvas().getGameName(), this).execute();

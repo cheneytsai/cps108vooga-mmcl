@@ -21,7 +21,7 @@ public class EditorCanvas extends LevelViewer
         myCanvas.addMouseListener(mouseListener());
         
         mySaveFile = (String) JOptionPane.showInputDialog(String.format(ResourceManager
-                .getString("Save")), ResourceManager.getString(gameName+"level"+levelName));
+                .getString("EditorSave")), ResourceManager.getString(gameName+"level"+levelName));
     }
 
     public void startGame()

@@ -35,7 +35,8 @@ public class EditorCreate extends JFrame
     private String[] statAppend;
     private Actor myActor;
     private GameModel myModel;
-    private JTextField myField;
+//    private JTextField myField;
+    private JComboBox myImage;
     private String mySaveFile;
     private JTextField[] myDimPoint;
     private JComboBox myBox;
@@ -47,7 +48,7 @@ public class EditorCreate extends JFrame
         setTitle(ResourceManager.getString("EditorTitle"));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         actorStats = new String[6];
-        String toAppend = "Actor Type: ,Image Location: ,x Dimension: ,y Dimension: ,x Value: ,y Value: ";
+        String toAppend = "Actor Type: , ,x Dimension: ,y Dimension: ,x Value: ,y Value: ";
         statAppend = toAppend.split(",");
         myModel = model;
         myActor = actor;
@@ -58,7 +59,7 @@ public class EditorCreate extends JFrame
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(7, 1));
         panel.add(actorChooser(levelName));
-        panel.add(setImage(image));
+        panel.add(setImage());
         panel.add(setDimPoint(xDim, yDim, x, y));
         if (actor != null)
         {
@@ -117,13 +118,17 @@ public class EditorCreate extends JFrame
         return myBox;
     }
 
-    private JComponent setImage(String name)
+    private JComponent setImage()
     {
-        myField = new JTextField(50);
+        File folder = new File("src/images");
+        File[] listOfFiles = folder.listFiles();
+        
+        //the first file is src/images/svn...we thought this image would be better, and wouldn't crash
+        listOfFiles[0] = new File("src/resources/2150_lightning.jpg");
+        
+        myImage = new JComboBox(listOfFiles);
 
-        myField.setText(statAppend[1] + name);
-
-        return myField;
+        return myImage;
     }
 
     private JComponent setDimPoint(int xDim, int yDim, int x, int y)
@@ -182,7 +187,7 @@ public class EditorCreate extends JFrame
     public void setStats(String levelName)
     {
         actorStats[0] = (String) myBox.getSelectedItem();
-        actorStats[1] = myField.getText();
+        actorStats[1] = myImage.getSelectedItem().toString();
         for (int i = 0; i < myDimPoint.length; i++)
         {
             actorStats[i + 2] = myDimPoint[i].getText();
@@ -206,28 +211,35 @@ public class EditorCreate extends JFrame
             deleteOldActor(levelName);
         }
 
-        // TODO add catches for illformatting
-        myModel.addActor((Actor) Reflection.createInstance("actors."
-                + actorStats[0], actorStats[1], new Dimension(Integer
-                .parseInt(actorStats[2]), Integer.parseInt(actorStats[3])),
-                new Point(Integer.parseInt(actorStats[4]), Integer
-                        .parseInt(actorStats[5])), myModel));
         try
         {
-            FileWriter output = new FileWriter(mySaveFile,true);
-//            FileWriter output = new FileWriter(ResourceManager
-//                    .getString(levelName), true);
-            output.append("\nactors." + actorStats[0] + " " + actorStats[1]
-                    + " " + actorStats[2] + " " + actorStats[3] + " "
-                    + actorStats[4] + " " + actorStats[5]);
-            output.close();
+            
+            // TODO add catches for illformatting
+            myModel.addActor((Actor) Reflection.createInstance("actors."
+                    + actorStats[0], actorStats[1], new Dimension(Integer
+                            .parseInt(actorStats[2]), Integer.parseInt(actorStats[3])),
+                            new Point(Integer.parseInt(actorStats[4]), Integer
+                                    .parseInt(actorStats[5])), myModel));
+            try
+            {
+                FileWriter output = new FileWriter(mySaveFile,true);
+                output.append("\nactors." + actorStats[0] + " " + actorStats[1]
+                                                                             + " " + actorStats[2] + " " + actorStats[3] + " "
+                                                                             + actorStats[4] + " " + actorStats[5]);
+                output.close();
+                dispose();
+            } catch (FileNotFoundException e)
+            {
+                System.out.println(e.getMessage());
+            } catch (IOException e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+        catch(NumberFormatException e)
+        {
+            System.out.println(e.getMessage());
             dispose();
-        } catch (FileNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        } catch (IOException e)
-        {
-            System.out.println(e.getMessage());
         }
     }
 
@@ -248,7 +260,6 @@ public class EditorCreate extends JFrame
         try
         {
             File inFile = new File(mySaveFile);
-//            File inFile = new File(ResourceManager.getString(levelName));
 
             // Construct the new file that will later be renamed to the original
             // filename.

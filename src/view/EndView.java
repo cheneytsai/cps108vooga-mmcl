@@ -26,7 +26,7 @@ public class EndView extends Canvas
         myCanvas.requestFocus();
 
         icon = new ImageIcon(ResourceManager.getString(endCondition
-                + ".background"));
+                + "Background"));
 
         saveScores(gameName);
         myCanvas.repaint();

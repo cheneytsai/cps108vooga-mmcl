@@ -34,3 +34,4 @@ The Idiot Who Doesn't Know His/Her Own Name		80		Thu Dec 10 15:15:24 EST 2009
 Megan		1280		Thu Dec 10 16:31:51 EST 2009
 Gilgamesh		3320		Thu Dec 10 16:59:39 EST 2009
 The Idiot Who Doesn't Know His/Her Own Name		0		Thu Dec 10 19:49:30 EST 2009
+Lisa		1080		Thu Dec 10 21:38:50 EST 2009
