@@ -9,8 +9,6 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import actions.Quit;
-import arkanoid.ArkanoidModel;
-import tetris.TetrisModel;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
@@ -100,6 +98,8 @@ public class GameMenu extends Canvas
                         }
                         else
                         {
+//                            new ArkanoidModel(myGameName, fileName.replace("src\\"+myGameName+"\\savedGames\\","").replace(".txt","")
+//                                    ,DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
                             Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
                                     myGameName, fileName.replace("src/"+myGameName+"/savedGames/","").replace(".txt","")
                                     ,DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
@@ -131,9 +131,9 @@ public class GameMenu extends Canvas
                                     showLevel = i;
                                 }
                             }
-                            new ArkanoidModel(myGameName,"", showLevel,"view.EditorCanvas",myCanvas);
-//                            Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
-//                                    myGameName, "",showLevel,"view.EditorCanvas",myCanvas);
+//                            new ArkanoidModel(myGameName,"", showLevel,"view.EditorCanvas",myCanvas);
+                            Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
+                                    myGameName, "",showLevel,"view.EditorCanvas",myCanvas);
                         } catch (NullPointerException n)
                         {
                             System.out.println(n);
