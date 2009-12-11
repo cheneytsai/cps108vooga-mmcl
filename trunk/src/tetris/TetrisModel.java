@@ -69,12 +69,12 @@ public class TetrisModel extends GameModel
     public void initializeActors()
     {
         super.initializeActors();
-        addActor(new Wall("src/images/wall.jpg", new Dimension(100, 720),
-                new Point(699, 360), this));
-        addActor(new LeftWall("src/images/wall.jpg", new Dimension(100, 720),
-                new Point(287, 360), this));
+        addActor(new Wall("src/images/wall.jpg", new Dimension(100, 650),
+                new Point(699, 325), this));
+        addActor(new LeftWall("src/images/wall.jpg", new Dimension(100, 650),
+                new Point(287, 325), this));
         addActor(new BottomWall("src/images/brick3.gif",
-                new Dimension(960, 36), new Point(480, 668), this));
+                new Dimension(960, 36), new Point(480, 642), this));
         addActor(new Grid("src/images/brick6.gif", new Dimension(12, 25),
                 new Point(337, 0), this));
         AddPiece.clearNext();

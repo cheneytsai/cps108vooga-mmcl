@@ -15,13 +15,14 @@ import javax.swing.JPanel;
 public class Canvas extends JPanel
 {
 
-    protected Dimension mySize = new Dimension(960, 720);
+    protected Dimension mySize = new Dimension(960, 650);
 
     protected Canvas myCanvas;
     private Canvas myActive;
     protected GameModel myModel;
     protected String myGameName;
     // private Menu active;
+    // TODO: move score to model
     
     protected static final Font TITLE_FONT = new Font("TAHOMA", Font.BOLD, 75);
     protected static final Font OPTION_FONT = new Font("TAHOMA", Font.BOLD, 40);
@@ -36,7 +37,8 @@ public class Canvas extends JPanel
         myActive = this;
         setSize(mySize);
     }
-    
+
+
     public void paintComponent(Graphics g)
     {
         if (myActive != null)
@@ -49,22 +51,38 @@ public class Canvas extends JPanel
 
     public void setActive(Canvas toUse)
     {
-        if(myActive instanceof LevelViewer)
+        try
         {
-            ((LevelViewer) myActive).stopTimer();
+            myActive.stopTimer();
+        } catch (NullPointerException e)
+        {
         }
         myActive = toUse;
+        myModel.newView(myActive);
     }
+
+    public void stopTimer()
+    {
+    }
+
+    
 
     public String getGameName()
     {
+
         return myActive.getGameName();
+    }
+
+    public int getLevelNum()
+    {
+        return 0;
     }
 
     public MouseListener mouseListener()
     {
         return myActive.mouseListener();
     }
+
 
     public int getWidth()
     {
@@ -74,6 +92,11 @@ public class Canvas extends JPanel
     public int getHeight()
     {
         return mySize.height;
+    }
+
+    public boolean isGameInProgress()
+    {
+        return myActive != null && getGameName() != null;
     }
 
     protected GameModel getGameModel()

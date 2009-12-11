@@ -61,6 +61,7 @@ public class GameChooser extends Canvas
         }
         myPen.drawString(ResourceManager.getString("Quit"), 375,
                 250 + 100 * counter);
+        myPen.drawString("Bottom", 480, 650);
 
         setOpaque(false);
     }

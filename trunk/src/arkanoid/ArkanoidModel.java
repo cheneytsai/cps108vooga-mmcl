@@ -74,11 +74,11 @@ public class ArkanoidModel extends GameModel
         super.initializeActors();
         addActor(new Wall("src/images/brick3.gif", new Dimension(960, 16),
                 new Point(480, -5), this));
-        addActor(new LeftWall("src/images/brick3.gif", new Dimension(16, 720),
-                new Point(-5, 360), this));
-        addActor(new Wall("src/images/brick3.gif", new Dimension(16, 720),
-                new Point(965, 360), this));
+        addActor(new LeftWall("src/images/brick3.gif", new Dimension(16, 650),
+                new Point(-5, 325), this));
+        addActor(new Wall("src/images/brick3.gif", new Dimension(16, 650),
+                new Point(965, 325), this));
         addActor(new BottomWall("src/images/brick3.gif",
-                new Dimension(960, 16), new Point(480, 725), this));
+                new Dimension(960, 16), new Point(480, 666), this));
     }
 }
