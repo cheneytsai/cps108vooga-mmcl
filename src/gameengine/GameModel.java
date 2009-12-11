@@ -17,11 +17,16 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 import conditions.ConditionChecker;
 import util.reflection.*;
 import util.resources.ResourceManager;
+import actions.Direction;
+import actions.UpdateScore;
 import actors.Actor;
+import actors.Grid;
+import actors.PhysicsVector;
 import actors.Wall;
 
 /**
@@ -37,30 +42,28 @@ public class GameModel
     protected ConditionChecker myConditions;
     private Random myRandom;
     protected int myScore;
-    private String[] myLevelProgression;
+    protected String[] myLevelProgression;
     private LevelViewer myLevelViewer;
     private int myCurrentLevel;
     protected PrintWriter myPrinter;
 
-    public GameModel(String gameName, int level, String viewType, Canvas canvas)
+    public GameModel(String gameName, String resumeName,int level, String viewType, Canvas canvas)
     {
         try
         {
             myPrinter = new PrintWriter(new FileWriter("src/"
                     + gameName.toLowerCase() + "/replays/"
-                    + new GregorianCalendar().getTime() + ".txt"));
+                    + new GregorianCalendar().getTime().toString().replace(":", "_") + ".txt"));
         } catch (IOException e)
         {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         myCanvas = canvas;
-        // myCanvas.setGamePlayMenuVisibility(true);
         myActorList = new ArrayList<Actor>();
         myScore = 0;
         myCurrentLevel = level;
         myRandom = new Random();
-        myLevelProgression = ResourceManager.getString(gameName + "Levels")
+        myLevelProgression = ResourceManager.getString(gameName+resumeName + "Levels")
                 .split(",");
         myConditions = (ConditionChecker) Reflection.createInstance(gameName
                 .toLowerCase()
@@ -79,13 +82,14 @@ public class GameModel
             Scanner input = new Scanner(new File(ResourceManager
                     .getString(myLevelViewer.getGameName() + "level"
                             + myLevelViewer.getLevelName())));
-            while (input.hasNextLine())
-            {
+            while (input.hasNext())
+            {   
                 input.skip("");
-                addActor((Actor) Reflection.createInstance(input.next(), input
-                        .next(),
+                addActor((Actor) Reflection.createInstance(input.next(), input.next(),
                         new Dimension(input.nextInt(), input.nextInt()),
-                        new Point(input.nextInt(), input.nextInt()), this));
+                        new Point(input.nextInt(), input.nextInt()), this , 
+                        new PhysicsVector(new Direction(input.nextDouble(), input.nextDouble()), input.nextDouble())));
+            
             }
         } catch (FileNotFoundException e)
         {
@@ -95,7 +99,7 @@ public class GameModel
 
     public void update(KeyEvent myLastKeyPressed)
     {
-
+        hotKeyCheck(myLastKeyPressed);
         writeStateToFile(myPrinter);
         myPrinter.println("update");
 
@@ -120,6 +124,14 @@ public class GameModel
 
     }
 
+    protected void hotKeyCheck(KeyEvent myLastKeyPressed)
+    {
+        if (myLastKeyPressed != null && myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
+        {
+            new UpdateScore(100, this).execute();
+        }
+    }
+    
     public void clearActors()
     {
         myActorList.clear();
@@ -194,12 +206,31 @@ public class GameModel
     {
         try
         {
-            PrintWriter pw = new PrintWriter(new FileWriter("src/"
-                    + myLevelViewer.getGameName().toLowerCase()
-                    + "/savedGames/" + new GregorianCalendar().getTime()
-                    + ".txt"));
+            myLevelViewer.stopTimer();
+            
+            String name = (String) JOptionPane.showInputDialog("Name your save file", null);
+            if (name == null || name.length() == 0)
+            {
+                name = new GregorianCalendar().getTime().toString().replace(":","_");
+            }
+            String fileName = "src/"
+                + myLevelViewer.getGameName().toLowerCase()
+                + "/savedGames/" + name+ ".txt";
+
+            PrintWriter pw = new PrintWriter(new FileWriter(fileName));
             writeStateToFile(pw);
             pw.close();
+            
+            String newProgression = "";
+            for(int i = myCurrentLevel+1; i < myLevelProgression.length; i++)
+            {
+                newProgression += ","+myLevelProgression[i];
+            }
+            FileWriter output = new FileWriter("src/resources/English.properties",true);
+            output.append("\n"+myLevelViewer.getGameName()+"level"+name+" = "+fileName);
+            output.append("\n"+myLevelViewer.getGameName()+name+"Levels = "+name+newProgression);
+            output.close();
+            
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -214,7 +245,7 @@ public class GameModel
     {
         for (Actor actor : myActorList)
         {
-            if (!(actor instanceof Wall))
+            if (!(actor instanceof Wall) && !(actor instanceof Grid))
             {
                 printer.println(actor.getClass().getCanonicalName() + " "
                         + actor.getImageString() + " " + actor.getSize().width
