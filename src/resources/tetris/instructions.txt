@@ -1,0 +1,3 @@
+Up = rotate
+Left/Right to move
+Down to make the piece move more quickly
