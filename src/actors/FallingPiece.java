@@ -7,10 +7,12 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+
+import physics.Direction;
+import physics.PhysicsVector;
 import actions.Action;
 import actions.AddPiece;
 import actions.ChangeSpeed;
-import actions.Direction;
 import actions.Move;
 import actions.NaturalMove;
 import actions.Remove;
@@ -25,16 +27,15 @@ import actions.Rotate;
 public class FallingPiece extends Actor
 {
 
-//    public FallingPiece(String image, Dimension size, Point position,
-//            GameModel gameModel)
-//    {
-//        super(image, size, position, gameModel);
-//        setVelocity(new PhysicsVector(new Direction(0, 1), 5));
-//        loadBehavior();
-//    }
+    
     public FallingPiece(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
         super(image,size,position,model,velocity);
         
+    }
+    public FallingPiece(String image, Dimension size, Point position,
+            GameModel gameModel)
+    {
+        super(image, size, position, gameModel, new PhysicsVector(new Direction(0, 1), 5));
     }
 
     @Override
@@ -43,7 +44,7 @@ public class FallingPiece extends Actor
         myDefaultBehavior = new NaturalMove();
 
         List<Action> up = new ArrayList<Action>();
-        up.add(new Rotate(getModel().getCanvas().getGameName()));
+        up.add(new Rotate(90));
         myKeyEvents.put(KeyEvent.VK_UP, up);
 
         List<Action> down = new ArrayList<Action>();

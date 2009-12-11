@@ -10,6 +10,12 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
+
 @SuppressWarnings("serial")
 public class Canvas extends JPanel
 
@@ -77,8 +83,4 @@ public class Canvas extends JPanel
         return myActive;
     }
     
-//    public void setGamePlayMenuVisibility(boolean visibility)
-//    {
-//        myFrame.setGamePlayMenuVisibility(visibility);
-//    }
 }

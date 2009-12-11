@@ -15,6 +15,7 @@ import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
 /**
+ * Displays the current level of the current game.
  * 
  * 
  * @author Lisa Gutermuth
@@ -126,12 +127,8 @@ public class LevelViewer extends Canvas implements ActionListener
     }
 
     /**
-     * Never called by you directly, instead called by Java runtime when area of
-     * screen covered by this container needs to be displayed (i.e., creation,
-     * uncovering, change in status)
+     * Paints all the Actors currently in play
      * 
-     * @param pen
-     *            smart pen to draw on the canvas with
      */
     public void paint(Graphics pen)
     {

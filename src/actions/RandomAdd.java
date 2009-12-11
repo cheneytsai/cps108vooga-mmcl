@@ -6,6 +6,13 @@ import actors.BallPowerup;
 import actors.EnlargePowerup;
 import actors.ShrinkPowerup;
 
+/**
+ * Adds a random powerup type to a give GameModel.
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
+
 public class RandomAdd implements Action
 {
     private GameModel myModel;
@@ -31,13 +38,6 @@ public class RandomAdd implements Action
             new Add(myModel, EnlargePowerup.class.getCanonicalName())
                     .execute(actors);
         }
-        // else if (randomInt == 6) {
-        // if(myModel.getCanvas().getLevelNum() != 11)
-        // {
-        // new Add(myModel, BonusLevelPowerup.class.getCanonicalName())
-        // .execute(actors);
-        // }
-        // }
 
     }
 

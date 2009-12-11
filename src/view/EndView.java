@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import util.resources.ResourceManager;
 
 /**
+ * 
+ * 
  * @author Lisa Gutermuth
  */
 @SuppressWarnings("serial")

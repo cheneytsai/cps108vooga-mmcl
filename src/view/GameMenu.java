@@ -14,6 +14,13 @@ import util.reflection.Reflection;
 import util.reflection.ReflectionException;
 import util.resources.ResourceManager;
 
+/**
+ * Displays the menu options for the currently selected game.
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
+
 @SuppressWarnings("serial")
 public class GameMenu extends Canvas
 {
@@ -100,6 +107,7 @@ public class GameMenu extends Canvas
                         }
                         else
                         {
+
                             try
                             {
 //                                For PCs

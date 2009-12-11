@@ -1,9 +1,10 @@
 package actions;
 
+import physics.PhysicsVector;
 import actors.Actor;
-import actors.PhysicsVector;
 
 /**
+ * Resets the magnitude of an actor's velocity.
  * 
  * @author Megan Heysham
  * 

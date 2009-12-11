@@ -8,6 +8,9 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import physics.Direction;
+import physics.PhysicsVector;
+
 import actions.*;
 
 /**

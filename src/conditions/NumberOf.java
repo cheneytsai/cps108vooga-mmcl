@@ -6,6 +6,14 @@ import java.util.List;
 
 import actors.Actor;
 
+/**
+ * Determines whether there are a given number of a given Actor type in a given
+ * GameModel.
+ * 
+ * @author Michael Yu
+ * 
+ */
+
 public class NumberOf implements Condition
 {
 

@@ -1,5 +1,6 @@
 package view;
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.File;
@@ -12,6 +13,14 @@ import java.util.Map;
 import java.util.Scanner;
 import javax.swing.ImageIcon;
 import util.resources.ResourceManager;
+
+/**
+ * 
+ * Displays high scores from a text file.
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
 
 @SuppressWarnings("serial")
 public class ScoresView extends Canvas

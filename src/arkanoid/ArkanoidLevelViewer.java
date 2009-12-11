@@ -9,6 +9,14 @@ import util.resources.ResourceManager;
 import view.Canvas;
 import view.LevelViewer;
 
+/**
+ * A LevelViewer for Arkanoid.
+ * 
+ * @author Lisa Gutermuth
+ * @author Megan Heysham
+ *
+ */
+
 @SuppressWarnings("serial")
 public class ArkanoidLevelViewer extends LevelViewer
 {

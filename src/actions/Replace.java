@@ -7,6 +7,7 @@ import actors.Actor;
 import actors.Grid;
 
 /**
+ * Replaces an actor with blocks based on its position in a grid.
  * 
  * @author Megan Heysham
  * 
@@ -31,7 +32,6 @@ public class Replace implements Action
             {
                 if (CollisionChecker.intersects(actors[0], Grid.getMarker(i, j).getPosition()))
                 {
-                   System.out.println("Collide");
                     Grid.addBlock(i, j, myReplacements.getString(actors[0]
                             .getImageString()));
 

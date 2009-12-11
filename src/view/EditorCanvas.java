@@ -8,6 +8,16 @@ import javax.swing.JOptionPane;
 import util.resources.ResourceManager;
 import actors.Actor;
 
+/**
+ * The main display for the level editor.
+ * 
+ * When the user clicks on the screen, EditorCreate prompts the user for
+ * information.
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
+
 @SuppressWarnings("serial")
 public class EditorCanvas extends LevelViewer
 {
@@ -61,8 +71,8 @@ public class EditorCanvas extends LevelViewer
                     }
                 }
 
-                // if nothing there, open popup
-                // else,be able to update that object
+                // if no Actor in the location clicked, open popup
+                // else, be able to update that Actor
                 if (match == null)
                 {
                     new EditorCreate(myModel, getGameName() + "level"

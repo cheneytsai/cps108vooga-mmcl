@@ -1,7 +1,7 @@
 //TODO: Consider removing this class
-package actors;
+package physics;
 
-import actions.Direction;
+
 
 /**
  * 

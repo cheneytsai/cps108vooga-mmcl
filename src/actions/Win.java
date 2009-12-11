@@ -4,16 +4,18 @@ import gameengine.GameModel;
 import actors.Actor;
 
 /**
+ * Loads the win screen.
  * 
  * @author Michael Yu
  * 
  */
-public class Win extends Lose implements Action
+public class Win implements Action
 {
-    // TODO: Why does this extend Lose???
+    protected GameModel myModel;
+
     public Win(GameModel model)
     {
-        super(model);
+        myModel = model;
     }
 
     public void execute(Actor... actors)

@@ -4,6 +4,7 @@ import gameengine.GameModel;
 import actors.Actor;
 
 /**
+ * Loads the lose screen.
  * 
  * @author Michael Yu
  * 

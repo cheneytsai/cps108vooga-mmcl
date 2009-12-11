@@ -2,9 +2,12 @@ package actions;
 
 import java.awt.Point;
 
+import physics.Direction;
+
 import actors.Actor;
 
 /**
+ * Moves an Actor by its own myVelocity.
  * 
  * @author Michael Yu
  * 

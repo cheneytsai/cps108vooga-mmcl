@@ -4,7 +4,9 @@ import gameengine.GameModel;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import actions.Direction;
+
+import physics.Direction;
+import physics.PhysicsVector;
 
 /**
  * 
@@ -23,6 +25,7 @@ public class Marker extends Actor
     protected void loadBehavior()
     {
         // Markers don't do anything; they are placeholders
+        myDefaultBehavior = null;
 
     }
 

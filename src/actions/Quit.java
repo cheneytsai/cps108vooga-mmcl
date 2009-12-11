@@ -4,6 +4,8 @@ import actors.Actor;
 
 /**
  * 
+ * Quits the program.
+ * 
  * @author Megan Heysham
  * 
  */

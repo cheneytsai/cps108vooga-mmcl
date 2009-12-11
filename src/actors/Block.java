@@ -4,7 +4,9 @@ import gameengine.GameModel;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import actions.Direction;
+
+import physics.Direction;
+import physics.PhysicsVector;
 
 /**
  * 
@@ -14,10 +16,6 @@ import actions.Direction;
 public class Block extends Actor
 {
 
-//    public Block(String image, Dimension size, Point position, GameModel model)
-//    {
-//        super(image, size, position, model);
-//    }
     public Block(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
         super(image,size,position,model,velocity);
         setVelocity(new PhysicsVector(new Direction(1,1),0));
@@ -26,7 +24,7 @@ public class Block extends Actor
     @Override
     protected void loadBehavior()
     {
-        // Blocks sit and do nothing
+        myDefaultBehavior = null;
 
     }
 

@@ -15,11 +15,9 @@ public class TetrisConditions extends ConditionChecker
     @Override
     protected void loadConditions()
     {
-        // TODO Write this
 
     }
 
-    // TODO: this is static for testing purposes, but needs to be changed
     public static boolean isRowFull(int i)
     {
         int numberInRow = 0;

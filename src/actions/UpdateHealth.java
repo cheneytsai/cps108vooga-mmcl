@@ -3,6 +3,14 @@ package actions;
 import gameengine.GameModel;
 import actors.Actor;
 
+/**
+ * Increments the health of an Actor by a given amount. Removes the Actor if its
+ * health has been depleted.
+ * 
+ * @author Lisa Gutermuth
+ * 
+ */
+
 public class UpdateHealth implements Action
 {
     private int myIncrement;

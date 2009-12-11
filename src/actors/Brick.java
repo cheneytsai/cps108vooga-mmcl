@@ -7,8 +7,10 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import physics.Direction;
+import physics.PhysicsVector;
+
 import actions.Action;
-import actions.Direction;
 import actions.UpdateHealth;
 import actions.UpdateScore;
 
@@ -20,12 +22,6 @@ import actions.UpdateScore;
 public class Brick extends Actor
 {
 
-//    public Brick(String string, Dimension dimension, Point point,
-//            GameModel gameModel)
-//    {
-//        super(string, dimension, point, gameModel);
-//        setHealth(getModel().getRandom().nextInt(2) + 1);
-//    }
     public Brick(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
         super(image,size,position,model,velocity);
         setHealth(getModel().getRandom().nextInt(2) + 1);
@@ -37,7 +33,6 @@ public class Brick extends Actor
     {
         List<Action> ball = new ArrayList<Action>();
         ball.add(new UpdateHealth(getModel(), -1));
-        // ball.add(new RandomAdd(myModel));
         ball.add(new UpdateScore(100, getModel()));
         myInteractions.put(Ball.class.getCanonicalName(), ball);
     }
