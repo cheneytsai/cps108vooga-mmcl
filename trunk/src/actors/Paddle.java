@@ -18,9 +18,10 @@ import actions.*;
 public class Paddle extends Actor
 {
 
-    public Paddle(String image, Dimension size, Point position, GameModel model)
+    public Paddle(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity)
     {
-        super(image, size, position, model);
+        super(image, size, position, model,velocity);
+        setVelocity(new PhysicsVector(new Direction(1,1),0));
     }
 
     @Override

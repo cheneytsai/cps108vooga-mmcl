@@ -19,9 +19,10 @@ import actions.UpdateScore;
  */
 public class Powerup extends Actor
 {
-    public Powerup(String image, Dimension size, Point position, GameModel model)
+    public Powerup(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity)
     {
-        super(image, size, position, model);
+        super(image, size, position, model, velocity);
+        setVelocity(new PhysicsVector(new Direction(0, 1), 5));
     }
 
     @Override

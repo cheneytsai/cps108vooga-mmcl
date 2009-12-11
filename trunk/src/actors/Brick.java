@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import actions.Action;
+import actions.Direction;
 import actions.UpdateHealth;
 import actions.UpdateScore;
 
@@ -19,11 +20,16 @@ import actions.UpdateScore;
 public class Brick extends Actor
 {
 
-    public Brick(String string, Dimension dimension, Point point,
-            GameModel gameModel)
-    {
-        super(string, dimension, point, gameModel);
+//    public Brick(String string, Dimension dimension, Point point,
+//            GameModel gameModel)
+//    {
+//        super(string, dimension, point, gameModel);
+//        setHealth(getModel().getRandom().nextInt(2) + 1);
+//    }
+    public Brick(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
+        super(image,size,position,model,velocity);
         setHealth(getModel().getRandom().nextInt(2) + 1);
+        setVelocity(new PhysicsVector(new Direction(1,1),0));
     }
 
     @Override

@@ -44,8 +44,27 @@ public abstract class Actor
     public boolean hasMoved; // Flag - Moved?
     private int myHealth;
 
-    public Actor(String image, Dimension size, Point position, GameModel model)
-    {
+//    public Actor(String image, Dimension size, Point position, GameModel model)
+//    {
+//        myHeading = 0;
+//        myXform = new AffineTransform();
+//        setImage(image);
+//        setSize(size.width, size.height);
+//        setShape(makeShape(myImage));
+//        myPosition = position;
+//        myModel = model;
+//        myVelocity = new PhysicsVector(new Direction(-1, -1), 10); // TODO: Make
+//        // these
+//        // parameters
+//        // or
+//        // something
+//        // myKeyEvents = new HashMap<String, List<Action>>();
+//        myKeyEvents = new HashMap<Integer, List<Action>>();
+//        myInteractions = new HashMap<String, List<Action>>();
+//        loadBehavior();
+//    }
+    
+    public Actor(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
         myHeading = 0;
         myXform = new AffineTransform();
         setImage(image);
@@ -63,6 +82,7 @@ public abstract class Actor
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
         // TODO: make all this readable from a file
+        myVelocity = velocity;
     }
 
 
