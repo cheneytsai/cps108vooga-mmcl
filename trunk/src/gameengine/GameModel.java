@@ -19,20 +19,23 @@ import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
+import physics.Direction;
+import physics.PhysicsVector;
+
 import conditions.ConditionChecker;
 import util.reflection.*;
 import util.resources.ResourceManager;
-import actions.Direction;
 import actions.UpdateScore;
 import actors.Actor;
 import actors.Grid;
-import actors.PhysicsVector;
 import actors.Wall;
 
 /**
  * 
  * 
  * @author Lisa Gutermuth
+ * @author Megan Heysham
+ * 
  */
 public class GameModel
 {
@@ -47,13 +50,16 @@ public class GameModel
     private int myCurrentLevel;
     protected PrintWriter myPrinter;
 
-    public GameModel(String gameName, String resumeName,int level, String viewType, Canvas canvas)
+    public GameModel(String gameName, String resumeName, int level,
+            String viewType, Canvas canvas)
     {
         try
         {
             myPrinter = new PrintWriter(new FileWriter("src/"
-                    + gameName.toLowerCase() + "/replays/"
-                    + new GregorianCalendar().getTime().toString().replace(":", "_") + ".txt"));
+                    + gameName.toLowerCase()
+                    + "/replays/"
+                    + new GregorianCalendar().getTime().toString().replace(":",
+                            "_") + ".txt"));
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -63,8 +69,8 @@ public class GameModel
         myScore = 0;
         myCurrentLevel = level;
         myRandom = new Random();
-        myLevelProgression = ResourceManager.getString(gameName+resumeName + "Levels")
-                .split(",");
+        myLevelProgression = ResourceManager.getString(
+                gameName + resumeName + "Levels").split(",");
         myConditions = (ConditionChecker) Reflection.createInstance(gameName
                 .toLowerCase()
                 + "." + gameName + "Conditions", this);
@@ -83,56 +89,47 @@ public class GameModel
                     .getString(myLevelViewer.getGameName() + "level"
                             + myLevelViewer.getLevelName())));
             while (input.hasNext())
-            {   
+            {
                 input.skip("");
-                addActor((Actor) Reflection.createInstance(input.next(), input.next(),
+                addActor((Actor) Reflection.createInstance(input.next(), input
+                        .next(),
                         new Dimension(input.nextInt(), input.nextInt()),
-                        new Point(input.nextInt(), input.nextInt()), this , 
-                        new PhysicsVector(new Direction(input.nextDouble(), input.nextDouble()), input.nextDouble())));
-            
+                        new Point(input.nextInt(), input.nextInt()), this,
+                        new PhysicsVector(new Direction(input.nextDouble(),
+                                input.nextDouble()), input.nextDouble())));
+
             }
         } catch (FileNotFoundException e)
         {
-            System.out.println("File not found");
+            JOptionPane.showMessageDialog(myLevelViewer, "Level file not found",
+                    "Error", 0);
         }
     }
 
     public void update(KeyEvent myLastKeyPressed)
     {
-		hotKeyCheck(myLastKeyPressed);
+        hotKeyCheck(myLastKeyPressed);
         writeStateToFile(myPrinter);
-        myPrinter.println("update");   
+        myPrinter.println("update");
 
         for (int k = 0; k < myActorList.size(); k++)
-            {
-                myActorList.get(k).act(myLastKeyPressed);
-            }
+        {
+            myActorList.get(k).act(myLastKeyPressed);
+        }
 
+        myConditions.checkConditions();
 
-
-
-            myConditions.checkConditions();
-//            for (int k = 0; k < myActorList.size(); k++)
-//            {
-//                myActorList.get(k).hasChanged = false;
-//            }
-            // Reset All to no movement
-        
     }
 
-
-    
     protected void hotKeyCheck(KeyEvent myLastKeyPressed)
     {
-        if (myLastKeyPressed != null && myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
+        if (myLastKeyPressed != null
+                && myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
         {
             new UpdateScore(100, this).execute();
         }
     }
 
-
-
-    
     public void clearActors()
     {
         myActorList.clear();
@@ -208,40 +205,51 @@ public class GameModel
         try
         {
             myLevelViewer.stopTimer();
-            
-            String name = (String) JOptionPane.showInputDialog("Name your save file", null);
+
+            String name = (String) JOptionPane.showInputDialog(
+                    "Name your save file", null);
             if (name == null || name.length() == 0)
             {
-                name = new GregorianCalendar().getTime().toString().replace(":","_");
+                name = new GregorianCalendar().getTime().toString().replace(
+                        ":", "_");
             }
             String fileName = "src/"
-                + myLevelViewer.getGameName().toLowerCase()
-                + "/savedGames/" + name+ ".txt";
+                    + myLevelViewer.getGameName().toLowerCase()
+                    + "/savedGames/" + name + ".txt";
 
             PrintWriter pw = new PrintWriter(new FileWriter(fileName));
             writeStateToFile(pw);
             pw.close();
-            
+
             String newProgression = "";
-            for(int i = myCurrentLevel+1; i < myLevelProgression.length; i++)
+            for (int i = myCurrentLevel + 1; i < myLevelProgression.length; i++)
             {
-                newProgression += ","+myLevelProgression[i];
+                newProgression += "," + myLevelProgression[i];
             }
-            FileWriter output = new FileWriter("src/resources/English.properties",true);
-            output.append("\n"+myLevelViewer.getGameName()+"level"+name+" = "+fileName);
-            output.append("\n"+myLevelViewer.getGameName()+name+"Levels = "+name+newProgression);
+            FileWriter output = new FileWriter(
+                    "src/resources/English.properties", true);
+            output.append("\n" + myLevelViewer.getGameName() + "level" + name
+                    + " = " + fileName);
+            output.append("\n" + myLevelViewer.getGameName() + name
+                    + "Levels = " + name + newProgression);
             output.close();
+
             myLevelViewer.startTimer();
             
         } catch (IOException e)
         {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(myLevelViewer, "There was an error saving to this location",
+                    "Error", 0);
         }
 
     }
 
     /**
-     * @param pw
+     * Writes out to a file with a list of all the current Actors and their
+     * properties: image, size, position, and velocity.
+     * 
+     * @param printer
+     *            The printer to which the state of the game will be added.
      */
     private void writeStateToFile(PrintWriter printer)
     {
@@ -260,6 +268,5 @@ public class GameModel
             }
         }
     }
-
 
 }

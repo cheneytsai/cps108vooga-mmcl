@@ -6,19 +6,30 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 
+import physics.Direction;
+import physics.PhysicsVector;
+
 import actions.AddPiece;
-import actions.Direction;
 import actors.*;
 import view.Canvas;
+
+/**
+ * A GameModel for Tetris.
+ * 
+ * @author Lisa Gutermuth
+ * @author Megan Heysham
+ * 
+ */
 
 public class TetrisModel extends GameModel
 {
     private final int DEFAULT_KEY = KeyEvent.VK_0;
     private int[] myPreviousKeys;
 
-    public TetrisModel(String gameName,String resumeName,int level,String viewType,Canvas canvas)
+    public TetrisModel(String gameName, String resumeName, int level,
+            String viewType, Canvas canvas)
     {
-        super(gameName,resumeName,level,viewType,canvas);
+        super(gameName, resumeName, level, viewType, canvas);
     }
 
     public void update(KeyEvent myLastKeyPressed)
@@ -26,8 +37,7 @@ public class TetrisModel extends GameModel
         if (gameOver())
         {
             loadEnd("Lose");
-        } 
-        else if (myLastKeyPressed == null)
+        } else if (myLastKeyPressed == null)
         {
             myPreviousKeys[0] = DEFAULT_KEY;
             myPreviousKeys[1] = DEFAULT_KEY;
@@ -76,7 +86,8 @@ public class TetrisModel extends GameModel
         addActor(new LeftWall("src/images/wall.jpg", new Dimension(100, 650),
                 new Point(287, 325), this));
         addActor(new BottomWall("src/images/brick3.gif",
-                new Dimension(960, 36), new Point(480, 642), this,new PhysicsVector(new Direction(1,1),0)));
+                new Dimension(960, 36), new Point(480, 642), this,
+                new PhysicsVector(new Direction(1, 1), 0)));
         addActor(new Grid("src/images/brick6.gif", new Dimension(12, 24),
                 new Point(337, 0), this));
         AddPiece.clearNext();
@@ -91,7 +102,11 @@ public class TetrisModel extends GameModel
         myPreviousKeys = new int[2];
         myPreviousKeys[0] = DEFAULT_KEY;
         myPreviousKeys[1] = DEFAULT_KEY;
-//         new ChangeSpeed(5 + (getCanvas().getLevelNum()-1)).execute(actor);
+        /*
+         * Would make the speed of FallingPieces increase with the level if our
+         * collision detection was more robust.
+         * new ChangeSpeed(5 + (getCanvas().getLevelNum()-1)).execute(actor);
+         */
     }
 
 }

@@ -18,8 +18,10 @@ import javax.swing.JOptionPane;
 import util.resources.ResourceManager;
 
 /**
- * This will be used instead of GameChooser and GameMenu Ultimate goal: read in
- * menu options and actions from a file.
+ * This class is not currently used.
+ * 
+ * Intent of this class: would be used instead of GameChooser and GameMenu
+ * Ultimate goal: read in menu options and actions from a file.
  * 
  * @author Megan Heysham
  * 

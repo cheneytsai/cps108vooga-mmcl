@@ -13,8 +13,19 @@ import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import actors.Actor;
 import util.resources.ResourceManager;
+
+/**
+ * 
+ * Displays a replay of a previously played game.
+ * 
+ * Reads from a text file to retrieve all state from a previously played game.
+ * Draws the images at their given locations in order to simulate the game.
+ * 
+ * @author Megan Heysham
+ * @author Lisa Gutermuth
+ *
+ */
 
 @SuppressWarnings("serial")
 public class ReplayView extends LevelViewer implements ActionListener

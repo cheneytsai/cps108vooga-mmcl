@@ -6,8 +6,10 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+
+import physics.Direction;
+import physics.PhysicsVector;
 import actions.Action;
-import actions.Direction;
 import actions.Move;
 import actions.Remove;
 import actions.UpdateScore;

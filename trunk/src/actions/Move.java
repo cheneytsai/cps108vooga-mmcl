@@ -2,10 +2,13 @@ package actions;
 
 import java.awt.Point;
 
+import physics.Direction;
+import physics.PhysicsVector;
+
 import actors.Actor;
-import actors.PhysicsVector;
 
 /**
+ * Moves an Actor by a given velocity.
  * 
  * @author Michael Yu
  * 

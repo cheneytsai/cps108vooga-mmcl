@@ -3,6 +3,7 @@ package actions;
 import actors.Actor;
 
 /**
+ * Removes an actor from its GameModel.
  * 
  * @author Michael Yu
  * 

@@ -6,9 +6,11 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 
+import physics.Direction;
+import physics.PhysicsVector;
+
 import tetris.TetrisConditions;
 
-import actions.Direction;
 import actions.UpdateScore;
 
 /**
@@ -56,7 +58,7 @@ public class Grid extends Actor
     @Override
     protected void loadBehavior()
     {
-        // Nothing
+        myDefaultBehavior = null;
     }
 
     @Override

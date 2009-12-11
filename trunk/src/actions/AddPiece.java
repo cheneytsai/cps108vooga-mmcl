@@ -13,9 +13,9 @@ import util.reflection.Reflection;
 import conditions.NumberOf;
 
 import actors.Actor;
-import actors.PhysicsVector;
 
 /**
+ * Randomly adds a new Actor to a given GameModel.
  * 
  * @author Megan Heysham
  * 
@@ -74,11 +74,11 @@ public class AddPiece implements Action
         if (size.width % 52 == 0)
             return (Actor) Reflection.createInstance(myPieceResources
                     .getString("PieceClass"), image, size, new Point(493,
-                    size.height / 2), myModel, new PhysicsVector(new Direction(0,1),5));
+                    size.height / 2), myModel);
         else
             return (Actor) Reflection.createInstance(myPieceResources
                     .getString("PieceClass"), image, size, new Point(480,
-                    size.height / 2), myModel, new PhysicsVector(new Direction(0,1),5));
+                    size.height / 2), myModel);
     }
 
     public static Image nextImage()

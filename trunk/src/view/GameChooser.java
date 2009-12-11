@@ -10,8 +10,11 @@ import javax.swing.ImageIcon;
 import actions.Quit;
 import util.resources.ResourceManager;
 
-/*
- * stuff that actually chooses the game.
+/**
+ * Allows the user to select a game.
+ * 
+ * @author Lisa Gutermuth
+ * 
  */
 @SuppressWarnings("serial")
 public class GameChooser extends Canvas

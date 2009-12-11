@@ -5,6 +5,8 @@ import gameengine.GameModel;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.List;
+
+import physics.PhysicsVector;
 import util.resources.ResourceManager;
 import actions.Action;
 import actions.Add;

@@ -22,11 +22,19 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import actions.Direction;
+
+import physics.Direction;
+import physics.PhysicsVector;
 import actors.Actor;
-import actors.PhysicsVector;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
+
+/**
+ * A popup box for the user to add/delete/edit Actors in the level editor.
+ * 
+ * @author Lisa Gutermuth
+ * 
+ */
 
 @SuppressWarnings("serial")
 public class EditorCreate extends JFrame
@@ -37,15 +45,14 @@ public class EditorCreate extends JFrame
     private String[] statAppend;
     private Actor myActor;
     private GameModel myModel;
-//    private JTextField myField;
     private JComboBox myImage;
     private String mySaveFile;
     private JTextField[] myDimPoint;
     private JComboBox myBox;
     private JCheckBox myCheckBox;
 
-    public EditorCreate(GameModel model, String levelName, String saveFile,Actor actor,
-            String image, int xDim, int yDim, int x, int y)
+    public EditorCreate(GameModel model, String levelName, String saveFile,
+            Actor actor, String image, int xDim, int yDim, int x, int y)
     {
         setTitle(ResourceManager.getString("EditorTitle"));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -57,7 +64,7 @@ public class EditorCreate extends JFrame
         mySaveFile = saveFile;
 
         copyOriginalFile(levelName);
-        
+
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(7, 1));
         panel.add(actorChooser(levelName));
@@ -76,10 +83,10 @@ public class EditorCreate extends JFrame
 
         setVisible(true);
     }
-    
+
     private void copyOriginalFile(String levelName)
     {
-        if(!ResourceManager.getString(levelName).equals(mySaveFile))
+        if (!ResourceManager.getString(levelName).equals(mySaveFile))
         {
             try
             {
@@ -124,10 +131,11 @@ public class EditorCreate extends JFrame
     {
         File folder = new File("src/images");
         File[] listOfFiles = folder.listFiles();
-        
-        //the first file is src/images/svn...we thought this image would be better, and wouldn't crash
+
+        // the first file is src/images/svn...we thought this image would be
+        // better, and wouldn't crash
         listOfFiles[0] = new File("src/resources/2150_lightning.jpg");
-        
+
         myImage = new JComboBox(listOfFiles);
 
         return myImage;
@@ -149,7 +157,7 @@ public class EditorCreate extends JFrame
         }
         return panel;
     }
-    
+
     private JComponent setDeleteOption()
     {
         myCheckBox = new JCheckBox("Delete Old Actor?");
@@ -215,19 +223,19 @@ public class EditorCreate extends JFrame
 
         try
         {
-            
+
             myModel.addActor((Actor) Reflection.createInstance("actors."
                     + actorStats[0], actorStats[1], new Dimension(Integer
-                            .parseInt(actorStats[2]), Integer.parseInt(actorStats[3])),
-                            new Point(Integer.parseInt(actorStats[4]), Integer
-                                    .parseInt(actorStats[5])), myModel, new PhysicsVector(new Direction(-1,-1),10)));
+                    .parseInt(actorStats[2]), Integer.parseInt(actorStats[3])),
+                    new Point(Integer.parseInt(actorStats[4]), Integer
+                            .parseInt(actorStats[5])), myModel,
+                    new PhysicsVector(new Direction(-1, -1), 10)));
             try
             {
-                FileWriter output = new FileWriter(mySaveFile,true);
+                FileWriter output = new FileWriter(mySaveFile, true);
                 output.append("\nactors." + actorStats[0] + " " + actorStats[1]
-                                          + " " + actorStats[2] + " " + actorStats[3] + " "
-                                          + actorStats[4] + " " + actorStats[5]
-                                          + " -1 -1 10");
+                        + " " + actorStats[2] + " " + actorStats[3] + " "
+                        + actorStats[4] + " " + actorStats[5] + " -1 -1 10");
                 output.close();
                 dispose();
             } catch (FileNotFoundException e)
@@ -237,8 +245,7 @@ public class EditorCreate extends JFrame
             {
                 System.out.println(e.getMessage());
             }
-        }
-        catch(NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             System.out.println(e.getMessage());
             dispose();

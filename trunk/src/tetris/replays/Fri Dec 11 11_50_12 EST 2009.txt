@@ -1,0 +1,311 @@
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 26 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 31 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 36 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 41 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 46 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 51 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 56 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 61 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 66 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 71 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 76 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 81 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 86 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 91 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 480 96 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 101 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 106 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 111 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 116 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 121 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 126 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 131 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 136 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 141 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 146 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 151 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 156 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 161 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 467 166 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 171 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 176 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 181 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 186 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 191 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 196 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 201 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 206 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 211 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 216 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 221 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 226 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 231 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 236 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 241 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 246 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 251 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 256 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 261 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 454 266 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 441 271 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 441 276 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 441 281 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 441 286 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 441 291 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 441 296 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 428 301 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 428 306 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 428 311 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 428 316 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 428 321 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 428 326 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 415 331 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 415 336 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 415 341 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 415 346 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 415 351 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 415 356 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 415 361 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 402 366 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 402 371 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 402 376 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 402 381 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 402 386 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 389 391 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 389 396 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 389 401 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 389 406 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 389 411 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 416 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 421 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 426 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 431 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 436 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 441 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 446 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 451 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 456 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 461 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 466 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 471 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 476 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 481 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 486 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 491 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 496 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 501 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 506 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 511 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 516 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 521 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 526 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 531 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 536 0.0 1.0 5.0
+update
+actors.BottomWall src/images/brick3.gif 960 36 480 642 0.7071067811865475 0.7071067811865475 0.0
+actors.FallingPiece src/images/tetrisspiece1.gif 78 52 376 541 0.0 1.0 5.0

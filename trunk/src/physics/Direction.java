@@ -1,5 +1,5 @@
 //TODO: Consider removing this class
-package actions;
+package physics;
 
 /**
  * 

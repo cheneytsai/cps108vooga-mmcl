@@ -4,19 +4,21 @@ import gameengine.GameModel;
 import actors.Actor;
 
 /**
+ * Loads the next level in the current GameModel.
  * 
- * @author Micheal Yu
+ * @author Michael Yu
  * 
  */
-public class NextLevel extends Lose implements Action
+public class NextLevel implements Action
 {
+
+    protected GameModel myModel;
 
     public NextLevel(GameModel model)
     {
-        super(model);
+        myModel = model;
     }
 
-    @Override
     public void execute(Actor... actors)
     {
         myModel.loadNextLevel();

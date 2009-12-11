@@ -11,6 +11,13 @@ import util.resources.ResourceManager;
 import view.Canvas;
 import view.LevelViewer;
 
+/**
+ * A LevelViewer for Tetris.
+ * 
+ * @author Megan Heysham
+ *
+ */
+
 @SuppressWarnings("serial")
 public class TetrisLevelViewer extends LevelViewer
 {

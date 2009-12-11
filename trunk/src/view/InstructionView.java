@@ -11,9 +11,14 @@ import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import actors.Actor;
-
 import util.resources.ResourceManager;
+
+/**
+ * Displays instructions from a text file.
+ * 
+ * @author Megan Heysham
+ *
+ */
 
 @SuppressWarnings("serial")
 public class InstructionView extends Canvas

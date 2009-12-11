@@ -6,17 +6,25 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 
+import physics.Direction;
+import physics.PhysicsVector;
+
 import actions.Add;
-import actions.Direction;
-import actions.UpdateScore;
 import actors.Actor;
 import actors.Ball;
 import actors.BottomWall;
 import actors.LeftWall;
 import actors.Paddle;
-import actors.PhysicsVector;
 import actors.Wall;
 import view.Canvas;
+
+/**
+ * A GameModel for Arkanoid.
+ * 
+ * @author Lisa Gutermuth
+ * @author Megan Heysham
+ *
+ */
 
 public class ArkanoidModel extends GameModel
 {

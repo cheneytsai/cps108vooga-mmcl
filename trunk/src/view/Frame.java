@@ -10,6 +10,12 @@ import actions.Quit;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
+/**
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
+
 @SuppressWarnings("serial")
 public class Frame extends JFrame
 {

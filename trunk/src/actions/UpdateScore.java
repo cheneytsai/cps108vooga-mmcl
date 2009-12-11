@@ -4,8 +4,9 @@ import gameengine.GameModel;
 import actors.Actor;
 
 /**
+ * Increments to score of a given GameModel by a given amount.
  * 
- * @author Michael Yu
+ * @author Lisa Gutermuth
  * 
  */
 public class UpdateScore implements Action

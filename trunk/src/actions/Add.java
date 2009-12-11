@@ -1,11 +1,13 @@
 package actions;
 
+import physics.Direction;
+import physics.PhysicsVector;
 import gameengine.GameModel;
 import util.reflection.Reflection;
 import actors.Actor;
-import actors.PhysicsVector;
 
 /**
+ * Adds a given type of Actor to a given GameModel
  * 
  * @author Megan Heysham
  * 

@@ -1,8 +1,19 @@
 package actions;
 
 import java.awt.Point;
+
+import physics.Direction;
+import physics.PhysicsVector;
 import actors.Actor;
-import actors.PhysicsVector;
+
+/**
+ * Changes the position and velocity of an Actor to a default.
+ * 
+ * This is currently only called using Ball and has not been generalized.
+ * 
+ * @author Lisa Gutermuth
+ *
+ */
 
 public class Reset implements Action
 {

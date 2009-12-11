@@ -1,7 +1,7 @@
 import view.Frame;
 
 /**
- * The main method to start our game arcade.
+ * The main method to start our arcade program.
  * 
  * @author Megan Heysham
  */
