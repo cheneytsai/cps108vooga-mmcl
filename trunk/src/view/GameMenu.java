@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import actions.Quit;
+import arkanoid.ArkanoidModel;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
@@ -73,7 +74,8 @@ public class GameMenu extends Canvas
                 {
                     if (e.getY() > 200 && e.getY() < 250)
                     {
-                        Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", myGameName, myCanvas);
+                        Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
+                                myGameName, myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
                     } else if (e.getY() > 300 && e.getY() < 350)
                     {
                         new InstructionView(myGameName, myCanvas);
@@ -90,7 +92,8 @@ public class GameMenu extends Canvas
                                 null, levels, null);
                         try
                         {
-//                            new EditorCanvas(myGameName, level, myCanvas);//model problem. huh.
+                            Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
+                                    myGameName, "view.EditorCanvas",myCanvas);
                         } catch (NumberFormatException n)
                         {
                             System.out.println(n);

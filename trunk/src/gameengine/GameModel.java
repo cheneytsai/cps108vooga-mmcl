@@ -37,10 +37,8 @@ public class GameModel
     private String[] myLevelProgression;
     private LevelViewer myLevelViewer;
     private int myCurrentLevel;
-    protected final int DEFAULT_KEY = KeyEvent.VK_0;
-    protected int[] myPreviousKeys;
 
-    public GameModel(String gameName, Canvas canvas)
+    public GameModel(String gameName, String viewType,Canvas canvas)
     {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
@@ -48,12 +46,10 @@ public class GameModel
         myScore = 0;
         myCurrentLevel = 0;
         myRandom = new Random();
-//        myPreviousKeys = new int[2];
-//        myPreviousKeys[0] = DEFAULT_KEY;
-//        myPreviousKeys[1] = DEFAULT_KEY;
         myLevelProgression = ResourceManager.getString(gameName+"Levels").split(",");
         myConditions = (ConditionChecker) Reflection.createInstance(gameName.toLowerCase()+"."+gameName+"Conditions",this);
-        myLevelViewer = (LevelViewer) Reflection.createInstance(gameName.toLowerCase()+"."+gameName+"LevelViewer",
+
+        myLevelViewer = (LevelViewer) Reflection.createInstance(viewType,
                 gameName,myLevelProgression[0],canvas,this);
         initializeActors();
         myLevelViewer.startGame();
@@ -157,7 +153,6 @@ public class GameModel
     {
         return myRandom;
     }
-
 
     public void loadNextLevel()
     {

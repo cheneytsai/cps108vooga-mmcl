@@ -1,6 +1,7 @@
 package view;
 
 import gameengine.GameModel;
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import actors.Actor;
@@ -12,10 +13,17 @@ public class EditorCanvas extends LevelViewer
     {
         super(gameName, levelName, canvas, model);
 
+        isPaused = true;
         myCanvas.removeKeyListener(myCanvas.getKeyListeners()[0]);
         myCanvas.addMouseListener(mouseListener());
     }
 
+    public void startGame()
+    {
+        myActors = myModel.getActors();
+        myTimer.start();
+    }
+    
     public void update()
     {
     }

@@ -184,6 +184,7 @@ public class EditorCreate extends JFrame
                     + " " + actorStats[2] + " " + actorStats[3] + " "
                     + actorStats[4] + " " + actorStats[5]);
             output.close();
+            dispose();
         } catch (FileNotFoundException e)
         {
             System.out.println(e.getMessage());
@@ -205,6 +206,7 @@ public class EditorCreate extends JFrame
             }
         }
         myModel.remove(myActor);
+        dispose();
 
         try
         {
