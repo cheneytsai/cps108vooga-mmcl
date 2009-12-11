@@ -1,10 +1,11 @@
 package actions;
 
 import java.awt.Point;
+import physics.Direction;
 import utilities.CollisionChecker;
 import actors.Actor;
 import actors.Ball;
-import actors.PhysicsVector;
+import physics.PhysicsVector;
 import actors.Wall;
 
 /**
@@ -18,7 +19,6 @@ public class Bounce implements Action {
 
         Actor a = actors[0];
         Actor b = actors[1];
-        // System.out.println("BOUNCING: " + a + " "+ b);
         Direction origDirection = a.getVelocity().getDirection();
         double origMagnitude = a.getVelocity().getMagnitude();
         if (CollisionChecker.intersects(b, new Point(a.getPosition().x, a.getTop()))
