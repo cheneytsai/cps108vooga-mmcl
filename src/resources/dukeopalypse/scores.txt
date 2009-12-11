@@ -1,0 +1,10 @@
+Luke Skywalker		9		Thu Dec 10 21:03:53 EST 2009
+Dr. Twoface		-222		Thu Dec 10 21:04:14 EST 2009
+Doctor 3-Face		-333		Thu Dec 10 21:04:23 EST 2009
+Elizabeth		-43		Thu Dec 10 21:04:31 EST 2009
+Michelle		-5		Thu Dec 10 21:04:37 EST 2009
+God of War		-42		Thu Dec 10 21:04:43 EST 2009
+Settlers of Catan		-0		Thu Dec 10 21:04:58 EST 2009
+Doctor House		-314		Thu Dec 10 21:05:15 EST 2009
+Bill Gates		-1000000000		Thu Dec 10 21:06:29 EST 2009
+Chuck Norris		1000000000		Thu Dec 10 21:06:44 EST 2009
