@@ -8,7 +8,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -20,8 +19,6 @@ public class Canvas extends JPanel
     private Canvas myActive;
     protected GameModel myModel;
     protected String myGameName;
-    private JFrame myFrame;
-
     protected static final Font TITLE_FONT = new Font("TAHOMA", Font.BOLD, 75);
     protected static final Font OPTION_FONT = new Font("TAHOMA", Font.BOLD, 40);
     protected static final Font SCOREBOARD_FONT = new Font("TAHOMA",

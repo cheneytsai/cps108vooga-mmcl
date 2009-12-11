@@ -65,11 +65,6 @@ public abstract class Actor
         // TODO: make all this readable from a file
     }
 
-    public Actor(String image, int width, int height, int xPos, int yPos,
-            GameModel model)
-    {
-        this(image, new Dimension(width, height), new Point(xPos, yPos), model);
-    }
 
     protected abstract void loadBehavior();
 

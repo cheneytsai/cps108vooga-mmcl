@@ -20,12 +20,6 @@ public class Wall extends Actor
         super(string, dimension, point, gameModel);
     }
 
-    public Wall(String image, int width, int height, int xPos, int yPos,
-            GameModel model)
-    {
-        super(image, width, height, xPos, yPos, model);
-    }
-
     @Override
     protected void loadBehavior()
     {
