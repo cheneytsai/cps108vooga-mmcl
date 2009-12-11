@@ -12,7 +12,7 @@ import actors.Actor;
  * This is currently only called using Ball and has not been generalized.
  * 
  * @author Lisa Gutermuth
- *
+ * 
  */
 
 public class Reset implements Action

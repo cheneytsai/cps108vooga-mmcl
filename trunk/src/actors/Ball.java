@@ -26,7 +26,8 @@ public class Ball extends Actor
 
     private int defaultHealth = 2;
 
-    public Ball(String image, Dimension size, Point position, GameModel model, PhysicsVector v)
+    public Ball(String image, Dimension size, Point position, GameModel model,
+            PhysicsVector v)
     {
         super(image, size, position, model, v);
         setHealth(defaultHealth);

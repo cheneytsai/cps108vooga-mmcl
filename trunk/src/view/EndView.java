@@ -18,8 +18,8 @@ import util.resources.ResourceManager;
 @SuppressWarnings("serial")
 public class EndView extends Canvas
 {
-    public EndView(String endCondition, String gameName,
-            Canvas canvas,GameModel model)
+    public EndView(String endCondition, String gameName, Canvas canvas,
+            GameModel model)
     {
         myCanvas = canvas;
         myCanvas.setActive(this);

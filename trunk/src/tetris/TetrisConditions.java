@@ -8,7 +8,7 @@ import conditions.ConditionChecker;
  * ConditionChecker for Tetris
  * 
  * @author Michael Yu
- *
+ * 
  */
 
 public class TetrisConditions extends ConditionChecker
@@ -38,7 +38,5 @@ public class TetrisConditions extends ConditionChecker
         return numberInRow == Grid.getGridSize().width;
 
     }
-    
-    
 
 }

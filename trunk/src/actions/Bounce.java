@@ -19,7 +19,7 @@ public class Bounce implements Action
 
     public void execute(Actor... actors)
     {
-     
+
         Actor a = actors[0];
         Actor b = actors[1];
         Direction origDirection = a.getVelocity().getDirection();

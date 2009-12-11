@@ -22,10 +22,12 @@ import actions.UpdateScore;
 public class Brick extends Actor
 {
 
-    public Brick(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
-        super(image,size,position,model,velocity);
+    public Brick(String image, Dimension size, Point position, GameModel model,
+            PhysicsVector velocity)
+    {
+        super(image, size, position, model, velocity);
         setHealth(getModel().getRandom().nextInt(2) + 1);
-        setVelocity(new PhysicsVector(new Direction(1,1),0));
+        setVelocity(new PhysicsVector(new Direction(1, 1), 0));
     }
 
     @Override

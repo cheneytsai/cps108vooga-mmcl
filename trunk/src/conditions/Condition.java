@@ -3,7 +3,7 @@ package conditions;
 /**
  * 
  * @author Michael Yu
- *
+ * 
  */
 public interface Condition
 {

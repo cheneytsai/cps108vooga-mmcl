@@ -30,7 +30,8 @@ public class Replace implements Action
         {
             for (int j = 0; j < Grid.getGridSize().height; j++)
             {
-                if (CollisionChecker.intersects(actors[0], Grid.getMarker(i, j).getPosition()))
+                if (CollisionChecker.intersects(actors[0], Grid.getMarker(i, j)
+                        .getPosition()))
                 {
                     Grid.addBlock(i, j, myReplacements.getString(actors[0]
                             .getImageString()));

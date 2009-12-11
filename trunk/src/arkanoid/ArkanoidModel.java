@@ -23,21 +23,23 @@ import view.Canvas;
  * 
  * @author Lisa Gutermuth
  * @author Megan Heysham
- *
+ * 
  */
 
 public class ArkanoidModel extends GameModel
 {
 
-    public ArkanoidModel(String gameName,String resumeName,int level,String viewType,Canvas canvas)
+    public ArkanoidModel(String gameName, String resumeName, int level,
+            String viewType, Canvas canvas)
     {
-        super(gameName,resumeName,level,viewType,canvas);
+        super(gameName, resumeName, level, viewType, canvas);
     }
 
     protected void hotkeyCheck(KeyEvent myLastKeyPressed)
     {
         super.hotKeyCheck(myLastKeyPressed);
-        if (myLastKeyPressed != null && myLastKeyPressed.getKeyCode() == KeyEvent.VK_B)
+        if (myLastKeyPressed != null
+                && myLastKeyPressed.getKeyCode() == KeyEvent.VK_B)
         {
             Actor paddleActor = null;
             for (Actor actor : myActorList)
@@ -51,12 +53,12 @@ public class ArkanoidModel extends GameModel
             if (paddleActor != null)
             {
                 new Add(this, Ball.class.getCanonicalName())
-                .execute(paddleActor);
+                        .execute(paddleActor);
                 myActorList.get(myActorList.size() - 1).setVelocity(
                         new PhysicsVector(new Direction(1, 1), 10));
             }
         }
-        
+
     }
 
     public void update(KeyEvent myLastKeyPressed)
@@ -75,6 +77,7 @@ public class ArkanoidModel extends GameModel
         addActor(new Wall("src/images/brick3.gif", new Dimension(16, 650),
                 new Point(965, 325), this));
         addActor(new BottomWall("src/images/brick3.gif",
-                new Dimension(960, 16), new Point(480, 666), this, new PhysicsVector(new Direction(1,1),0)));
+                new Dimension(960, 16), new Point(480, 666), this,
+                new PhysicsVector(new Direction(1, 1), 0)));
     }
 }

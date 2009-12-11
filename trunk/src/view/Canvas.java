@@ -1,6 +1,5 @@
 package view;
 
-
 import gameengine.GameModel;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,7 +11,7 @@ import javax.swing.JPanel;
 /**
  * 
  * @author Lisa Gutermuth
- *
+ * 
  */
 
 @SuppressWarnings("serial")
@@ -81,5 +80,5 @@ public class Canvas extends JPanel
     {
         return myActive;
     }
-    
+
 }

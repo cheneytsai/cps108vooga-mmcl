@@ -27,15 +27,18 @@ import actions.Rotate;
 public class FallingPiece extends Actor
 {
 
-    
-    public FallingPiece(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
-        super(image,size,position,model,velocity);
-        
+    public FallingPiece(String image, Dimension size, Point position,
+            GameModel model, PhysicsVector velocity)
+    {
+        super(image, size, position, model, velocity);
+
     }
+
     public FallingPiece(String image, Dimension size, Point position,
             GameModel gameModel)
     {
-        super(image, size, position, gameModel, new PhysicsVector(new Direction(0, 1), 5));
+        super(image, size, position, gameModel, new PhysicsVector(
+                new Direction(0, 1), 5));
     }
 
     @Override

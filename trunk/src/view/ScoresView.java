@@ -1,6 +1,5 @@
 package view;
 
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.File;
@@ -19,7 +18,7 @@ import util.resources.ResourceManager;
  * Displays high scores from a text file.
  * 
  * @author Lisa Gutermuth
- *
+ * 
  */
 
 @SuppressWarnings("serial")

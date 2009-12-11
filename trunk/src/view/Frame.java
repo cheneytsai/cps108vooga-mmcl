@@ -13,7 +13,7 @@ import util.resources.ResourceManager;
 /**
  * 
  * @author Lisa Gutermuth
- *
+ * 
  */
 
 @SuppressWarnings("serial")
@@ -79,20 +79,23 @@ public class Frame extends JFrame
 
         return fileMenu;
     }
-    
+
     private JMenu makeGamePlayMenu()
     {
         myGamePlayMenu = new JMenu(ResourceManager.getString("GameOptions"));
 
-        myGamePlayMenu.add(new AbstractAction(ResourceManager.getString("NewGame"))
+        myGamePlayMenu.add(new AbstractAction(ResourceManager
+                .getString("NewGame"))
         {
             public void actionPerformed(ActionEvent ev)
             {
                 if (myCanvas.getGameName() != null)
                 {
                     String gameName = myCanvas.getGameName();
-                    Reflection.createInstance(gameName.toLowerCase() + "." + gameName + "Model", 
-                            gameName, "",DEFAULT_START_LEVEL,gameName.toLowerCase() + "." +gameName+"LevelViewer",myCanvas);
+                    Reflection.createInstance(gameName.toLowerCase() + "."
+                            + gameName + "Model", gameName, "",
+                            DEFAULT_START_LEVEL, gameName.toLowerCase() + "."
+                                    + gameName + "LevelViewer", myCanvas);
                 }
             }
         });
@@ -107,31 +110,32 @@ public class Frame extends JFrame
                 }
             }
         });
-        myGamePlayMenu
-                .add(new AbstractAction(ResourceManager.getString("HighScores"))
-                {
-                    public void actionPerformed(ActionEvent ev)
-                    {
-                        if (myCanvas.getGameName() != null)
-                        {
-                            new ScoresView(myCanvas.getGameName(), myCanvas);
-                        }
-                    }
-                });
-        myGamePlayMenu.add(new AbstractAction(ResourceManager.getString("Save"))
+        myGamePlayMenu.add(new AbstractAction(ResourceManager
+                .getString("HighScores"))
         {
             public void actionPerformed(ActionEvent ev)
             {
-                if (myCanvas.getActive() instanceof LevelViewer)
+                if (myCanvas.getGameName() != null)
                 {
-                    ((LevelViewer) myCanvas.getActive()).saveState();
+                    new ScoresView(myCanvas.getGameName(), myCanvas);
                 }
             }
         });
+        myGamePlayMenu
+                .add(new AbstractAction(ResourceManager.getString("Save"))
+                {
+                    public void actionPerformed(ActionEvent ev)
+                    {
+                        if (myCanvas.getActive() instanceof LevelViewer)
+                        {
+                            ((LevelViewer) myCanvas.getActive()).saveState();
+                        }
+                    }
+                });
 
         return myGamePlayMenu;
     }
-    
+
     public void setGamePlayMenuVisibility(boolean visibility)
     {
         myGamePlayMenu.setVisible(visibility);

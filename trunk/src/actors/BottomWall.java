@@ -13,9 +13,11 @@ import physics.PhysicsVector;
  * 
  */
 public class BottomWall extends Actor
-{    
-    public BottomWall(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
-        super(image,size,position,model,velocity);
+{
+    public BottomWall(String image, Dimension size, Point position,
+            GameModel model, PhysicsVector velocity)
+    {
+        super(image, size, position, model, velocity);
     }
 
     @Override

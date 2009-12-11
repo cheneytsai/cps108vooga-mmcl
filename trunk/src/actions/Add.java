@@ -26,7 +26,8 @@ public class Add implements Action
     public void execute(Actor... actors)
     {
         myModel.addActor((Actor) Reflection.createInstance(myActorType,
-                actors[0].getPosition(), myModel, new PhysicsVector(new Direction(-1, -1), 10)));
+                actors[0].getPosition(), myModel, new PhysicsVector(
+                        new Direction(-1, -1), 10)));
     }
 
 }

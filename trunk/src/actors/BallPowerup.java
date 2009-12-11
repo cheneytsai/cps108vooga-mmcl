@@ -22,12 +22,14 @@ public class BallPowerup extends Powerup
     public BallPowerup(Point position, GameModel model, PhysicsVector velocity)
     {
         super(ResourceManager.getString("BallPowerupImage"), new Dimension(16,
-                16), position, model,velocity);
+                16), position, model, velocity);
     }
-    public BallPowerup(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
-        super(image,size,position,model,velocity);
+
+    public BallPowerup(String image, Dimension size, Point position,
+            GameModel model, PhysicsVector velocity)
+    {
+        super(image, size, position, model, velocity);
     }
-    
 
     @Override
     protected void loadBehavior()

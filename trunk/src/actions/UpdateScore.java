@@ -19,7 +19,7 @@ public class UpdateScore implements Action
     {
         myIncrement = increment;
         myModel = model;
-        
+
     }
 
     public void execute(Actor... actors)
