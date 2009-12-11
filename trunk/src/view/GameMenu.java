@@ -101,7 +101,7 @@ public class GameMenu extends Canvas
                         else
                         {
                             Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
-                                    myGameName, fileName.replace("src\\"+myGameName+"\\savedGames\\","").replace(".txt","")
+                                    myGameName, fileName.replace("src/"+myGameName+"/savedGames/","").replace(".txt","")
                                     ,DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
                         }
                     } else if (e.getY() > 225 && e.getY() < 265)

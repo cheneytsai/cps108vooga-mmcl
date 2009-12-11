@@ -14,6 +14,7 @@ import actions.Direction;
 public class BottomWall extends Actor
 {
 
+
 //    public BottomWall(String string, Dimension dimension, Point point,
 //            GameModel gameModel)
 //    {
