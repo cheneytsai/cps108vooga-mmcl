@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class Canvas extends JPanel
 
 {
-    protected Dimension mySize = new Dimension(960, 720);
+    protected Dimension mySize = new Dimension(960, 650);
     protected Canvas myCanvas;
     private Canvas myActive;
     protected GameModel myModel;
