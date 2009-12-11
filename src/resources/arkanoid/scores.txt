@@ -109,3 +109,6 @@ The Idiot Who Doesn't Know His/Her Own Name		0		Thu Dec 10 22:51:02 EST 2009
 The Idiot Who Doesn't Know His/Her Own Name		0		Thu Dec 10 22:51:22 EST 2009
 The Idiot Who Doesn't Know His/Her Own Name		1500		Thu Dec 10 22:51:46 EST 2009
 Lisa		46700		Thu Dec 10 23:09:33 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		200		Fri Dec 11 04:03:02 EST 2009
+Jake		100		Fri Dec 11 04:31:05 EST 2009
+The Idiot Who Doesn't Know His/Her Own Name		47600		Fri Dec 11 05:50:34 EST 2009
