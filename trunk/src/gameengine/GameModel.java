@@ -38,9 +38,6 @@ public class GameModel
     private LevelViewer myLevelViewer;
     private int myCurrentLevel;
 
-    protected final int DEFAULT_KEY = KeyEvent.VK_0;
-    protected int[] myPreviousKeys =
-    { DEFAULT_KEY, DEFAULT_KEY };
 
     public GameModel(String gameName, int level, String viewType, Canvas canvas)
     {
@@ -87,26 +84,6 @@ public class GameModel
     public void update(KeyEvent myLastKeyPressed)
     {
 
-        if (myLastKeyPressed == null)
-        {
-            myPreviousKeys[0] = DEFAULT_KEY;
-            myPreviousKeys[1] = DEFAULT_KEY;
-        } 
-        
-        else if (myLastKeyPressed.getKeyCode() == myPreviousKeys[0])
-        {
-            if (myPreviousKeys[0] != myPreviousKeys[1])
-            {
-
-                myPreviousKeys[1] = myPreviousKeys[0];
-                myLastKeyPressed = null;
-
-            }
-        } else
-        {
-            myPreviousKeys[1] = myPreviousKeys[0];
-            myPreviousKeys[0] = myLastKeyPressed.getKeyCode();
-        }
 
         for (int k = 0; k < myActorList.size(); k++)
         {

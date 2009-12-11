@@ -7,13 +7,13 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 import actions.AddPiece;
-import actions.ChangeSpeed;
 import actors.*;
 import view.Canvas;
 
 public class TetrisModel extends GameModel
 {
-
+    private final int DEFAULT_KEY = KeyEvent.VK_0;
+    private int[] myPreviousKeys;
 
     public TetrisModel(String gameName,int level,String viewType,Canvas canvas)
     {
@@ -26,42 +26,32 @@ public class TetrisModel extends GameModel
         {
             loadEnd("Lose");
         } 
-        else if (myLastKeyPressed!=null && myPreviousKeys[0] == KeyEvent.VK_UP && myLastKeyPressed.getKeyCode() == KeyEvent.VK_UP)
+        else if (myLastKeyPressed == null)
+        {
+            myPreviousKeys[0] = DEFAULT_KEY;
+            myPreviousKeys[1] = DEFAULT_KEY;
+            super.update(null);
+        } else if (myPreviousKeys[0] == KeyEvent.VK_UP
+                && myLastKeyPressed.getKeyCode() == KeyEvent.VK_UP)
         {
             super.update(null);
-            myPreviousKeys[0] = KeyEvent.VK_UP;
-            myPreviousKeys[1] = KeyEvent.VK_UP;
-        } 
-        else
+        } else if (myLastKeyPressed.getKeyCode() == myPreviousKeys[0])
         {
+            if (myPreviousKeys[0] == myPreviousKeys[1])
+            {
+                super.update(myLastKeyPressed);
+            } else
+            {
+                myPreviousKeys[1] = myPreviousKeys[0];
+                super.update(null);
+
+            }
+        } else
+        {
+            myPreviousKeys[1] = myPreviousKeys[0];
+            myPreviousKeys[0] = myLastKeyPressed.getKeyCode();
             super.update(myLastKeyPressed);
         }
-//        else if (myLastKeyPressed == null)
-//        {
-//            myPreviousKeys[0] = DEFAULT_KEY;
-//            myPreviousKeys[1] = DEFAULT_KEY;
-//            super.update(null);
-//        } else if (myPreviousKeys[0] == KeyEvent.VK_UP
-//                && myLastKeyPressed.getKeyCode() == KeyEvent.VK_UP)
-//        {
-//            super.update(null);
-//        } else if (myLastKeyPressed.getKeyCode() == myPreviousKeys[0])
-//        {
-//            if (myPreviousKeys[0] == myPreviousKeys[1])
-//            {
-//                super.update(myLastKeyPressed);
-//            } else
-//            {
-//                myPreviousKeys[1] = myPreviousKeys[0];
-//                super.update(null);
-//
-//            }
-//        } else
-//        {
-//            myPreviousKeys[1] = myPreviousKeys[0];
-//            myPreviousKeys[0] = myLastKeyPressed.getKeyCode();
-//            super.update(myLastKeyPressed);
-//        }
         Grid.removeFullRowsAndDrop();
     }
 
@@ -100,7 +90,7 @@ public class TetrisModel extends GameModel
         myPreviousKeys = new int[2];
         myPreviousKeys[0] = DEFAULT_KEY;
         myPreviousKeys[1] = DEFAULT_KEY;
-         new ChangeSpeed(5 + (((TetrisLevelViewer)getLevelViewer()).getLevelNum()-1)).execute(actor);
+//         new ChangeSpeed(5 + (getCanvas().getLevelNum()-1)).execute(actor);
     }
 
 }
