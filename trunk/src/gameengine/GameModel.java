@@ -38,20 +38,27 @@ public class GameModel
     private LevelViewer myLevelViewer;
     private int myCurrentLevel;
 
+    protected final int DEFAULT_KEY = KeyEvent.VK_0;
+    protected int[] myPreviousKeys =
+    { DEFAULT_KEY, DEFAULT_KEY };
 
-    public GameModel(String gameName,int level,String viewType,Canvas canvas)
+    public GameModel(String gameName, int level, String viewType, Canvas canvas)
     {
+
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
         gameOver = false;
         myScore = 0;
         myCurrentLevel = level;
         myRandom = new Random();
-        myLevelProgression = ResourceManager.getString(gameName+"Levels").split(",");
-        myConditions = (ConditionChecker) Reflection.createInstance(gameName.toLowerCase()+"."+gameName+"Conditions",this);
+        myLevelProgression = ResourceManager.getString(gameName + "Levels")
+                .split(",");
+        myConditions = (ConditionChecker) Reflection.createInstance(gameName
+                .toLowerCase()
+                + "." + gameName + "Conditions", this);
 
         myLevelViewer = (LevelViewer) Reflection.createInstance(viewType,
-                gameName,myLevelProgression[myCurrentLevel],canvas,this);
+                gameName, myLevelProgression[myCurrentLevel], canvas, this);
         initializeActors();
         myLevelViewer.startGame();
     }
@@ -60,7 +67,8 @@ public class GameModel
     {
         try
         {
-            Scanner input = new Scanner(new File(ResourceManager.getString(myLevelViewer.getGameName() + "level"
+            Scanner input = new Scanner(new File(ResourceManager
+                    .getString(myLevelViewer.getGameName() + "level"
                             + myLevelViewer.getLevelName())));
             while (input.hasNextLine())
             {
@@ -75,29 +83,49 @@ public class GameModel
             System.out.println("File not found");
         }
     }
-    
+
     public void update(KeyEvent myLastKeyPressed)
     {
-       
-            for (int k = 0; k < myActorList.size(); k++)
-            {
-                Point tempPos = myActorList.get(k).getPosition();
-                myActorList.get(k).act(myLastKeyPressed);
-                if (myActorList.get(k).getPosition() != tempPos)
-                {
-                    myActorList.get(k).hasMoved = true;
-                }
-            }
-            // Set Flag for movement here
 
-            myConditions.checkConditions();
-            for (int k = 0; k < myActorList.size(); k++)
+        if (myLastKeyPressed == null)
+        {
+            myPreviousKeys[0] = DEFAULT_KEY;
+            myPreviousKeys[1] = DEFAULT_KEY;
+        } 
+        
+        else if (myLastKeyPressed.getKeyCode() == myPreviousKeys[0])
+        {
+            if (myPreviousKeys[0] != myPreviousKeys[1])
             {
-                myActorList.get(k).hasMoved = false;
+
+                myPreviousKeys[1] = myPreviousKeys[0];
+                myLastKeyPressed = null;
+
             }
-            // Reset All to no movement 
-            
-            
+        } else
+        {
+            myPreviousKeys[1] = myPreviousKeys[0];
+            myPreviousKeys[0] = myLastKeyPressed.getKeyCode();
+        }
+
+        for (int k = 0; k < myActorList.size(); k++)
+        {
+            Point tempPos = myActorList.get(k).getPosition();
+            myActorList.get(k).act(myLastKeyPressed);
+            if (myActorList.get(k).getPosition() != tempPos)
+            {
+                myActorList.get(k).hasMoved = true;
+            }
+        }
+        // Set Flag for movement here
+
+        myConditions.checkConditions();
+        for (int k = 0; k < myActorList.size(); k++)
+        {
+            myActorList.get(k).hasMoved = false;
+        }
+        // Reset All to no movement
+
     }
 
     public void clearActors()
@@ -122,8 +150,7 @@ public class GameModel
 
     public void updateScore(int increment)
     {
-        // TODO: Generalize this into something that can update any game state
-        // (make a map of info name -> values)
+
         myScore += increment;
     }
 
@@ -160,14 +187,13 @@ public class GameModel
     public void loadNextLevel()
     {
         myCurrentLevel++;
-        if(myLevelProgression.length > myCurrentLevel)
+        if (myLevelProgression.length > myCurrentLevel)
         {
             myLevelViewer.loadNextLevel(myLevelProgression[myCurrentLevel]);
             myActorList.clear();
             initializeActors();
             myLevelViewer.startGame();
-        }
-        else
+        } else
         {
             loadEnd("Win");
         }
@@ -177,12 +203,13 @@ public class GameModel
     {
         myLevelViewer.loadEnd(endCondition);
     }
-    
+
     public void loadBonusLevel(int level)
     {
         myLevelViewer.loadBonusLevel(level);
 
     }
+
     public int getScore()
     {
         return myScore;
@@ -192,7 +219,7 @@ public class GameModel
     {
         myScore = 0;
     }
-    
+
     public LevelViewer getLevelViewer()
     {
         return myLevelViewer;
