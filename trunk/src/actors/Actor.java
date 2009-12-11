@@ -6,6 +6,7 @@ import gameengine.GameModel;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Shape;
@@ -41,32 +42,12 @@ public abstract class Actor
     protected Map<String, List<Action>> myInteractions; // Interaction
     protected Action myDefaultBehavior; // Default Action
     public boolean hasChanged; // Flag - Changed?
-    public boolean hasMoved; // Flag - Moved?
     private int myHealth;
 
-//    public Actor(String image, Dimension size, Point position, GameModel model)
-//    {
-//        myHeading = 0;
-//        myXform = new AffineTransform();
-//        setImage(image);
-//        setSize(size.width, size.height);
-//        setShape(makeShape(myImage));
-//        myPosition = position;
-//        myModel = model;
-//        myVelocity = new PhysicsVector(new Direction(-1, -1), 10); // TODO: Make
-//        // these
-//        // parameters
-//        // or
-//        // something
-//        // myKeyEvents = new HashMap<String, List<Action>>();
-//        myKeyEvents = new HashMap<Integer, List<Action>>();
-//        myInteractions = new HashMap<String, List<Action>>();
-//        loadBehavior();
-//    }
-    
-    public Actor(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
+    public Actor(String image, Dimension size, Point position, GameModel model)
+    {
         myHeading = 0;
-        myXform = new AffineTransform();
+        
         setImage(image);
         setSize(size.width, size.height);
         setShape(makeShape(myImage));
@@ -81,15 +62,35 @@ public abstract class Actor
         myKeyEvents = new HashMap<Integer, List<Action>>();
         myInteractions = new HashMap<String, List<Action>>();
         loadBehavior();
+        myXform = new AffineTransform();
         // TODO: make all this readable from a file
-        myVelocity = velocity;
     }
+    
+    public void setHeading(double heading)
+    {
+        hasChanged = true;
+        myHeading = heading;
+    }
+    
+    public double getHeading()
+    {
+        return myHeading;
+    }
+    
 
+    public Actor(String image, int width, int height, int xPos, int yPos,
+            GameModel model)
+    {
+        this(image, new Dimension(width, height), new Point(xPos, yPos), model);
+    }
 
     protected abstract void loadBehavior();
 
     public void act(KeyEvent myLastKeyPressed)
     {
+        if (hasChanged)
+            myXform = getTransform();
+            
         hasChanged = false;
         for (Integer e : myKeyEvents.keySet())
         {
@@ -100,29 +101,31 @@ public abstract class Actor
             {
                 for (Action a : myKeyEvents.get(e))
                     a.execute(this);
-                hasMoved = true;
             }
         }
 
         if (myDefaultBehavior != null)
         {
             myDefaultBehavior.execute(this);
-            hasMoved = true;
         }
     }
 
     public void interact(Actor other)
     {
+//        if (this.getClass().equals(Ball.class) && other.getClass().equals(Wall.class))
+//            System.out.println(this + " " + other);
         for (String s : myInteractions.keySet())
         {
             if (other.getClass().getCanonicalName().equals(s))
             {
                 for (Action a : myInteractions.get(s))
                 {
+                    System.out.println(this + " " + other + " " + a);
                     a.execute(this, other);
                 }
             }
         }
+        //if (this.getClass().equals(Ball.class) && other.getClass().equals(Wall.class)) System.out.println("Finish");
         // TODO: Maybe make this so that instead of having actions in a map, it
         // has the name of an action
         // and constructor values, and just creates a new action everytime as
@@ -131,11 +134,13 @@ public abstract class Actor
 
     public void setPosition(Point p)
     {
+        hasChanged = true;
         myPosition = p;
     }
 
     public void setVelocity(PhysicsVector v)
     {
+        hasChanged = true;
         myVelocity = v;
     }
 
@@ -166,6 +171,7 @@ public abstract class Actor
 
     public void setImage(String newImage)
     {
+        hasChanged = true;
         myImage = new ImageIcon(newImage).getImage();
         myImageString = newImage;
     }
@@ -183,6 +189,7 @@ public abstract class Actor
 
     public void setSize(int width, int height)
     {
+        hasChanged = true;
         mySize = new Dimension(width, height);
     }
 
@@ -308,10 +315,20 @@ public abstract class Actor
      * 
      * Currently, draws the shape as an image.
      */
-    public void paint(Graphics pen)
+//    public void paint(Graphics pen)
+//    {
+//        pen.drawImage(myImage, getLeft(), getTop(), getSize().width,
+//                getSize().height, null);
+//    }
+    
+    public void paint (Graphics pen)
     {
-        pen.drawImage(myImage, getLeft(), getTop(), getSize().width,
-                getSize().height, null);
+        //System.out.println("WHOA");
+        Graphics2D pen2D = (Graphics2D)pen;
+        java.awt.geom.AffineTransform old = pen2D.getTransform();
+        pen2D.transform(getTransform());
+        pen2D.drawImage(myImage, 0, 0, 1, 1, null);
+        pen2D.setTransform(old);
     }
 
     /**

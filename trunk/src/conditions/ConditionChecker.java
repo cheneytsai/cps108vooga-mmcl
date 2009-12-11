@@ -3,6 +3,7 @@ package conditions;
 
 import gameengine.GameModel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,20 +30,27 @@ public abstract class ConditionChecker
     public void checkConditions()
     {
         myActors = myModel.getActors();
+//        List<Actor> actors = myModel.getActors();
+//        for (Actor a : actors)
+//        {
+//            myActors.add(a);
+//        }
+        
+        CollisionChecker.checkCollisions(myActors);
         conditionsCheck();
-        collisionCheck();
+
     }
 
-    private void collisionCheck()
-    {
-        for (int k = 0; k < myActors.size(); k++)
-        {
-            if (myActors.get(k).hasMoved = true)
-            {
-                CollisionChecker.checkCollisions(myActors.get(k), myActors);
-            }
-        }
-    }
+//    private void collisionCheck()
+//    {
+//        for (int k = 0; k < myActors.size(); k++)
+//        {
+//            if (myActors.get(k).hasChanged == true)
+//            {
+//                CollisionChecker.checkCollisions(myActors.get(k), myActors);
+//            }
+//        }
+//    }
 
     private void conditionsCheck()
     {
@@ -51,7 +59,6 @@ public abstract class ConditionChecker
             if (c.evaluate())
             {
                 myConditions.get(c).execute();
-                break;
             }
         }
     }

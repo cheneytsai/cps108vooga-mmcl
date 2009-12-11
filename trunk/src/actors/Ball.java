@@ -24,17 +24,17 @@ public class Ball extends Actor
 
     private int defaultHealth = 2;
 
-//    public Ball(String image, Dimension size, Point position, GameModel model)
-//    {
-//        super(image, size, position, model);
-//        setHealth(defaultHealth);
-//
-//    }
-    public Ball(Point position, GameModel model, PhysicsVector velocity) {
-        super(ResourceManager.getString("BallImage"), new Dimension(16,16), position, model, velocity);
+    public Ball(String image, Dimension size, Point position, GameModel model)
+    {
+        super(image, size, position, model);
+        setHealth(defaultHealth);
+
     }
-    public Ball(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
-        super(image,size,position,model,velocity);
+
+    public Ball(Point position, GameModel model)
+    {
+        super(ResourceManager.getString("BallImage"), new Dimension(16, 16),
+                position, model);
         setHealth(defaultHealth);
     }
 
@@ -44,7 +44,7 @@ public class Ball extends Actor
         myDefaultBehavior = new NaturalMove();
         List<Action> bounce = new ArrayList<Action>();
         bounce.add(new Bounce());
-        bounce.add(myDefaultBehavior);
+        bounce.add(new NaturalMove());
         myInteractions.put(Paddle.class.getCanonicalName(), bounce);
         myInteractions.put(Brick.class.getCanonicalName(), bounce);
         myInteractions.put(Wall.class.getCanonicalName(), bounce);
