@@ -1,5 +1,6 @@
 package view;
 
+import gameengine.GameModel;
 import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -16,11 +17,11 @@ import util.resources.ResourceManager;
 public class EndView extends Canvas
 {
     public EndView(String endCondition, String gameName,
-            Canvas canvas)
+            Canvas canvas,GameModel model)
     {
         myCanvas = canvas;
         myCanvas.setActive(this);
-        myModel = myCanvas.getGameModel();
+        myModel = model;
         myGameName = gameName;
         myCanvas.requestFocus();
 

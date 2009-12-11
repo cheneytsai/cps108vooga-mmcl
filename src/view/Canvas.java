@@ -1,40 +1,21 @@
 package view;
 
-
-
 //TODO make abstract
 
-
-
 import gameengine.GameModel;
-
-
-
 import java.awt.Dimension;
-
 import java.awt.Font;
-
 import java.awt.Graphics;
-
 import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
-
 import javax.swing.JPanel;
 
-
-
 @SuppressWarnings("serial")
-
 public class Canvas extends JPanel
 
 {
 
-
-
     protected Dimension mySize = new Dimension(960, 720);
-
-
 
     protected Canvas myCanvas;
 
@@ -46,22 +27,19 @@ public class Canvas extends JPanel
 
     // private Menu active;
 
-    
-
     protected static final Font TITLE_FONT = new Font("TAHOMA", Font.BOLD, 75);
 
     protected static final Font OPTION_FONT = new Font("TAHOMA", Font.BOLD, 40);
 
     protected static final Font SCOREBOARD_FONT = new Font("TAHOMA",
 
-            Font.PLAIN, 20);
+    Font.PLAIN, 20);
 
     protected static final Font END_FONT = new Font("TAHOMA", Font.PLAIN, 60);
 
     protected static final int AVG_PIXELS_PER_LETTER = 30;
 
     protected ImageIcon icon;
-
 
 
     public Canvas()
@@ -74,7 +52,6 @@ public class Canvas extends JPanel
 
     }
 
-    
 
     public void paintComponent(Graphics g)
 
@@ -95,12 +72,11 @@ public class Canvas extends JPanel
     }
 
 
-
     public void setActive(Canvas toUse)
 
     {
 
-        if(myActive instanceof LevelViewer)
+        if (myActive instanceof LevelViewer)
 
         {
 
@@ -113,7 +89,6 @@ public class Canvas extends JPanel
     }
 
 
-
     public String getGameName()
 
     {
@@ -123,44 +98,20 @@ public class Canvas extends JPanel
     }
 
 
-
     public MouseListener mouseListener()
-
     {
-
         return myActive.mouseListener();
-
     }
-
 
 
     public int getWidth()
-
     {
-
         return mySize.width;
-
     }
-
 
 
     public int getHeight()
-
     {
-
         return mySize.height;
-
     }
-
-
-
-    protected GameModel getGameModel()
-
-    {
-
-        return myModel;
-
-    }
-
 }
-
