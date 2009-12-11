@@ -1,11 +1,11 @@
 package dukeopalypse;
 
+import arkanoid.ArkanoidLevelViewer;
 import gameengine.GameModel;
 import view.Canvas;
-import view.LevelViewer;
 
 @SuppressWarnings("serial")
-public class DukeopalypseLevelViewer extends LevelViewer
+public class DukeopalypseLevelViewer extends ArkanoidLevelViewer
 {
 
     public DukeopalypseLevelViewer(String gameName, String levelName,

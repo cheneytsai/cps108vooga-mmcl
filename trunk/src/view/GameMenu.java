@@ -8,7 +8,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import actions.Quit;
-import arkanoid.ArkanoidModel;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
 

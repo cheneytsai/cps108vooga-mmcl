@@ -7,7 +7,6 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 import actions.Add;
-import actions.BonusLevel;
 import actions.Direction;
 import actions.UpdateScore;
 import actors.Actor;
