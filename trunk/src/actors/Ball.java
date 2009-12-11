@@ -24,17 +24,17 @@ public class Ball extends Actor
 
     private int defaultHealth = 2;
 
-    public Ball(String image, Dimension size, Point position, GameModel model)
+    public Ball(String image, Dimension size, Point position, GameModel model, PhysicsVector v)
     {
-        super(image, size, position, model);
+        super(image, size, position, model, v);
         setHealth(defaultHealth);
 
     }
 
-    public Ball(Point position, GameModel model)
+    public Ball(Point position, GameModel model, PhysicsVector v)
     {
         super(ResourceManager.getString("BallImage"), new Dimension(16, 16),
-                position, model);
+                position, model, v);
         setHealth(defaultHealth);
     }
 
