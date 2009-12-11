@@ -5,8 +5,7 @@ import java.awt.Point;
 import java.awt.geom.Area;
 import java.util.List;
 import actors.Actor;
-import actors.Ball;
-import actors.Wall;
+
 
 public abstract class CollisionChecker {
 
@@ -33,7 +32,6 @@ public abstract class CollisionChecker {
                         interacted[k][i] = true;
                     a.interact(b);
                     b.interact(a);
-                    System.out.println(a + " "+ b);
                 }
             }
 
