@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import actions.Quit;
+import arkanoid.ArkanoidModel;
+import tetris.TetrisModel;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
@@ -73,10 +75,7 @@ public class GameMenu extends Canvas
                 {
                     if (e.getY() > 200 && e.getY() < 250)
                     {
-//                        myModel.clearScore();
-                        Reflection.createInstance(myCanvas.getGameName().toLowerCase() + "." + myCanvas.getGameName() + "LevelViewer", myCanvas.getGameName(), 1, myCanvas);
-
-                        
+                        Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", myGameName, myCanvas);
                     } else if (e.getY() > 300 && e.getY() < 350)
                     {
                         new InstructionView(myGameName, myCanvas);
@@ -93,8 +92,7 @@ public class GameMenu extends Canvas
                                 null, levels, null);
                         try
                         {
-                            new EditorCanvas(myGameName, Integer
-                                    .parseInt(level), myCanvas);
+//                            new EditorCanvas(myGameName, level, myCanvas);//model problem. huh.
                         } catch (NumberFormatException n)
                         {
                             System.out.println(n);

@@ -76,18 +76,13 @@ public class GameChooser extends Canvas
                 {
                     if (e.getY() > 200 && e.getY() < 250)
                     {
-                        myCanvas.setGame(new ArkanoidModel(myCanvas));
                         new GameMenu("Arkanoid", myCanvas);
 
                     } else if (e.getY() > 300 && e.getY() < 350)
                     {
-
-                        myCanvas.setGame(new DukeopalypseModel(myCanvas));
                         new GameMenu("Dukeopalypse", myCanvas);
                     } else if (e.getY() > 400 && e.getY() < 450)
                     {
-
-                        myCanvas.setGame(new TetrisModel(myCanvas));
                         new GameMenu("Tetris", myCanvas);
 
                     } else if (e.getY() > 500 && e.getY() < 550)

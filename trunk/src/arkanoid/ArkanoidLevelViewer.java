@@ -1,5 +1,6 @@
 package arkanoid;
 
+import gameengine.GameModel;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -11,10 +12,10 @@ import view.LevelViewer;
 public class ArkanoidLevelViewer extends LevelViewer
 {
 
-    public ArkanoidLevelViewer(String gameName, int levelNum,
-            Canvas canvas)
+    public ArkanoidLevelViewer(String gameName, String levelName,
+            Canvas canvas, GameModel model)
     {
-        super(gameName, levelNum, canvas);
+        super(gameName, levelName, canvas,model);
     }
     
     @Override
