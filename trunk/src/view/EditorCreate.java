@@ -36,11 +36,12 @@ public class EditorCreate extends JFrame
     private Actor myActor;
     private GameModel myModel;
     private JTextField myField;
+    private String mySaveFile;
     private JTextField[] myDimPoint;
     private JComboBox myBox;
     private JCheckBox myCheckBox;
 
-    public EditorCreate(GameModel model, String levelName, Actor actor,
+    public EditorCreate(GameModel model, String levelName, String saveFile,Actor actor,
             String image, int xDim, int yDim, int x, int y)
     {
         setTitle(ResourceManager.getString("EditorTitle"));
@@ -50,24 +51,59 @@ public class EditorCreate extends JFrame
         statAppend = toAppend.split(",");
         myModel = model;
         myActor = actor;
+        mySaveFile = saveFile;
 
-        JPanel p = new JPanel();
-        p.setLayout(new GridLayout(7, 1));
-        p.add(actorChooser(levelName));
-        p.add(setImage(image));
-        p.add(setDimPoint(xDim, yDim, x, y));
+        copyOriginalFile(levelName);
+        
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(7, 1));
+        panel.add(actorChooser(levelName));
+        panel.add(setImage(image));
+        panel.add(setDimPoint(xDim, yDim, x, y));
         if (actor != null)
         {
-            p.add(setDeleteOption());
-            p.add(makeDeleteButton(levelName));
+            panel.add(setDeleteOption());
+            panel.add(makeDeleteButton(levelName));
         }
-        p.add(makeCreateButton(levelName));
-        getContentPane().add(p, BorderLayout.NORTH);
+        panel.add(makeCreateButton(levelName));
+        getContentPane().add(panel, BorderLayout.NORTH);
 
         setSize(mySize);
         setPreferredSize(mySize);
 
         setVisible(true);
+    }
+    
+    private void copyOriginalFile(String levelName)
+    {
+        if(!ResourceManager.getString(levelName).equals(mySaveFile))
+        {
+            try
+            {
+                File oldFile = new File(ResourceManager.getString(levelName));
+                File newFile = new File(mySaveFile);
+
+                BufferedReader br = new BufferedReader(new FileReader(oldFile));
+                PrintWriter pw = new PrintWriter(new FileWriter(newFile));
+
+                String line = null;
+
+                while ((line = br.readLine()) != null)
+                {
+                    pw.println(line);
+                    pw.flush();
+                }
+                pw.close();
+                br.close();
+
+            } catch (FileNotFoundException e)
+            {
+                System.out.println(e.getMessage());
+            } catch (IOException e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     private JComponent actorChooser(String levelName)
@@ -178,8 +214,9 @@ public class EditorCreate extends JFrame
                         .parseInt(actorStats[5])), myModel));
         try
         {
-            FileWriter output = new FileWriter(ResourceManager
-                    .getString(levelName), true);
+            FileWriter output = new FileWriter(mySaveFile,true);
+//            FileWriter output = new FileWriter(ResourceManager
+//                    .getString(levelName), true);
             output.append("\nactors." + actorStats[0] + " " + actorStats[1]
                     + " " + actorStats[2] + " " + actorStats[3] + " "
                     + actorStats[4] + " " + actorStats[5]);
@@ -210,7 +247,8 @@ public class EditorCreate extends JFrame
 
         try
         {
-            File inFile = new File(ResourceManager.getString(levelName));
+            File inFile = new File(mySaveFile);
+//            File inFile = new File(ResourceManager.getString(levelName));
 
             // Construct the new file that will later be renamed to the original
             // filename.

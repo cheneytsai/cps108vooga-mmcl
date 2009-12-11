@@ -1,14 +1,17 @@
 package view;
 
 import gameengine.GameModel;
-import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
+import util.resources.ResourceManager;
 import actors.Actor;
 
 @SuppressWarnings("serial")
 public class EditorCanvas extends LevelViewer
 {
+    private String mySaveFile;
+    
     public EditorCanvas(String gameName, String levelName, Canvas canvas, GameModel model)
     {
         super(gameName, levelName, canvas, model);
@@ -16,6 +19,9 @@ public class EditorCanvas extends LevelViewer
         isPaused = true;
         myCanvas.removeKeyListener(myCanvas.getKeyListeners()[0]);
         myCanvas.addMouseListener(mouseListener());
+        
+        mySaveFile = (String) JOptionPane.showInputDialog(String.format(ResourceManager
+                .getString("Save")), ResourceManager.getString(gameName+"level"+levelName));
     }
 
     public void startGame()
@@ -54,13 +60,13 @@ public class EditorCanvas extends LevelViewer
                 if (match == null)
                 {
                     new EditorCreate(myModel, getGameName() + "level"
-                            + getLevelName(), null, "src/images/Paddle.gif", 20,
+                            + getLevelName(), mySaveFile,null, "src/images/Paddle.gif", 20,
                             20, e.getX(), e.getY());
                 } else
                 {
 
                     new EditorCreate(myModel, getGameName() + "level"
-                            + getLevelName(), match, match.getImageString(), match
+                            + getLevelName(), mySaveFile,match, match.getImageString(), match
                             .getSize().width, match.getSize().height,
                             (int) match.getPosition().getX(), (int) match
                                     .getPosition().getY());
