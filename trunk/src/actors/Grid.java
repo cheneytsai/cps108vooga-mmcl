@@ -39,7 +39,7 @@ public class Grid extends Actor
         {
             for (int j = 0; j < myPositions[i].length; j++)
             {
-                myPositions[i][j] = new Marker(image, new Dimension(0, 0),
+                myPositions[i][j] = new Marker(image, new Dimension(2, 2),
                         new Point(position.x + i * 26 + 13, position.y + j * 26
                                 + 13), model);
             }
