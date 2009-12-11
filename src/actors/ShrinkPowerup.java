@@ -12,10 +12,13 @@ import actions.Resize;
 public class ShrinkPowerup extends Powerup
 {
 
-    public ShrinkPowerup(Point position, GameModel model)
+    public ShrinkPowerup(Point position, GameModel model, PhysicsVector velocity)
     {
         super(ResourceManager.getString("ShrinkPowerupImage"), new Dimension(
-                16, 16), position, model);
+                16, 16), position, model,velocity);
+    }
+    public ShrinkPowerup(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
+        super(image,size,position,model,velocity);
     }
 
     @Override

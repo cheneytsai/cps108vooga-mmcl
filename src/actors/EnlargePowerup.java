@@ -11,10 +11,14 @@ import actions.Resize;
 
 public class EnlargePowerup extends Powerup
 {
-    public EnlargePowerup(Point position, GameModel model)
+    public EnlargePowerup(Point position, GameModel model, PhysicsVector velocity)
     {
         super(ResourceManager.getString("EnlargePowerupImage"), new Dimension(
-                16, 16), position, model);
+                16, 16), position, model,velocity);
+    }
+    public EnlargePowerup(String image, Dimension size, Point position, GameModel model, PhysicsVector velocity) {
+        super(image,size,position,model,velocity);
+       
     }
 
     @Override
