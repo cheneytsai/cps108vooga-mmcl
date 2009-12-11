@@ -7,7 +7,18 @@ import java.util.Map;
 import conditions.Condition;
 import actions.Action;
 import actors.Actor;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
 
+import util.resources.VoogaResources;
+import datamanager.FileParser;
+
+/**
+ * InteractionEngine To load rules for the game
+ * 
+ * @author Cheney Tsai
+ */
 public class InteractionEngine
 {
 
