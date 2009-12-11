@@ -45,13 +45,15 @@ public class GameModel
     public GameModel(String gameName, int level, String viewType, Canvas canvas)
     {
         try
-    {
-        myPrinter = new PrintWriter(new FileWriter("src/" + gameName.toLowerCase() + "/replays/"+ new GregorianCalendar().getTime()+".txt"));
-    } catch (IOException e)
-    {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
+        {
+            myPrinter = new PrintWriter(new FileWriter("src/"
+                    + gameName.toLowerCase() + "/replays/"
+                    + new GregorianCalendar().getTime() + ".txt"));
+        } catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         myCanvas = canvas;
         // myCanvas.setGamePlayMenuVisibility(true);
         myActorList = new ArrayList<Actor>();
@@ -93,10 +95,10 @@ public class GameModel
 
     public void update(KeyEvent myLastKeyPressed)
     {
-        
-        myPrinter.println("update");
+
         writeStateToFile(myPrinter);
-        
+        myPrinter.println("update");
+
         // Set Flag for movement here
         for (int k = 0; k < myActorList.size(); k++)
         {
@@ -115,10 +117,7 @@ public class GameModel
         {
             myActorList.get(k).hasMoved = false;
         }
-        
-        
-        
-        
+
     }
 
     public void clearActors()
@@ -195,8 +194,10 @@ public class GameModel
     {
         try
         {
-            PrintWriter pw = new PrintWriter(new FileWriter(
-                    "src/" + myLevelViewer.getGameName().toLowerCase() + "/savedGames/"+ new GregorianCalendar().getTime()+".txt"));
+            PrintWriter pw = new PrintWriter(new FileWriter("src/"
+                    + myLevelViewer.getGameName().toLowerCase()
+                    + "/savedGames/" + new GregorianCalendar().getTime()
+                    + ".txt"));
             writeStateToFile(pw);
             pw.close();
         } catch (IOException e)
@@ -216,14 +217,12 @@ public class GameModel
             if (!(actor instanceof Wall))
             {
                 printer.println(actor.getClass().getCanonicalName() + " "
-                        + actor.getImageString() + " "
-                        + actor.getSize().width + " "
-                        + actor.getSize().height + " "
-                        + actor.getPosition().x + " "
-                        + actor.getPosition().y + " "
-                        + actor.getVelocity().getDirection().xShift() + " "
-                        + actor.getVelocity().getDirection().yShift() + " "
-                        + actor.getVelocity().getMagnitude());
+                        + actor.getImageString() + " " + actor.getSize().width
+                        + " " + actor.getSize().height + " "
+                        + actor.getPosition().x + " " + actor.getPosition().y
+                        + " " + actor.getVelocity().getDirection().xShift()
+                        + " " + actor.getVelocity().getDirection().yShift()
+                        + " " + actor.getVelocity().getMagnitude());
                 printer.flush();
             }
         }
