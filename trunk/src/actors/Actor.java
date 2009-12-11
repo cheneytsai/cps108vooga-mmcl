@@ -19,6 +19,8 @@ import java.awt.image.PixelGrabber;
 import java.util.*;
 
 import javax.swing.ImageIcon;
+import physics.Direction;
+import physics.PhysicsVector;
 import actions.*;
 
 /**
