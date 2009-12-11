@@ -86,7 +86,7 @@ public class Frame extends JFrame
                 {
                     String gameName = myCanvas.getGameName();
                     Reflection.createInstance(gameName.toLowerCase() + "." + gameName + "Model", 
-                            gameName, DEFAULT_START_LEVEL,gameName.toLowerCase() + "." +gameName+"LevelViewer",myCanvas);
+                            gameName, "",DEFAULT_START_LEVEL,gameName.toLowerCase() + "." +gameName+"LevelViewer",myCanvas);
                 }
             }
         });

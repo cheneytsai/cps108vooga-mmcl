@@ -160,7 +160,6 @@ public class LevelViewer extends Canvas implements ActionListener
     
     public void saveState()
     {
-        System.out.println("save");
         myModel.saveState();
     }
 }

@@ -5,9 +5,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import actions.Quit;
+import arkanoid.ArkanoidModel;
+import tetris.TetrisModel;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
@@ -55,7 +58,7 @@ public class GameMenu extends Canvas
         int counter;
         for (counter = 0; counter < menuOptions.length; counter++)
         {
-            myPen.drawString(menuOptions[counter], 375, 250 + 75 * counter);
+            myPen.drawString(menuOptions[counter], 375, 200 + 65 * counter);
         }
         myPen.drawString(ResourceManager.getString("Quit"), 375,
                 250 + 100 * counter);
@@ -72,17 +75,45 @@ public class GameMenu extends Canvas
                 if (e.getX() > 375
                         && e.getX() < 375 + 12 * AVG_PIXELS_PER_LETTER)
                 {
-                    if (e.getY() > 200 && e.getY() < 250)
+                    if (e.getY() > 160 && e.getY() < 200)
                     {
-                        Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
-                                myGameName, DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
-                    } else if (e.getY() > 300 && e.getY() < 350)
+                        File folder = new File("src/"+myGameName+"/savedGames");
+                        File[] listOfFiles = folder.listFiles();
+                        String[] fileNames = new String[listOfFiles.length];
+                        for(int i = 1; i < listOfFiles.length; i++)
+                        {
+                            fileNames[i] = listOfFiles[i].toString();
+                        }
+                        fileNames[0] = "New Game";
+                        String fileName =
+                                (String) JOptionPane.showInputDialog(null,
+                                        "Pick a game to play:", "New Game Mode",
+                                        JOptionPane.PLAIN_MESSAGE, null, fileNames, null);
+                        if(fileName == null)
+                        {
+                            JOptionPane.showMessageDialog(null,
+                                    "You have not chosen a game to play!", "Error", 0);
+                        } else if (fileName.equals("New Game"))
+                        {
+                            Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
+                                myGameName, "",DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
+                        }
+                        else
+                        {
+                            Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
+                                    myGameName, fileName.replace("src\\"+myGameName+"\\savedGames\\","").replace(".txt","")
+                                    ,DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
+                        }
+                    } else if (e.getY() > 225 && e.getY() < 265)
+                    {
+                        new ReplayView(myGameName, myCanvas);
+                    } else if (e.getY() > 290 && e.getY() < 330)
                     {
                         new InstructionView(myGameName, myCanvas);
-                    } else if (e.getY() > 375 && e.getY() < 425)
+                    } else if (e.getY() > 355 && e.getY() < 395)
                     {
                         new ScoresView(myGameName, myCanvas);
-                    } else if (e.getY() > 450 && e.getY() < 500)
+                    } else if (e.getY() > 420 && e.getY() < 460)
                     {
                         String[] levels = ResourceManager.getString(
                                 myGameName + "Levels").split(",");
@@ -100,16 +131,17 @@ public class GameMenu extends Canvas
                                     showLevel = i;
                                 }
                             }
-                            Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
-                                    myGameName, showLevel,"view.EditorCanvas",myCanvas);
+                            new ArkanoidModel(myGameName,"", showLevel,"view.EditorCanvas",myCanvas);
+//                            Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
+//                                    myGameName, "",showLevel,"view.EditorCanvas",myCanvas);
                         } catch (NullPointerException n)
                         {
                             System.out.println(n);
                         }
-                    } else if (e.getY() > 500 && e.getY() < 550)
+                    } else if (e.getY() > 485 && e.getY() < 525)
                     {
                         new GameChooser(myCanvas);
-                    } else if (e.getY() > 600 && e.getY() < 650)
+                    } else if (e.getY() > 550 && e.getY() < 590)
                     {
                         new Quit().execute();
                     }

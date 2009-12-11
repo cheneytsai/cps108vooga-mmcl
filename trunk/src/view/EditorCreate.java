@@ -22,7 +22,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import actions.Direction;
 import actors.Actor;
+import actors.PhysicsVector;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
@@ -147,7 +149,7 @@ public class EditorCreate extends JFrame
         }
         return panel;
     }
-
+    
     private JComponent setDeleteOption()
     {
         myCheckBox = new JCheckBox("Delete Old Actor?");
@@ -214,18 +216,18 @@ public class EditorCreate extends JFrame
         try
         {
             
-            // TODO add catches for illformatting
             myModel.addActor((Actor) Reflection.createInstance("actors."
                     + actorStats[0], actorStats[1], new Dimension(Integer
                             .parseInt(actorStats[2]), Integer.parseInt(actorStats[3])),
                             new Point(Integer.parseInt(actorStats[4]), Integer
-                                    .parseInt(actorStats[5])), myModel));
+                                    .parseInt(actorStats[5])), myModel, new PhysicsVector(new Direction(-1,-1),10)));
             try
             {
                 FileWriter output = new FileWriter(mySaveFile,true);
                 output.append("\nactors." + actorStats[0] + " " + actorStats[1]
-                                                                             + " " + actorStats[2] + " " + actorStats[3] + " "
-                                                                             + actorStats[4] + " " + actorStats[5]);
+                                          + " " + actorStats[2] + " " + actorStats[3] + " "
+                                          + actorStats[4] + " " + actorStats[5]
+                                          + " -1 -1 10");
                 output.close();
                 dispose();
             } catch (FileNotFoundException e)

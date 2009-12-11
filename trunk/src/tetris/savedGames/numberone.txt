@@ -1,0 +1,11 @@
+actors.BottomWall src/images/brick3.gif 960 36 480 642 NaN NaN 0.0
+actors.Grid src/images/brick6.gif 12 24 337 0 NaN NaN 0.0
+actors.Block src/images/tetrisjblock.gif 26 26 454 611 NaN NaN 0.0
+actors.Block src/images/tetrisjblock.gif 26 26 480 611 NaN NaN 0.0
+actors.Block src/images/tetrislblock.gif 26 26 454 559 NaN NaN 0.0
+actors.Block src/images/tetrislblock.gif 26 26 454 585 NaN NaN 0.0
+actors.Block src/images/tetrislblock.gif 26 26 480 559 NaN NaN 0.0
+actors.Block src/images/tetrislblock.gif 26 26 480 585 NaN NaN 0.0
+actors.Block src/images/tetrislblock.gif 26 26 506 559 NaN NaN 0.0
+actors.Block src/images/tetrislblock.gif 26 26 506 585 NaN NaN 0.0
+actors.FallingPiece src/images/tetrisipiece2.gif 104 26 493 88 0.0 1.0 5.0

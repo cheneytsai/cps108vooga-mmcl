@@ -7,6 +7,7 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 import actions.AddPiece;
+import actions.Direction;
 import actors.*;
 import view.Canvas;
 
@@ -15,9 +16,9 @@ public class TetrisModel extends GameModel
     private final int DEFAULT_KEY = KeyEvent.VK_0;
     private int[] myPreviousKeys;
 
-    public TetrisModel(String gameName,int level,String viewType,Canvas canvas)
+    public TetrisModel(String gameName,String resumeName,int level,String viewType,Canvas canvas)
     {
-        super(gameName,level,viewType,canvas);
+        super(gameName,resumeName,level,viewType,canvas);
     }
 
     public void update(KeyEvent myLastKeyPressed)
@@ -75,7 +76,7 @@ public class TetrisModel extends GameModel
         addActor(new LeftWall("src/images/wall.jpg", new Dimension(100, 650),
                 new Point(287, 325), this));
         addActor(new BottomWall("src/images/brick3.gif",
-                new Dimension(960, 36), new Point(480, 642), this));
+                new Dimension(960, 36), new Point(480, 642), this,new PhysicsVector(new Direction(1,1),0)));
         addActor(new Grid("src/images/brick6.gif", new Dimension(12, 24),
                 new Point(337, 0), this));
         AddPiece.clearNext();
