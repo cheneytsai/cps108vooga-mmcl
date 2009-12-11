@@ -20,11 +20,6 @@ import actions.UpdateScore;
  */
 public class Grid extends Actor
 {
-    // TODO: This should not be a subclass of Actor. Generalize the position ->
-    // grid translation so it can be used
-    // for other games with grids. Make a new GameModel subclass (GridModel) to
-    // model games with grids. Move the row-checking
-    // to the TetrisConditions class. Make removing a row a action.
 
     private static Marker[][] myPositions;
     private static Block[][] myBlocks;

@@ -1,4 +1,3 @@
-//TODO: Fix the collision bugs, make this all work with duvall's shape making stuff
 package utilities;
 
 import java.awt.Point;

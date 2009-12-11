@@ -1,4 +1,3 @@
-//TODO: Consider removing this class
 package physics;
 
 /**

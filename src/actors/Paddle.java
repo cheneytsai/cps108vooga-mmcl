@@ -30,8 +30,7 @@ public class Paddle extends Actor
     @Override
     protected void loadBehavior()
     {
-        // TODO: Add some methods to remove making lists all the time in this
-        // method
+
         myDefaultBehavior = null;
 
         List<Action> a = new ArrayList<Action>();

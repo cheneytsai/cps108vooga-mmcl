@@ -4,6 +4,13 @@ import gameengine.GameModel;
 import actors.Grid;
 import conditions.ConditionChecker;
 
+/**
+ * ConditionChecker for Tetris
+ * 
+ * @author Michael Yu
+ *
+ */
+
 public class TetrisConditions extends ConditionChecker
 {
 

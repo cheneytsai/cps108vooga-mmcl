@@ -8,6 +8,13 @@ import actions.NextLevel;
 import actors.Ball;
 import actors.Brick;
 
+/**
+ * ConditionChecker for Arkanoid
+ * 
+ * @author Michael Yu
+ *
+ */
+
 public class ArkanoidConditions extends ConditionChecker
 {
 

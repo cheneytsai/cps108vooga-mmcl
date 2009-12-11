@@ -42,9 +42,7 @@ public class Bounce implements Action
                     .xShift()
                     * -1, origDirection.yShift()), origMagnitude));
         }
-        // TODO: Perhaps replace this action with a ReverseVelocity action,
-        // Bounce might be too specific to arkanoid. This should
-        // also fix some of our collision bugs
+
     }
 
 }
