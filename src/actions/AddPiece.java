@@ -25,7 +25,8 @@ public class AddPiece implements Action
 {
 
     private static ResourceBundle myPieceResources;
-    private static Actor myNext;
+    private static Actor myNext; // The next Actor to be added; for the purposes
+    // of drawing it before it's added
     private static GameModel myModel;
 
     public AddPiece(String gameName, GameModel model)
@@ -37,7 +38,8 @@ public class AddPiece implements Action
     }
 
     /**
-     * Randomly creates a new actor from the resource file
+     * Add the next Actor if it has one. Then creates a new next. If there was
+     * no next Actor, it creates one, then calls itself.
      */
     public void execute(Actor... actors)
     {
@@ -81,9 +83,14 @@ public class AddPiece implements Action
                     size.height / 2), myModel);
     }
 
+    /**
+     * 
+     * @return The image of the next Actor to be added, so that it can be drawn
+     *         by the LevelViewer before it is actually added.
+     */
     public static Image nextImage()
     {
-        if(myNext == null)
+        if (myNext == null)
         {
             myNext = createRandom();
         }
