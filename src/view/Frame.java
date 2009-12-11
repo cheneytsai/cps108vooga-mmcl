@@ -12,7 +12,7 @@ import util.resources.ResourceManager;
 @SuppressWarnings("serial")
 public class Frame extends JFrame
 {
-    private Dimension mySize = new Dimension(960, 720);
+    private Dimension mySize = new Dimension(960, 694);
     private Canvas myCanvas;
 
     public Frame()
