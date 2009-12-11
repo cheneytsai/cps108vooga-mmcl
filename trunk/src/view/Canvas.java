@@ -1,6 +1,5 @@
 package view;
 
-//TODO make abstract
 
 import gameengine.GameModel;
 import java.awt.Dimension;

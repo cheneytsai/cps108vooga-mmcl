@@ -1,4 +1,3 @@
-//TODO: Write this
 package conditions;
 
 import gameengine.GameModel;

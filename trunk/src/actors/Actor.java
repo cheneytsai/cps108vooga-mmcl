@@ -1,4 +1,3 @@
-//TODO: Refactor all of this
 package actors;
 
 import gameengine.GameModel;
@@ -67,6 +66,11 @@ public abstract class Actor
         loadBehavior();
         myXform = new AffineTransform();
     }
+    
+    public Actor(String image, Dimension d, Point p, GameModel model)
+    {
+        this(image, d, p, model, new PhysicsVector(new Direction(-1, -1), 10));
+    }
 
     public void setHeading(double heading)
     {
@@ -77,11 +81,6 @@ public abstract class Actor
     public double getHeading()
     {
         return myHeading;
-    }
-
-    public Actor(String image, Dimension d, Point p, GameModel model)
-    {
-        this(image, d, p, model, new PhysicsVector(new Direction(-1, -1), 10));
     }
 
     /**
@@ -126,10 +125,7 @@ public abstract class Actor
                 }
             }
         }
-        // TODO: Maybe make this so that instead of having actions in a map, it
-        // has the name of an action
-        // and constructor values, and just creates a new action every time as
-        // needed
+
     }
 
     public void setPosition(Point p)
@@ -351,7 +347,6 @@ public abstract class Actor
 
     /**
      * Reports shape's bottom-most coordinate.
-
      */
     public int getBottom()
     {
@@ -363,6 +358,9 @@ public abstract class Actor
         return new Point(getSize().width / 2, getSize().height / 2);
     }
 
+    /**
+     * Reports model in which the actor is contained.
+     */
     public GameModel getModel()
     {
         return myModel;

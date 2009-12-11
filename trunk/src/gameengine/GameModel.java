@@ -1,5 +1,3 @@
-//TODO: Make this abstract?
-
 package gameengine;
 
 import view.Canvas;
@@ -31,7 +29,6 @@ import actors.Grid;
 import actors.Wall;
 
 /**
- * 
  * 
  * @author Lisa Gutermuth
  * @author Megan Heysham
