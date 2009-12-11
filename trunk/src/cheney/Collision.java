@@ -4,7 +4,6 @@ import conditions.Condition;
 import utilities.CollisionChecker;
 import actors.Actor;
 
-
 public class Collision implements Condition
 {
 
