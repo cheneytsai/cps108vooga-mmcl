@@ -20,7 +20,6 @@ public class TetrisLevelViewer extends LevelViewer
             Canvas canvas,GameModel model)
     {
         super(gameName, levelName, canvas,model);
-        Grid.resetGrid();
         
         myLevelNum = 0;
     }
