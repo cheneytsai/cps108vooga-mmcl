@@ -3,6 +3,7 @@ package view;
 import gameengine.GameModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import util.resources.ResourceManager;
 import actors.Actor;
@@ -22,6 +23,11 @@ public class EditorCanvas extends LevelViewer
         
         mySaveFile = (String) JOptionPane.showInputDialog(String.format(ResourceManager
                 .getString("EditorSave")), ResourceManager.getString(gameName+"level"+levelName));
+        if(mySaveFile == null)
+        {
+            mySaveFile = "src/resources/"+gameName+"level"+new GregorianCalendar()
+                    .getTime().toString().replace(":","_")+".level";
+        }
     }
 
     public void startGame()

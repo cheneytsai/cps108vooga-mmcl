@@ -9,7 +9,9 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import actions.Quit;
+import arkanoid.ArkanoidModel;
 import util.reflection.Reflection;
+import util.reflection.ReflectionException;
 import util.resources.ResourceManager;
 
 @SuppressWarnings("serial")
@@ -98,11 +100,20 @@ public class GameMenu extends Canvas
                         }
                         else
                         {
-//                            new ArkanoidModel(myGameName, fileName.replace("src\\"+myGameName+"\\savedGames\\","").replace(".txt","")
-//                                    ,DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
-                            Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
-                                    myGameName, fileName.replace("src/"+myGameName+"/savedGames/","").replace(".txt","")
-                                    ,DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
+                            try
+                            {
+//                                For PCs
+                                Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
+                                        myGameName, fileName.replace("src\\"+myGameName+"\\savedGames\\","").replace(".txt","")
+                                        ,DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
+                            }
+                            catch(ReflectionException r)
+                            {
+//                                For Macs
+                                Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
+                                        myGameName, fileName.replace("src/"+myGameName+"/savedGames/","").replace(".txt","")
+                                        ,DEFAULT_START_LEVEL,myGameName.toLowerCase() + "." +myGameName+"LevelViewer",myCanvas);
+                            }
                         }
                     } else if (e.getY() > 225 && e.getY() < 265)
                     {
@@ -131,12 +142,12 @@ public class GameMenu extends Canvas
                                     showLevel = i;
                                 }
                             }
-//                            new ArkanoidModel(myGameName,"", showLevel,"view.EditorCanvas",myCanvas);
                             Reflection.createInstance(myGameName.toLowerCase() + "." + myGameName + "Model", 
                                     myGameName, "",showLevel,"view.EditorCanvas",myCanvas);
                         } catch (NullPointerException n)
                         {
-                            System.out.println(n);
+                            JOptionPane.showMessageDialog(null,
+                                    "You have not chosen a game to edit!", "Error", 0);
                         }
                     } else if (e.getY() > 485 && e.getY() < 525)
                     {
