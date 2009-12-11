@@ -19,6 +19,7 @@ import conditions.ConditionChecker;
 import util.reflection.*;
 import util.resources.ResourceManager;
 import actors.Actor;
+import arkanoid.ArkanoidConditions;
 
 /**
  * 
@@ -34,15 +35,43 @@ public class GameModel
     protected ConditionChecker myConditions;
     private Random myRandom;
     protected int myScore;
+    private String[] myLevelProgression;
+    private LevelViewer myLevelViewer;
 
-    public GameModel(Canvas canvas)
+    public GameModel(String gameName, Canvas canvas)
     {
         myCanvas = canvas;
         myActorList = new ArrayList<Actor>();
         gameOver = false;
+        myScore = 0;
         myRandom = new Random();
+        myLevelProgression = ResourceManager.getString(gameName+"Levels").split(",");
+        myConditions = (ConditionChecker) Reflection.createInstance(gameName.toLowerCase()+"."+gameName+"Conditions",this);
+        myLevelViewer = (LevelViewer) Reflection.createInstance(gameName.toLowerCase()+"."+gameName+"LevelViewer",gameName,myLevelProgression[0],canvas,this);
+        initializeActors();
+        myLevelViewer.startGame();
     }
 
+    protected void initializeActors()
+    {
+        try
+        {
+            Scanner input = new Scanner(new File(ResourceManager.getString(myLevelViewer.getGameName() + "level"
+                            + myLevelViewer.getLevelName())));
+            while (input.hasNextLine())
+            {
+                input.skip("");
+                addActor((Actor) Reflection.createInstance(input.next(), input
+                        .next(),
+                        new Dimension(input.nextInt(), input.nextInt()),
+                        new Point(input.nextInt(), input.nextInt()), this));
+            }
+        } catch (FileNotFoundException e)
+        {
+            System.out.println("File not found");
+        }
+    }
+    
     public void update(KeyEvent myLastKeyPressed)
     {
 
@@ -62,47 +91,12 @@ public class GameModel
             {
                 myActorList.get(k).hasMoved = false;
             }
-            // Reset All to no movement
-        
-    }
-
-    public void loadNextLevel()
-    {
-        myCanvas.loadNextLevel();
-    }
-
-    public void lose()
-    {
-        myCanvas.loadEnd("Lose");
+            // Reset All to no movement 
     }
 
     public void clearActors()
     {
         myActorList.clear();
-    }
-
-    protected void initializeActors()
-    {
-        try
-        {
-            Scanner input = new Scanner(new File(ResourceManager
-                    .getString(myCanvas.getGameName() + "level"
-                            + myCanvas.getLevelNum())));
-            while (input.hasNextLine())
-            {
-                input.skip("");
-                addActor((Actor) Reflection.createInstance(input.next(), input
-                        .next(),
-                        new Dimension(input.nextInt(), input.nextInt()),
-                        new Point(input.nextInt(), input.nextInt()), this));
-            }
-        } catch (FileNotFoundException e)
-        {
-            System.out.println("File not found");
-        }
-        // catch (MissingResourceException e) {
-        // myCanvas.loadEnd("Win");
-        // }
     }
 
     public void remove(Actor actor)
@@ -157,9 +151,20 @@ public class GameModel
         return myRandom;
     }
 
+
+    public void loadNextLevel()
+    {
+        myLevelViewer.loadNextLevel();
+    }
+
+    public void loadEnd(String endCondition)
+    {
+        myLevelViewer.loadEnd("Lose");
+    }
+    
     public void loadBonusLevel(int level)
     {
-        myCanvas.loadBonusLevel(level);
+        myLevelViewer.loadBonusLevel(level);
 
     }
     public int getScore()
@@ -170,8 +175,10 @@ public class GameModel
     public void clearScore()
     {
         myScore = 0;
-        
     }
     
-
+    public LevelViewer getLevelViewer()
+    {
+        return myLevelViewer;
+    }
 }

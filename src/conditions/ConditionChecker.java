@@ -28,11 +28,9 @@ public abstract class ConditionChecker
 
     public void checkConditions()
     {
-
         myActors = myModel.getActors();
-        collisionCheck();
         conditionsCheck();
-
+        collisionCheck();
     }
 
     private void collisionCheck()
@@ -53,6 +51,7 @@ public abstract class ConditionChecker
             if (c.evaluate())
             {
                 myConditions.get(c).execute();
+                break;
             }
         }
     }

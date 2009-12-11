@@ -1,5 +1,6 @@
 package tetris;
 
+import gameengine.GameModel;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -13,13 +14,15 @@ import view.LevelViewer;
 @SuppressWarnings("serial")
 public class TetrisLevelViewer extends LevelViewer
 {
-
-    public TetrisLevelViewer(String gameName, int levelNum,
-            Canvas canvas)
+    private int myLevelNum;
+    
+    public TetrisLevelViewer(String gameName, String levelName,
+            Canvas canvas,GameModel model)
     {
-        super(gameName, levelNum, canvas);
+        super(gameName, levelName, canvas,model);
         Grid.resetGrid();
-
+        
+        myLevelNum = 0;
     }
     
     @Override
@@ -47,7 +50,7 @@ public class TetrisLevelViewer extends LevelViewer
         pen.drawString("" + myModel.getScore(), 805, 190);
         
         pen.drawString("Level:", 800, 255);
-        pen.drawString(""+getLevelNum(), 805, 290);
+        pen.drawString(""+myLevelNum, 805, 290);
 
         pen.drawString("Lines:", 800, 355);
         pen.drawString("" + Grid.getNumRowsCleared(), 805, 390);

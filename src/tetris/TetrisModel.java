@@ -12,24 +12,19 @@ import view.Canvas;
 
 public class TetrisModel extends GameModel
 {
-
     private final int DEFAULT_KEY = KeyEvent.VK_0;
-    private int[] myPreviousKeys =
-    { DEFAULT_KEY, DEFAULT_KEY };
+    private int[] myPreviousKeys;
 
-    public TetrisModel(Canvas canvas)
+    public TetrisModel(String gameName,Canvas canvas)
     {
-        super(canvas);
-        myConditions = new TetrisConditions(this);
-                
-
+        super(gameName,canvas);
     }
 
     public void update(KeyEvent myLastKeyPressed)
     {
         if (gameOver())
         {
-            lose();
+            loadEnd("Lose");
         } else if (myLastKeyPressed == null)
         {
             myPreviousKeys[0] = DEFAULT_KEY;
@@ -57,8 +52,6 @@ public class TetrisModel extends GameModel
             super.update(myLastKeyPressed);
         }
         Grid.removeFullRowsAndDrop();
-        
-
     }
 
     public boolean gameOver()
@@ -73,7 +66,7 @@ public class TetrisModel extends GameModel
         return false;
     }
 
-    protected void initializeActors()
+    public void initializeActors()
     {
         super.initializeActors();
         addActor(new Wall("src/images/wall.jpg", new Dimension(100, 720),
@@ -92,6 +85,7 @@ public class TetrisModel extends GameModel
     public void addActor(Actor actor)
     {
         super.addActor(actor);
+        myPreviousKeys = new int[2];
         myPreviousKeys[0] = DEFAULT_KEY;
         myPreviousKeys[1] = DEFAULT_KEY;
 //         new ChangeSpeed(5 + (getCanvas().getLevelNum()-1)).execute(actor);

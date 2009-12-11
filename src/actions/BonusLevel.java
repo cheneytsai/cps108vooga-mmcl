@@ -5,8 +5,10 @@ import actors.Actor;
 
 public class BonusLevel implements Action
 {
+
     private GameModel myModel;
     private int myLevel;
+
 
     public BonusLevel(GameModel model, int level)
     {

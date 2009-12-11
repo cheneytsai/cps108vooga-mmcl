@@ -6,11 +6,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
-import java.util.MissingResourceException;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 import actors.Actor;
+import gameengine.GameModel;
 import util.reflection.Reflection;
 import util.resources.ResourceManager;
 
@@ -25,83 +25,67 @@ public class LevelViewer extends Canvas implements ActionListener
     private String myGameName;
     private List<Actor> myActors;
     private KeyEvent myLastKeyPressed;
-    protected int myLevelNum;
+    protected String myLevelName;
     private Timer myTimer;
     private boolean isPaused;
     private final int PAUSE_KEY = KeyEvent.VK_P;
     // animate 25 times per second if possible
     public static final int DEFAULT_DELAY = 1000 / 25; // in milliseconds
 
-    public LevelViewer(String gameName, int levelNum, Canvas canvas)
+    public LevelViewer(String gameName, String levelName, Canvas canvas, GameModel model)
     {
         isPaused = false;
         myCanvas = canvas;
         myGameName = gameName;
-        myLevelNum = levelNum;
-        try
-        {
-            myCanvas.setActive(this);
-            myCanvas.requestFocus();
-            myModel = canvas.getGameModel();
+        myModel = model;
+        myLevelName = levelName;
 
-            if (myCanvas.getMouseListeners().length > 0)
+        myCanvas.setActive(this);
+        myCanvas.requestFocus();
+
+        if (myCanvas.getMouseListeners().length > 0)
+        {
+            myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
+        }
+
+        myCanvas.addKeyListener(new KeyAdapter()
+        {
+            public void keyPressed(KeyEvent e)
             {
-                myCanvas.removeMouseListener(myCanvas.getMouseListeners()[0]);
+
+                if (e.getKeyCode() == PAUSE_KEY)
+                {
+                    if (myLastKeyPressed == null || (myLastKeyPressed != null
+                                    && myLastKeyPressed.equals(e)))
+                    {
+                        isPaused = !isPaused;
+                        myLastKeyPressed = e;
+                    }
+
+                } else
+                    myLastKeyPressed = e;
             }
 
-            myCanvas.addKeyListener(new KeyAdapter()
+            public void keyReleased(KeyEvent e)
             {
-                public void keyPressed(KeyEvent e)
-                {
+                myLastKeyPressed = null;
+            }
+        });
 
-                    if (e.getKeyCode() == PAUSE_KEY)
-                    {
-                        if (myLastKeyPressed == null
-                                || (myLastKeyPressed != null
-                                && myLastKeyPressed.equals(e)))
-                        {
+        icon = new ImageIcon(ResourceManager.getString(myGameName+ "level.background"));
 
-                            isPaused = !isPaused;
-                            myLastKeyPressed = e;
-
-                        }
-
-                    } else
-                        myLastKeyPressed = e;
-
-                }
-
-                public void keyReleased(KeyEvent e)
-                {
-
-                    myLastKeyPressed = null;
-                }
-            });
-
-            icon = new ImageIcon(ResourceManager.getString(myGameName
-                    + "level.background"));
-
-            myCanvas.repaint();
-
-            myActors = myModel.getActors();
-            myTimer = new Timer(DEFAULT_DELAY, this);
-            myTimer.start();
-
-            update();
-        } catch (MissingResourceException e)
-        {
-            // TODO now doubletime doesn't happen. but you can only lose.
-            // TODO the problem was that level4 still loaded in the
-            // background...
-            // TODO thats still a problem =/
-            System.out.println("fail");
-            myCanvas.loadEnd("Win");
-        }
-        if(myLevelNum == 1)
-            myModel.clearScore();
-
+        myCanvas.repaint();       
     }
+    
+    public void startGame()
+    {
+        myActors = myModel.getActors();
+        myTimer = new Timer(DEFAULT_DELAY, this);
+        myTimer.start();
 
+        update();
+    }
+    
     public void stopTimer()
     {
         myTimer.stop();
@@ -109,13 +93,10 @@ public class LevelViewer extends Canvas implements ActionListener
 
     public void update()
     {
-        
         if (!isPaused)
-        {
-            
+        {       
             myModel.update(myLastKeyPressed);
-        }
-        
+        }      
     }
 
     public void paintComponent(Graphics pen)
@@ -123,7 +104,10 @@ public class LevelViewer extends Canvas implements ActionListener
         pen.drawImage(icon.getImage(), 0, 0, mySize.width, mySize.height, null);
         pen.setFont(SCOREBOARD_FONT);
 
-        paint(pen);
+        if(myActors != null)
+        {
+            paint(pen);
+        }
     }
 
     public String getGameName()
@@ -131,9 +115,9 @@ public class LevelViewer extends Canvas implements ActionListener
         return myGameName;
     }
 
-    public int getLevelNum()
+    public String getLevelName()
     {
-        return myLevelNum;
+        return myLevelName;
     }
 
     /**
@@ -162,9 +146,11 @@ public class LevelViewer extends Canvas implements ActionListener
 
     public void loadNextLevel()
     {
-        myLevelNum++;
-        Reflection.createInstance(myGameName.toLowerCase() + "."+ myGameName + "LevelViewer", myGameName, getLevelNum(), myCanvas);
+//        advance to next level in model's array
+//        TODO reset actors, new read in, keep level viewer
+//        Reflection.createInstance(myGameName.toLowerCase() + "."+ myGameName + "LevelViewer", myGameName, getLevelNum(), myCanvas);
     }
+
 
     public void loadBonusLevel(int level)
     {

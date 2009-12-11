@@ -9,9 +9,9 @@ import view.Canvas;
 public class DukeopalypseModel extends GameModel
 {
 
-    public DukeopalypseModel(Canvas canvas)
+    public DukeopalypseModel(String gameName,Canvas canvas)
     {
-        super(canvas);
+        super(gameName,canvas);
         myConditions = new DukeopalypseConditions(this);
     }
 

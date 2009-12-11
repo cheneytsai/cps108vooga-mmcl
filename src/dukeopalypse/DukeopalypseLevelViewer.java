@@ -1,5 +1,6 @@
 package dukeopalypse;
 
+import gameengine.GameModel;
 import view.Canvas;
 import view.LevelViewer;
 
@@ -7,10 +8,10 @@ import view.LevelViewer;
 public class DukeopalypseLevelViewer extends LevelViewer
 {
 
-    public DukeopalypseLevelViewer(String gameName, int levelNum,
-            Canvas canvas)
+    public DukeopalypseLevelViewer(String gameName, String levelName,
+            Canvas canvas,GameModel model)
     {
-        super(gameName, levelNum, canvas);
+        super(gameName, levelName, canvas,model);
         // TODO Auto-generated constructor stub
     }
 

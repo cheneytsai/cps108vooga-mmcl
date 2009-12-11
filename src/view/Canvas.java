@@ -22,7 +22,6 @@ public class Canvas extends JPanel
     protected GameModel myModel;
     protected String myGameName;
     // private Menu active;
-    // TODO: move score to model
     
     protected static final Font TITLE_FONT = new Font("TAHOMA", Font.BOLD, 75);
     protected static final Font OPTION_FONT = new Font("TAHOMA", Font.BOLD, 40);
@@ -36,14 +35,8 @@ public class Canvas extends JPanel
     {
         myActive = this;
         setSize(mySize);
-        myModel = new GameModel(this);
     }
-
-    public void setGame(GameModel model)
-    {
-        myModel = model;
-    }
-
+    
     public void paintComponent(Graphics g)
     {
         if (myActive != null)
@@ -56,38 +49,22 @@ public class Canvas extends JPanel
 
     public void setActive(Canvas toUse)
     {
-        try
+        if(myActive instanceof LevelViewer)
         {
-            myActive.stopTimer();
-        } catch (NullPointerException e)
-        {
+            ((LevelViewer) myActive).stopTimer();
         }
         myActive = toUse;
-        myModel.newView(myActive);
     }
-
-    public void stopTimer()
-    {
-    }
-
-    
 
     public String getGameName()
     {
-
         return myActive.getGameName();
-    }
-
-    public int getLevelNum()
-    {
-        return 0;
     }
 
     public MouseListener mouseListener()
     {
         return myActive.mouseListener();
     }
-
 
     public int getWidth()
     {
@@ -99,25 +76,8 @@ public class Canvas extends JPanel
         return mySize.height;
     }
 
-    public boolean isGameInProgress()
-    {
-        return myActive != null && getGameName() != null;
-    }
-
     protected GameModel getGameModel()
     {
         return myModel;
-    }
-
-    public void loadNextLevel()
-    {
-    }
-
-    public void loadEnd(String endCondition)
-    {
-    }
-
-    public void loadBonusLevel(int level)
-    {
     }
 }

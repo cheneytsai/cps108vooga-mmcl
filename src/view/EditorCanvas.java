@@ -1,5 +1,6 @@
 package view;
 
+import gameengine.GameModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import actors.Actor;
@@ -7,13 +8,12 @@ import actors.Actor;
 @SuppressWarnings("serial")
 public class EditorCanvas extends LevelViewer
 {
-    public EditorCanvas(String gameName, int levelNum, Canvas canvas)
+    public EditorCanvas(String gameName, String levelName, Canvas canvas, GameModel model)
     {
-        super(gameName, levelNum, canvas);
+        super(gameName, levelName, canvas, model);
 
         myCanvas.removeKeyListener(myCanvas.getKeyListeners()[0]);
         myCanvas.addMouseListener(mouseListener());
-
     }
 
     public void update()
@@ -46,13 +46,13 @@ public class EditorCanvas extends LevelViewer
                 if (match == null)
                 {
                     new EditorCreate(myModel, getGameName() + "level"
-                            + getLevelNum(), null, "src/images/Paddle.gif", 20,
+                            + getLevelName(), null, "src/images/Paddle.gif", 20,
                             20, e.getX(), e.getY());
                 } else
                 {
 
                     new EditorCreate(myModel, getGameName() + "level"
-                            + getLevelNum(), match, match.getImageString(), match
+                            + getLevelName(), match, match.getImageString(), match
                             .getSize().width, match.getSize().height,
                             (int) match.getPosition().getX(), (int) match
                                     .getPosition().getY());

@@ -19,6 +19,6 @@ public class Lose implements Action
 
     public void execute(Actor... actors)
     {
-        myModel.lose();
+        myModel.loadEnd("Lose");
     }
 }

@@ -22,10 +22,9 @@ import view.Canvas;
 public class ArkanoidModel extends GameModel
 {
 
-    public ArkanoidModel(Canvas canvas)
+    public ArkanoidModel(String gameName,Canvas canvas)
     {
-        super(canvas);
-        myConditions = new ArkanoidConditions(this);
+        super(gameName,canvas);
     }
 
     protected void hotkeyCheck(KeyEvent myLastKeyPressed)
@@ -69,7 +68,7 @@ public class ArkanoidModel extends GameModel
         super.update(myLastKeyPressed);
     }
 
-    public void initializeActors()
+    protected void initializeActors()
     {
         super.initializeActors();
         addActor(new Wall("src/images/brick3.gif", new Dimension(960, 16),

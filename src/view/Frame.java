@@ -43,7 +43,7 @@ public class Frame extends JFrame
         {
             public void actionPerformed(ActionEvent ev)
             {
-                if (myCanvas.isGameInProgress())
+                if (myCanvas.getGameName() != null)
                 {
                     new GameMenu(myCanvas.getGameName(), myCanvas);
                 }
