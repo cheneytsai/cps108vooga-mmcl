@@ -21,41 +21,34 @@ import view.Canvas;
 public class ArkanoidModel extends GameModel
 {
 
-    public ArkanoidModel(String gameName,int level,String viewType,Canvas canvas)
+    public ArkanoidModel(String gameName,String resumeName,int level,String viewType,Canvas canvas)
     {
-        super(gameName,level,viewType,canvas);
+        super(gameName,resumeName,level,viewType,canvas);
     }
 
     protected void hotkeyCheck(KeyEvent myLastKeyPressed)
     {
-        if (myLastKeyPressed != null)
+        super.hotKeyCheck(myLastKeyPressed);
+        if (myLastKeyPressed != null && myLastKeyPressed.getKeyCode() == KeyEvent.VK_B)
         {
-            if (myLastKeyPressed.getKeyCode() == KeyEvent.VK_B)
+            Actor paddleActor = null;
+            for (Actor actor : myActorList)
             {
-                Actor paddleActor = null;
-                for (Actor actor : myActorList)
+                if (actor instanceof Paddle)
                 {
-                    if (actor instanceof Paddle)
-                    {
-                        paddleActor = actor;
-                        break;
-                    }
+                    paddleActor = actor;
+                    break;
                 }
-                if (paddleActor != null)
-                {
-                    new Add(this, Ball.class.getCanonicalName())
-                            .execute(paddleActor);
-                    myActorList.get(myActorList.size() - 1).setVelocity(
-                            new PhysicsVector(new Direction(1, 1), 10));
-                }
-            } else if (myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
+            }
+            if (paddleActor != null)
             {
-                new UpdateScore(100, this).execute();
-            }else if(myLastKeyPressed.getKeyCode() == KeyEvent.VK_L)
-            {
-                loadNextLevel();
+                new Add(this, Ball.class.getCanonicalName())
+                .execute(paddleActor);
+                myActorList.get(myActorList.size() - 1).setVelocity(
+                        new PhysicsVector(new Direction(1, 1), 10));
             }
         }
+        
     }
 
     public void update(KeyEvent myLastKeyPressed)
@@ -74,6 +67,6 @@ public class ArkanoidModel extends GameModel
         addActor(new Wall("src/images/brick3.gif", new Dimension(16, 650),
                 new Point(965, 325), this));
         addActor(new BottomWall("src/images/brick3.gif",
-                new Dimension(960, 16), new Point(480, 666), this));
+                new Dimension(960, 16), new Point(480, 666), this, new PhysicsVector(new Direction(1,1),0)));
     }
 }
