@@ -4,9 +4,7 @@ import java.awt.Point;
 import physics.Direction;
 import utilities.CollisionChecker;
 import actors.Actor;
-import actors.Ball;
 import physics.PhysicsVector;
-import actors.Wall;
 
 /**
  * 
