@@ -13,6 +13,7 @@ import util.reflection.Reflection;
 import conditions.NumberOf;
 
 import actors.Actor;
+import actors.PhysicsVector;
 
 /**
  * 
@@ -25,7 +26,7 @@ public class AddPiece implements Action
 
     private static ResourceBundle myPieceResources;
     private static Actor myNext;
-    private GameModel myModel;
+    private static GameModel myModel;
 
     public AddPiece(String gameName, GameModel model)
     {
@@ -61,7 +62,7 @@ public class AddPiece implements Action
     /**
      * Randomly creates a new actor from the resource file
      */
-    private Actor createRandom()
+    private static Actor createRandom()
     {
 
         String number = myPieceResources.getString("NumberOfPieces");
@@ -73,15 +74,19 @@ public class AddPiece implements Action
         if (size.width % 52 == 0)
             return (Actor) Reflection.createInstance(myPieceResources
                     .getString("PieceClass"), image, size, new Point(493,
-                    size.height / 2), myModel);
+                    size.height / 2), myModel, new PhysicsVector(new Direction(0,1),5));
         else
             return (Actor) Reflection.createInstance(myPieceResources
                     .getString("PieceClass"), image, size, new Point(480,
-                    size.height / 2), myModel);
+                    size.height / 2), myModel, new PhysicsVector(new Direction(0,1),5));
     }
 
     public static Image nextImage()
     {
+        if(myNext == null)
+        {
+            myNext = createRandom();
+        }
         return new ImageIcon(myNext.getImageString()).getImage();
     }
 
