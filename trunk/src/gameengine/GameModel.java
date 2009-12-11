@@ -120,10 +120,16 @@ public class GameModel
 
     protected void hotKeyCheck(KeyEvent myLastKeyPressed)
     {
-        if (myLastKeyPressed != null
-                && myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
+        if(myLastKeyPressed!= null)
         {
-            new UpdateScore(100, this).execute();
+            if (myLastKeyPressed.getKeyCode() == KeyEvent.VK_S)
+            {
+                new UpdateScore(100, this).execute();
+            }
+            else if(myLastKeyPressed.getKeyCode() == KeyEvent.VK_W)
+            {
+                loadEnd("Win");
+            }
         }
     }
 

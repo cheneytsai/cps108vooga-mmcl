@@ -20,6 +20,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -247,8 +248,10 @@ public class EditorCreate extends JFrame
             }
         } catch (NumberFormatException e)
         {
-            System.out.println(e.getMessage());
-            dispose();
+            JOptionPane.showMessageDialog(null,
+                    "Please check that you entered integers",
+                    "Error", 0);
+//            dispose();
         }
     }
 

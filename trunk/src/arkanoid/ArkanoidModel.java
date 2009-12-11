@@ -58,7 +58,6 @@ public class ArkanoidModel extends GameModel
                         new PhysicsVector(new Direction(1, 1), 10));
             }
         }
-
     }
 
     public void update(KeyEvent myLastKeyPressed)

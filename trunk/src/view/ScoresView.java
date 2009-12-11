@@ -75,6 +75,7 @@ public class ScoresView extends Canvas
                 myScoreInfo.put(Integer.parseInt(lineArray[1]), lines);
             }
             sortScores(myScoreInfo);
+            
         } catch (FileNotFoundException e)
         {
             System.out.println("FileNotFound");
